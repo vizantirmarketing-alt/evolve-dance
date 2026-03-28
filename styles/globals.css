@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Brand CSS variables ─────────────────────────── */
+:root {
+  --teal:        #2dd4bf;
+  --teal-dim:    #1aaf9c;
+  --teal-glow:   rgba(45, 212, 191, 0.18);
+  --teal-faint:  rgba(45, 212, 191, 0.06);
+  --black:       #070a09;
+  --black-soft:  #0d1210;
+  --charcoal:    #111916;
+  --off-white:   #f0faf8;
+  --off-mid:     #c8e0db;
+  --mid:         #5c7a74;
+  --border:      rgba(45, 212, 191, 0.12);
+  --border-soft: rgba(45, 212, 191, 0.06);
+}
+
+/* ── Base reset ──────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--black);
+  color: var(--off-white);
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scroll reveal ───────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 100ms; }
+.reveal-delay-2 { transition-delay: 200ms; }
+.reveal-delay-3 { transition-delay: 300ms; }
+.reveal-delay-4 { transition-delay: 400ms; }
+
+/* ── Teal text glow ──────────────────────────────── */
+.teal-glow-text {
+  text-shadow:
+    0 0 60px rgba(45, 212, 191, 0.3),
+    0 0 120px rgba(45, 212, 191, 0.1);
+}
+
+/* ── Clip-path button shape ──────────────────────── */
+.clip-btn {
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+}
+
+/* ── Hero art panel clip ─────────────────────────── */
+.clip-panel {
+  clip-path: polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+/* ── Teal border bottom animated ────────────────── */
+.teal-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--teal);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+
+.teal-underline:hover::after {
+  transform: scaleX(1);
+}
+
+/* ── Instructor card expand ──────────────────────── */
+.instructor-strip {
+  display: flex;
+  gap: 2px;
+}
+
+.instructor-card {
+  flex: 1;
+  min-width: 0;
+  transition: flex 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), background 0.3s;
+}
+
+.instructor-card:hover {
+  flex: 2.5;
+}
+
+/* ── Scan lines effect ───────────────────────────── */
+.scan-lines::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(45, 212, 191, 0.015) 3px,
+    rgba(45, 212, 191, 0.015) 4px
+  );
+  pointer-events: none;
+}
+
+/* ── Animated grid background ────────────────────── */
+.animated-grid {
+  background-image:
+    linear-gradient(rgba(45, 212, 191, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45, 212, 191, 0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridSlide 20s linear infinite;
+}
+
+/* ── Schedule table hover ────────────────────────── */
+.schedule-row:hover td {
+  background: rgba(45, 212, 191, 0.02);
+}
+
+/* ── Utility: no-select ──────────────────────────── */
+.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+}
