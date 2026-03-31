@@ -101,7 +101,10 @@ export default function Nav({ links }: NavProps) {
       </div>
 
       {menuOpen && (
-        <div className="fixed top-0 left-0 right-0 bottom-0 bg-[#070a09] z-[998] flex flex-col px-8 pt-28 md:hidden">
+        <div
+          className="fixed top-0 left-0 right-0 bottom-0 bg-[#070a09] z-[998] flex flex-col px-8 pt-28 md:hidden"
+          style={{ backgroundColor: '#070a09' }}
+        >
           <ul className="flex flex-col list-none gap-6 mt-4">
             {links.map((link) => (
               <li key={link.href}>
