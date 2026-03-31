@@ -26,7 +26,7 @@ function useReveal() {
     if (!el) return
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect() } },
-      { threshold: 0.12 }
+      { threshold: 0 }
     )
     observer.observe(el)
     return () => observer.disconnect()

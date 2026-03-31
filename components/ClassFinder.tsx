@@ -118,7 +118,8 @@ export default function ClassFinder() {
               <motion.div
                 key={c.id}
                 initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0 }}
                 exit={{ opacity: 0, scale: 0.96 }}
                 transition={{ duration: 0.2, delay: index * 0.04 }}
               >

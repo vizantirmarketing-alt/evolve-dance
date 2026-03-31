@@ -61,9 +61,9 @@ export default function VideoHeroSection({
 
   return (
     <>
-      <section className="relative min-h-[100svh] bg-[#070a09]">
+      <section className="relative bg-[#070a09]" style={{ minHeight: '100dvh' }}>
 
-        <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {/* Mobile — static image, no video */}
           <div className="md:hidden absolute inset-0 z-0">
             <img
@@ -91,16 +91,20 @@ export default function VideoHeroSection({
         </div>
 
         {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/50 z-10" />
+        <div className="absolute inset-0 bg-black/50 z-10 pointer-events-none" />
 
         {/* Hero content */}
-        <div className="relative z-20 flex flex-col justify-end min-h-[100dvh] w-full pb-40 pt-24 px-6 md:px-12">
+        <div
+          className="relative z-20 flex flex-col justify-end w-full pb-32 pt-24 px-6 md:px-12"
+          style={{ minHeight: '100dvh' }}
+        >
         {/* ── Main content — z above stat strip (z-[4]) */}
-        <div className="relative z-[5] w-full pointer-events-none">
+        <div className="relative z-[30] w-full">
           <motion.div
             variants={container}
             initial="hidden"
-            animate="show"
+            whileInView="show"
+            viewport={{ once: true, amount: 0 }}
             className="max-w-[680px]"
           >
             {/* Eyebrow */}
@@ -227,7 +231,8 @@ export default function VideoHeroSection({
         {/* ── Scroll indicator ─────────────────────── */}
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0 }}
           transition={{ delay: 1.4, duration: 0.8 }}
           className="absolute bottom-24 right-12 z-[3] flex flex-col items-center gap-2"
         >
@@ -249,7 +254,8 @@ export default function VideoHeroSection({
         {/* ── Stat strip ──────────────────────────── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0 }}
           transition={{ delay: 1.1, duration: 0.8 }}
           className="absolute bottom-0 left-0 right-0 z-[4] grid grid-cols-2 md:grid-cols-4 border-t border-[rgba(45,212,191,0.12)]"
           style={{ background: 'rgba(7,10,9,0.75)', backdropFilter: 'blur(16px)' }}

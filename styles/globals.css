@@ -58,6 +58,13 @@ body {
 .reveal-delay-3 { transition-delay: 300ms; }
 .reveal-delay-4 { transition-delay: 400ms; }
 
+@media (max-width: 768px) {
+  .reveal {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* ── Teal text glow ──────────────────────────────── */
 .teal-glow-text {
   text-shadow:

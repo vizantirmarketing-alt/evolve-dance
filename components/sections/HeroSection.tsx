@@ -81,7 +81,8 @@ export default function HeroSection() {
           {/* Dancer SVG silhouette */}
           <motion.svg
             initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0 }}
             transition={{ duration: 1.2, delay: 0.8 }}
             className="absolute"
             style={{ right: '12%', top: '50%', transform: 'translateY(-50%)', width: 280 }}
@@ -118,7 +119,8 @@ export default function HeroSection() {
         {/* Eyebrow */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="flex items-center gap-4 mb-6"
         >
@@ -131,7 +133,8 @@ export default function HeroSection() {
         {/* Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0 }}
           transition={{ duration: 0.8, delay: 0.35 }}
           className="font-display font-black leading-[0.88] tracking-tight mb-7"
           style={{ fontSize: 'clamp(56px, 8.5vw, 118px)' }}
@@ -144,7 +147,8 @@ export default function HeroSection() {
         {/* Subheading */}
         <motion.p
           initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
           className="text-[15px] font-light text-[rgba(200,224,219,0.6)] leading-[1.75] max-w-[400px] mb-11"
         >
@@ -154,7 +158,8 @@ export default function HeroSection() {
         {/* CTA buttons */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0 }}
           transition={{ duration: 0.8, delay: 0.65 }}
           className="flex gap-5 items-center"
         >
@@ -186,7 +191,8 @@ export default function HeroSection() {
       {/* ── Stats strip ── */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0 }}
         transition={{ duration: 0.8, delay: 1 }}
         className="absolute bottom-0 left-0 right-0 z-[3] grid grid-cols-4 border-t border-[rgba(45,212,191,0.12)]"
       >
@@ -211,7 +217,8 @@ export default function HeroSection() {
       {/* ── Scroll indicator ── */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0 }}
         transition={{ duration: 1, delay: 1.2 }}
         className="absolute bottom-8 right-12 z-[2] flex flex-col items-center gap-2"
       >
