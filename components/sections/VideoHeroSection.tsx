@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
-import { siteConfig } from '@/data/site'
 
 // ── Types ────────────────────────────────────────────
 interface VideoHeroProps {
@@ -91,12 +90,18 @@ export default function VideoHeroSection({
           </div>
         </div>
 
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/50 z-10 pointer-events-none" />
+        {/* Gradient overlay — darker left, lighter right */}
+        <div
+          className="absolute inset-0 z-10 pointer-events-none"
+          style={{
+            background:
+              'linear-gradient(to right, rgba(7,10,9,0.82) 0%, rgba(7,10,9,0.55) 50%, rgba(7,10,9,0.2) 100%)',
+          }}
+        />
 
         {/* Hero content */}
         <div
-          className="relative z-20 flex flex-col justify-end w-full pb-48 md:pb-32 pt-24 px-6 md:px-12"
+          className="relative z-20 flex flex-col justify-end w-full pb-52 md:pb-28 pt-24 px-6 md:px-12"
           style={{ minHeight: '100dvh' }}
         >
         {/* ── Main content — z above stat strip (z-[4]) */}
@@ -111,9 +116,7 @@ export default function VideoHeroSection({
             {/* Eyebrow */}
             <motion.div variants={item} className="flex items-center gap-4 mb-7">
               <div className="w-8 h-px bg-teal opacity-70" />
-              <span
-                className="text-[10px] font-medium tracking-[0.25em] uppercase text-teal"
-              >
+              <span className="text-[9px] md:text-[10px] font-medium tracking-[0.2em] md:tracking-[0.25em] uppercase text-teal whitespace-nowrap">
                 Las Vegas · Ages 18mo–18yrs · All Levels
               </span>
             </motion.div>
@@ -121,7 +124,7 @@ export default function VideoHeroSection({
             {/* Headline */}
             <motion.h1
               variants={item}
-              className="font-display font-black leading-[0.88] tracking-tight mb-7"
+              className="font-display font-black leading-[0.88] tracking-tight mb-6"
               style={{ fontSize: 'clamp(52px, 8vw, 112px)' }}
             >
               <span className="block text-[#f0faf8]">Where dancers</span>
@@ -136,28 +139,23 @@ export default function VideoHeroSection({
               </span>
             </motion.h1>
 
-            {/* Subheading — short on mobile, full on md+ */}
+            {/* Subheading */}
             <motion.p
               variants={item}
-              className="md:hidden text-[15px] font-light leading-[1.8] mb-12 max-w-[420px]"
-              style={{ color: 'rgba(200,224,219,0.65)' }}
+              className="text-[15px] md:text-[16px] font-light leading-[1.75] mb-10 max-w-[380px]"
+              style={{
+                color: 'rgba(200,224,219,0.8)',
+                textShadow: '0 1px 12px rgba(0,0,0,0.6)',
+              }}
             >
-              Dance classes in Las Vegas for ages 18 months to 18 years, from first time dancers to focused training.
-            </motion.p>
-            <motion.p
-              variants={item}
-              className="hidden md:block text-[15px] font-light leading-[1.8] mb-12 max-w-[420px]"
-              style={{ color: 'rgba(200,224,219,0.65)' }}
-            >
-              {siteConfig.heroSubcopy}
+              Dance classes in Las Vegas for ages 18 months to 18 years, from first steps to focused training.
             </motion.p>
 
             {/* CTA buttons */}
-            <motion.div variants={item} className="flex flex-col sm:flex-row flex-wrap gap-4 items-start mb-6">
-              {/* Primary — free trial */}
+            <motion.div variants={item} className="flex flex-col md:flex-row flex-wrap gap-4 items-start mb-6">
               <Link
                 href="/enroll#free-trial"
-                className="pointer-events-auto inline-flex items-center gap-3 w-full sm:w-auto text-[11px] font-semibold tracking-[0.15em] uppercase text-black bg-teal px-8 py-4 no-underline transition-all duration-200 hover:bg-teal-light hover:shadow-[0_0_48px_rgba(45,212,191,0.4)] hover:-translate-y-0.5"
+                className="pointer-events-auto inline-flex items-center gap-3 w-full md:w-auto text-[11px] font-semibold tracking-[0.15em] uppercase text-black bg-teal px-8 py-4 no-underline transition-all duration-200 hover:bg-teal-light hover:shadow-[0_0_48px_rgba(45,212,191,0.4)] hover:-translate-y-0.5"
                 style={{ clipPath: 'polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%)' }}
               >
                 Book a Free Trial
@@ -166,25 +164,20 @@ export default function VideoHeroSection({
                 </svg>
               </Link>
 
-              <div className="flex flex-row flex-wrap gap-4 items-center self-start w-auto">
-                {/* View Schedule */}
+              <div className="flex flex-row flex-wrap gap-4 items-center self-start w-auto md:contents">
                 <Link
                   href="/classes#schedule"
-                  className="pointer-events-auto text-[11px] font-normal tracking-[0.15em] uppercase no-underline pb-0.5 border-b border-[rgba(45,212,191,0.6)] transition-colors duration-200 hover:border-teal hover:text-teal"
-                  style={{ color: 'rgba(240,250,248,0.85)' }}
+                  className="pointer-events-auto text-[11px] font-normal tracking-[0.15em] uppercase no-underline pb-0.5 border-b border-[rgba(45,212,191,0.5)] transition-colors duration-200 hover:border-teal hover:text-teal w-auto shrink-0"
+                  style={{ color: 'rgba(240,250,248,0.9)' }}
                 >
                   View Schedule
                 </Link>
 
-                {/* Watch the studio */}
                 <button
                   onClick={() => setLightbox(true)}
                   className="pointer-events-auto inline-flex items-center gap-3 w-auto shrink-0 text-[11px] font-medium tracking-[0.15em] uppercase text-[#f0faf8] px-6 py-4 border border-[rgba(45,212,191,0.3)] bg-[rgba(45,212,191,0.08)] transition-all duration-200 hover:bg-[rgba(45,212,191,0.18)] hover:border-[rgba(45,212,191,0.6)]"
                 >
-                  {/* Play icon */}
-                  <span
-                    className="flex items-center justify-center w-5 h-5 rounded-full bg-teal flex-shrink-0"
-                  >
+                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-teal flex-shrink-0">
                     <svg width="8" height="10" viewBox="0 0 8 10" fill="#070a09">
                       <path d="M0 0L8 5L0 10V0Z" />
                     </svg>
