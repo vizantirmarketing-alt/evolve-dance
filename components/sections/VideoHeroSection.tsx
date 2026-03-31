@@ -96,7 +96,7 @@ export default function VideoHeroSection({
 
         {/* Hero content */}
         <div
-          className="relative z-20 flex flex-col justify-end w-full pb-32 pt-24 px-6 md:px-12"
+          className="relative z-20 flex flex-col justify-end w-full pb-48 md:pb-32 pt-24 px-6 md:px-12"
           style={{ minHeight: '100dvh' }}
         >
         {/* ── Main content — z above stat strip (z-[4]) */}
@@ -166,7 +166,7 @@ export default function VideoHeroSection({
                 </svg>
               </Link>
 
-              <div className="flex flex-row flex-wrap gap-4 items-center w-full sm:w-auto">
+              <div className="flex flex-row flex-wrap gap-4 items-center self-start w-auto">
                 {/* View Schedule */}
                 <Link
                   href="/classes#schedule"
@@ -179,7 +179,7 @@ export default function VideoHeroSection({
                 {/* Watch the studio */}
                 <button
                   onClick={() => setLightbox(true)}
-                  className="pointer-events-auto inline-flex items-center gap-3 text-[11px] font-medium tracking-[0.15em] uppercase text-[#f0faf8] px-6 py-4 border border-[rgba(45,212,191,0.3)] bg-[rgba(45,212,191,0.08)] transition-all duration-200 hover:bg-[rgba(45,212,191,0.18)] hover:border-[rgba(45,212,191,0.6)]"
+                  className="pointer-events-auto inline-flex items-center gap-3 w-auto shrink-0 text-[11px] font-medium tracking-[0.15em] uppercase text-[#f0faf8] px-6 py-4 border border-[rgba(45,212,191,0.3)] bg-[rgba(45,212,191,0.08)] transition-all duration-200 hover:bg-[rgba(45,212,191,0.18)] hover:border-[rgba(45,212,191,0.6)]"
                 >
                   {/* Play icon */}
                   <span
