@@ -39,15 +39,12 @@ export default function VideoHeroSection({
   const videoRef      = useRef<HTMLVideoElement>(null)
   const [muted, setMuted]   = useState(true)
   const [playing, setPlaying] = useState(true)
-  const [loaded, setLoaded]  = useState(false)
   const [lightbox, setLightbox] = useState(false)
 
-  // Auto-play on mount
   useEffect(() => {
     const v = videoRef.current
     if (!v) return
     v.play().catch(() => {})
-    v.addEventListener('loadeddata', () => setLoaded(true))
   }, [])
 
   const toggleMute  = () => {
@@ -64,80 +61,26 @@ export default function VideoHeroSection({
 
   return (
     <>
-      <section className="relative w-full min-h-screen overflow-hidden bg-[#070a09]">
+      <section className="relative min-h-screen overflow-hidden">
 
-        {/* ── Video layer ─────────────────────────── */}
-        <div className="absolute inset-0 z-0">
-          <video
-            ref={videoRef}
-            src={videoSrc}
-            poster={posterSrc}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            className="w-full h-full object-cover"
-            style={{
-              opacity: loaded ? 1 : 0,
-              transition: 'opacity 1.2s ease',
-            }}
-          >
-            <source src={videoFallback} type="video/webm" />
-            <source src={videoSrc}     type="video/mp4" />
-          </video>
-        </div>
+        {/* Video background */}
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={posterSrc}
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        >
+          <source src={videoSrc} type="video/mp4" />
+        </video>
 
-        {/* ── Gradient overlays ───────────────────── */}
-        {/* Main dark vignette — heavier at bottom for text legibility */}
-        <div
-          className="absolute inset-0 z-[1] pointer-events-none"
-          style={{
-            background: `
-              linear-gradient(
-                to bottom,
-                rgba(7,10,9,0.35)  0%,
-                rgba(7,10,9,0.20)  30%,
-                rgba(7,10,9,0.55)  65%,
-                rgba(7,10,9,0.97)  100%
-              )
-            `,
-          }}
-        />
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/60 z-10" />
 
-        {/* Teal color grade — subtle tint matching brand */}
-        <div
-          className="absolute inset-0 z-[1] pointer-events-none"
-          style={{
-            background: 'radial-gradient(ellipse 80% 60% at 50% 30%, rgba(45,212,191,0.07) 0%, transparent 65%)',
-          }}
-        />
-
-        {/* Left edge fade for text breathing room */}
-        <div
-          className="absolute inset-0 z-[1] pointer-events-none"
-          style={{
-            background: 'linear-gradient(to right, rgba(7,10,9,0.6) 0%, transparent 55%)',
-          }}
-        />
-
-        {/* ── Teal scan line at bottom ─────────────── */}
-        <div
-          className="absolute bottom-[72px] left-0 right-0 z-[2] h-px pointer-events-none"
-          style={{
-            background: 'linear-gradient(90deg, transparent 0%, rgba(45,212,191,0.4) 30%, rgba(45,212,191,0.4) 70%, transparent 100%)',
-            animation: 'scanLine 4s ease-in-out infinite',
-          }}
-        />
-
-        {/* ── Noise grain overlay ──────────────────── */}
-        <div
-          className="absolute inset-0 z-[1] pointer-events-none opacity-[0.025]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
-          }}
-        />
-
+        {/* Hero content */}
+        <div className="relative z-20 min-h-screen">
         {/* ── Main content ─────────────────────────── */}
         <div className="relative z-[3] min-h-screen flex flex-col justify-center px-12 pb-[80px] pt-[100px]">
           <motion.div
@@ -317,15 +260,12 @@ export default function VideoHeroSection({
 
         {/* ── CSS keyframes ────────────────────────── */}
         <style>{`
-          @keyframes scanLine {
-            0%, 100% { opacity: 0.3; transform: scaleX(0.5); }
-            50%       { opacity: 1;   transform: scaleX(1); }
-          }
           @keyframes scrollPulse {
             0%, 100% { opacity: 0.3; transform: scaleY(0.8) translateY(-4px); }
             50%       { opacity: 1;   transform: scaleY(1) translateY(0); }
           }
         `}</style>
+        </div>
       </section>
 
       {/* ── Lightbox ─────────────────────────────── */}
