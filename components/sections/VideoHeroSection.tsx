@@ -71,6 +71,9 @@ export default function VideoHeroSection({
           loop
           playsInline
           poster={posterSrc}
+          controlsList="nodownload nofullscreen noremoteplayback"
+          disablePictureInPicture
+          disableRemotePlayback
           className="absolute inset-0 w-full h-full object-cover z-0"
         >
           <source src={videoSrc} type="video/mp4" />
