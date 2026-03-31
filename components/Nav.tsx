@@ -54,7 +54,7 @@ export default function Nav({ links }: NavProps) {
         aria-label="Close menu"
         style={{
           position: 'absolute',
-          top: '20px',
+          top: '14px',
           right: '16px',
           width: '44px',
           height: '44px',
@@ -64,8 +64,10 @@ export default function Nav({ links }: NavProps) {
           background: 'none',
           border: 'none',
           cursor: 'pointer',
-          color: '#f0faf8',
-          fontSize: '24px',
+          color: '#2dd4bf',
+          fontSize: '28px',
+          fontWeight: '300',
+          lineHeight: '1',
         }}
       >
         ×
