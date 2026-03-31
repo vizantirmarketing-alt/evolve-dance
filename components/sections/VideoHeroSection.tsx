@@ -61,31 +61,42 @@ export default function VideoHeroSection({
 
   return (
     <>
-      <section className="relative min-h-screen overflow-hidden">
+      <section className="relative min-h-[100svh] bg-[#070a09]">
 
-        {/* Video background */}
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster={posterSrc}
-          controlsList="nodownload nofullscreen noremoteplayback"
-          disablePictureInPicture
-          disableRemotePlayback
-          className="absolute inset-0 w-full h-full object-cover z-0"
-        >
-          <source src={videoSrc} type="video/mp4" />
-        </video>
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Mobile — static image, no video */}
+          <div className="md:hidden absolute inset-0 z-0">
+            <img
+              src={posterSrc}
+              alt=""
+              className="w-full h-full object-cover object-center"
+            />
+          </div>
+
+          {/* Desktop — video plays */}
+          <div className="hidden md:block absolute inset-0 z-0">
+            <video
+              ref={videoRef}
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster={posterSrc}
+              className="w-full h-full object-cover"
+              style={{ pointerEvents: 'none' }}
+            >
+              <source src={videoSrc} type="video/mp4" />
+            </video>
+          </div>
+        </div>
 
         {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/60 z-10" />
+        <div className="absolute inset-0 bg-black/50 z-10" />
 
         {/* Hero content */}
-        <div className="relative z-20 min-h-screen">
-        {/* ── Main content ─────────────────────────── */}
-        <div className="relative z-[3] min-h-screen flex flex-col justify-center px-12 pb-[80px] pt-[100px]">
+        <div className="relative z-20 flex flex-col justify-end min-h-[100svh] w-full pb-24 px-6 md:px-12">
+        {/* ── Main content — z above stat strip (z-[4]) */}
+        <div className="relative z-[5] w-full pointer-events-none">
           <motion.div
             variants={container}
             initial="hidden"
@@ -135,7 +146,7 @@ export default function VideoHeroSection({
               {/* Primary — free trial */}
               <Link
                 href="/enroll#free-trial"
-                className="inline-flex items-center gap-3 text-[11px] font-semibold tracking-[0.15em] uppercase text-black bg-teal px-8 py-4 no-underline transition-all duration-200 hover:bg-teal-light hover:shadow-[0_0_48px_rgba(45,212,191,0.4)] hover:-translate-y-0.5"
+                className="pointer-events-auto inline-flex items-center gap-3 text-[11px] font-semibold tracking-[0.15em] uppercase text-black bg-teal px-8 py-4 no-underline transition-all duration-200 hover:bg-teal-light hover:shadow-[0_0_48px_rgba(45,212,191,0.4)] hover:-translate-y-0.5"
                 style={{ clipPath: 'polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%)' }}
               >
                 Book a Free Trial
@@ -147,7 +158,7 @@ export default function VideoHeroSection({
               {/* Secondary — watch the studio */}
               <button
                 onClick={() => setLightbox(true)}
-                className="inline-flex items-center gap-3 text-[11px] font-medium tracking-[0.15em] uppercase text-[#f0faf8] px-6 py-4 border border-[rgba(45,212,191,0.3)] bg-[rgba(45,212,191,0.08)] transition-all duration-200 hover:bg-[rgba(45,212,191,0.18)] hover:border-[rgba(45,212,191,0.6)]"
+                className="pointer-events-auto inline-flex items-center gap-3 text-[11px] font-medium tracking-[0.15em] uppercase text-[#f0faf8] px-6 py-4 border border-[rgba(45,212,191,0.3)] bg-[rgba(45,212,191,0.08)] transition-all duration-200 hover:bg-[rgba(45,212,191,0.18)] hover:border-[rgba(45,212,191,0.6)]"
               >
                 {/* Play icon */}
                 <span
@@ -163,7 +174,7 @@ export default function VideoHeroSection({
               {/* View Schedule — ghost */}
               <Link
                 href="/classes#schedule"
-                className="text-[11px] font-normal tracking-[0.15em] uppercase no-underline pb-0.5 border-b border-[rgba(45,212,191,0.25)] transition-colors duration-200 hover:border-teal hover:text-teal"
+                className="pointer-events-auto text-[11px] font-normal tracking-[0.15em] uppercase no-underline pb-0.5 border-b border-[rgba(45,212,191,0.25)] transition-colors duration-200 hover:border-teal hover:text-teal"
                 style={{ color: 'rgba(240,250,248,0.5)' }}
               >
                 View Schedule
@@ -173,7 +184,7 @@ export default function VideoHeroSection({
         </div>
 
         {/* ── Video controls ───────────────────────── */}
-        <div className="absolute top-6 right-6 z-[10] flex gap-2">
+        <div className="absolute top-6 right-6 z-[10] hidden md:flex gap-2">
           {/* Mute toggle */}
           <button
             onClick={toggleMute}

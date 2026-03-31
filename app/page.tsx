@@ -18,6 +18,15 @@ export default function HomePage() {
       <Navbar />
 
       <main>
+        <div
+          id="scroll-sentinel"
+          style={{
+            position: 'absolute',
+            top: '80px',
+            height: '1px',
+            width: '1px',
+          }}
+        />
         <VideoHeroSection
           videoSrc="/videos/hero.mp4"
           videoFallback="/videos/hero.webm"
