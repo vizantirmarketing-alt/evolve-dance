@@ -396,10 +396,10 @@ export function InstructorsSection() {
 
           <div className="md:hidden grid grid-cols-2 gap-px bg-[rgba(45,212,191,0.06)]">
             {instructors.map(i => (
-              <div key={i.name} className="bg-[#111916] p-5">
-                <div className="font-serif text-5xl font-black text-teal/10 leading-none mb-3">{i.name[0]}</div>
-                <div className="font-medium text-sm text-white">{i.name}</div>
-                <div className="text-xs text-teal mt-1">{i.role}</div>
+              <div key={i.name} className="bg-[#111916] p-4 overflow-hidden">
+                <div className="font-serif text-5xl font-black leading-none mb-3 text-[rgba(45,212,191,0.15)]">{i.name[0]}</div>
+                <div className="font-medium text-sm text-[#f0faf8]">{i.name}</div>
+                <div className="text-xs text-[#2dd4bf] opacity-100 mt-1">{i.role}</div>
               </div>
             ))}
           </div>
@@ -520,7 +520,7 @@ export function ProjectSection() {
 
 export function EnrollSection() {
   return (
-    <section className="bg-teal px-12 py-24 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+    <section className="bg-teal px-12 pt-10 pb-20 md:py-24 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
       <Reveal>
         <span className="text-[10px] font-semibold tracking-[0.22em] uppercase text-[rgba(7,10,9,0.5)] block mb-4">
           Ready to Begin?

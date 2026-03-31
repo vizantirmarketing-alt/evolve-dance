@@ -95,7 +95,6 @@ body {
 
 /* ── Instructor card expand ──────────────────────── */
 .instructor-strip {
-  display: flex;
   gap: 2px;
 }
 
