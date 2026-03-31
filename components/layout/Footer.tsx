@@ -25,7 +25,7 @@ export default function Footer() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="text-[13px] text-[rgba(200,224,219,0.4)] no-underline hover:text-teal transition-colors duration-200"
+                  className="text-[13px] text-[rgba(240,250,248,0.65)] no-underline hover:text-teal transition-colors duration-200"
                 >
                   {item.label}
                 </Link>
@@ -42,7 +42,7 @@ export default function Footer() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="text-[13px] text-[rgba(200,224,219,0.4)] no-underline hover:text-teal transition-colors duration-200"
+                  className="text-[13px] text-[rgba(240,250,248,0.65)] no-underline hover:text-teal transition-colors duration-200"
                 >
                   {item.label}
                 </Link>
@@ -60,7 +60,7 @@ export default function Footer() {
                 href={siteConfig.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[13px] text-[rgba(200,224,219,0.4)] no-underline hover:text-teal transition-colors duration-200"
+                className="text-[13px] text-[rgba(240,250,248,0.65)] no-underline hover:text-teal transition-colors duration-200"
               >
                 {siteConfig.addressLine1}
               </a>
@@ -70,7 +70,7 @@ export default function Footer() {
                 href={siteConfig.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[13px] text-[rgba(200,224,219,0.4)] no-underline hover:text-teal transition-colors duration-200"
+                className="text-[13px] text-[rgba(240,250,248,0.65)] no-underline hover:text-teal transition-colors duration-200"
               >
                 {siteConfig.addressLine2}
               </a>
@@ -78,7 +78,7 @@ export default function Footer() {
             <li>
               <a
                 href={`tel:${siteConfig.phoneTel}`}
-                className="text-[13px] text-[rgba(200,224,219,0.4)] no-underline hover:text-teal transition-colors duration-200"
+                className="text-[13px] text-[rgba(240,250,248,0.65)] no-underline hover:text-teal transition-colors duration-200"
               >
                 {siteConfig.phone}
               </a>
@@ -86,7 +86,7 @@ export default function Footer() {
             <li>
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="text-[13px] text-[rgba(200,224,219,0.4)] no-underline hover:text-teal transition-colors duration-200"
+                className="text-[13px] text-[rgba(240,250,248,0.65)] no-underline hover:text-teal transition-colors duration-200"
               >
                 {siteConfig.email}
               </a>
@@ -94,7 +94,7 @@ export default function Footer() {
             <li>
               <Link
                 href="/contact"
-                className="text-[13px] text-[rgba(200,224,219,0.4)] no-underline hover:text-teal transition-colors duration-200"
+                className="text-[13px] text-[rgba(240,250,248,0.65)] no-underline hover:text-teal transition-colors duration-200"
               >
                 Schedule a Visit
               </Link>

@@ -273,7 +273,7 @@ export default function VideoHeroSection({
               <span className="font-display text-[24px] font-bold text-teal leading-none">
                 {stat.number}
               </span>
-              <span className="text-[9px] tracking-[0.18em] uppercase text-[#5c7a74]">
+              <span className="text-[9px] tracking-[0.18em] uppercase text-[rgba(240,250,248,0.6)]">
                 {stat.label}
               </span>
             </div>

@@ -212,7 +212,7 @@ function ClassCard({ num, name, letter, ages, desc }: typeof classes[0]) {
           {num} — {name}
         </div>
         <div className="font-display text-[26px] font-bold leading-[1.1] mb-3 text-[#f0faf8]">{name}</div>
-        <div className="text-[12px] text-[rgba(200,224,219,0.4)] leading-[1.65] flex-grow">{desc}</div>
+        <div className="text-[12px] text-[rgba(240,250,248,0.6)] leading-[1.65] flex-grow">{desc}</div>
       </div>
 
       <div className="flex items-center justify-between mt-7 pt-5 border-t border-[rgba(45,212,191,0.06)]">
@@ -321,8 +321,8 @@ export function ScheduleSection() {
             <tr key={i} className="schedule-row border-b border-[rgba(45,212,191,0.06)] last:border-0 transition-colors duration-150">
               <td className="py-[18px] font-display text-[18px] text-teal w-32">{row.time}</td>
               <td className="py-[18px] font-medium text-[13.5px] text-[#f0faf8]">{row.cls}</td>
-              <td className="py-[18px] text-[12px] text-[#5c7a74]">{row.instructor}</td>
-              <td className="py-[18px] text-[10px] tracking-[0.12em] uppercase text-[#5c7a74]">{row.ages}</td>
+              <td className="py-[18px] text-[12px] text-[rgba(240,250,248,0.7)]">{row.instructor}</td>
+              <td className="py-[18px] text-[10px] tracking-[0.12em] uppercase text-[rgba(240,250,248,0.7)]">{row.ages}</td>
               <td className="py-[18px]">
                 <span className={cn(
                   'inline-block px-3 py-1 text-[9px] font-semibold tracking-[0.12em] uppercase',
