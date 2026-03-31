@@ -135,20 +135,14 @@ export function AboutSection() {
         </Reveal>
       </div>
 
-      {/* Right — animated grid visual */}
-      <div className="hidden md:flex relative bg-[#0a0f0e] items-center justify-center overflow-hidden min-h-[400px]">
-        <div className="absolute inset-0 animated-grid" />
-        <div
-          className="relative z-[1] rounded-full border border-[rgba(45,212,191,0.2)] flex items-center justify-center text-center p-6 animate-ring-pulse"
-          style={{
-            width: 260, height: 260,
-            boxShadow: '0 0 60px rgba(45,212,191,0.08), inset 0 0 60px rgba(45,212,191,0.04)',
-          }}
-        >
-          <p className="font-display italic text-[14px] text-[rgba(45,212,191,0.6)] leading-[1.6]">
-            "More than movement —<br />a journey that builds<br />confidence & growth."
-          </p>
-        </div>
+      {/* Right — studio image */}
+      <div className="relative hidden md:block h-full min-h-0 overflow-hidden">
+        <img
+          src="/images/about-studio.jpg"
+          alt="Young dancers in ballet class at Evolve Dance Center"
+          className="w-full h-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-black/20" />
       </div>
     </section>
   )
