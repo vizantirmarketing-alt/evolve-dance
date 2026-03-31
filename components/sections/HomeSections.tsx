@@ -380,7 +380,7 @@ export function InstructorsSection() {
             {instructors.map(inst => (
               <div
                 key={inst.name}
-                className="instructor-card group bg-charcoal relative overflow-hidden min-h-[300px] flex flex-col justify-end p-8 cursor-pointer"
+                className="instructor-card group bg-charcoal relative overflow-hidden min-h-[300px] cursor-pointer"
                 style={{ background: '#111916' }}
               >
                 {/* Top teal bar on hover */}
@@ -394,11 +394,13 @@ export function InstructorsSection() {
                   {inst.initial}
                 </div>
 
-                <div className="font-display text-[20px] font-bold leading-[1.1] mb-1 relative z-[1] text-[#f0faf8]">
-                  {inst.name}
-                </div>
-                <div className="text-[10px] tracking-[0.15em] uppercase text-teal opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 relative z-[1]">
-                  {inst.role}
+                <div className="absolute bottom-6 left-6 z-[1]">
+                  <div className="font-display text-[20px] font-bold leading-[1.1] mb-1 text-[#f0faf8]">
+                    {inst.name}
+                  </div>
+                  <div className="text-[10px] tracking-[0.15em] uppercase text-teal opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                    {inst.role}
+                  </div>
                 </div>
               </div>
             ))}
