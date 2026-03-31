@@ -159,7 +159,16 @@ export default function VideoHeroSection({
                 </svg>
               </Link>
 
-              {/* Secondary — watch the studio */}
+              {/* View Schedule */}
+              <Link
+                href="/classes#schedule"
+                className="pointer-events-auto text-[11px] font-normal tracking-[0.15em] uppercase no-underline pb-0.5 border-b border-[rgba(45,212,191,0.6)] transition-colors duration-200 hover:border-teal hover:text-teal"
+                style={{ color: 'rgba(240,250,248,0.85)' }}
+              >
+                View Schedule
+              </Link>
+
+              {/* Watch the studio */}
               <button
                 onClick={() => setLightbox(true)}
                 className="pointer-events-auto inline-flex items-center gap-3 text-[11px] font-medium tracking-[0.15em] uppercase text-[#f0faf8] px-6 py-4 border border-[rgba(45,212,191,0.3)] bg-[rgba(45,212,191,0.08)] transition-all duration-200 hover:bg-[rgba(45,212,191,0.18)] hover:border-[rgba(45,212,191,0.6)]"
@@ -174,15 +183,6 @@ export default function VideoHeroSection({
                 </span>
                 Watch the Studio
               </button>
-
-              {/* View Schedule — ghost */}
-              <Link
-                href="/classes#schedule"
-                className="pointer-events-auto text-[11px] font-normal tracking-[0.15em] uppercase no-underline pb-0.5 border-b border-[rgba(45,212,191,0.25)] transition-colors duration-200 hover:border-teal hover:text-teal"
-                style={{ color: 'rgba(240,250,248,0.5)' }}
-              >
-                View Schedule
-              </Link>
             </motion.div>
           </motion.div>
         </div>
