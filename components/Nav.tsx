@@ -101,7 +101,7 @@ export default function Nav({ links }: NavProps) {
       </div>
 
       {menuOpen && (
-        <div className="absolute top-20 left-0 right-0 z-[100] bg-[rgba(7,10,9,0.98)] backdrop-blur-xl border-b border-[rgba(45,212,191,0.12)] py-6 md:hidden">
+        <div className="absolute top-20 left-0 right-0 bg-[#070a09] border-b border-[rgba(45,212,191,0.12)] py-8 md:hidden z-[999]">
           <ul className="flex flex-col list-none px-12 gap-4">
             {links.map((link) => (
               <li key={link.href}>

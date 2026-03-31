@@ -94,7 +94,7 @@ export default function VideoHeroSection({
         <div className="absolute inset-0 bg-black/50 z-10" />
 
         {/* Hero content */}
-        <div className="relative z-20 flex flex-col justify-end min-h-[100svh] w-full pb-24 px-6 md:px-12">
+        <div className="relative z-20 flex flex-col justify-end min-h-[100svh] w-full pb-40 px-6 md:px-12">
         {/* ── Main content — z above stat strip (z-[4]) */}
         <div className="relative z-[5] w-full pointer-events-none">
           <motion.div
