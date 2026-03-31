@@ -136,7 +136,7 @@ export function AboutSection() {
       </div>
 
       {/* Right — studio image */}
-      <div className="relative hidden md:block h-full min-h-0 overflow-hidden">
+      <div className="relative overflow-hidden h-[280px] md:h-auto">
         <img
           src="/images/about-studio.jpg"
           alt="Young dancers in ballet class at Evolve Dance Center"
