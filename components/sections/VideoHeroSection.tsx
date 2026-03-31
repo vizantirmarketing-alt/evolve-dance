@@ -136,21 +136,28 @@ export default function VideoHeroSection({
               </span>
             </motion.h1>
 
-            {/* Subheading */}
+            {/* Subheading — short on mobile, full on md+ */}
             <motion.p
               variants={item}
-              className="text-[15px] font-light leading-[1.8] mb-12 max-w-[420px]"
+              className="md:hidden text-[15px] font-light leading-[1.8] mb-12 max-w-[420px]"
+              style={{ color: 'rgba(200,224,219,0.65)' }}
+            >
+              Dance classes in Las Vegas for ages 18 months to 18 years, from first time dancers to focused training.
+            </motion.p>
+            <motion.p
+              variants={item}
+              className="hidden md:block text-[15px] font-light leading-[1.8] mb-12 max-w-[420px]"
               style={{ color: 'rgba(200,224,219,0.65)' }}
             >
               {siteConfig.heroSubcopy}
             </motion.p>
 
             {/* CTA buttons */}
-            <motion.div variants={item} className="flex flex-wrap gap-4 items-center mb-6">
+            <motion.div variants={item} className="flex flex-col sm:flex-row flex-wrap gap-4 items-start mb-6">
               {/* Primary — free trial */}
               <Link
                 href="/enroll#free-trial"
-                className="pointer-events-auto inline-flex items-center gap-3 text-[11px] font-semibold tracking-[0.15em] uppercase text-black bg-teal px-8 py-4 no-underline transition-all duration-200 hover:bg-teal-light hover:shadow-[0_0_48px_rgba(45,212,191,0.4)] hover:-translate-y-0.5"
+                className="pointer-events-auto inline-flex items-center gap-3 w-full sm:w-auto text-[11px] font-semibold tracking-[0.15em] uppercase text-black bg-teal px-8 py-4 no-underline transition-all duration-200 hover:bg-teal-light hover:shadow-[0_0_48px_rgba(45,212,191,0.4)] hover:-translate-y-0.5"
                 style={{ clipPath: 'polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%)' }}
               >
                 Book a Free Trial
@@ -159,30 +166,32 @@ export default function VideoHeroSection({
                 </svg>
               </Link>
 
-              {/* View Schedule */}
-              <Link
-                href="/classes#schedule"
-                className="pointer-events-auto text-[11px] font-normal tracking-[0.15em] uppercase no-underline pb-0.5 border-b border-[rgba(45,212,191,0.6)] transition-colors duration-200 hover:border-teal hover:text-teal"
-                style={{ color: 'rgba(240,250,248,0.85)' }}
-              >
-                View Schedule
-              </Link>
-
-              {/* Watch the studio */}
-              <button
-                onClick={() => setLightbox(true)}
-                className="pointer-events-auto inline-flex items-center gap-3 text-[11px] font-medium tracking-[0.15em] uppercase text-[#f0faf8] px-6 py-4 border border-[rgba(45,212,191,0.3)] bg-[rgba(45,212,191,0.08)] transition-all duration-200 hover:bg-[rgba(45,212,191,0.18)] hover:border-[rgba(45,212,191,0.6)]"
-              >
-                {/* Play icon */}
-                <span
-                  className="flex items-center justify-center w-5 h-5 rounded-full bg-teal flex-shrink-0"
+              <div className="flex flex-row flex-wrap gap-4 items-center w-full sm:w-auto">
+                {/* View Schedule */}
+                <Link
+                  href="/classes#schedule"
+                  className="pointer-events-auto text-[11px] font-normal tracking-[0.15em] uppercase no-underline pb-0.5 border-b border-[rgba(45,212,191,0.6)] transition-colors duration-200 hover:border-teal hover:text-teal"
+                  style={{ color: 'rgba(240,250,248,0.85)' }}
                 >
-                  <svg width="8" height="10" viewBox="0 0 8 10" fill="#070a09">
-                    <path d="M0 0L8 5L0 10V0Z" />
-                  </svg>
-                </span>
-                Watch the Studio
-              </button>
+                  View Schedule
+                </Link>
+
+                {/* Watch the studio */}
+                <button
+                  onClick={() => setLightbox(true)}
+                  className="pointer-events-auto inline-flex items-center gap-3 text-[11px] font-medium tracking-[0.15em] uppercase text-[#f0faf8] px-6 py-4 border border-[rgba(45,212,191,0.3)] bg-[rgba(45,212,191,0.08)] transition-all duration-200 hover:bg-[rgba(45,212,191,0.18)] hover:border-[rgba(45,212,191,0.6)]"
+                >
+                  {/* Play icon */}
+                  <span
+                    className="flex items-center justify-center w-5 h-5 rounded-full bg-teal flex-shrink-0"
+                  >
+                    <svg width="8" height="10" viewBox="0 0 8 10" fill="#070a09">
+                      <path d="M0 0L8 5L0 10V0Z" />
+                    </svg>
+                  </span>
+                  Watch the Studio
+                </button>
+              </div>
             </motion.div>
           </motion.div>
         </div>
