@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { siteConfig } from '@/data/site'
@@ -16,120 +17,244 @@ export interface NavProps {
 
 export default function Nav({ links }: NavProps) {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [menuOpen])
+
+  const mobileMenu = (
+    <div
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: '#070a09',
+        zIndex: 99999,
+        display: 'flex',
+        flexDirection: 'column',
+        padding: '100px 32px 32px',
+      }}
+    >
+      <ul style={{ 
+        listStyle: 'none', 
+        margin: 0, 
+        padding: 0,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '8px'
+      }}>
+        {links.map((link) => (
+          <li key={link.href}>
+            <Link
+              href={link.href}
+              onClick={() => setMenuOpen(false)}
+              style={{
+                display: 'block',
+                padding: '12px 0',
+                fontSize: '20px',
+                fontWeight: 300,
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                color: '#f0faf8',
+                textDecoration: 'none',
+                borderBottom: '1px solid rgba(45,212,191,0.08)',
+              }}
+            >
+              {link.label}
+            </Link>
+          </li>
+        ))}
+        <li style={{ marginTop: '24px' }}>
+          
+            href={siteConfig.jackrabbitEnroll}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'inline-flex',
+              fontSize: '11px',
+              fontWeight: 500,
+              letterSpacing: '0.14em',
+              textTransform: 'uppercase',
+              color: '#070a09',
+              backgroundColor: '#2dd4bf',
+              padding: '12px 24px',
+              textDecoration: 'none',
+            }}
+          >
+            {siteConfig.enrollCtaLabel}
+          </a>
+        </li>
+      </ul>
+    </div>
+  )
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-[999] flex items-center justify-between px-4 h-20 transition-all duration-300 bg-[rgba(7,10,9,0.98)] backdrop-blur-xl border-b border-[rgba(45,212,191,0.12)]">
-      {/* Logo — left side */}
-      <div className="flex items-center gap-2">
+    <>
+      <nav
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 9999,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '0 16px',
+          height: '72px',
+          backgroundColor: 'rgba(7,10,9,0.98)',
+          backdropFilter: 'blur(20px)',
+          borderBottom: '1px solid rgba(45,212,191,0.12)',
+        }}
+      >
+        {/* Logo */}
         <Link
           href="/"
-          className="flex items-center gap-2 font-sans font-semibold text-[13px] tracking-[0.22em] uppercase text-[#f0faf8] no-underline"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            fontWeight: 600,
+            fontSize: '13px',
+            letterSpacing: '0.22em',
+            textTransform: 'uppercase',
+            color: '#f0faf8',
+            textDecoration: 'none',
+          }}
         >
           <span
-            className="w-1.5 h-1.5 rounded-full bg-teal animate-pulse-dot"
-            style={{ boxShadow: '0 0 8px #2dd4bf' }}
+            style={{
+              width: '6px',
+              height: '6px',
+              borderRadius: '50%',
+              backgroundColor: '#2dd4bf',
+              boxShadow: '0 0 8px #2dd4bf',
+              flexShrink: 0,
+            }}
           />
           {siteConfig.name}
         </Link>
-      </div>
 
-      {/* Desktop nav links — center */}
-      <div className="hidden md:flex items-center gap-8">
-        <ul className="flex gap-8 list-none m-0 p-0">
+        {/* Desktop links */}
+        <ul
+          style={{
+            display: 'none',
+            gap: '32px',
+            listStyle: 'none',
+            margin: 0,
+            padding: 0,
+          }}
+          className="hidden md:flex"
+        >
           {links.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={cn(
-                  'relative text-[11px] font-normal tracking-[0.14em] uppercase',
-                  'text-[rgba(240,250,248,0.55)] no-underline transition-colors duration-200',
-                  'hover:text-teal',
-                  'teal-underline'
-                )}
+                style={{
+                  fontSize: '11px',
+                  letterSpacing: '0.14em',
+                  textTransform: 'uppercase',
+                  color: 'rgba(240,250,248,0.55)',
+                  textDecoration: 'none',
+                }}
               >
                 {link.label}
               </Link>
             </li>
           ))}
         </ul>
-      </div>
 
-      {/* Right side */}
-      <div className="flex items-center gap-3">
-        <a
-          href={siteConfig.jackrabbitEnroll}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={cn(
-            'hidden md:block',
-            'text-[11px] font-medium tracking-[0.14em] uppercase',
-            'text-black bg-teal px-6 py-2.5 clip-btn no-underline',
-            'transition-all duration-200 hover:bg-teal-light',
-            'hover:shadow-[0_0_40px_rgba(45,212,191,0.35)]'
-          )}
-        >
-          {siteConfig.enrollCtaLabel}
-        </a>
+        {/* Right side */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          {/* Desktop enroll */}
+          
+            href={siteConfig.jackrabbitEnroll}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden md:block"
+            style={{
+              fontSize: '11px',
+              fontWeight: 500,
+              letterSpacing: '0.14em',
+              textTransform: 'uppercase',
+              color: '#070a09',
+              backgroundColor: '#2dd4bf',
+              padding: '10px 24px',
+              textDecoration: 'none',
+              clipPath: 'polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%)',
+            }}
+          >
+            {siteConfig.enrollCtaLabel}
+          </a>
 
-        <button
-          type="button"
-          className="md:hidden flex items-center justify-center w-11 h-11"
-          onClick={() => setMenuOpen((v) => !v)}
-          aria-label="Toggle menu"
-        >
-          <span className="flex flex-col gap-1.5">
-            <span
-              className={cn(
-                'w-6 h-px bg-[#f0faf8] transition-all duration-300',
-                menuOpen && 'rotate-45 translate-y-2'
-              )}
-            />
-            <span
-              className={cn(
-                'w-6 h-px bg-[#f0faf8] transition-all duration-300',
-                menuOpen && 'opacity-0'
-              )}
-            />
-            <span
-              className={cn(
-                'w-6 h-px bg-[#f0faf8] transition-all duration-300',
-                menuOpen && '-rotate-45 -translate-y-2'
-              )}
-            />
-          </span>
-        </button>
-      </div>
-
-      {menuOpen && (
-        <div
-          className="fixed top-0 left-0 right-0 bottom-0 bg-[#070a09] z-[998] flex flex-col px-8 pt-28 md:hidden"
-          style={{ backgroundColor: '#070a09' }}
-        >
-          <ul className="flex flex-col list-none gap-6 mt-4">
-            {links.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="text-[18px] font-light tracking-[0.14em] uppercase text-[#f0faf8] no-underline hover:text-teal transition-colors block py-2"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-            <li className="mt-4">
-              <a
-                href={siteConfig.jackrabbitEnroll}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex text-[11px] font-medium tracking-[0.14em] uppercase text-black bg-teal px-6 py-3 no-underline"
-              >
-                {siteConfig.enrollCtaLabel}
-              </a>
-            </li>
-          </ul>
+          {/* Mobile hamburger */}
+          <button
+            type="button"
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-label="Toggle menu"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '44px',
+              height: '44px',
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              padding: 0,
+            }}
+            className="md:hidden"
+          >
+            <span style={{ 
+              display: 'flex', 
+              flexDirection: 'column', 
+              gap: '5px' 
+            }}>
+              <span style={{
+                display: 'block',
+                width: '24px',
+                height: '1px',
+                backgroundColor: '#f0faf8',
+                transition: 'all 0.3s',
+                transform: menuOpen ? 'rotate(45deg) translateY(6px)' : 'none',
+              }} />
+              <span style={{
+                display: 'block',
+                width: '24px',
+                height: '1px',
+                backgroundColor: '#f0faf8',
+                transition: 'all 0.3s',
+                opacity: menuOpen ? 0 : 1,
+              }} />
+              <span style={{
+                display: 'block',
+                width: '24px',
+                height: '1px',
+                backgroundColor: '#f0faf8',
+                transition: 'all 0.3s',
+                transform: menuOpen ? 'rotate(-45deg) translateY(-6px)' : 'none',
+              }} />
+            </span>
+          </button>
         </div>
-      )}
-    </nav>
+      </nav>
+
+      {/* Mobile menu rendered via Portal directly into body */}
+      {mounted && menuOpen && createPortal(mobileMenu, document.body)}
+    </>
   )
 }
