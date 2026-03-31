@@ -87,7 +87,7 @@ export function AboutSection() {
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 min-h-[80vh]">
       {/* Left */}
-      <div className="bg-charcoal px-16 py-24 flex flex-col justify-center relative overflow-hidden">
+      <div className="col-span-full md:col-span-1 bg-charcoal px-16 py-24 flex flex-col justify-center relative overflow-hidden">
         {/* Corner accent */}
         <div className="absolute top-0 left-0 w-px h-[120px] bg-gradient-to-b from-teal to-transparent" />
         <div className="absolute top-0 left-0 h-px w-[120px] bg-gradient-to-r from-teal to-transparent" />
@@ -135,7 +135,7 @@ export function AboutSection() {
       </div>
 
       {/* Right — animated grid visual */}
-      <div className="relative bg-[#0a0f0e] flex items-center justify-center overflow-hidden min-h-[400px]">
+      <div className="hidden md:flex relative bg-[#0a0f0e] items-center justify-center overflow-hidden min-h-[400px]">
         <div className="absolute inset-0 animated-grid" />
         <div
           className="relative z-[1] rounded-full border border-[rgba(45,212,191,0.2)] flex items-center justify-center text-center p-6 animate-ring-pulse"
@@ -276,8 +276,32 @@ export function ScheduleSection() {
         ))}
       </div>
 
+      <div className="sm:hidden divide-y divide-[rgba(45,212,191,0.08)]">
+        {scheduleData.map((c, i) => (
+          <div key={i} className="py-4 flex items-start justify-between gap-2">
+            <div>
+              <div className="font-serif text-lg text-teal">{c.time}</div>
+              <div className="font-medium text-sm text-white mt-0.5">{c.cls}</div>
+              <div className="text-xs text-[#5c7a74] mt-0.5">
+                {c.instructor} · {c.ages}
+              </div>
+            </div>
+            <div>
+              <span className={cn(
+                'inline-block px-3 py-1 text-[9px] font-semibold tracking-[0.12em] uppercase whitespace-nowrap',
+                c.status === 'open'
+                  ? 'bg-[rgba(45,212,191,0.1)] text-teal border border-[rgba(45,212,191,0.2)]'
+                  : 'bg-[rgba(255,107,107,0.08)] text-[#ff6b6b] border border-[rgba(255,107,107,0.15)]'
+              )}>
+                {c.status === 'open' ? 'Open' : 'Full'}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+
       {/* Table */}
-      <table className="w-full border-collapse schedule-table">
+      <table className="hidden sm:table w-full border-collapse schedule-table">
         <thead>
           <tr>
             {['Time', 'Class', 'Instructor', 'Ages', 'Status'].map(h => (
@@ -341,33 +365,45 @@ export function InstructorsSection() {
       </div>
 
       <Reveal>
-        <div className="instructor-strip">
-          {instructors.map(inst => (
-            <div
-              key={inst.name}
-              className="instructor-card group bg-charcoal relative overflow-hidden min-h-[300px] flex flex-col justify-end p-8 cursor-pointer"
-              style={{ background: '#111916' }}
-            >
-              {/* Top teal bar on hover */}
-              <div className="absolute top-0 left-0 right-0 h-0.5 bg-teal scale-x-0 origin-left transition-transform duration-400 group-hover:scale-x-100" />
-
-              {/* Initial watermark */}
+        <>
+          <div className="hidden md:flex instructor-strip">
+            {instructors.map(inst => (
               <div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[60%] font-display font-black leading-none pointer-events-none transition-all duration-400 group-hover:opacity-[0.1] group-hover:-translate-y-[65%]"
-                style={{ fontSize: 100, color: 'rgba(45,212,191,0.06)' }}
+                key={inst.name}
+                className="instructor-card group bg-charcoal relative overflow-hidden min-h-[300px] flex flex-col justify-end p-8 cursor-pointer"
+                style={{ background: '#111916' }}
               >
-                {inst.initial}
-              </div>
+                {/* Top teal bar on hover */}
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-teal scale-x-0 origin-left transition-transform duration-400 group-hover:scale-x-100" />
 
-              <div className="font-display text-[20px] font-bold leading-[1.1] mb-1 relative z-[1] text-[#f0faf8]">
-                {inst.name}
+                {/* Initial watermark */}
+                <div
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[60%] font-display font-black leading-none pointer-events-none transition-all duration-400 group-hover:opacity-[0.1] group-hover:-translate-y-[65%]"
+                  style={{ fontSize: 100, color: 'rgba(45,212,191,0.06)' }}
+                >
+                  {inst.initial}
+                </div>
+
+                <div className="font-display text-[20px] font-bold leading-[1.1] mb-1 relative z-[1] text-[#f0faf8]">
+                  {inst.name}
+                </div>
+                <div className="text-[10px] tracking-[0.15em] uppercase text-teal opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 relative z-[1]">
+                  {inst.role}
+                </div>
               </div>
-              <div className="text-[10px] tracking-[0.15em] uppercase text-teal opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 relative z-[1]">
-                {inst.role}
+            ))}
+          </div>
+
+          <div className="md:hidden grid grid-cols-2 gap-px bg-[rgba(45,212,191,0.06)]">
+            {instructors.map(i => (
+              <div key={i.name} className="bg-[#111916] p-5">
+                <div className="font-serif text-5xl font-black text-teal/10 leading-none mb-3">{i.name[0]}</div>
+                <div className="font-medium text-sm text-white">{i.name}</div>
+                <div className="text-xs text-teal mt-1">{i.role}</div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </>
       </Reveal>
     </section>
   )
