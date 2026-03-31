@@ -49,6 +49,27 @@ export default function Nav({ links }: NavProps) {
         padding: '100px 32px 32px',
       }}
     >
+      <button
+        onClick={() => setMenuOpen(false)}
+        aria-label="Close menu"
+        style={{
+          position: 'absolute',
+          top: '20px',
+          right: '16px',
+          width: '44px',
+          height: '44px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: 'none',
+          border: 'none',
+          cursor: 'pointer',
+          color: '#f0faf8',
+          fontSize: '24px',
+        }}
+      >
+        ×
+      </button>
       <ul style={{
         listStyle: 'none',
         margin: 0,
