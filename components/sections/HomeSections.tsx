@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
+import { siteConfig } from '@/data/site'
 
 // ─────────────────────────────────────────
 // SHARED COMPONENTS
@@ -113,7 +114,7 @@ export function AboutSection() {
         </Reveal>
         <Reveal delay={200}>
           <p className="text-[15px] font-light text-[rgba(200,224,219,0.55)] leading-[1.8] max-w-[420px] mb-11">
-            Six professional dance rooms with raised wood and marley flooring. Live video monitoring. 22 dedicated faculty members. And a studio culture built on discipline, confidence, and the love of movement.
+            {siteConfig.studioParagraph}
           </p>
         </Reveal>
         <Reveal delay={300}>
@@ -171,9 +172,14 @@ export function ClassesSection() {
         <div>
           <Reveal><SectionEyebrow label="What We Teach" /></Reveal>
           <Reveal delay={100}>
-            <h2 className="font-display font-bold text-[#f0faf8] leading-none" style={{ fontSize: 'clamp(40px, 5vw, 68px)' }}>
-              Our <em className="italic text-teal">classes</em>
-            </h2>
+            <>
+              <h2 className="font-display font-bold text-[#f0faf8] leading-none" style={{ fontSize: 'clamp(40px, 5vw, 68px)' }}>
+                Our <em className="italic text-teal">classes</em>
+              </h2>
+              <p className="text-[15px] font-light text-[rgba(200,224,219,0.55)] leading-[1.75]">
+                {siteConfig.classesIntro}
+              </p>
+            </>
           </Reveal>
         </div>
         <Reveal>
@@ -248,9 +254,14 @@ export function ScheduleSection() {
       <Reveal><SectionEyebrow label="This Week" /></Reveal>
       <div className="flex items-end justify-between mt-4 mb-12">
         <Reveal delay={100}>
-          <h2 className="font-display font-bold text-[#f0faf8] leading-none" style={{ fontSize: 'clamp(40px, 5vw, 68px)' }}>
-            Class <em className="italic text-teal">schedule</em>
-          </h2>
+          <>
+            <h2 className="font-display font-bold text-[#f0faf8] leading-none" style={{ fontSize: 'clamp(40px, 5vw, 68px)' }}>
+              Class <em className="italic text-teal">schedule</em>
+            </h2>
+            <p className="text-[15px] font-light text-[rgba(200,224,219,0.55)] leading-[1.8]">
+              {siteConfig.scheduleIntro}
+            </p>
+          </>
         </Reveal>
         <Link href="/classes#schedule" className="text-[10px] tracking-[0.18em] uppercase text-teal no-underline border-b border-[rgba(45,212,191,0.3)] pb-0.5 mb-1.5 hover:border-teal transition-colors">
           Full Schedule →
@@ -355,9 +366,14 @@ export function InstructorsSection() {
       <Reveal><SectionEyebrow label="The Faculty" /></Reveal>
       <div className="flex items-end justify-between mt-4 mb-14">
         <Reveal delay={100}>
-          <h2 className="font-display font-bold text-[#f0faf8] leading-none" style={{ fontSize: 'clamp(40px, 5vw, 68px)' }}>
-            Meet our <em className="italic text-teal">instructors</em>
-          </h2>
+          <>
+            <h2 className="font-display font-bold text-[#f0faf8] leading-none" style={{ fontSize: 'clamp(40px, 5vw, 68px)' }}>
+              Meet our <em className="italic text-teal">instructors</em>
+            </h2>
+            <p className="text-[15px] font-light text-[rgba(200,224,219,0.55)] leading-[1.75]">
+              {siteConfig.facultyIntro}
+            </p>
+          </>
         </Reveal>
         <Link href="/faculty" className="text-[10px] tracking-[0.18em] uppercase text-teal no-underline border-b border-[rgba(45,212,191,0.3)] pb-0.5 mb-1.5 hover:border-teal transition-colors">
           Full Faculty →
@@ -422,11 +438,16 @@ const testimonials = [
 export function TestimonialsSection() {
   return (
     <section className="bg-charcoal px-12 py-28">
-      <Reveal><SectionEyebrow label="What Families Say" /></Reveal>
+      <Reveal><SectionEyebrow label={siteConfig.reviewsLabel} /></Reveal>
       <Reveal delay={100}>
-        <h2 className="font-display font-bold mt-4 mb-14 text-[#f0faf8] leading-none" style={{ fontSize: 'clamp(40px, 5vw, 68px)' }}>
-          ★★★★★ <em className="italic text-teal">Reviews</em>
-        </h2>
+        <>
+          <h2 className="font-display font-bold mt-4 mb-4 text-[#f0faf8] leading-none" style={{ fontSize: 'clamp(40px, 5vw, 68px)' }}>
+            ★★★★★ <em className="italic text-teal">Reviews</em>
+          </h2>
+          <p className="text-[15px] font-light text-[rgba(200,224,219,0.55)] leading-[1.75] mb-14">
+            {siteConfig.reviewsIntro}
+          </p>
+        </>
       </Reveal>
 
       <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr_1fr] gap-px">
@@ -494,7 +515,7 @@ export function ProjectSection() {
 
         <Reveal delay={200}>
           <p className="text-[15px] font-light text-[rgba(200,224,219,0.55)] leading-[1.75] mb-11 max-w-[500px] mx-auto">
-            For dancers with the drive to go further. The Evolve Dance Project is our competitive company — serious training, real competition, and a team that pushes each other to be extraordinary.
+            {siteConfig.projectBody}
           </p>
         </Reveal>
 
@@ -535,7 +556,7 @@ export function EnrollSection() {
 
       <Reveal delay={200}>
         <p className="text-[15px] text-[rgba(7,10,9,0.65)] leading-[1.7] mb-8">
-          Registration is open for all levels and age groups — from 18 months to 18 years. First class is on us. Come see what Evolve is about.
+          {siteConfig.enrollBody}
         </p>
         <div className="flex gap-5 items-center">
           <Link

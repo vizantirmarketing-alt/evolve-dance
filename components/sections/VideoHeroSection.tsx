@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
+import { siteConfig } from '@/data/site'
 
 // ── Types ────────────────────────────────────────────
 interface VideoHeroProps {
@@ -141,8 +142,7 @@ export default function VideoHeroSection({
               className="text-[15px] font-light leading-[1.8] mb-12 max-w-[420px]"
               style={{ color: 'rgba(200,224,219,0.65)' }}
             >
-              10+ styles. 22 expert instructors. A studio built on
-              discipline, confidence, and the real love of dance.
+              {siteConfig.heroSubcopy}
             </motion.p>
 
             {/* CTA buttons */}
