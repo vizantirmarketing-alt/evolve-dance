@@ -101,25 +101,25 @@ export default function Nav({ links }: NavProps) {
       </div>
 
       {menuOpen && (
-        <div className="fixed top-0 left-0 right-0 bottom-0 bg-[#070a09] z-[998] flex flex-col pt-24 px-8 md:hidden overflow-y-auto">
-          <ul className="flex flex-col list-none px-12 gap-4">
+        <div className="fixed top-0 left-0 right-0 bottom-0 bg-[#070a09] z-[998] flex flex-col px-8 pt-28 md:hidden">
+          <ul className="flex flex-col list-none gap-6 mt-4">
             {links.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="text-[13px] tracking-[0.14em] uppercase text-[rgba(240,250,248,0.7)] no-underline hover:text-teal transition-colors"
+                  className="text-[18px] font-light tracking-[0.14em] uppercase text-[#f0faf8] no-underline hover:text-teal transition-colors block py-2"
                 >
                   {link.label}
                 </Link>
               </li>
             ))}
-            <li className="mt-2">
+            <li className="mt-4">
               <a
                 href={siteConfig.jackrabbitEnroll}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex text-[11px] font-medium tracking-[0.14em] uppercase text-black bg-teal px-6 py-2.5 clip-btn no-underline"
+                className="inline-flex text-[11px] font-medium tracking-[0.14em] uppercase text-black bg-teal px-6 py-3 no-underline"
               >
                 {siteConfig.enrollCtaLabel}
               </a>
