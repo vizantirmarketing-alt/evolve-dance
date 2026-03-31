@@ -49,9 +49,9 @@ export default function Nav({ links }: NavProps) {
         padding: '100px 32px 32px',
       }}
     >
-      <ul style={{ 
-        listStyle: 'none', 
-        margin: 0, 
+      <ul style={{
+        listStyle: 'none',
+        margin: 0,
         padding: 0,
         display: 'flex',
         flexDirection: 'column',
@@ -79,7 +79,7 @@ export default function Nav({ links }: NavProps) {
           </li>
         ))}
         <li style={{ marginTop: '24px' }}>
-          
+          <a
             href={siteConfig.jackrabbitEnroll}
             target="_blank"
             rel="noopener noreferrer"
@@ -151,14 +151,13 @@ export default function Nav({ links }: NavProps) {
 
         {/* Desktop links */}
         <ul
+          className="hidden md:flex"
           style={{
-            display: 'none',
             gap: '32px',
             listStyle: 'none',
             margin: 0,
             padding: 0,
           }}
-          className="hidden md:flex"
         >
           {links.map((link) => (
             <li key={link.href}>
@@ -179,9 +178,12 @@ export default function Nav({ links }: NavProps) {
         </ul>
 
         {/* Right side */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          {/* Desktop enroll */}
-          
+        <div style={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          gap: '12px' 
+        }}>
+          <a
             href={siteConfig.jackrabbitEnroll}
             target="_blank"
             rel="noopener noreferrer"
@@ -201,11 +203,11 @@ export default function Nav({ links }: NavProps) {
             {siteConfig.enrollCtaLabel}
           </a>
 
-          {/* Mobile hamburger */}
           <button
             type="button"
             onClick={() => setMenuOpen((v) => !v)}
             aria-label="Toggle menu"
+            className="md:hidden"
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -217,12 +219,11 @@ export default function Nav({ links }: NavProps) {
               cursor: 'pointer',
               padding: 0,
             }}
-            className="md:hidden"
           >
-            <span style={{ 
-              display: 'flex', 
-              flexDirection: 'column', 
-              gap: '5px' 
+            <span style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '5px'
             }}>
               <span style={{
                 display: 'block',
@@ -230,7 +231,9 @@ export default function Nav({ links }: NavProps) {
                 height: '1px',
                 backgroundColor: '#f0faf8',
                 transition: 'all 0.3s',
-                transform: menuOpen ? 'rotate(45deg) translateY(6px)' : 'none',
+                transform: menuOpen 
+                  ? 'rotate(45deg) translateY(6px)' 
+                  : 'none',
               }} />
               <span style={{
                 display: 'block',
@@ -246,15 +249,19 @@ export default function Nav({ links }: NavProps) {
                 height: '1px',
                 backgroundColor: '#f0faf8',
                 transition: 'all 0.3s',
-                transform: menuOpen ? 'rotate(-45deg) translateY(-6px)' : 'none',
+                transform: menuOpen 
+                  ? 'rotate(-45deg) translateY(-6px)' 
+                  : 'none',
               }} />
             </span>
           </button>
         </div>
       </nav>
 
-      {/* Mobile menu rendered via Portal directly into body */}
-      {mounted && menuOpen && createPortal(mobileMenu, document.body)}
+      {mounted && menuOpen && createPortal(
+        mobileMenu, 
+        document.body
+      )}
     </>
   )
 }
