@@ -90,7 +90,7 @@ export default function Nav({ links }: NavProps) {
                 fontSize: '11px',
                 letterSpacing: '0.14em',
                 textTransform: 'uppercase',
-                color: 'rgba(240,250,248,0.55)',
+                color: '#e2e8f0',
                 textDecoration: 'none',
               }}>
                 {link.label}

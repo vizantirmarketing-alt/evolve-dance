@@ -64,7 +64,7 @@ export default function StyleCard({
         </h3>
       </div>
 
-      <p className="text-[13px] text-[#5C7A74] leading-relaxed flex-grow">
+      <p className="text-[13px] text-[#e2e8f0] leading-relaxed flex-grow">
         {description}
       </p>
 
@@ -72,7 +72,7 @@ export default function StyleCard({
         <div className="flex items-start gap-2.5">
           <IconUsers className="shrink-0 mt-0.5 text-[#2DD4BF]/80" />
           <div>
-            <span className="text-[#5C7A74] text-[10px] uppercase tracking-wider block mb-0.5">
+            <span className="text-[#94a3b8] text-[10px] uppercase tracking-wider block mb-0.5">
               Ages
             </span>
             {ageRange}
@@ -81,7 +81,7 @@ export default function StyleCard({
         <div className="flex items-start gap-2.5">
           <IconShoe className="shrink-0 mt-0.5 text-[#2DD4BF]/80" />
           <div>
-            <span className="text-[#5C7A74] text-[10px] uppercase tracking-wider block mb-0.5">
+            <span className="text-[#94a3b8] text-[10px] uppercase tracking-wider block mb-0.5">
               Shoes
             </span>
             {shoes}

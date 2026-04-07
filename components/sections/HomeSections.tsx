@@ -12,8 +12,8 @@ import { siteConfig } from '@/data/site'
 function SectionEyebrow({ label }: { label: string }) {
   return (
     <div className="flex items-center gap-3 mb-6">
-      <div className="w-7 h-px bg-teal" />
-      <span className="text-[10px] tracking-[0.22em] uppercase text-teal font-medium">{label}</span>
+      <div className="w-7 h-px bg-teal opacity-100" />
+      <span className="text-[10px] tracking-[0.22em] uppercase text-teal font-medium opacity-100">{label}</span>
     </div>
   )
 }
@@ -88,7 +88,7 @@ export function AboutSection() {
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 min-h-[80vh]">
       {/* Left */}
-      <div className="col-span-full md:col-span-1 bg-charcoal px-16 py-24 flex flex-col justify-center relative overflow-hidden">
+      <div className="col-span-full md:col-span-1 bg-[#0f2318] px-16 py-24 flex flex-col justify-center relative overflow-hidden">
         {/* Corner accent */}
         <div className="absolute top-0 left-0 w-px h-[120px] bg-gradient-to-b from-teal to-transparent" />
         <div className="absolute top-0 left-0 h-px w-[120px] bg-gradient-to-r from-teal to-transparent" />
@@ -113,7 +113,7 @@ export function AboutSection() {
           </h2>
         </Reveal>
         <Reveal delay={200}>
-          <p className="text-[15px] font-light text-[rgba(200,224,219,0.55)] leading-[1.8] max-w-[420px] mb-11">
+          <p className="text-[15px] font-light text-[#e2e8f0] leading-[1.8] max-w-[420px] mb-11">
             {siteConfig.studioParagraph}
           </p>
         </Reveal>
@@ -128,7 +128,7 @@ export function AboutSection() {
                 <div className="font-display text-[40px] font-bold text-teal leading-none" style={{ textShadow: '0 0 30px rgba(45,212,191,0.2)' }}>
                   {s.num}
                 </div>
-                <div className="text-[10px] tracking-[0.14em] uppercase text-[#5c7a74] mt-1">{s.lbl}</div>
+                <div className="text-[10px] tracking-[0.14em] uppercase text-[#94a3b8] mt-1">{s.lbl}</div>
               </div>
             ))}
           </div>
@@ -170,7 +170,7 @@ export function ClassesSection() {
               <h2 className="font-display font-bold text-[#f0faf8] leading-none" style={{ fontSize: 'clamp(40px, 5vw, 68px)' }}>
                 Our <em className="italic text-teal">classes</em>
               </h2>
-              <p className="text-[15px] font-light text-[rgba(200,224,219,0.55)] leading-[1.75]">
+              <p className="text-[15px] font-light text-[#e2e8f0] leading-[1.75]">
                 {siteConfig.classesIntro}
               </p>
             </>
@@ -196,7 +196,7 @@ export function ClassesSection() {
 
 function ClassCard({ num, name, letter, ages, desc }: typeof classes[0]) {
   return (
-    <div className="group bg-charcoal p-10 relative overflow-hidden min-h-[280px] flex flex-col justify-between transition-colors duration-300 hover:bg-[#131a18]">
+    <div className="group bg-[#0f2318] border border-[rgba(255,255,255,0.08)] p-10 relative overflow-hidden min-h-[280px] flex flex-col justify-between transition-colors duration-300 hover:bg-[#132a1f]">
       {/* Bottom teal bar */}
       <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-teal scale-x-0 origin-left transition-transform duration-400 group-hover:scale-x-100" />
       {/* Bg letter */}
@@ -208,15 +208,15 @@ function ClassCard({ num, name, letter, ages, desc }: typeof classes[0]) {
       </div>
 
       <div>
-        <div className="text-[10px] font-semibold tracking-[0.22em] text-[#5c7a74] mb-5 transition-colors duration-300 group-hover:text-teal">
+        <div className="text-[10px] font-semibold tracking-[0.22em] text-[#94a3b8] mb-5 transition-colors duration-300 group-hover:text-teal">
           {num} — {name}
         </div>
         <div className="font-display text-[26px] font-bold leading-[1.1] mb-3 text-[#f0faf8]">{name}</div>
-        <div className="text-[12px] text-[rgba(240,250,248,0.6)] leading-[1.65] flex-grow">{desc}</div>
+        <div className="text-[12px] text-[#e2e8f0] leading-[1.65] flex-grow">{desc}</div>
       </div>
 
       <div className="flex items-center justify-between mt-7 pt-5 border-t border-[rgba(45,212,191,0.06)]">
-        <span className="text-[9px] tracking-[0.18em] uppercase text-[rgba(45,212,191,0.5)]">{ages}</span>
+        <span className="text-[9px] tracking-[0.18em] uppercase text-teal">{ages}</span>
         <div className="w-[30px] h-[30px] border border-[rgba(45,212,191,0.2)] flex items-center justify-center text-teal text-sm transition-all duration-200 group-hover:bg-teal group-hover:text-black group-hover:shadow-[0_0_16px_rgba(45,212,191,0.4)] group-hover:border-teal">
           →
         </div>
@@ -244,7 +244,7 @@ export function ScheduleSection() {
   const [activeDay, setActiveDay] = useState('Monday')
 
   return (
-    <section className="bg-charcoal px-12 py-28">
+    <section className="bg-[#0f2318] px-12 py-28">
       <Reveal><SectionEyebrow label="This Week" /></Reveal>
       <div className="flex items-end justify-between mt-4 mb-12">
         <Reveal delay={100}>
@@ -252,7 +252,7 @@ export function ScheduleSection() {
             <h2 className="font-display font-bold text-[#f0faf8] leading-none" style={{ fontSize: 'clamp(40px, 5vw, 68px)' }}>
               Class <em className="italic text-teal">schedule</em>
             </h2>
-            <p className="text-[15px] font-light text-[rgba(200,224,219,0.55)] leading-[1.8]">
+            <p className="text-[15px] font-light text-[#e2e8f0] leading-[1.8]">
               {siteConfig.scheduleIntro}
             </p>
           </>
@@ -272,8 +272,8 @@ export function ScheduleSection() {
               'text-[10px] font-medium tracking-[0.16em] uppercase px-6 py-3.5',
               'border-b-2 -mb-px transition-colors duration-200 whitespace-nowrap',
               activeDay === day
-                ? 'text-teal border-teal'
-                : 'text-[#5c7a74] border-transparent hover:text-[rgba(45,212,191,0.7)]'
+                ? 'text-white border-teal'
+                : 'text-[#94a3b8] border-transparent hover:text-white'
             )}
           >
             {day}
@@ -286,8 +286,8 @@ export function ScheduleSection() {
           <div key={i} className="py-4 flex items-start justify-between gap-2">
             <div>
               <div className="font-serif text-lg text-teal">{c.time}</div>
-              <div className="font-medium text-sm text-white mt-0.5">{c.cls}</div>
-              <div className="text-xs text-[#5c7a74] mt-0.5">
+              <div className="font-medium text-sm text-[#f1f5f9] mt-0.5">{c.cls}</div>
+              <div className="text-xs text-[#cbd5e1] mt-0.5">
                 {c.instructor} · {c.ages}
               </div>
             </div>
@@ -310,7 +310,7 @@ export function ScheduleSection() {
         <thead>
           <tr>
             {['Time', 'Class', 'Instructor', 'Ages', 'Status'].map(h => (
-              <th key={h} className="text-[9px] font-semibold tracking-[0.18em] uppercase text-[#5c7a74] text-left pb-3 border-b border-[rgba(45,212,191,0.12)]">
+              <th key={h} className="text-[9px] font-semibold tracking-[0.18em] uppercase text-[#94a3b8] text-left pb-3 border-b border-[rgba(45,212,191,0.12)]">
                 {h}
               </th>
             ))}
@@ -320,9 +320,9 @@ export function ScheduleSection() {
           {scheduleData.map((row, i) => (
             <tr key={i} className="schedule-row border-b border-[rgba(45,212,191,0.06)] last:border-0 transition-colors duration-150">
               <td className="py-[18px] font-display text-[18px] text-teal w-32">{row.time}</td>
-              <td className="py-[18px] font-medium text-[13.5px] text-[#f0faf8]">{row.cls}</td>
-              <td className="py-[18px] text-[12px] text-[rgba(240,250,248,0.7)]">{row.instructor}</td>
-              <td className="py-[18px] text-[10px] tracking-[0.12em] uppercase text-[rgba(240,250,248,0.7)]">{row.ages}</td>
+              <td className="py-[18px] font-medium text-[13.5px] text-[#f1f5f9]">{row.cls}</td>
+              <td className="py-[18px] text-[12px] text-[#cbd5e1]">{row.instructor}</td>
+              <td className="py-[18px] text-[10px] tracking-[0.12em] uppercase text-[#cbd5e1]">{row.ages}</td>
               <td className="py-[18px]">
                 <span className={cn(
                   'inline-block px-3 py-1 text-[9px] font-semibold tracking-[0.12em] uppercase',
@@ -364,7 +364,7 @@ export function InstructorsSection() {
             <h2 className="font-display font-bold text-[#f0faf8] leading-none" style={{ fontSize: 'clamp(40px, 5vw, 68px)' }}>
               Meet our <em className="italic text-teal">instructors</em>
             </h2>
-            <p className="text-[15px] font-light text-[rgba(200,224,219,0.55)] leading-[1.75]">
+            <p className="text-[15px] font-light text-[#e2e8f0] leading-[1.75]">
               {siteConfig.facultyIntro}
             </p>
           </>
@@ -389,16 +389,16 @@ export function InstructorsSection() {
                 {/* Initial watermark */}
                 <div
                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[60%] font-display font-black leading-none pointer-events-none transition-all duration-400 group-hover:opacity-[0.1] group-hover:-translate-y-[65%]"
-                  style={{ fontSize: 100, color: 'rgba(45,212,191,0.06)' }}
+                  style={{ fontSize: 100, color: 'rgba(255,255,255,0.15)' }}
                 >
                   {inst.initial}
                 </div>
 
                 <div className="absolute bottom-6 left-6 z-[1]">
-                  <div className="font-display text-[20px] font-bold leading-[1.1] mb-1 text-[#f0faf8]">
+                  <div className="font-display text-[20px] font-bold leading-[1.1] mb-1 text-[#f1f5f9]">
                     {inst.name}
                   </div>
-                  <div className="text-[10px] tracking-[0.15em] uppercase text-teal opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                  <div className="text-[10px] tracking-[0.15em] uppercase text-[#94a3b8] opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
                     {inst.role}
                   </div>
                 </div>
@@ -409,9 +409,9 @@ export function InstructorsSection() {
           <div className="md:hidden grid grid-cols-2 gap-px bg-[rgba(45,212,191,0.06)]">
             {instructors.map(i => (
               <div key={i.name} className="bg-[#111916] p-4 overflow-hidden">
-                <div className="font-serif text-5xl font-black leading-none mb-3 text-[rgba(45,212,191,0.15)]">{i.name[0]}</div>
-                <div className="font-medium text-sm text-[#f0faf8]">{i.name}</div>
-                <div className="text-xs text-[#2dd4bf] opacity-100 mt-1">{i.role}</div>
+                <div className="font-serif text-5xl font-black leading-none mb-3 text-[rgba(255,255,255,0.15)]">{i.name[0]}</div>
+                <div className="font-medium text-sm text-[#f1f5f9]">{i.name}</div>
+                <div className="text-xs text-[#94a3b8] opacity-100 mt-1">{i.role}</div>
               </div>
             ))}
           </div>
@@ -433,14 +433,14 @@ const testimonials = [
 
 export function TestimonialsSection() {
   return (
-    <section className="bg-charcoal px-12 py-28">
+    <section className="bg-[#0f2318] px-12 py-28">
       <Reveal><SectionEyebrow label={siteConfig.reviewsLabel} /></Reveal>
       <Reveal delay={100}>
         <>
           <h2 className="font-display font-bold mt-4 mb-4 text-[#f0faf8] leading-none" style={{ fontSize: 'clamp(40px, 5vw, 68px)' }}>
             ★★★★★ <em className="italic text-teal">Reviews</em>
           </h2>
-          <p className="text-[15px] font-light text-[rgba(200,224,219,0.55)] leading-[1.75] mb-14">
+          <p className="text-[15px] font-light text-[#e2e8f0] leading-[1.75] mb-14">
             {siteConfig.reviewsIntro}
           </p>
         </>
@@ -455,16 +455,16 @@ export function TestimonialsSection() {
                 ? 'bg-teal border-teal'
                 : 'bg-[rgba(45,212,191,0.03)] border-[rgba(45,212,191,0.06)] hover:border-[rgba(45,212,191,0.2)] hover:bg-[rgba(45,212,191,0.04)]'
             )}>
-              <span className={cn('text-[11px] tracking-[3px] mb-4 block', t.featured ? 'text-[rgba(7,10,9,0.5)]' : 'text-teal')}>
+              <span className={cn('text-[11px] tracking-[3px] mb-4 block', t.featured ? 'text-[#0a1a14]/70' : 'text-teal')}>
                 ★★★★★
               </span>
-              <span className={cn('font-display text-[72px] leading-[0.8] mb-4 block', t.featured ? 'text-[rgba(7,10,9,0.12)]' : 'text-[rgba(45,212,191,0.15)]')}>
+              <span className={cn('font-display text-[72px] leading-[0.8] mb-4 block', t.featured ? 'text-[#0a1a14]/20' : 'text-[rgba(45,212,191,0.15)]')}>
                 "
               </span>
-              <p className={cn('font-display text-[18px] font-normal italic leading-[1.6] mb-6', t.featured ? 'text-black' : 'text-[#f0faf8]')}>
+              <p className={cn('font-display text-[18px] font-normal italic leading-[1.6] mb-6', t.featured ? 'text-[#0a1a14]' : 'text-[#e2e8f0]')}>
                 {t.quote}
               </p>
-              <div className={cn('text-[10px] tracking-[0.16em] uppercase', t.featured ? 'text-[rgba(7,10,9,0.6)]' : 'text-[#5c7a74]')}>
+              <div className={cn('text-[10px] tracking-[0.16em] uppercase', t.featured ? 'text-[#0a1a14]' : 'text-[#94a3b8]')}>
                 {t.author}
               </div>
             </div>
@@ -494,7 +494,7 @@ export function ProjectSection() {
         <Reveal>
           <div className="flex items-center justify-center gap-4 mb-7">
             <div className="w-10 h-px bg-[rgba(45,212,191,0.4)]" />
-            <span className="text-[10px] tracking-[0.25em] uppercase text-teal">Competitive Team</span>
+            <span className="text-[10px] tracking-[0.25em] uppercase text-teal opacity-100">Competitive Team</span>
             <div className="w-10 h-px bg-[rgba(45,212,191,0.4)]" />
           </div>
         </Reveal>
@@ -510,7 +510,7 @@ export function ProjectSection() {
         </Reveal>
 
         <Reveal delay={200}>
-          <p className="text-[15px] font-light text-[rgba(200,224,219,0.55)] leading-[1.75] mb-11 max-w-[500px] mx-auto">
+          <p className="text-[15px] font-light text-[#e2e8f0] leading-[1.75] mb-11 max-w-[500px] mx-auto">
             {siteConfig.projectBody}
           </p>
         </Reveal>

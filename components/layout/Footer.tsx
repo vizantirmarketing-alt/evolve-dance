@@ -12,20 +12,20 @@ export default function Footer() {
             <span className="w-1.5 h-1.5 rounded-full bg-teal" style={{ boxShadow: '0 0 6px #2dd4bf' }} />
             {siteConfig.name}
           </div>
-          <p className="text-[13px] text-[#5c7a74] leading-[1.7] max-w-[260px]">
+          <p className="text-[13px] text-[#94a3b8] leading-[1.7] max-w-[260px]">
             {siteConfig.tagline}
           </p>
         </div>
 
         {/* Classes */}
         <div>
-          <div className="text-[9px] font-semibold tracking-[0.22em] uppercase text-teal mb-5">Classes</div>
+          <div className="text-[9px] font-semibold tracking-[0.22em] uppercase text-[#e2e8f0] mb-5">Classes</div>
           <ul className="flex flex-col gap-2.5 list-none">
             {footerLinks.classes.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="text-[13px] text-[rgba(240,250,248,0.65)] no-underline hover:text-teal transition-colors duration-200"
+                  className="text-[13px] text-[#94a3b8] no-underline hover:text-teal transition-colors duration-200"
                 >
                   {item.label}
                 </Link>
@@ -36,13 +36,13 @@ export default function Footer() {
 
         {/* Studio */}
         <div>
-          <div className="text-[9px] font-semibold tracking-[0.22em] uppercase text-teal mb-5">Studio</div>
+          <div className="text-[9px] font-semibold tracking-[0.22em] uppercase text-[#e2e8f0] mb-5">Studio</div>
           <ul className="flex flex-col gap-2.5 list-none">
             {footerLinks.studio.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="text-[13px] text-[rgba(240,250,248,0.65)] no-underline hover:text-teal transition-colors duration-200"
+                  className="text-[13px] text-[#94a3b8] no-underline hover:text-teal transition-colors duration-200"
                 >
                   {item.label}
                 </Link>
@@ -53,14 +53,14 @@ export default function Footer() {
 
         {/* Contact */}
         <div>
-          <div className="text-[9px] font-semibold tracking-[0.22em] uppercase text-teal mb-5">Contact</div>
+          <div className="text-[9px] font-semibold tracking-[0.22em] uppercase text-[#e2e8f0] mb-5">Contact</div>
           <ul className="flex flex-col gap-2.5 list-none">
             <li>
               <a
                 href={siteConfig.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[13px] text-[rgba(240,250,248,0.65)] no-underline hover:text-teal transition-colors duration-200"
+                className="text-[13px] text-[#94a3b8] no-underline hover:text-teal transition-colors duration-200"
               >
                 {siteConfig.addressLine1}
               </a>
@@ -70,7 +70,7 @@ export default function Footer() {
                 href={siteConfig.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[13px] text-[rgba(240,250,248,0.65)] no-underline hover:text-teal transition-colors duration-200"
+                className="text-[13px] text-[#94a3b8] no-underline hover:text-teal transition-colors duration-200"
               >
                 {siteConfig.addressLine2}
               </a>
@@ -78,7 +78,7 @@ export default function Footer() {
             <li>
               <a
                 href={`tel:${siteConfig.phoneTel}`}
-                className="text-[13px] text-[rgba(240,250,248,0.65)] no-underline hover:text-teal transition-colors duration-200"
+                className="text-[13px] text-[#94a3b8] no-underline hover:text-teal transition-colors duration-200"
               >
                 {siteConfig.phone}
               </a>
@@ -86,7 +86,7 @@ export default function Footer() {
             <li>
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="text-[13px] text-[rgba(240,250,248,0.65)] no-underline hover:text-teal transition-colors duration-200"
+                className="text-[13px] text-[#94a3b8] no-underline hover:text-teal transition-colors duration-200"
               >
                 {siteConfig.email}
               </a>
@@ -94,7 +94,7 @@ export default function Footer() {
             <li>
               <Link
                 href="/contact"
-                className="text-[13px] text-[rgba(240,250,248,0.65)] no-underline hover:text-teal transition-colors duration-200"
+                className="text-[13px] text-[#94a3b8] no-underline hover:text-teal transition-colors duration-200"
               >
                 Schedule a Visit
               </Link>
@@ -105,8 +105,16 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="flex items-center justify-between flex-wrap gap-4">
-        <span className="text-[11px] text-[rgba(200,224,219,0.2)]">
-          © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
+        <span className="text-[11px] text-[#4b5563]">
+          © 2026 {siteConfig.name}. All rights reserved. · Site by{' '}
+          <a
+            href="https://vizantir.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-teal no-underline hover:underline"
+          >
+            Vizantir
+          </a>
         </span>
         <div className="flex gap-5">
           {siteConfig.socialLinks.map((s) => (
@@ -115,7 +123,7 @@ export default function Footer() {
               href={s.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[10px] tracking-[0.14em] uppercase text-[rgba(200,224,219,0.25)] no-underline hover:text-teal transition-colors duration-200"
+              className="text-[10px] tracking-[0.14em] uppercase text-[#94a3b8] no-underline hover:text-teal transition-colors duration-200"
             >
               {s.label}
             </a>

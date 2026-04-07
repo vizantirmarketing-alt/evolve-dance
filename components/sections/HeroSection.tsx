@@ -124,8 +124,8 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="flex items-center gap-4 mb-6"
         >
-          <div className="w-8 h-px bg-teal opacity-70" />
-          <span className="text-[10px] tracking-[0.25em] uppercase text-teal font-medium">
+          <div className="w-8 h-px bg-teal" />
+          <span className="text-[10px] tracking-[0.25em] uppercase text-teal font-medium opacity-100">
             Las Vegas · Ages 18mo–18yrs · All Levels
           </span>
         </motion.div>
@@ -150,7 +150,7 @@ export default function HeroSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-[15px] font-light text-[rgba(200,224,219,0.6)] leading-[1.75] max-w-[400px] mb-11"
+          className="text-[15px] font-light text-[#cbd5e1] leading-[1.75] max-w-[400px] mb-11"
         >
           Ballet, jazz, hip hop, contemporary, acro, and more — serious training in a positive environment that produces real results.
         </motion.p>
@@ -181,7 +181,7 @@ export default function HeroSection() {
 
           <Link
             href="/enroll#free-trial"
-            className="text-[11px] font-normal tracking-[0.15em] uppercase text-[rgba(240,250,248,0.6)] no-underline border-b border-[rgba(45,212,191,0.25)] pb-0.5 transition-colors duration-200 hover:text-teal hover:border-teal"
+            className="text-[11px] font-normal tracking-[0.15em] uppercase text-[#cbd5e1] no-underline border-b border-[rgba(45,212,191,0.25)] pb-0.5 transition-colors duration-200 hover:text-teal hover:border-teal"
           >
             Book a Free Trial
           </Link>
@@ -207,7 +207,7 @@ export default function HeroSection() {
             <span className="font-display text-[28px] font-bold text-teal leading-none">
               {stat.number}
             </span>
-            <span className="text-[9px] tracking-[0.18em] uppercase text-[#5c7a74]">
+            <span className="text-[9px] tracking-[0.18em] uppercase text-[#94a3b8]">
               {stat.label}
             </span>
           </div>
@@ -227,7 +227,7 @@ export default function HeroSection() {
           style={{ background: 'linear-gradient(to bottom, #2dd4bf, transparent)' }}
         />
         <span
-          className="text-[9px] tracking-[0.2em] uppercase text-[#5c7a74]"
+          className="text-[9px] tracking-[0.2em] uppercase text-[#94a3b8]"
           style={{ writingMode: 'vertical-rl' }}
         >
           Scroll

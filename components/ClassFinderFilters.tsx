@@ -35,7 +35,7 @@ function Pill({
         'rounded-full px-4 py-2 text-xs font-medium transition-colors',
         active
           ? 'bg-[#2DD4BF] text-black border border-[#2DD4BF]'
-          : 'bg-[#111916] text-[#5C7A74] border border-[rgba(45,212,191,0.12)]'
+          : 'bg-[#111916] text-[#94a3b8] border border-[rgba(45,212,191,0.12)]'
       )}
     >
       {children}
@@ -97,7 +97,7 @@ export default function ClassFinderFilters({
       </div>
 
       <div className="flex flex-col gap-3 max-w-md">
-        <label className="text-xs font-medium text-[#5C7A74] tracking-wide">
+        <label className="text-xs font-medium text-[#94a3b8] tracking-wide">
           {selectedAge === 0 ? 'All ages' : `Age: ${selectedAge}`}
         </label>
         <input

@@ -34,7 +34,7 @@ html {
 
 body {
   background: var(--black);
-  color: var(--off-white);
+  color: #e2e8f0;
   font-family: var(--font-dm-sans), system-ui, sans-serif;
   font-weight: 300;
   -webkit-font-smoothing: antialiased;

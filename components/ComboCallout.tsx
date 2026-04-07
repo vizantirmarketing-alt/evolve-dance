@@ -22,7 +22,7 @@ export default function ComboCallout({ combos }: { combos: ComboClass[] }) {
           {heading}
         </h2>
 
-        <p className="text-[15px] font-light text-[#5C7A74] leading-[1.75] max-w-2xl mb-12">
+        <p className="text-[15px] font-light text-[#e2e8f0] leading-[1.75] max-w-2xl mb-12">
           {body}
         </p>
 
@@ -35,7 +35,7 @@ export default function ComboCallout({ combos }: { combos: ComboClass[] }) {
               <p className="text-[14px] font-semibold text-[#2DD4BF] leading-snug">
                 {combo.title}
               </p>
-              <p className="text-[11px] tracking-[0.12em] uppercase text-[#5C7A74]">
+              <p className="text-[11px] tracking-[0.12em] uppercase text-[#94a3b8]">
                 {combo.ages}
               </p>
             </div>

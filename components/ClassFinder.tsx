@@ -102,10 +102,10 @@ export default function ClassFinder() {
         hasActiveFilters={hasActiveFilters}
       />
 
-      <p className="text-sm text-[#5C7A74]">{countLabel}</p>
+      <p className="text-sm text-[#e2e8f0]">{countLabel}</p>
 
       {filtered.length === 0 ? (
-        <p className="text-[15px] text-[#5C7A74]">
+        <p className="text-[15px] text-[#e2e8f0]">
           No classes match — try different filters
         </p>
       ) : (

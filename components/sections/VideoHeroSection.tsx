@@ -115,8 +115,8 @@ export default function VideoHeroSection({
           >
             {/* Eyebrow */}
             <motion.div variants={item} className="flex items-center gap-4 mb-7">
-              <div className="w-8 h-px bg-teal opacity-70" />
-              <span className="text-[9px] md:text-[10px] font-medium tracking-[0.2em] md:tracking-[0.25em] uppercase text-teal whitespace-nowrap">
+              <div className="w-8 h-px bg-teal" />
+              <span className="text-[9px] md:text-[10px] font-medium tracking-[0.2em] md:tracking-[0.25em] uppercase text-teal opacity-100 whitespace-nowrap">
                 Las Vegas · Ages 18mo–18yrs · All Levels
               </span>
             </motion.div>
@@ -142,9 +142,8 @@ export default function VideoHeroSection({
             {/* Subheading */}
             <motion.p
               variants={item}
-              className="text-[15px] md:text-[16px] font-light leading-[1.75] mb-10 max-w-[380px]"
+              className="text-[15px] md:text-[16px] font-light leading-[1.75] mb-10 max-w-[380px] text-[#cbd5e1]"
               style={{
-                color: 'rgba(200,224,219,0.8)',
                 textShadow: '0 1px 12px rgba(0,0,0,0.6)',
               }}
             >
@@ -246,7 +245,7 @@ export default function VideoHeroSection({
             }}
           />
           <span
-            className="text-[9px] tracking-[0.2em] uppercase text-[#5c7a74]"
+            className="text-[9px] tracking-[0.2em] uppercase text-[#94a3b8]"
             style={{ writingMode: 'vertical-rl' }}
           >
             Scroll
@@ -273,7 +272,7 @@ export default function VideoHeroSection({
               <span className="font-display text-[24px] font-bold text-teal leading-none">
                 {stat.number}
               </span>
-              <span className="text-[9px] tracking-[0.18em] uppercase text-[rgba(240,250,248,0.6)]">
+              <span className="text-[9px] tracking-[0.18em] uppercase text-[#94a3b8]">
                 {stat.label}
               </span>
             </div>
@@ -335,7 +334,7 @@ export default function VideoHeroSection({
                 <p className="text-[11px] tracking-[0.15em] uppercase text-teal font-medium">
                   Evolve Dance Center — Las Vegas
                 </p>
-                <p className="text-[12px] text-[#5c7a74] mt-1">
+                <p className="text-[12px] text-[#e2e8f0] mt-1">
                   Classes, recitals, and performances from Season 9
                 </p>
               </div>

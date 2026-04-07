@@ -57,28 +57,28 @@ export default function ClassCard({
         <h3 className="font-display text-xl font-bold text-[#f0faf8] leading-tight mb-1">
           {style}
         </h3>
-        <p className="text-[11px] text-[#5C7A74] tracking-wide">
+        <p className="text-[11px] text-[#94a3b8] tracking-wide">
           Level {level} · {LEVEL_LABEL[level]}
         </p>
       </div>
 
       <dl className="grid grid-cols-1 gap-3 text-[13px]">
         <div className="flex justify-between gap-4 border-b border-[rgba(45,212,191,0.08)] pb-2">
-          <dt className="text-[#5C7A74] shrink-0">Ages</dt>
+          <dt className="text-[#94a3b8] shrink-0">Ages</dt>
           <dd className="text-[#f0faf8] text-right">
             {ageMin}–{ageMax}
           </dd>
         </div>
         <div className="flex justify-between gap-4 border-b border-[rgba(45,212,191,0.08)] pb-2">
-          <dt className="text-[#5C7A74] shrink-0">Day</dt>
+          <dt className="text-[#94a3b8] shrink-0">Day</dt>
           <dd className="text-[#f0faf8] text-right">{day}</dd>
         </div>
         <div className="flex justify-between gap-4 border-b border-[rgba(45,212,191,0.08)] pb-2">
-          <dt className="text-[#5C7A74] shrink-0">Time</dt>
+          <dt className="text-[#94a3b8] shrink-0">Time</dt>
           <dd className="text-[#f0faf8] text-right">{time}</dd>
         </div>
         <div className="flex justify-between gap-4">
-          <dt className="text-[#5C7A74] shrink-0">Instructor</dt>
+          <dt className="text-[#94a3b8] shrink-0">Instructor</dt>
           <dd className="text-[#f0faf8] text-right">{instructor}</dd>
         </div>
       </dl>
@@ -95,7 +95,7 @@ export default function ClassCard({
       ) : (
         <Link
           href={waitlistHref}
-          className="mt-auto inline-flex items-center justify-center w-full py-3 px-4 text-[11px] font-semibold tracking-[0.15em] uppercase text-[#5C7A74] bg-[#0d1210] border border-[rgba(45,212,191,0.12)] no-underline transition-colors hover:text-[#f0faf8] hover:border-[rgba(45,212,191,0.25)]"
+          className="mt-auto inline-flex items-center justify-center w-full py-3 px-4 text-[11px] font-semibold tracking-[0.15em] uppercase text-[#94a3b8] bg-[#0d1210] border border-[rgba(45,212,191,0.12)] no-underline transition-colors hover:text-[#f0faf8] hover:border-[rgba(45,212,191,0.25)]"
         >
           {siteConfig.waitlistCtaLabel}
         </Link>

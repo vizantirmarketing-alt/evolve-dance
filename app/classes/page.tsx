@@ -34,7 +34,7 @@ export default function ClassesPage() {
           <h1 className="font-display text-[clamp(36px,6vw,64px)] font-bold text-[#f0faf8] leading-[1.05] mb-6">
             Find the right class for your dancer
           </h1>
-          <p className="text-[15px] font-light text-[#5C7A74] leading-[1.75] max-w-xl mb-10">
+          <p className="text-[15px] font-light text-[#e2e8f0] leading-[1.75] max-w-xl mb-10">
             Ages 18 months to 18 years. All levels. First class is on us.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
