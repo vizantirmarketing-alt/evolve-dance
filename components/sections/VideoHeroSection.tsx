@@ -65,9 +65,7 @@ export default function VideoHeroSection({
 
   return (
     <>
-      <section
-        className="relative pb-16 md:pb-0 min-h-[max(680px,100svh)] md:min-h-[max(720px,90vh)] bg-[var(--background)]"
-      >
+      <section className="relative min-h-[640px] bg-[var(--background)] pb-16 md:h-auto md:min-h-[calc(100vh-80px)] md:pb-0">
 
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {/* Mobile — static image, no video */}
@@ -88,7 +86,7 @@ export default function VideoHeroSection({
               loop
               playsInline
               poster={posterSrc}
-              className="w-full h-full object-cover"
+              className="h-full w-full object-cover object-center"
               style={{ pointerEvents: 'none' }}
             >
               <source src={videoSrc} type="video/mp4" />
@@ -99,9 +97,7 @@ export default function VideoHeroSection({
         </div>
 
         {/* Hero content */}
-        <div
-          className="relative z-10 flex min-h-[max(680px,100svh)] w-full flex-col justify-start px-4 pt-24 pb-20 md:min-h-[max(720px,90vh)] md:justify-end md:px-12 md:pb-32 md:pt-32"
-        >
+        <div className="relative z-10 flex min-h-[640px] w-full flex-col justify-start px-4 pt-24 pb-20 md:h-auto md:min-h-[calc(100vh-80px)] md:justify-end md:px-12 md:pb-32 md:pt-32">
         {/* ── Main content — above stat strip (z-[4]) */}
         <div className="relative z-[30] w-full md:mt-0">
           <motion.div
