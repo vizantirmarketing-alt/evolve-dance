@@ -63,6 +63,10 @@ export interface JackrabbitClass {
   endTimeDisplay: string
   instructors: string[]
   ageRangeDisplay: string
+  /** Fractional years from ISO duration, or null when API omits that bound. */
+  minAgeYears: number | null
+  /** Fractional years from ISO duration, or null when API omits that bound. */
+  maxAgeYears: number | null
   room: string
   openings: number
   isFull: boolean
@@ -151,6 +155,8 @@ function mapRowToClass(raw: JackrabbitOpeningsRow, dayLabel: string): Jackrabbit
   const instructors = Array.isArray(raw.instructors) ? raw.instructors : []
   const openings = Math.max(0, Number(raw.openings?.calculated_openings) || 0)
   const category = raw.category2?.trim() || 'Classes'
+  const minAgeYears = parseIso8601DurationToYears(raw.min_age ?? '')
+  const maxAgeYears = parseIso8601DurationToYears(raw.max_age ?? '')
 
   return {
     id: raw.id,
@@ -162,6 +168,8 @@ function mapRowToClass(raw: JackrabbitOpeningsRow, dayLabel: string): Jackrabbit
     endTimeDisplay: formatTime24hrTo12h(raw.end_time),
     instructors,
     ageRangeDisplay: buildAgeRangeDisplay(raw.min_age ?? '', raw.max_age ?? ''),
+    minAgeYears,
+    maxAgeYears,
     room: raw.room ?? '',
     openings,
     isFull: openings <= 0,
