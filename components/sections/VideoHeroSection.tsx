@@ -65,7 +65,9 @@ export default function VideoHeroSection({
 
   return (
     <>
-      <section className="relative pb-16 md:pb-0" style={{ minHeight: '100dvh', backgroundColor: 'var(--background)' }}>
+      <section
+        className="relative pb-16 md:pb-0 min-h-[max(680px,100svh)] md:min-h-[max(720px,90vh)] bg-[var(--background)]"
+      >
 
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {/* Mobile — static image, no video */}
@@ -98,8 +100,7 @@ export default function VideoHeroSection({
 
         {/* Hero content */}
         <div
-          className="relative z-10 flex w-full flex-col justify-start px-4 pt-24 pb-40 md:justify-end md:px-12 md:pb-28 md:pt-32"
-          style={{ minHeight: '100dvh' }}
+          className="relative z-10 flex min-h-[max(680px,100svh)] w-full flex-col justify-start px-4 pt-24 pb-20 md:min-h-[max(720px,90vh)] md:justify-end md:px-12 md:pb-32 md:pt-32"
         >
         {/* ── Main content — above stat strip (z-[4]) */}
         <div className="relative z-[30] w-full md:mt-0">
@@ -149,7 +150,7 @@ export default function VideoHeroSection({
 
             {/* CTA buttons — mobile: primary + watch link; desktop: all three */}
             <motion.div variants={item} className="mb-6 w-full md:mb-6">
-              <div className="flex flex-col gap-4 md:hidden">
+              <div className="flex flex-col items-start gap-4 md:hidden">
                 <Link
                   href="/enroll#free-trial"
                   className="group pointer-events-auto inline-flex w-full items-center justify-center gap-2 rounded-sm bg-[#0ABAB5] px-6 py-3.5 text-sm font-medium tracking-wider text-white no-underline transition-all hover:bg-[#087876]"
@@ -160,7 +161,7 @@ export default function VideoHeroSection({
                 <button
                   type="button"
                   onClick={() => setLightbox(true)}
-                  className="group pointer-events-auto inline-flex items-center justify-center gap-2 self-start bg-black/30 backdrop-blur-sm text-white text-sm font-medium tracking-wider px-4 py-2.5 rounded-sm transition-colors hover:bg-black/50"
+                  className="group pointer-events-auto inline-flex self-start items-center justify-center gap-2 bg-black/30 backdrop-blur-sm text-sm font-medium tracking-wider text-white px-4 py-2.5 rounded-sm transition-colors hover:bg-black/50"
                 >
                   <span className="flex items-center justify-center w-6 h-6 rounded-full bg-white/20 group-hover:bg-white/30 transition-colors">
                     <Play className="w-2.5 h-2.5 fill-white ml-0.5" aria-hidden />
@@ -271,7 +272,7 @@ export default function VideoHeroSection({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0 }}
           transition={{ delay: 1.1, duration: 0.8 }}
-          className="absolute bottom-0 left-0 right-0 z-40 flex flex-col border-t border-[#D6DFDA]"
+          className="absolute bottom-0 left-0 right-0 z-40 flex flex-col border-t border-[#D6DFDA] pt-12 md:pt-16"
           style={{ background: 'rgba(247,245,241,0.92)', backdropFilter: 'blur(16px)' }}
         >
           <p className="mx-auto max-w-[36rem] border-b border-[#D6DFDA] px-4 py-3 text-center text-[11px] font-light leading-[1.6] text-[#6D6C67] md:px-12 md:py-3.5 md:text-[12px]">
