@@ -45,7 +45,7 @@ export default function ClassesPage() {
               Book a Free Trial
             </Link>
             <Link
-              href="/classes#schedule"
+              href="/schedule"
               className="inline-flex items-center justify-center py-4 px-8 text-[11px] font-semibold tracking-[0.15em] uppercase text-[#f0faf8] border border-[rgba(10,186,181,0.25)] bg-transparent no-underline transition-colors hover:border-[#0ABAB5] hover:text-[#0ABAB5] text-center"
             >
               View Schedule
@@ -54,13 +54,10 @@ export default function ClassesPage() {
         </div>
       </section>
 
-      {/* Anchor for View Schedule (same block as class finder) */}
-      <div id="schedule" className="scroll-mt-[140px]" aria-hidden />
-
       {/* 2. Class finder */}
       <section
-        id="classfinder"
-        className="w-full bg-[#070a09] scroll-mt-[140px] border-t border-[rgba(10,186,181,0.08)]"
+        id="class-finder"
+        className="w-full scroll-mt-[140px] border-t border-[rgba(10,186,181,0.08)] bg-[#070a09]"
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 pt-16 pb-4">
           <div className="flex items-center gap-3 mb-6">

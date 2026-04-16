@@ -707,7 +707,7 @@ export function EnrollSection() {
             </svg>
           </Link>
           <Link
-            href="/classes#schedule"
+            href="/schedule"
             className="inline-flex w-full items-center justify-center gap-2.5 clip-btn whitespace-nowrap text-center no-underline text-[11px] font-medium leading-snug tracking-[0.12em] uppercase text-white bg-transparent border border-white/60 px-6 py-3.5 transition-colors duration-200 hover:border-white md:w-auto md:px-8 md:py-4 md:tracking-[0.15em]"
           >
             View Class Schedule

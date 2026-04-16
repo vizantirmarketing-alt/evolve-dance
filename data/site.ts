@@ -31,7 +31,7 @@ export const siteConfig = {
   waitlistCtaLabel: 'Join Waitlist',
   viewClassesCtaLabel: 'View Classes',
   classesPath: '/classes',
-  classFinderSectionId: 'classfinder',
+  classFinderSectionId: 'class-finder',
   comboSection: {
     eyebrow: 'For Our Youngest Dancers',
     heading: 'Little ones, big moves.',
