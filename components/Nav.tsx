@@ -86,13 +86,21 @@ export default function Nav({ links }: NavProps) {
         }}>
           {links.map(link => (
             <li key={link.href}>
-              <Link href={link.href} style={{
-                fontSize: '11px',
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: '#6D6C67',
-                textDecoration: 'none',
-              }}>
+              <Link
+                href={link.href}
+                onMouseEnter={e => e.currentTarget
+                  .style.color = '#3E9F97'}
+                onMouseLeave={e => e.currentTarget
+                  .style.color = '#6D6C67'}
+                style={{
+                  fontSize: '11px',
+                  letterSpacing: '0.14em',
+                  textTransform: 'uppercase',
+                  color: '#6D6C67',
+                  textDecoration: 'none',
+                  transition: 'color 0.2s',
+                }}
+              >
                 {link.label}
               </Link>
             </li>

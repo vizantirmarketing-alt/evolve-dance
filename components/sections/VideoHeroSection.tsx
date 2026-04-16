@@ -130,8 +130,8 @@ export default function VideoHeroSection({
               className="font-display font-black leading-[0.88] tracking-tight mb-6"
               style={{ fontSize: 'clamp(52px, 8vw, 112px)' }}
             >
-              <span className="block text-[#1F1F1C]">Where dancers</span>
-              <span className="block text-[#1F1F1C]">become</span>
+              <span className="block text-[#F7F5F1]">Where dancers</span>
+              <span className="block text-[#F7F5F1]">become</span>
               <span
                 className="block text-[#3E9F97] italic"
                 style={{
@@ -145,7 +145,7 @@ export default function VideoHeroSection({
             {/* Subheading */}
             <motion.p
               variants={item}
-              className="text-[15px] md:text-[16px] font-light leading-[1.75] mb-10 max-w-[380px] text-[#6D6C67]"
+              className="text-[15px] md:text-[16px] font-light leading-[1.75] mb-10 max-w-[380px] text-[#F7F5F1]/80"
               style={{
                 textShadow: '0 1px 12px rgba(0,0,0,0.6)',
               }}
@@ -170,14 +170,14 @@ export default function VideoHeroSection({
                 <Link
                   href="/classes"
                   className="pointer-events-auto text-[11px] font-normal tracking-[0.15em] uppercase no-underline pb-0.5 border-b border-[#D6DFDA] transition-colors duration-200 hover:border-teal hover:text-teal w-auto shrink-0"
-                  style={{ color: '#6D6C67' }}
+                  style={{ color: 'rgba(247,245,241,0.85)' }}
                 >
                   Explore Classes
                 </Link>
 
                 <button
                   onClick={() => setLightbox(true)}
-                  className="pointer-events-auto inline-flex items-center gap-3 w-auto shrink-0 text-[11px] font-medium tracking-[0.15em] uppercase text-[#1F1F1C] px-6 py-4 border border-[#D6DFDA] bg-[rgba(62,159,151,0.08)] transition-all duration-200 hover:bg-[rgba(62,159,151,0.18)] hover:border-[rgba(62,159,151,0.6)]"
+                  className="pointer-events-auto inline-flex items-center gap-3 w-auto shrink-0 text-[11px] font-medium tracking-[0.15em] uppercase text-[#F7F5F1] px-6 py-4 border border-[#D6DFDA] bg-[rgba(62,159,151,0.08)] transition-all duration-200 hover:bg-[rgba(62,159,151,0.18)] hover:border-[rgba(62,159,151,0.6)]"
                 >
                   <span className="flex items-center justify-center w-5 h-5 rounded-full bg-[#3E9F97] flex-shrink-0">
                     <svg width="8" height="10" viewBox="0 0 8 10" fill="white">
