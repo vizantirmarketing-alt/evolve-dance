@@ -88,7 +88,7 @@ export function AboutSection() {
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 min-h-[80vh]">
       {/* Left */}
-      <div className="col-span-full md:col-span-1 bg-[#FCFBF8] px-16 py-24 flex flex-col justify-center relative overflow-hidden">
+      <div className="col-span-full md:col-span-1 bg-[#FCFBF8] px-4 py-16 md:px-16 md:py-24 flex flex-col justify-center relative overflow-hidden">
         {/* Corner accent */}
         <div className="absolute top-0 left-0 w-px h-[120px] bg-gradient-to-b from-teal to-transparent" />
         <div className="absolute top-0 left-0 h-px w-[120px] bg-gradient-to-r from-teal to-transparent" />
@@ -126,17 +126,17 @@ export function AboutSection() {
           </p>
         </Reveal>
         <Reveal delay={300}>
-          <div className="flex gap-10">
+          <div className="mx-auto grid w-full max-w-md grid-cols-3 gap-4 text-center md:mx-0 md:flex md:max-w-none md:gap-10 md:text-left">
             {[
               { num: '6',    lbl: 'Dance Rooms' },
               { num: '18mo', lbl: 'Youngest Dancer' },
               { num: '2016', lbl: 'Est. Las Vegas' },
             ].map(s => (
-              <div key={s.lbl}>
-                <div className="font-display text-[40px] font-bold text-[#3E9F97] leading-none" style={{ textShadow: '0 0 30px rgba(62,159,151,0.2)' }}>
+              <div key={s.lbl} className="text-center md:text-left">
+                <div className="font-display text-[40px] font-bold leading-none text-[#3E9F97]" style={{ textShadow: '0 0 30px rgba(62,159,151,0.2)' }}>
                   {s.num}
                 </div>
-                <div className="text-[10px] tracking-[0.14em] uppercase text-[#6D6C67] mt-1">{s.lbl}</div>
+                <div className="mt-1 text-[10px] uppercase tracking-[0.14em] text-[#6D6C67]">{s.lbl}</div>
               </div>
             ))}
           </div>
@@ -193,7 +193,7 @@ const whyFamiliesCards = [
 
 export function WhyFamiliesChooseSection() {
   return (
-    <section className="bg-[#0f2318] px-12 py-28">
+    <section className="bg-[#0f2318] px-4 py-28 md:px-12">
       <Reveal>
         <SectionEyebrow label="Why Families Choose Evolve" />
       </Reveal>
@@ -219,7 +219,7 @@ export function WhyFamiliesChooseSection() {
 
 function WhyFamilyCard({ num, title, letter, body }: (typeof whyFamiliesCards)[number]) {
   return (
-    <div className="group bg-[#0f2318] border border-[rgba(255,255,255,0.08)] p-10 relative overflow-hidden min-h-[280px] flex flex-col justify-between transition-colors duration-300 hover:bg-[#132a1f]">
+    <div className="group bg-[#0f2318] border border-[rgba(255,255,255,0.08)] p-6 md:p-10 relative overflow-hidden min-h-[280px] flex flex-col justify-between transition-colors duration-300 hover:bg-[#132a1f]">
       <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-teal scale-x-0 origin-left transition-transform duration-400 group-hover:scale-x-100" />
       <div
         className="absolute -bottom-4 -right-2 font-display font-black leading-none pointer-events-none transition-colors duration-300 group-hover:opacity-[0.055]"
@@ -254,8 +254,8 @@ const classes = [
 
 export function ClassesSection() {
   return (
-    <section className="bg-[#F7F5F1] px-12 py-28">
-      <div className="flex items-end justify-between mb-14">
+    <section className="bg-[#F7F5F1] px-4 py-28 md:px-12">
+      <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between mb-14">
         <div>
           <Reveal>
             <div className="flex items-center gap-3 mb-6">
@@ -294,7 +294,7 @@ export function ClassesSection() {
 
 function ClassCard({ num, name, letter, ages, desc }: typeof classes[0]) {
   return (
-    <div className="group bg-[#FCFBF8] border border-[#D6DFDA] p-10 relative overflow-hidden min-h-[280px] flex flex-col justify-between transition-colors duration-300 hover:border-[#3E9F97]">
+    <div className="group bg-[#FCFBF8] border border-[#D6DFDA] p-6 md:p-10 relative overflow-hidden min-h-[280px] flex flex-col justify-between transition-colors duration-300 hover:border-[#3E9F97]">
       {/* Bottom teal bar */}
       <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-teal scale-x-0 origin-left transition-transform duration-400 group-hover:scale-x-100" />
       {/* Bg letter */}
@@ -342,9 +342,9 @@ export function ScheduleSection() {
   const [activeDay, setActiveDay] = useState('Monday')
 
   return (
-    <section className="bg-[#0f2318] px-12 py-28">
+    <section className="bg-[#0f2318] px-4 py-28 md:px-12">
       <Reveal><SectionEyebrow label="This Week" /></Reveal>
-      <div className="flex items-end justify-between mt-4 mb-12">
+      <div className="mt-4 mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <Reveal delay={100}>
           <>
             <h2 className="font-display font-bold text-[#f0faf8] leading-none" style={{ fontSize: 'clamp(40px, 5vw, 68px)' }}>
@@ -454,14 +454,14 @@ const instructors = [
 
 export function InstructorsSection() {
   return (
-    <section className="bg-[#F7F5F1] px-12 py-28 overflow-hidden">
+    <section className="bg-[#F7F5F1] px-4 py-28 md:px-12 overflow-hidden">
       <Reveal>
         <div className="flex items-center gap-3 mb-6">
           <div className="w-7 h-px bg-[#3E9F97] opacity-100" />
           <span className="text-[10px] tracking-[0.22em] uppercase text-[#3E9F97] font-medium opacity-100">The Faculty</span>
         </div>
       </Reveal>
-      <div className="flex items-end justify-between mt-4 mb-14">
+      <div className="mt-4 mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <Reveal delay={100}>
           <>
             <h2 className="font-display font-bold text-[#1F1F1C] leading-none" style={{ fontSize: 'clamp(40px, 5vw, 68px)' }}>
@@ -510,7 +510,7 @@ export function InstructorsSection() {
 
           <div className="md:hidden grid grid-cols-2 gap-px bg-[#D6DFDA]">
             {instructors.map(i => (
-              <div key={i.name} className="bg-[#FCFBF8] p-4 overflow-hidden">
+              <div key={i.name} className="bg-[#FCFBF8] p-3 md:p-4 overflow-hidden">
                 <div className="font-serif text-5xl font-black leading-none mb-3 text-[#3E9F97]/10">{i.name[0]}</div>
                 <div className="font-medium text-sm text-[#1F1F1C]">{i.name}</div>
                 <div className="text-xs text-[#3E9F97] opacity-100 mt-1">{i.role}</div>
@@ -535,7 +535,7 @@ const testimonials = [
 
 export function TestimonialsSection() {
   return (
-    <section className="bg-[#EAF3F0] px-12 py-28">
+    <section className="bg-[#EAF3F0] px-4 py-28 md:px-12">
       <Reveal>
         <div className="flex items-center gap-3 mb-6">
           <div className="w-7 h-px bg-[#3E9F97] opacity-100" />
@@ -558,7 +558,7 @@ export function TestimonialsSection() {
         {testimonials.map((t, i) => (
           <Reveal key={i} delay={i * 100}>
             <div className={cn(
-              'p-11 relative border transition-all duration-300',
+              'p-6 md:p-11 relative border transition-all duration-300',
               t.featured
                 ? 'bg-[#3E9F97] border-[#3E9F97]'
                 : 'bg-[#FCFBF8] border-[#D6DFDA]'
@@ -590,7 +590,7 @@ export function TestimonialsSection() {
 export function ProjectSection() {
   return (
     <section
-      className="bg-[#173432] px-12 py-28 relative overflow-hidden text-center"
+      className="bg-[#173432] px-4 py-28 md:px-12 relative overflow-hidden text-center"
     >
       {/* Glow */}
       <div
@@ -645,7 +645,7 @@ export function ProjectSection() {
 
 export function EnrollSection() {
   return (
-    <section className="bg-[#3E9F97] px-12 pt-10 pb-20 md:py-24 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+    <section className="bg-[#3E9F97] px-4 pt-10 pb-20 md:px-12 md:py-24 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
       <Reveal>
         <span className="text-[10px] font-semibold tracking-[0.22em] uppercase text-white/70 block mb-4">
           Ready to Begin?
@@ -662,10 +662,10 @@ export function EnrollSection() {
         <p className="text-[15px] text-white/85 leading-[1.7] mb-8">
           Whether your dancer is just beginning or ready for more advanced training, we&apos;re here to help them grow in a studio built on strong instruction, support, and high standards.
         </p>
-        <div className="flex gap-5 items-center">
+        <div className="flex w-full flex-col gap-3 md:flex-row md:flex-wrap md:items-center md:gap-5">
           <Link
             href="/enroll"
-            className="inline-flex items-center gap-2.5 clip-btn no-underline text-[11px] font-semibold tracking-[0.15em] uppercase text-[#F4FBF9] bg-[#173432] px-8 py-4 transition-all duration-200 hover:bg-[#0f2318]"
+            className="inline-flex w-full items-center justify-center gap-2.5 clip-btn whitespace-nowrap no-underline text-[11px] font-semibold tracking-[0.15em] uppercase text-[#F4FBF9] bg-[#173432] px-6 py-3.5 transition-all duration-200 hover:bg-[#0f2318] md:w-auto md:px-8 md:py-4"
           >
             Enroll Now
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
@@ -674,7 +674,7 @@ export function EnrollSection() {
           </Link>
           <Link
             href="/classes#schedule"
-            className="inline-flex items-center gap-2.5 clip-btn no-underline text-[11px] font-medium tracking-[0.15em] uppercase text-white bg-transparent border border-white/60 px-8 py-4 transition-colors duration-200 hover:border-white"
+            className="inline-flex w-full items-center justify-center gap-2.5 clip-btn whitespace-nowrap text-center no-underline text-[11px] font-medium leading-snug tracking-[0.12em] uppercase text-white bg-transparent border border-white/60 px-6 py-3.5 transition-colors duration-200 hover:border-white md:w-auto md:px-8 md:py-4 md:tracking-[0.15em]"
           >
             View Class Schedule
           </Link>

@@ -105,7 +105,7 @@ export default function VideoHeroSection({
 
         {/* Hero content */}
         <div
-          className="relative z-20 flex flex-col justify-end w-full pb-52 md:pb-28 pt-24 px-6 md:px-12"
+          className="relative z-20 flex w-full flex-col justify-end px-4 pb-40 pt-16 md:px-12 md:pb-28 md:pt-24"
           style={{ minHeight: '100dvh' }}
         >
         {/* ── Main content — z above stat strip (z-[4]) */}
@@ -118,9 +118,9 @@ export default function VideoHeroSection({
             className="max-w-[680px]"
           >
             {/* Eyebrow */}
-            <motion.div variants={item} className="flex items-center gap-4 mb-7">
-              <div className="w-8 h-px bg-[#3E9F97]" />
-              <span className="text-[9px] md:text-[10px] font-medium tracking-[0.2em] md:tracking-[0.25em] uppercase text-[#3E9F97] opacity-100 whitespace-nowrap">
+            <motion.div variants={item} className="mb-7 flex w-full items-center justify-start gap-4 text-left">
+              <div className="w-8 shrink-0 bg-[#3E9F97] h-px" />
+              <span className="text-left text-[9px] font-medium uppercase tracking-[0.2em] text-[#3E9F97] opacity-100 md:text-[10px] md:tracking-[0.25em] whitespace-normal md:whitespace-nowrap">
                 Las Vegas · Ages 18mo–18yrs · All Levels
               </span>
             </motion.div>
@@ -128,7 +128,7 @@ export default function VideoHeroSection({
             {/* Headline */}
             <motion.h1
               variants={item}
-              className="font-display font-black leading-[0.88] tracking-tight mb-6"
+              className="text-left font-display font-black leading-[0.88] tracking-tight mb-6"
               style={{ fontSize: 'clamp(52px, 8vw, 112px)' }}
             >
               <span className="block text-[#F7F5F1]">Where dancers</span>
@@ -146,7 +146,7 @@ export default function VideoHeroSection({
             {/* Subheading */}
             <motion.p
               variants={item}
-              className="text-[15px] md:text-[16px] font-light leading-[1.75] mb-10 max-w-[380px] text-[#F7F5F1]/80"
+              className="mb-8 max-w-[380px] text-left text-[15px] font-light leading-[1.75] text-[#F7F5F1]/80 md:mb-10 md:text-[16px]"
               style={{
                 textShadow: '0 1px 12px rgba(0,0,0,0.6)',
               }}
@@ -155,35 +155,33 @@ export default function VideoHeroSection({
             </motion.p>
 
             {/* CTA buttons */}
-            <motion.div variants={item} className="flex flex-col md:flex-row flex-wrap gap-4 items-start mb-6">
+            <motion.div variants={item} className="mb-6 flex w-full flex-col gap-3 md:mb-6 md:flex-row md:flex-wrap md:items-start md:gap-4">
               <Link
                 href="/enroll#free-trial"
-                className="group pointer-events-auto relative inline-flex w-full items-center gap-2 md:w-auto bg-[#1D9E75] px-6 py-3 text-sm font-medium tracking-wider text-white no-underline transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#0F6E56] hover:shadow-lg hover:shadow-[#1D9E75]/25 rounded-sm"
+                className="group pointer-events-auto relative inline-flex w-full items-center justify-center gap-2 rounded-sm bg-[#1D9E75] px-6 py-3 text-sm font-medium tracking-wider text-white no-underline transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#0F6E56] hover:shadow-lg hover:shadow-[#1D9E75]/25 md:w-auto md:justify-start"
               >
                 <span>Book a Free Trial</span>
                 <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
               </Link>
 
-              <div className="flex flex-row flex-wrap items-center gap-4 self-start w-auto md:contents">
-                <Link
-                  href="/classes"
-                  className="group pointer-events-auto inline-flex items-center gap-2 rounded-sm border border-white/20 bg-black/30 px-6 py-3 text-sm font-medium tracking-wider text-white no-underline backdrop-blur-md transition-all duration-300 hover:border-white/40 hover:bg-black/50"
-                >
-                  Explore Classes
-                  <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" aria-hidden />
-                </Link>
+              <Link
+                href="/classes"
+                className="group pointer-events-auto inline-flex w-full items-center justify-center gap-2 rounded-sm border border-white/20 bg-black/30 px-6 py-3 text-sm font-medium tracking-wider text-white no-underline backdrop-blur-md transition-all duration-300 hover:border-white/40 hover:bg-black/50 md:w-auto md:justify-start"
+              >
+                Explore Classes
+                <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" aria-hidden />
+              </Link>
 
-                <button
-                  type="button"
-                  onClick={() => setLightbox(true)}
-                  className="group pointer-events-auto inline-flex items-center gap-3 rounded-sm border border-white/20 bg-black/30 px-5 py-3 text-sm font-medium tracking-wider text-white backdrop-blur-md transition-all duration-300 hover:border-white/40 hover:bg-black/50"
-                >
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white/15 transition-colors group-hover:bg-white/25">
-                    <Play className="ml-0.5 h-3 w-3 fill-white text-white" aria-hidden />
-                  </span>
-                  Watch the Studio
-                </button>
-              </div>
+              <button
+                type="button"
+                onClick={() => setLightbox(true)}
+                className="group pointer-events-auto inline-flex w-full items-center justify-center gap-3 rounded-sm border border-white/20 bg-black/30 px-5 py-3 text-sm font-medium tracking-wider text-white backdrop-blur-md transition-all duration-300 hover:border-white/40 hover:bg-black/50 md:w-auto md:justify-start"
+              >
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white/15 transition-colors group-hover:bg-white/25">
+                  <Play className="ml-0.5 h-3 w-3 fill-white text-white" aria-hidden />
+                </span>
+                Watch the Studio
+              </button>
             </motion.div>
           </motion.div>
         </div>
@@ -261,7 +259,7 @@ export default function VideoHeroSection({
           className="absolute bottom-0 left-0 right-0 z-[4] flex flex-col border-t border-[#D6DFDA]"
           style={{ background: 'rgba(247,245,241,0.92)', backdropFilter: 'blur(16px)' }}
         >
-          <p className="text-center text-[11px] md:text-[12px] font-light leading-[1.6] text-[#6D6C67] px-6 md:px-12 py-3 md:py-3.5 max-w-[36rem] mx-auto border-b border-[#D6DFDA]">
+          <p className="mx-auto max-w-[36rem] border-b border-[#D6DFDA] px-4 py-3 text-center text-[11px] font-light leading-[1.6] text-[#6D6C67] md:px-12 md:py-3.5 md:text-[12px]">
             {statsStripSubline}
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4">
