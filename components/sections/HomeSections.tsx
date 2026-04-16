@@ -1,6 +1,8 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 import { siteConfig } from '@/data/site'
@@ -246,10 +248,47 @@ function WhyFamilyCard({ num, title, letter, body }: (typeof whyFamiliesCards)[n
 // ─────────────────────────────────────────
 
 const classes = [
-  { num: '01', name: 'Ballet',       letter: 'B', ages: 'Ages 3–18', desc: 'Precision, grace, and classical technique. Barre, center, across the floor, and pointe progressions for all levels.' },
-  { num: '02', name: 'Jazz',         letter: 'J', ages: 'Ages 4–18', desc: 'High energy performance flair. Parallel movement, technique, and combinations taught from the ground up.' },
-  { num: '03', name: 'Hip Hop',      letter: 'H', ages: 'Ages 5–18', desc: 'Street styles, groove-based movement, and freestyle expression — rooted in culture and rhythm.' },
-  { num: '04', name: 'Contemporary', letter: 'C', ages: 'Ages 6–18', desc: 'A free, expressive style blending classical modern, jazz, and fluid improvisation. Requires ballet enrollment.' },
+  {
+    id: 'ballet',
+    num: '01',
+    name: 'Ballet',
+    letter: 'B',
+    ages: 'Ages 3–18',
+    desc: 'Precision, grace, and classical technique. Barre, center, across the floor, and pointe progressions for all levels.',
+    href: '/classes',
+    /** Add `/public/programs/*.jpg` when photography is ready — mobile gallery uses placeholder until set */
+    image: undefined as string | undefined,
+  },
+  {
+    id: 'jazz',
+    num: '02',
+    name: 'Jazz',
+    letter: 'J',
+    ages: 'Ages 4–18',
+    desc: 'High energy performance flair. Parallel movement, technique, and combinations taught from the ground up.',
+    href: '/classes',
+    image: undefined as string | undefined,
+  },
+  {
+    id: 'hip-hop',
+    num: '03',
+    name: 'Hip Hop',
+    letter: 'H',
+    ages: 'Ages 5–18',
+    desc: 'Street styles, groove-based movement, and freestyle expression — rooted in culture and rhythm.',
+    href: '/classes',
+    image: undefined as string | undefined,
+  },
+  {
+    id: 'contemporary',
+    num: '04',
+    name: 'Contemporary',
+    letter: 'C',
+    ages: 'Ages 6–18',
+    desc: 'A free, expressive style blending classical modern, jazz, and fluid improvisation. Requires ballet enrollment.',
+    href: '/classes',
+    image: undefined as string | undefined,
+  },
 ]
 
 export function ClassesSection() {
@@ -281,7 +320,54 @@ export function ClassesSection() {
         </Reveal>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#D6DFDA]">
+      {/* Mobile: horizontal scroll-snap gallery */}
+      <div className="md:hidden -mx-4">
+        <div className="scrollbar-hide flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4">
+          {classes.map(program => (
+            <article
+              key={program.id}
+              className="w-[85vw] shrink-0 snap-start overflow-hidden rounded-sm bg-[#F5F2EC]"
+            >
+              <div className="relative aspect-[4/5] bg-[var(--teal-light)]">
+                {program.image ? (
+                  <Image src={program.image} alt={program.name} fill className="object-cover" sizes="85vw" />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center">
+                    <span className="font-display text-3xl text-[#1D9E75]/40">{program.name}</span>
+                  </div>
+                )}
+              </div>
+              <div className="p-5">
+                <p className="mb-2 text-xs tracking-wider text-[#1F1F1C]/60">
+                  {program.num} — {program.name}
+                </p>
+                <h3 className="font-display mb-3 text-2xl font-bold text-[#1F1F1C]">{program.name}</h3>
+                <p className="mb-4 text-sm leading-relaxed text-[#1F1F1C]/70">
+                  {program.desc}
+                </p>
+                <div className="flex items-center justify-between border-t border-[#1F1F1C]/10 pt-4">
+                  <span className="text-xs tracking-wider text-[#1D9E75]">{program.ages}</span>
+                  <Link
+                    href={program.href}
+                    className="flex h-10 w-10 items-center justify-center rounded-sm border border-[#1D9E75] text-[#1D9E75] transition-colors hover:bg-[#1D9E75] hover:text-white"
+                    aria-label={`View ${program.name} classes`}
+                  >
+                    <ArrowRight className="h-4 w-4" aria-hidden />
+                  </Link>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+      <div className="mt-6 flex justify-center gap-1.5 md:hidden">
+        {classes.map((_, i) => (
+          <span key={i} className="h-1.5 w-1.5 rounded-full bg-[#1F1F1C]/20" aria-hidden />
+        ))}
+      </div>
+
+      {/* Desktop: existing grid (unchanged) */}
+      <div className="hidden gap-px bg-[#D6DFDA] md:grid md:grid-cols-2 lg:grid-cols-4">
         {classes.map((cls, i) => (
           <Reveal key={cls.name} delay={i * 80}>
             <ClassCard {...cls} />
@@ -508,13 +594,38 @@ export function InstructorsSection() {
             ))}
           </div>
 
-          <div className="md:hidden grid grid-cols-2 gap-px bg-[#D6DFDA]">
-            {instructors.map(i => (
-              <div key={i.name} className="bg-[#FCFBF8] p-3 md:p-4 overflow-hidden">
-                <div className="font-serif text-5xl font-black leading-none mb-3 text-[#3E9F97]/10">{i.name[0]}</div>
-                <div className="font-medium text-sm text-[#1F1F1C]">{i.name}</div>
-                <div className="text-xs text-[#3E9F97] opacity-100 mt-1">{i.role}</div>
-              </div>
+          <div className="md:hidden -mx-4">
+            <div className="scrollbar-hide flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4">
+              {instructors.map(inst => {
+                const body = (
+                  <>
+                    <div className="mb-3 font-serif text-5xl font-black leading-none text-[#3E9F97]/10">
+                      {inst.initial === '+' ? '+' : inst.name[0]}
+                    </div>
+                    <div className="text-sm font-medium text-[#1F1F1C]">{inst.name}</div>
+                    <div className="mt-1 text-xs text-[#3E9F97]">{inst.role}</div>
+                  </>
+                )
+                return (
+                  <article
+                    key={inst.name}
+                    className="w-[65vw] shrink-0 snap-start overflow-hidden rounded-sm border border-[#D6DFDA] bg-[#FCFBF8] p-4"
+                  >
+                    {inst.name === '+ 17 More' ? (
+                      <Link href="/faculty" className="block text-left no-underline text-inherit">
+                        {body}
+                      </Link>
+                    ) : (
+                      body
+                    )}
+                  </article>
+                )
+              })}
+            </div>
+          </div>
+          <div className="mt-6 flex justify-center gap-1.5 md:hidden">
+            {instructors.map((_, i) => (
+              <span key={i} className="h-1.5 w-1.5 rounded-full bg-[#1F1F1C]/20" aria-hidden />
             ))}
           </div>
         </>
@@ -554,11 +665,50 @@ export function TestimonialsSection() {
         </>
       </Reveal>
 
-      <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr_1fr] gap-px">
+      {/* Mobile: horizontal scroll-snap reviews */}
+      <div className="md:hidden -mx-4">
+        <div className="scrollbar-hide flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4">
+          {testimonials.map((t, i) => {
+            const teal = i % 2 === 0
+            return (
+              <article
+                key={i}
+                className={cn(
+                  'w-[85vw] shrink-0 snap-start border p-6 transition-all duration-300',
+                  teal
+                    ? 'border-[#1D9E75] bg-[#1D9E75]'
+                    : 'border-[#D6DFDA] bg-[#FCFBF8]',
+                )}
+              >
+                <span className={cn('mb-4 block text-[11px] tracking-[3px]', teal ? 'text-white/80' : 'text-[#1D9E75]')}>
+                  ★★★★★
+                </span>
+                <span className={cn('font-display mb-4 block text-[56px] leading-[0.8]', teal ? 'text-white/25' : 'text-[#1D9E75]')}>
+                  "
+                </span>
+                <p className={cn('mb-6 font-serif text-[17px] font-normal italic leading-[1.6]', teal ? 'text-white' : 'text-[#1F1F1C]')}>
+                  {t.quote}
+                </p>
+                <div className={cn('text-[10px] font-medium uppercase tracking-[0.16em]', teal ? 'text-white/70' : 'text-[#6D6C67]')}>
+                  {t.author}
+                </div>
+              </article>
+            )
+          })}
+        </div>
+      </div>
+      <div className="mt-6 flex justify-center gap-1.5 md:hidden">
+        {testimonials.map((_, i) => (
+          <span key={i} className="h-1.5 w-1.5 rounded-full bg-[#1F1F1C]/20" aria-hidden />
+        ))}
+      </div>
+
+      {/* Desktop: existing grid (unchanged) */}
+      <div className="hidden gap-px md:grid md:grid-cols-[1.4fr_1fr_1fr]">
         {testimonials.map((t, i) => (
           <Reveal key={i} delay={i * 100}>
             <div className={cn(
-              'p-6 md:p-11 relative border transition-all duration-300',
+              'relative border p-6 transition-all duration-300 md:p-11',
               t.featured
                 ? 'bg-[#3E9F97] border-[#3E9F97]'
                 : 'bg-[#FCFBF8] border-[#D6DFDA]'

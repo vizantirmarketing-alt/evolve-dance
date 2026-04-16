@@ -151,3 +151,12 @@ body {
   user-select: none;
   -webkit-user-select: none;
 }
+
+/* ── Horizontal scroll galleries (mobile) ───────── */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
