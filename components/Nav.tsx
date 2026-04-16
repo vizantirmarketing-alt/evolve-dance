@@ -88,18 +88,7 @@ export default function Nav({ links }: NavProps) {
             <li key={link.href}>
               <Link
                 href={link.href}
-                onMouseEnter={e => e.currentTarget
-                  .style.color = '#3E9F97'}
-                onMouseLeave={e => e.currentTarget
-                  .style.color = '#6D6C67'}
-                style={{
-                  fontSize: '11px',
-                  letterSpacing: '0.14em',
-                  textTransform: 'uppercase',
-                  color: '#6D6C67',
-                  textDecoration: 'none',
-                  transition: 'color 0.2s',
-                }}
+                className="text-sm font-medium tracking-wide uppercase text-[#1F1F1C] no-underline [text-shadow:_0_1px_1px_rgb(0_0_0_/_0.08)] transition-colors duration-200 hover:text-[#5DCAA5]"
               >
                 {link.label}
               </Link>

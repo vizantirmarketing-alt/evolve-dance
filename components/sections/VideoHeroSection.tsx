@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
+import { ArrowRight, Play } from 'lucide-react'
 
 // ── Types ────────────────────────────────────────────
 interface VideoHeroProps {
@@ -157,32 +158,28 @@ export default function VideoHeroSection({
             <motion.div variants={item} className="flex flex-col md:flex-row flex-wrap gap-4 items-start mb-6">
               <Link
                 href="/enroll#free-trial"
-                className="pointer-events-auto inline-flex items-center gap-3 w-full md:w-auto text-[11px] font-semibold tracking-[0.15em] uppercase text-white bg-[#3E9F97] px-8 py-4 no-underline transition-all duration-200 hover:bg-[#5FBDB3] hover:shadow-[0_0_48px_rgba(62,159,151,0.4)] hover:-translate-y-0.5"
-                style={{ clipPath: 'polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%)' }}
+                className="group pointer-events-auto relative inline-flex w-full items-center gap-2 md:w-auto bg-[#1D9E75] px-6 py-3 text-sm font-medium tracking-wider text-white no-underline transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#0F6E56] hover:shadow-lg hover:shadow-[#1D9E75]/25 rounded-sm"
               >
-                Book a Free Trial
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                  <path d="M1 7h12M8 2l5 5-5 5" />
-                </svg>
+                <span>Book a Free Trial</span>
+                <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
               </Link>
 
-              <div className="flex flex-row flex-wrap gap-4 items-center self-start w-auto md:contents">
+              <div className="flex flex-row flex-wrap items-center gap-4 self-start w-auto md:contents">
                 <Link
                   href="/classes"
-                  className="pointer-events-auto text-[11px] font-normal tracking-[0.15em] uppercase no-underline pb-0.5 border-b border-[#D6DFDA] transition-colors duration-200 hover:border-teal hover:text-teal w-auto shrink-0"
-                  style={{ color: 'rgba(247,245,241,0.85)' }}
+                  className="group pointer-events-auto inline-flex items-center gap-2 rounded-sm border border-white/20 bg-black/30 px-6 py-3 text-sm font-medium tracking-wider text-white no-underline backdrop-blur-md transition-all duration-300 hover:border-white/40 hover:bg-black/50"
                 >
                   Explore Classes
+                  <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" aria-hidden />
                 </Link>
 
                 <button
+                  type="button"
                   onClick={() => setLightbox(true)}
-                  className="pointer-events-auto inline-flex items-center gap-3 w-auto shrink-0 text-[11px] font-medium tracking-[0.15em] uppercase text-[#F7F5F1] px-6 py-4 border border-[#D6DFDA] bg-[rgba(62,159,151,0.08)] transition-all duration-200 hover:bg-[rgba(62,159,151,0.18)] hover:border-[rgba(62,159,151,0.6)]"
+                  className="group pointer-events-auto inline-flex items-center gap-3 rounded-sm border border-white/20 bg-black/30 px-5 py-3 text-sm font-medium tracking-wider text-white backdrop-blur-md transition-all duration-300 hover:border-white/40 hover:bg-black/50"
                 >
-                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-[#3E9F97] flex-shrink-0">
-                    <svg width="8" height="10" viewBox="0 0 8 10" fill="white">
-                      <path d="M0 0L8 5L0 10V0Z" />
-                    </svg>
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white/15 transition-colors group-hover:bg-white/25">
+                    <Play className="ml-0.5 h-3 w-3 fill-white text-white" aria-hidden />
                   </span>
                   Watch the Studio
                 </button>
