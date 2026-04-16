@@ -74,18 +74,26 @@ function ClassRowLink({ c, children }: { c: JackrabbitClass; children: ReactNode
   )
 }
 
-const selectShell =
+const selectShellDark =
   'relative w-full min-w-0 rounded-sm border border-[rgba(10,186,181,0.35)] bg-black/30 text-white shadow-none'
+const selectShellCream =
+  'relative w-full min-w-0 rounded-sm border border-[rgba(10,186,181,0.45)] bg-white text-[#1F1F1C] shadow-none'
 
-const selectField =
+const selectFieldDark =
   'w-full cursor-pointer appearance-none rounded-sm border-0 bg-transparent py-3 pl-4 pr-11 text-sm font-medium text-white outline-none ring-0 focus:ring-2 focus:ring-[#0ABAB5]/40'
+const selectFieldCream =
+  'w-full cursor-pointer appearance-none rounded-sm border-0 bg-transparent py-3 pl-4 pr-11 text-sm font-medium text-[#1F1F1C] outline-none ring-0 focus:ring-2 focus:ring-[#0ABAB5]/40'
+
+export type ScheduleFiltersSurface = 'dark' | 'cream'
 
 export function ScheduleFilters({
   classes,
   categories,
+  surface = 'dark',
 }: {
   classes: JackrabbitClass[]
   categories: string[]
+  surface?: ScheduleFiltersSurface
 }) {
   const [category, setCategory] = useState<string>('all')
   const [age, setAge] = useState<AgeFilterValue>('all')
@@ -104,12 +112,128 @@ export function ScheduleFilters({
   }, [filtered])
 
   const hasAny = filtered.length > 0
+  const isCream = surface === 'cream'
+  const selectShell = isCream ? selectShellCream : selectShellDark
+  const selectField = isCream ? selectFieldCream : selectFieldDark
+  const labelMuted = isCream ? 'text-[#6D6C67]' : 'text-[#94a3b8]'
+  const emptyFilterText = isCream ? 'text-[#1F1F1C]' : 'text-[#e2e8f0]'
+
+  const scheduleBody = (
+    <div className="space-y-0">
+      {groupedMonSat.map((g, i) => (
+        <section
+          key={g.day}
+          className={cn(i > 0 && 'mt-12 border-t border-[rgba(10,186,181,0.12)] pt-12')}
+        >
+          <h2 className="font-display text-[clamp(26px,4vw,36px)] font-bold leading-tight text-teal">{g.day}</h2>
+
+          <div className="mt-6 divide-y divide-[rgba(10,186,181,0.08)] sm:hidden">
+            {g.classes.map((c) => {
+              const ins = instructorLine(c)
+              const sub = [ins, c.ageRangeDisplay].filter(Boolean).join(' · ')
+              const isOpen = c.openings > 0
+              return (
+                <ClassRowLink key={`${c.id}-${c.day}-${c.startTime}`} c={c}>
+                  <div className="min-w-0 flex-1">
+                    <div className="font-serif text-lg text-teal">{c.startTimeDisplay}</div>
+                    <div className="mt-0.5 text-sm font-medium text-[#f1f5f9]">{c.name}</div>
+                    {sub ? <div className="mt-0.5 text-xs text-[#cbd5e1]">{sub}</div> : null}
+                  </div>
+                  <div className="flex shrink-0 items-center gap-2">
+                    <span
+                      className={cn(
+                        'inline-block whitespace-nowrap px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.12em]',
+                        isOpen
+                          ? 'border border-[rgba(10,186,181,0.2)] bg-[rgba(10,186,181,0.1)] text-[#0ABAB5]'
+                          : 'border border-[rgba(237,147,177,0.22)] bg-[rgba(237,147,177,0.08)] text-[#ED93B1]'
+                      )}
+                    >
+                      {isOpen ? 'OPEN' : 'FULL'}
+                    </span>
+                    <ChevronRight className="h-4 w-4 text-[#0ABAB5] opacity-0 transition-opacity group-hover:opacity-100" aria-hidden />
+                  </div>
+                </ClassRowLink>
+              )
+            })}
+          </div>
+
+          <table className="schedule-table mt-6 hidden w-full border-collapse sm:table">
+            <thead>
+              <tr>
+                {['Time', 'Class', 'Instructor', 'Ages', 'Status'].map((h) => (
+                  <th
+                    key={h}
+                    className="border-b border-[rgba(10,186,181,0.12)] pb-3 text-left text-[9px] font-semibold uppercase tracking-[0.18em] text-[#94a3b8]"
+                  >
+                    {h}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {g.classes.map((row) => {
+                const isOpen = row.openings > 0
+                const href = rowHref(row)
+                const external = /^https?:\/\//i.test(href)
+                const rowClass = cn(
+                  'schedule-row group grid w-full grid-cols-[minmax(0,7rem)_1fr_1fr_minmax(0,7rem)_auto] items-center gap-x-4 border-b border-[rgba(10,186,181,0.06)] py-[18px] pr-2 text-left no-underline transition-colors duration-150 last:border-0',
+                  'hover:bg-white/[0.04] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0ABAB5]'
+                )
+                const cells = (
+                  <>
+                    <span className="font-display text-[18px] text-teal">{row.startTimeDisplay}</span>
+                    <span className="text-[13.5px] font-medium text-[#f1f5f9]">{row.name}</span>
+                    <span className="text-[12px] text-[#cbd5e1]">{instructorLine(row)}</span>
+                    <span className="text-[10px] uppercase tracking-[0.12em] text-[#cbd5e1]">
+                      {row.ageRangeDisplay}
+                    </span>
+                    <span className="flex items-center justify-end gap-2">
+                      <span
+                        className={cn(
+                          'inline-block px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.12em]',
+                          isOpen
+                            ? 'border border-[rgba(10,186,181,0.2)] bg-[rgba(10,186,181,0.1)] text-[#0ABAB5]'
+                            : 'border border-[rgba(237,147,177,0.22)] bg-[rgba(237,147,177,0.08)] text-[#ED93B1]'
+                        )}
+                      >
+                        {isOpen ? 'OPEN' : 'FULL'}
+                      </span>
+                      <ChevronRight
+                        className="h-4 w-4 shrink-0 text-[#0ABAB5] opacity-0 transition-opacity group-hover:opacity-100"
+                        aria-hidden
+                      />
+                    </span>
+                  </>
+                )
+
+                return (
+                  <tr key={`${row.id}-${row.day}-${row.startTime}`}>
+                    <td colSpan={5} className="p-0">
+                      {external ? (
+                        <a href={href} target="_blank" rel="noopener noreferrer" className={rowClass}>
+                          {cells}
+                        </a>
+                      ) : (
+                        <Link href={href} className={rowClass}>
+                          {cells}
+                        </Link>
+                      )}
+                    </td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </section>
+      ))}
+    </div>
+  )
 
   return (
     <>
       <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:gap-6">
         <div className="relative min-w-[200px] flex-1 md:max-w-xs">
-          <label htmlFor="schedule-cat" className="mb-2 block text-[9px] font-semibold uppercase tracking-[0.18em] text-[#94a3b8]">
+          <label htmlFor="schedule-cat" className={cn('mb-2 block text-[9px] font-semibold uppercase tracking-[0.18em]', labelMuted)}>
             Program
           </label>
           <div className={selectShell}>
@@ -134,7 +258,7 @@ export function ScheduleFilters({
         </div>
 
         <div className="relative min-w-[200px] flex-1 md:max-w-xs">
-          <label htmlFor="schedule-age" className="mb-2 block text-[9px] font-semibold uppercase tracking-[0.18em] text-[#94a3b8]">
+          <label htmlFor="schedule-age" className={cn('mb-2 block text-[9px] font-semibold uppercase tracking-[0.18em]', labelMuted)}>
             Age
           </label>
           <div className={selectShell}>
@@ -159,118 +283,13 @@ export function ScheduleFilters({
       </div>
 
       {!hasAny ? (
-        <p className="max-w-xl text-[15px] font-light leading-[1.8] text-[#e2e8f0]">
+        <p className={cn('max-w-xl text-[15px] font-light leading-[1.8]', emptyFilterText)}>
           No classes match your filters. Try adjusting the category or age range.
         </p>
+      ) : isCream ? (
+        <div className="rounded-sm border border-[rgba(10,186,181,0.15)] bg-[#0f2318] px-4 py-10 md:px-10 md:py-12">{scheduleBody}</div>
       ) : (
-        <div className="space-y-0">
-          {groupedMonSat.map((g, i) => (
-            <section
-              key={g.day}
-              className={cn(i > 0 && 'mt-12 border-t border-[rgba(10,186,181,0.12)] pt-12')}
-            >
-              <h2 className="font-display text-[clamp(26px,4vw,36px)] font-bold leading-tight text-teal">{g.day}</h2>
-
-              <div className="mt-6 divide-y divide-[rgba(10,186,181,0.08)] sm:hidden">
-                {g.classes.map((c) => {
-                  const ins = instructorLine(c)
-                  const sub = [ins, c.ageRangeDisplay].filter(Boolean).join(' · ')
-                  const isOpen = c.openings > 0
-                  return (
-                    <ClassRowLink key={`${c.id}-${c.day}-${c.startTime}`} c={c}>
-                      <div className="min-w-0 flex-1">
-                        <div className="font-serif text-lg text-teal">{c.startTimeDisplay}</div>
-                        <div className="mt-0.5 text-sm font-medium text-[#f1f5f9]">{c.name}</div>
-                        {sub ? <div className="mt-0.5 text-xs text-[#cbd5e1]">{sub}</div> : null}
-                      </div>
-                      <div className="flex shrink-0 items-center gap-2">
-                        <span
-                          className={cn(
-                            'inline-block whitespace-nowrap px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.12em]',
-                            isOpen
-                              ? 'border border-[rgba(10,186,181,0.2)] bg-[rgba(10,186,181,0.1)] text-[#0ABAB5]'
-                              : 'border border-[rgba(237,147,177,0.22)] bg-[rgba(237,147,177,0.08)] text-[#ED93B1]'
-                          )}
-                        >
-                          {isOpen ? 'OPEN' : 'FULL'}
-                        </span>
-                        <ChevronRight className="h-4 w-4 text-[#0ABAB5] opacity-0 transition-opacity group-hover:opacity-100" aria-hidden />
-                      </div>
-                    </ClassRowLink>
-                  )
-                })}
-              </div>
-
-              <table className="schedule-table mt-6 hidden w-full border-collapse sm:table">
-                <thead>
-                  <tr>
-                    {['Time', 'Class', 'Instructor', 'Ages', 'Status'].map((h) => (
-                      <th
-                        key={h}
-                        className="border-b border-[rgba(10,186,181,0.12)] pb-3 text-left text-[9px] font-semibold uppercase tracking-[0.18em] text-[#94a3b8]"
-                      >
-                        {h}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {g.classes.map((row) => {
-                    const isOpen = row.openings > 0
-                    const href = rowHref(row)
-                    const external = /^https?:\/\//i.test(href)
-                    const rowClass = cn(
-                      'schedule-row group grid w-full grid-cols-[minmax(0,7rem)_1fr_1fr_minmax(0,7rem)_auto] items-center gap-x-4 border-b border-[rgba(10,186,181,0.06)] py-[18px] pr-2 text-left no-underline transition-colors duration-150 last:border-0',
-                      'hover:bg-white/[0.04] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0ABAB5]'
-                    )
-                    const cells = (
-                      <>
-                        <span className="font-display text-[18px] text-teal">{row.startTimeDisplay}</span>
-                        <span className="text-[13.5px] font-medium text-[#f1f5f9]">{row.name}</span>
-                        <span className="text-[12px] text-[#cbd5e1]">{instructorLine(row)}</span>
-                        <span className="text-[10px] uppercase tracking-[0.12em] text-[#cbd5e1]">
-                          {row.ageRangeDisplay}
-                        </span>
-                        <span className="flex items-center justify-end gap-2">
-                          <span
-                            className={cn(
-                              'inline-block px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.12em]',
-                              isOpen
-                                ? 'border border-[rgba(10,186,181,0.2)] bg-[rgba(10,186,181,0.1)] text-[#0ABAB5]'
-                                : 'border border-[rgba(237,147,177,0.22)] bg-[rgba(237,147,177,0.08)] text-[#ED93B1]'
-                            )}
-                          >
-                            {isOpen ? 'OPEN' : 'FULL'}
-                          </span>
-                          <ChevronRight
-                            className="h-4 w-4 shrink-0 text-[#0ABAB5] opacity-0 transition-opacity group-hover:opacity-100"
-                            aria-hidden
-                          />
-                        </span>
-                      </>
-                    )
-
-                    return (
-                      <tr key={`${row.id}-${row.day}-${row.startTime}`}>
-                        <td colSpan={5} className="p-0">
-                          {external ? (
-                            <a href={href} target="_blank" rel="noopener noreferrer" className={rowClass}>
-                              {cells}
-                            </a>
-                          ) : (
-                            <Link href={href} className={rowClass}>
-                              {cells}
-                            </Link>
-                          )}
-                        </td>
-                      </tr>
-                    )
-                  })}
-                </tbody>
-              </table>
-            </section>
-          ))}
-        </div>
+        scheduleBody
       )}
     </>
   )

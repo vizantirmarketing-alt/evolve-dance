@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils'
 import { siteConfig } from '@/data/site'
 
 export interface ComboClass {
@@ -5,37 +6,60 @@ export interface ComboClass {
   ages: string
 }
 
-export default function ComboCallout({ combos }: { combos: ComboClass[] }) {
+export default function ComboCallout({
+  combos,
+  surface = 'dark',
+}: {
+  combos: ComboClass[]
+  surface?: 'dark' | 'cream'
+}) {
   const { eyebrow, heading, body, ctaLabel } = siteConfig.comboSection
+  const isCream = surface === 'cream'
 
   return (
-    <section className="w-full bg-[#0d1210] py-20 md:py-28 px-6 md:px-12">
-      <div className="max-w-5xl mx-auto">
-        <div className="flex items-center gap-3 mb-6">
-          <div className="w-7 h-px bg-[#0ABAB5]" />
-          <span className="text-[10px] font-medium tracking-[0.22em] uppercase text-[#0ABAB5]">
-            {eyebrow}
-          </span>
+    <section
+      className={cn(
+        'w-full px-6 py-20 md:px-12 md:py-28',
+        isCream ? 'border-t border-[#D6DFDA] bg-[#FCFBF8]' : 'bg-[#0d1210]'
+      )}
+    >
+      <div className="mx-auto max-w-5xl">
+        <div className="mb-6 flex items-center gap-3">
+          <div className="h-px w-7 bg-[#0ABAB5]" />
+          <span className="text-[10px] font-medium uppercase tracking-[0.22em] text-[#0ABAB5]">{eyebrow}</span>
         </div>
 
-        <h2 className="font-display text-[clamp(32px,4.5vw,48px)] font-bold text-[#f0faf8] leading-[1.08] mb-6">
+        <h2
+          className={cn(
+            'font-display mb-6 text-[clamp(32px,4.5vw,48px)] font-bold leading-[1.08]',
+            isCream ? 'text-[#1F1F1C]' : 'text-[#f0faf8]'
+          )}
+        >
           {heading}
         </h2>
 
-        <p className="text-[15px] font-light text-[#e2e8f0] leading-[1.75] max-w-2xl mb-12">
+        <p
+          className={cn(
+            'mb-12 max-w-2xl text-[15px] font-light leading-[1.75]',
+            isCream ? 'text-[#6D6C67]' : 'text-[#e2e8f0]'
+          )}
+        >
           {body}
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+        <div className="mb-12 grid grid-cols-1 gap-4 md:grid-cols-3">
           {combos.map((combo) => (
             <div
               key={combo.title}
-              className="bg-[#111916] border border-[rgba(10,186,181,0.12)] px-6 py-8 flex flex-col gap-3"
+              className={cn(
+                'flex flex-col gap-3 border px-6 py-8',
+                isCream
+                  ? 'border-[#D6DFDA] bg-white shadow-sm'
+                  : 'border-[rgba(10,186,181,0.12)] bg-[#111916]'
+              )}
             >
-              <p className="text-[14px] font-semibold text-[#0ABAB5] leading-snug">
-                {combo.title}
-              </p>
-              <p className="text-[11px] tracking-[0.12em] uppercase text-[#94a3b8]">
+              <p className="text-[14px] font-semibold leading-snug text-[#0ABAB5]">{combo.title}</p>
+              <p className={cn('text-[11px] uppercase tracking-[0.12em]', isCream ? 'text-[#6D6C67]' : 'text-[#94a3b8]')}>
                 {combo.ages}
               </p>
             </div>

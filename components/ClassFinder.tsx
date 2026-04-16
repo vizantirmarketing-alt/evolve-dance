@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import { cn } from '@/lib/utils'
 import ClassFinderFilters from './ClassFinderFilters'
 import ClassCard from './ClassCard'
 import { classes } from '@/data/classes'
@@ -53,7 +54,7 @@ const dayOptions = [
 
 const levelOptions = ['All', 'Beginner', 'Intermediate', 'Advanced']
 
-export default function ClassFinder() {
+export default function ClassFinder({ surface = 'dark' }: { surface?: 'dark' | 'light' }) {
   const [selectedStyle, setSelectedStyle] = useState('All')
   const [selectedDay, setSelectedDay] = useState('All')
   const [selectedLevel, setSelectedLevel] = useState('All')
@@ -80,9 +81,13 @@ export default function ClassFinder() {
   const countLabel =
     count === 1 ? '1 class found' : `${count} classes found`
 
+  const isLight = surface === 'light'
+  const headingClass = isLight ? 'text-[#1F1F1C]' : 'text-[#f0faf8]'
+  const bodyMuted = isLight ? 'text-[#6D6C67]' : 'text-[#e2e8f0]'
+
   return (
-    <div className="flex flex-col gap-10 px-6 py-16 md:px-12 max-w-7xl mx-auto">
-      <h1 className="font-display text-[clamp(32px,5vw,52px)] font-bold text-[#f0faf8] leading-tight">
+    <div className="mx-auto flex max-w-7xl flex-col gap-10 px-6 py-16 md:px-12">
+      <h1 className={cn('font-display text-[clamp(32px,5vw,52px)] font-bold leading-tight', headingClass)}>
         Find your class
       </h1>
 
@@ -100,14 +105,13 @@ export default function ClassFinder() {
         onAgeChange={setSelectedAge}
         onReset={handleReset}
         hasActiveFilters={hasActiveFilters}
+        surface={surface}
       />
 
-      <p className="text-sm text-[#e2e8f0]">{countLabel}</p>
+      <p className={cn('text-sm', bodyMuted)}>{countLabel}</p>
 
       {filtered.length === 0 ? (
-        <p className="text-[15px] text-[#e2e8f0]">
-          No classes match — try different filters
-        </p>
+        <p className={cn('text-[15px]', bodyMuted)}>No classes match — try different filters</p>
       ) : (
         <motion.div
           layout
@@ -132,6 +136,7 @@ export default function ClassFinder() {
                   time={c.time}
                   instructor={c.instructor}
                   spots={c.spots}
+                  surface={surface}
                 />
               </motion.div>
             ))}

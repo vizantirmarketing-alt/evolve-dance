@@ -28,13 +28,13 @@ export default async function SchedulePage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-[#0f2318] px-4 pb-32 pt-24 text-[#f0faf8] md:px-12 md:pt-28">
+      <main className="min-h-screen bg-[#F7F5F1] px-4 pb-32 pt-24 md:px-12 md:pt-28">
         <div className="mx-auto max-w-6xl">
           {classes.length === 0 ? (
             <div className="mx-auto max-w-lg py-16 text-center">
-              <p className="text-[15px] font-light leading-[1.8] text-[#e2e8f0]">
+              <p className="text-[15px] font-light leading-[1.8] text-[#1F1F1C]">
                 Live schedule temporarily unavailable. Call{' '}
-                <a href={`tel:${siteConfig.phoneTel}`} className="text-teal underline-offset-2 hover:underline">
+                <a href={`tel:${siteConfig.phoneTel}`} className="text-[#0ABAB5] underline-offset-2 hover:underline">
                   {siteConfig.phone}
                 </a>{' '}
                 or book a free trial.
@@ -49,25 +49,25 @@ export default async function SchedulePage() {
           ) : (
             <>
               <div className="mb-6 flex items-center gap-3">
-                <div className="h-px w-7 bg-teal opacity-100" />
-                <span className="text-[10px] font-medium uppercase tracking-[0.22em] text-teal opacity-100">
+                <div className="h-px w-7 bg-[#0ABAB5] opacity-100" />
+                <span className="text-[10px] font-medium uppercase tracking-[0.22em] text-[#0ABAB5] opacity-100">
                   Class schedule
                 </span>
               </div>
 
               <div className="mb-12 max-w-3xl">
                 <h1
-                  className="font-display font-bold leading-none text-[#f0faf8]"
+                  className="font-display font-bold leading-none text-[#1F1F1C]"
                   style={{ fontSize: 'clamp(40px, 5vw, 68px)' }}
                 >
-                  Browse this week&apos;s <em className="italic text-teal">classes</em>
+                  Browse this week&apos;s <em className="italic text-[#0ABAB5]">classes</em>
                 </h1>
-                <p className="mt-6 text-[15px] font-light leading-[1.8] text-[#e2e8f0]">
+                <p className="mt-6 text-[15px] font-light leading-[1.8] text-[#6D6C67]">
                   Live schedule updates from our registration system. Book a free trial to join any open class.
                 </p>
               </div>
 
-              <ScheduleFilters classes={classes} categories={categories} />
+              <ScheduleFilters classes={classes} categories={categories} surface="cream" />
             </>
           )}
         </div>

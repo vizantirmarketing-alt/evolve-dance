@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { cn } from '@/lib/utils'
 import { siteConfig } from '@/data/site'
 
 const LEVEL_LABEL: Record<'1' | '2' | '3', string> = {
@@ -17,6 +18,8 @@ export interface ClassCardProps {
   instructor: string
   spots: number
   waitlistHref?: string
+  /** `light` for cream / classes finder. */
+  surface?: 'dark' | 'light'
 }
 
 export default function ClassCard({
@@ -29,9 +32,18 @@ export default function ClassCard({
   instructor,
   spots,
   waitlistHref = '/contact',
+  surface = 'dark',
 }: ClassCardProps) {
+  const isLight = surface === 'light'
   return (
-    <div className="bg-[#111916] border border-[rgba(10,186,181,0.12)] p-6 flex flex-col gap-5">
+    <div
+      className={cn(
+        'flex flex-col gap-5 border p-6',
+        isLight
+          ? 'border-[#D6DFDA] bg-white shadow-sm'
+          : 'border-[rgba(10,186,181,0.12)] bg-[#111916]'
+      )}
+    >
       <div className="flex flex-wrap items-center gap-2">
         <span className="inline-flex px-3 py-1 text-[10px] font-semibold tracking-[0.12em] uppercase bg-[rgba(10,186,181,0.12)] text-[#0ABAB5] border border-[rgba(10,186,181,0.2)] rounded-full">
           {LEVEL_LABEL[level]}
@@ -54,32 +66,47 @@ export default function ClassCard({
       </div>
 
       <div>
-        <h3 className="font-display text-xl font-bold text-[#f0faf8] leading-tight mb-1">
+        <h3 className={cn('font-display text-xl font-bold leading-tight mb-1', isLight ? 'text-[#1F1F1C]' : 'text-[#f0faf8]')}>
           {style}
         </h3>
-        <p className="text-[11px] text-[#94a3b8] tracking-wide">
+        <p className={cn('text-[11px] tracking-wide', isLight ? 'text-[#6D6C67]' : 'text-[#94a3b8]')}>
           Level {level} · {LEVEL_LABEL[level]}
         </p>
       </div>
 
       <dl className="grid grid-cols-1 gap-3 text-[13px]">
-        <div className="flex justify-between gap-4 border-b border-[rgba(10,186,181,0.08)] pb-2">
-          <dt className="text-[#94a3b8] shrink-0">Ages</dt>
-          <dd className="text-[#f0faf8] text-right">
+        <div
+          className={cn(
+            'flex justify-between gap-4 border-b pb-2',
+            isLight ? 'border-[#E8E6E1]' : 'border-[rgba(10,186,181,0.08)]'
+          )}
+        >
+          <dt className={cn('shrink-0', isLight ? 'text-[#6D6C67]' : 'text-[#94a3b8]')}>Ages</dt>
+          <dd className={cn('text-right', isLight ? 'text-[#1F1F1C]' : 'text-[#f0faf8]')}>
             {ageMin}–{ageMax}
           </dd>
         </div>
-        <div className="flex justify-between gap-4 border-b border-[rgba(10,186,181,0.08)] pb-2">
-          <dt className="text-[#94a3b8] shrink-0">Day</dt>
-          <dd className="text-[#f0faf8] text-right">{day}</dd>
+        <div
+          className={cn(
+            'flex justify-between gap-4 border-b pb-2',
+            isLight ? 'border-[#E8E6E1]' : 'border-[rgba(10,186,181,0.08)]'
+          )}
+        >
+          <dt className={cn('shrink-0', isLight ? 'text-[#6D6C67]' : 'text-[#94a3b8]')}>Day</dt>
+          <dd className={cn('text-right', isLight ? 'text-[#1F1F1C]' : 'text-[#f0faf8]')}>{day}</dd>
         </div>
-        <div className="flex justify-between gap-4 border-b border-[rgba(10,186,181,0.08)] pb-2">
-          <dt className="text-[#94a3b8] shrink-0">Time</dt>
-          <dd className="text-[#f0faf8] text-right">{time}</dd>
+        <div
+          className={cn(
+            'flex justify-between gap-4 border-b pb-2',
+            isLight ? 'border-[#E8E6E1]' : 'border-[rgba(10,186,181,0.08)]'
+          )}
+        >
+          <dt className={cn('shrink-0', isLight ? 'text-[#6D6C67]' : 'text-[#94a3b8]')}>Time</dt>
+          <dd className={cn('text-right', isLight ? 'text-[#1F1F1C]' : 'text-[#f0faf8]')}>{time}</dd>
         </div>
         <div className="flex justify-between gap-4">
-          <dt className="text-[#94a3b8] shrink-0">Instructor</dt>
-          <dd className="text-[#f0faf8] text-right">{instructor}</dd>
+          <dt className={cn('shrink-0', isLight ? 'text-[#6D6C67]' : 'text-[#94a3b8]')}>Instructor</dt>
+          <dd className={cn('text-right', isLight ? 'text-[#1F1F1C]' : 'text-[#f0faf8]')}>{instructor}</dd>
         </div>
       </dl>
 
@@ -95,7 +122,12 @@ export default function ClassCard({
       ) : (
         <Link
           href={waitlistHref}
-          className="mt-auto inline-flex items-center justify-center w-full py-3 px-4 text-[11px] font-semibold tracking-[0.15em] uppercase text-[#94a3b8] bg-[#0d1210] border border-[rgba(10,186,181,0.12)] no-underline transition-colors hover:text-[#f0faf8] hover:border-[rgba(10,186,181,0.25)]"
+          className={cn(
+            'mt-auto inline-flex w-full items-center justify-center border px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.15em] no-underline transition-colors',
+            isLight
+              ? 'border-[#D6DFDA] bg-[#F7F5F1] text-[#6D6C67] hover:border-[#0ABAB5] hover:text-[#1F1F1C]'
+              : 'border-[rgba(10,186,181,0.12)] bg-[#0d1210] text-[#94a3b8] hover:border-[rgba(10,186,181,0.25)] hover:text-[#f0faf8]'
+          )}
         >
           {siteConfig.waitlistCtaLabel}
         </Link>

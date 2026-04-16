@@ -16,26 +16,32 @@ export interface ClassFinderFiltersProps {
   onAgeChange: (v: number) => void
   onReset: () => void
   hasActiveFilters: boolean
+  /** `light` = cream page (classes). Default matches original dark finder. */
+  surface?: 'dark' | 'light'
 }
 
 function Pill({
   children,
   active,
   onClick,
+  surface,
 }: {
   children: React.ReactNode
   active: boolean
   onClick: () => void
+  surface: 'dark' | 'light'
 }) {
+  const inactive =
+    surface === 'light'
+      ? 'border border-[#D6DFDA] bg-white text-[#1F1F1C] hover:border-[#0ABAB5]/50'
+      : 'border border-[rgba(10,186,181,0.12)] bg-[#111916] text-[#94a3b8]'
   return (
     <button
       type="button"
       onClick={onClick}
       className={cn(
-        'rounded-full px-4 py-2 text-xs font-medium transition-colors',
-        active
-          ? 'bg-[#0ABAB5] text-black border border-[#0ABAB5]'
-          : 'bg-[#111916] text-[#94a3b8] border border-[rgba(10,186,181,0.12)]'
+        'rounded-full border px-4 py-2 text-xs font-medium transition-colors',
+        active ? 'border-[#0ABAB5] bg-[#0ABAB5] text-black' : inactive
       )}
     >
       {children}
@@ -57,7 +63,11 @@ export default function ClassFinderFilters({
   onAgeChange,
   onReset,
   hasActiveFilters,
+  surface = 'dark',
 }: ClassFinderFiltersProps) {
+  const labelClass = surface === 'light' ? 'text-[#6D6C67]' : 'text-[#94a3b8]'
+  const rangeTrack = surface === 'light' ? 'bg-[#D6DFDA]' : 'bg-[#111916]'
+
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-wrap gap-2">
@@ -65,6 +75,7 @@ export default function ClassFinderFilters({
           <Pill
             key={style}
             active={selectedStyle === style}
+            surface={surface}
             onClick={() => onStyleChange(style)}
           >
             {style}
@@ -77,6 +88,7 @@ export default function ClassFinderFilters({
           <Pill
             key={day}
             active={selectedDay === day}
+            surface={surface}
             onClick={() => onDayChange(day)}
           >
             {day}
@@ -89,6 +101,7 @@ export default function ClassFinderFilters({
           <Pill
             key={level}
             active={selectedLevel === level}
+            surface={surface}
             onClick={() => onLevelChange(level)}
           >
             {level}
@@ -96,8 +109,8 @@ export default function ClassFinderFilters({
         ))}
       </div>
 
-      <div className="flex flex-col gap-3 max-w-md">
-        <label className="text-xs font-medium text-[#94a3b8] tracking-wide">
+      <div className="flex max-w-md flex-col gap-3">
+        <label className={cn('text-xs font-medium tracking-wide', labelClass)}>
           {selectedAge === 0 ? 'All ages' : `Age: ${selectedAge}`}
         </label>
         <input
@@ -107,7 +120,10 @@ export default function ClassFinderFilters({
           step={1}
           value={selectedAge}
           onChange={(e) => onAgeChange(Number(e.target.value))}
-          className="w-full h-2 rounded-full appearance-none cursor-pointer bg-[#111916] accent-[#0ABAB5]"
+          className={cn(
+            'h-2 w-full cursor-pointer appearance-none rounded-full accent-[#0ABAB5]',
+            rangeTrack
+          )}
         />
       </div>
 
