@@ -65,7 +65,7 @@ export default function VideoHeroSection({
 
   return (
     <>
-      <section className="relative min-h-[640px] bg-[var(--background)] pb-16 md:h-auto md:min-h-[calc(100vh-80px)] md:pb-0">
+      <section className="relative min-h-[640px] bg-[var(--background)] md:min-h-[calc(100vh-80px)]">
 
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {/* Mobile — static image, no video */}
@@ -97,8 +97,8 @@ export default function VideoHeroSection({
         </div>
 
         {/* Hero content */}
-        <div className="relative z-10 flex min-h-[640px] w-full flex-col justify-start px-4 pt-24 pb-20 md:h-auto md:min-h-[calc(100vh-80px)] md:justify-end md:px-12 md:pb-32 md:pt-32">
-        {/* ── Main content — above stat strip (z-[4]) */}
+        <div className="relative z-10 flex min-h-[640px] w-full flex-col justify-start px-4 pt-24 pb-16 md:min-h-[calc(100vh-80px)] md:justify-end md:px-12 md:pb-24 md:pt-32">
+        {/* ── Main content ─────────────────────────── */}
         <div className="relative z-[30] w-full md:mt-0">
           <motion.div
             variants={container}
@@ -262,47 +262,45 @@ export default function VideoHeroSection({
           </span>
         </motion.div>
 
-        {/* ── Stat strip ──────────────────────────── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0 }}
-          transition={{ delay: 1.1, duration: 0.8 }}
-          className="absolute bottom-0 left-0 right-0 z-40 flex flex-col border-t border-[#D6DFDA] pt-12 md:pt-16"
-          style={{ background: 'rgba(247,245,241,0.92)', backdropFilter: 'blur(16px)' }}
-        >
-          <p className="mx-auto max-w-[36rem] border-b border-[#D6DFDA] px-4 py-3 text-center text-[11px] font-light leading-[1.6] text-[#6D6C67] md:px-12 md:py-3.5 md:text-[12px]">
-            {statsStripSubline}
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-4">
-            {stats.map((stat, i) => (
-              <div
-                key={stat.label}
-                className={[
-                  'py-5 px-8 flex flex-col gap-0.5',
-                  i < stats.length - 1 ? 'border-r border-[#D6DFDA]' : '',
-                ].join(' ')}
-              >
-                <span className="font-display text-[clamp(16px,3.5vw,24px)] font-bold text-[#0ABAB5] leading-tight">
-                  {stat.number}
-                </span>
-                <span className="text-[9px] tracking-[0.18em] uppercase text-[#6D6C67]">
-                  {stat.label}
-                </span>
-              </div>
-            ))}
-          </div>
-        </motion.div>
-
         {/* ── CSS keyframes ────────────────────────── */}
         <style>{`
           @keyframes scrollPulse {
             0%, 100% { opacity: 0.3; transform: scaleY(0.8) translateY(-4px); }
             50%       { opacity: 1;   transform: scaleY(1) translateY(0); }
           }
-        `}</style>
+        `}        </style>
         </div>
       </section>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0 }}
+        transition={{ delay: 0.3, duration: 0.8 }}
+        className="relative z-10 flex flex-col border-t border-[#D6DFDA] bg-[#F7F5F1]"
+      >
+        <p className="mx-auto max-w-[36rem] border-b border-[#D6DFDA] px-4 py-3 text-center text-[11px] font-light leading-[1.6] text-[#6D6C67] md:px-12 md:py-3.5 md:text-[12px]">
+          {statsStripSubline}
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-4">
+          {stats.map((stat, i) => (
+            <div
+              key={stat.label}
+              className={[
+                'py-5 px-8 flex flex-col gap-0.5',
+                i < stats.length - 1 ? 'border-r border-[#D6DFDA]' : '',
+              ].join(' ')}
+            >
+              <span className="font-display text-[clamp(16px,3.5vw,24px)] font-bold text-[#0ABAB5] leading-tight">
+                {stat.number}
+              </span>
+              <span className="text-[9px] tracking-[0.18em] uppercase text-[#6D6C67]">
+                {stat.label}
+              </span>
+            </div>
+          ))}
+        </div>
+      </motion.div>
 
       {/* ── Lightbox ─────────────────────────────── */}
       <AnimatePresence>
