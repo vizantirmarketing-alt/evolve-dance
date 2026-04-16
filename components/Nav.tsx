@@ -32,9 +32,9 @@ export default function Nav({ links }: NavProps) {
         top: 0, left: 0, right: 0,
         zIndex: 9999,
         height: '72px',
-        backgroundColor: 'rgba(7,10,9,0.98)',
+        backgroundColor: 'rgba(247,245,241,0.96)',
         backdropFilter: 'blur(20px)',
-        borderBottom: '1px solid rgba(45,212,191,0.12)',
+        borderBottom: '1px solid #D6DFDA',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -49,15 +49,15 @@ export default function Nav({ links }: NavProps) {
           fontSize: '13px',
           letterSpacing: '0.22em',
           textTransform: 'uppercase',
-          color: '#f0faf8',
+          color: '#1F1F1C',
           textDecoration: 'none',
           whiteSpace: 'nowrap',
         }}>
           <span style={{
             width: '6px', height: '6px',
             borderRadius: '50%',
-            backgroundColor: '#2dd4bf',
-            boxShadow: '0 0 8px #2dd4bf',
+            backgroundColor: '#3E9F97',
+            boxShadow: '0 0 8px #3E9F97',
             flexShrink: 0,
           }} />
           {siteConfig.name}
@@ -90,7 +90,7 @@ export default function Nav({ links }: NavProps) {
                 fontSize: '11px',
                 letterSpacing: '0.14em',
                 textTransform: 'uppercase',
-                color: '#e2e8f0',
+                color: '#6D6C67',
                 textDecoration: 'none',
               }}>
                 {link.label}
@@ -108,8 +108,8 @@ export default function Nav({ links }: NavProps) {
               fontSize: '11px', fontWeight: 500,
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
-              color: '#070a09',
-              backgroundColor: '#2dd4bf',
+              color: 'white',
+              backgroundColor: '#3E9F97',
               padding: '10px 24px',
               textDecoration: 'none',
               clipPath: 'polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%)',
@@ -140,19 +140,19 @@ export default function Nav({ links }: NavProps) {
             }}>
             <span style={{
               display: 'block', width: '24px', height: '1.5px',
-              backgroundColor: '#f0faf8',
+              backgroundColor: '#1F1F1C',
               transition: 'all 0.3s',
               transform: menuOpen ? 'rotate(45deg) translateY(6px)' : 'none',
             }} />
             <span style={{
               display: 'block', width: '24px', height: '1.5px',
-              backgroundColor: '#f0faf8',
+              backgroundColor: '#1F1F1C',
               transition: 'all 0.3s',
               opacity: menuOpen ? 0 : 1,
             }} />
             <span style={{
               display: 'block', width: '24px', height: '1.5px',
-              backgroundColor: '#f0faf8',
+              backgroundColor: '#1F1F1C',
               transition: 'all 0.3s',
               transform: menuOpen ? 'rotate(-45deg) translateY(-6px)' : 'none',
             }} />
@@ -165,7 +165,7 @@ export default function Nav({ links }: NavProps) {
         <div style={{
           position: 'fixed',
           top: 0, left: 0, right: 0, bottom: 0,
-          backgroundColor: '#070a09',
+          backgroundColor: '#F7F5F1',
           zIndex: 99999,
           display: 'flex',
           flexDirection: 'column',
@@ -186,10 +186,10 @@ export default function Nav({ links }: NavProps) {
               background: 'none',
               border: 'none',
               cursor: 'pointer',
-              color: '#2dd4bf',
+              color: '#3E9F97',
             }}>
             <svg width="24" height="24" viewBox="0 0 24 24"
-              fill="none" stroke="#2dd4bf"
+              fill="none" stroke="#3E9F97"
               strokeWidth="1.5" strokeLinecap="round">
               <line x1="4" y1="4" x2="20" y2="20" />
               <line x1="20" y1="4" x2="4" y2="20" />
@@ -211,9 +211,9 @@ export default function Nav({ links }: NavProps) {
                     fontWeight: 300,
                     letterSpacing: '0.1em',
                     textTransform: 'uppercase',
-                    color: '#f0faf8',
+                    color: '#1F1F1C',
                     textDecoration: 'none',
-                    borderBottom: '1px solid rgba(45,212,191,0.08)',
+                    borderBottom: '1px solid #D6DFDA',
                   }}>
                   {link.label}
                 </Link>
@@ -227,8 +227,8 @@ export default function Nav({ links }: NavProps) {
                   fontSize: '11px', fontWeight: 500,
                   letterSpacing: '0.14em',
                   textTransform: 'uppercase',
-                  color: '#070a09',
-                  backgroundColor: '#2dd4bf',
+                  color: 'white',
+                  backgroundColor: '#3E9F97',
                   padding: '14px 28px',
                   textDecoration: 'none',
                 }}>

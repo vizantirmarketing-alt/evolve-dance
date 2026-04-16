@@ -9,18 +9,30 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Brand tokens
-        black:     '#070a09',
-        'black-soft': '#0d1210',
-        charcoal:  '#111916',
+        background: '#F7F5F1',
+        'background-warm': '#FCFBF8',
+        'background-mint': '#EAF3F0',
+        foreground: '#1F1F1C',
+        'foreground-muted': '#6D6C67',
+        border: '#D6DFDA',
+
         teal: {
-          DEFAULT: '#2dd4bf',
-          dim:     '#1aaf9c',
-          light:   '#3ef0d8',
+          DEFAULT: '#3E9F97',
+          hover: '#5FBDB3',
+          soft: '#81D8D0',
+          light: '#EAF3F0',
         },
-        'off-white': '#f0faf8',
-        'off-mid':   '#c8e0db',
-        mid:       '#5c7a74',
+
+        project: {
+          DEFAULT: '#173432',
+          foreground: '#F4FBF9',
+          accent: '#81D8D0',
+        },
+
+        status: {
+          open: '#3E9F97',
+          full: '#B97568',
+        },
       },
       fontFamily: {
         display: ['var(--font-playfair)', 'Georgia', 'serif'],
@@ -42,8 +54,8 @@ const config: Config = {
       },
       keyframes: {
         pulseDot: {
-          '0%, 100%': { opacity: '1', boxShadow: '0 0 8px #2dd4bf' },
-          '50%':      { opacity: '0.6', boxShadow: '0 0 16px #2dd4bf, 0 0 32px rgba(45,212,191,0.18)' },
+          '0%, 100%': { opacity: '1', boxShadow: '0 0 8px #3E9F97' },
+          '50%':      { opacity: '0.6', boxShadow: '0 0 16px #3E9F97, 0 0 32px rgba(62,159,151,0.18)' },
         },
         ticker: {
           '0%':   { transform: 'translateX(0)' },
@@ -67,8 +79,8 @@ const config: Config = {
           '50%':      { transform: 'translateY(-30px) scale(1.05)' },
         },
         ringPulse: {
-          '0%, 100%': { boxShadow: '0 0 0 0 rgba(45,212,191,0)' },
-          '50%':      { boxShadow: '0 0 40px 0 rgba(45,212,191,0.08)' },
+          '0%, 100%': { boxShadow: '0 0 0 0 rgba(62,159,151,0)' },
+          '50%':      { boxShadow: '0 0 40px 0 rgba(62,159,151,0.08)' },
         },
       },
       backgroundImage: {

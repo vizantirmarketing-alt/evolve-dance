@@ -4,18 +4,19 @@
 
 /* ── Brand CSS variables ─────────────────────────── */
 :root {
-  --teal:        #2dd4bf;
-  --teal-dim:    #1aaf9c;
-  --teal-glow:   rgba(45, 212, 191, 0.18);
-  --teal-faint:  rgba(45, 212, 191, 0.06);
-  --black:       #070a09;
-  --black-soft:  #0d1210;
-  --charcoal:    #111916;
-  --off-white:   #f0faf8;
-  --off-mid:     #c8e0db;
-  --mid:         #5c7a74;
-  --border:      rgba(45, 212, 191, 0.12);
-  --border-soft: rgba(45, 212, 191, 0.06);
+  --teal:        #3E9F97;
+  --teal-hover:  #5FBDB3;
+  --teal-soft:   #81D8D0;
+  --teal-light:  #EAF3F0;
+  --teal-glow:   rgba(62, 159, 151, 0.18);
+  --teal-faint:  rgba(62, 159, 151, 0.06);
+  --background:  #F7F5F1;
+  --bg-warm:     #FCFBF8;
+  --bg-mint:     #EAF3F0;
+  --foreground:  #1F1F1C;
+  --muted:       #6D6C67;
+  --border:      #D6DFDA;
+  --project:     #173432;
 }
 
 /* ── Base reset ──────────────────────────────────── */
@@ -33,9 +34,10 @@ html {
 }
 
 body {
-  background: var(--black);
-  color: #e2e8f0;
-  font-family: var(--font-dm-sans), system-ui, sans-serif;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-dm-sans), 
+    system-ui, sans-serif;
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

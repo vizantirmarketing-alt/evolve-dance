@@ -7,18 +7,18 @@ export const siteConfig = {
   studioParagraph:
     'With six professional dance rooms, raised wood and marley flooring, live video monitoring, and experienced faculty, Evolve gives dancers a structured space to build technique, confidence, discipline, and consistency at every stage.',
   classesIntro:
-    'From toddler combos to advanced teen training, our classes are designed to meet dancers where they are and help them grow with confidence.',
+    'From early movement classes to advanced training, our programs are built to meet dancers where they are and help them progress with confidence.',
   scheduleIntro:
     "Browse this week's classes by age, level, and style, then book a free trial to find the right fit.",
   facultyIntro:
-    'Our faculty combines strong technical training, real performance experience, and a teaching style that helps dancers grow with confidence.',
+    'Our team brings the experience, care, and high standards that shape confident dancers and meaningful progress in every class.',
   reviewsLabel: 'Why families choose Evolve',
   reviewsIntro:
-    'From structure and professionalism to confidence and growth, families trust Evolve to create a positive dance experience that lasts.',
+    'Families choose Evolve for more than strong classes. They stay for the culture, the consistency, and the way their dancers grow over time.',
   projectBody:
-    "For dancers ready to take the next step, The Project is Evolve's competitive team, built for focused training, real commitment, and meaningful growth in a team driven environment.",
+    "The Project is Evolve's competitive team, created for dancers ready for a more advanced level of training, commitment, and performance opportunity.",
   enrollBody:
-    'Registration is open for all ages and levels, from 18 months to 18 years. Whether your dancer is just getting started or ready for more focused training, a free trial is the best way to experience Evolve and find the right fit.',
+    "Whether your dancer is just beginning or ready for more advanced training, we're here to help them grow in a studio built on strong instruction, support, and high standards.",
   address: '6070 S Rainbow Blvd, Las Vegas, NV 89118',
   addressLine1: '6070 S Rainbow Blvd',
   addressLine2: 'Las Vegas, NV 89118',

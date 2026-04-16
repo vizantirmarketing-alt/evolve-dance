@@ -13,11 +13,14 @@ interface VideoHeroProps {
 
 // ── Stat strip data ──────────────────────────────────
 const stats = [
-  { number: '10+',   label: 'Dance Styles' },
-  { number: '22',    label: 'Expert Faculty' },
-  { number: '9',     label: 'Seasons Strong' },
-  { number: '★ 5.0', label: 'Google Rating' },
+  { number: '9', label: 'Seasons Strong' },
+  { number: '4.6★', label: 'Google Rating' },
+  { number: 'Ages 18mo–18yrs', label: 'All Levels Welcome' },
+  { number: '6', label: 'Dance Rooms' },
 ]
+
+const statsStripSubline =
+  'A studio families trust, dancers grow in, and performers are proud to represent.'
 
 // ── Stagger variants ─────────────────────────────────
 const container = {
@@ -61,7 +64,7 @@ export default function VideoHeroSection({
 
   return (
     <>
-      <section className="relative bg-[#070a09]" style={{ minHeight: '100dvh' }}>
+      <section className="relative" style={{ minHeight: '100dvh', backgroundColor: 'var(--background)' }}>
 
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {/* Mobile — static image, no video */}
@@ -95,7 +98,7 @@ export default function VideoHeroSection({
           className="absolute inset-0 z-10 pointer-events-none"
           style={{
             background:
-              'linear-gradient(to right, rgba(7,10,9,0.82) 0%, rgba(7,10,9,0.55) 50%, rgba(7,10,9,0.2) 100%)',
+              'linear-gradient(to right, rgba(247,245,241,0.15) 0%, rgba(247,245,241,0.05) 50%, rgba(247,245,241,0) 100%)',
           }}
         />
 
@@ -115,8 +118,8 @@ export default function VideoHeroSection({
           >
             {/* Eyebrow */}
             <motion.div variants={item} className="flex items-center gap-4 mb-7">
-              <div className="w-8 h-px bg-teal" />
-              <span className="text-[9px] md:text-[10px] font-medium tracking-[0.2em] md:tracking-[0.25em] uppercase text-teal opacity-100 whitespace-nowrap">
+              <div className="w-8 h-px bg-[#3E9F97]" />
+              <span className="text-[9px] md:text-[10px] font-medium tracking-[0.2em] md:tracking-[0.25em] uppercase text-[#3E9F97] opacity-100 whitespace-nowrap">
                 Las Vegas · Ages 18mo–18yrs · All Levels
               </span>
             </motion.div>
@@ -127,12 +130,12 @@ export default function VideoHeroSection({
               className="font-display font-black leading-[0.88] tracking-tight mb-6"
               style={{ fontSize: 'clamp(52px, 8vw, 112px)' }}
             >
-              <span className="block text-[#f0faf8]">Where dancers</span>
-              <span className="block text-[#f0faf8]">become</span>
+              <span className="block text-[#1F1F1C]">Where dancers</span>
+              <span className="block text-[#1F1F1C]">become</span>
               <span
-                className="block text-teal italic"
+                className="block text-[#3E9F97] italic"
                 style={{
-                  textShadow: '0 0 60px rgba(45,212,191,0.35), 0 0 140px rgba(45,212,191,0.12)',
+                  textShadow: '0 0 60px rgba(62,159,151,0.35), 0 0 140px rgba(62,159,151,0.12)',
                 }}
               >
                 extraordinary.
@@ -142,19 +145,19 @@ export default function VideoHeroSection({
             {/* Subheading */}
             <motion.p
               variants={item}
-              className="text-[15px] md:text-[16px] font-light leading-[1.75] mb-10 max-w-[380px] text-[#cbd5e1]"
+              className="text-[15px] md:text-[16px] font-light leading-[1.75] mb-10 max-w-[380px] text-[#6D6C67]"
               style={{
                 textShadow: '0 1px 12px rgba(0,0,0,0.6)',
               }}
             >
-              Dance classes in Las Vegas for ages 18 months to 18 years, from first steps to focused training.
+              For ages 18 months to 18 years, Evolve offers a supportive studio culture, experienced faculty, and a clear path from first class to advanced performance.
             </motion.p>
 
             {/* CTA buttons */}
             <motion.div variants={item} className="flex flex-col md:flex-row flex-wrap gap-4 items-start mb-6">
               <Link
                 href="/enroll#free-trial"
-                className="pointer-events-auto inline-flex items-center gap-3 w-full md:w-auto text-[11px] font-semibold tracking-[0.15em] uppercase text-black bg-teal px-8 py-4 no-underline transition-all duration-200 hover:bg-teal-light hover:shadow-[0_0_48px_rgba(45,212,191,0.4)] hover:-translate-y-0.5"
+                className="pointer-events-auto inline-flex items-center gap-3 w-full md:w-auto text-[11px] font-semibold tracking-[0.15em] uppercase text-white bg-[#3E9F97] px-8 py-4 no-underline transition-all duration-200 hover:bg-[#5FBDB3] hover:shadow-[0_0_48px_rgba(62,159,151,0.4)] hover:-translate-y-0.5"
                 style={{ clipPath: 'polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%)' }}
               >
                 Book a Free Trial
@@ -165,19 +168,19 @@ export default function VideoHeroSection({
 
               <div className="flex flex-row flex-wrap gap-4 items-center self-start w-auto md:contents">
                 <Link
-                  href="/classes#schedule"
-                  className="pointer-events-auto text-[11px] font-normal tracking-[0.15em] uppercase no-underline pb-0.5 border-b border-[rgba(45,212,191,0.5)] transition-colors duration-200 hover:border-teal hover:text-teal w-auto shrink-0"
-                  style={{ color: 'rgba(240,250,248,0.9)' }}
+                  href="/classes"
+                  className="pointer-events-auto text-[11px] font-normal tracking-[0.15em] uppercase no-underline pb-0.5 border-b border-[#D6DFDA] transition-colors duration-200 hover:border-teal hover:text-teal w-auto shrink-0"
+                  style={{ color: '#6D6C67' }}
                 >
-                  View Schedule
+                  Explore Classes
                 </Link>
 
                 <button
                   onClick={() => setLightbox(true)}
-                  className="pointer-events-auto inline-flex items-center gap-3 w-auto shrink-0 text-[11px] font-medium tracking-[0.15em] uppercase text-[#f0faf8] px-6 py-4 border border-[rgba(45,212,191,0.3)] bg-[rgba(45,212,191,0.08)] transition-all duration-200 hover:bg-[rgba(45,212,191,0.18)] hover:border-[rgba(45,212,191,0.6)]"
+                  className="pointer-events-auto inline-flex items-center gap-3 w-auto shrink-0 text-[11px] font-medium tracking-[0.15em] uppercase text-[#1F1F1C] px-6 py-4 border border-[#D6DFDA] bg-[rgba(62,159,151,0.08)] transition-all duration-200 hover:bg-[rgba(62,159,151,0.18)] hover:border-[rgba(62,159,151,0.6)]"
                 >
-                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-teal flex-shrink-0">
-                    <svg width="8" height="10" viewBox="0 0 8 10" fill="#070a09">
+                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-[#3E9F97] flex-shrink-0">
+                    <svg width="8" height="10" viewBox="0 0 8 10" fill="white">
                       <path d="M0 0L8 5L0 10V0Z" />
                     </svg>
                   </span>
@@ -193,7 +196,7 @@ export default function VideoHeroSection({
           {/* Mute toggle */}
           <button
             onClick={toggleMute}
-            className="w-9 h-9 flex items-center justify-center border border-[rgba(45,212,191,0.25)] bg-[rgba(7,10,9,0.6)] backdrop-blur-sm text-[#f0faf8] transition-all duration-200 hover:border-teal hover:text-teal"
+            className="w-9 h-9 flex items-center justify-center border border-[#D6DFDA] bg-[rgba(247,245,241,0.8)] backdrop-blur-sm text-[#1F1F1C] transition-all duration-200 hover:border-teal hover:text-teal"
             aria-label={muted ? 'Unmute' : 'Mute'}
           >
             {muted ? (
@@ -213,7 +216,7 @@ export default function VideoHeroSection({
           {/* Play/Pause toggle */}
           <button
             onClick={togglePlay}
-            className="w-9 h-9 flex items-center justify-center border border-[rgba(45,212,191,0.25)] bg-[rgba(7,10,9,0.6)] backdrop-blur-sm text-[#f0faf8] transition-all duration-200 hover:border-teal hover:text-teal"
+            className="w-9 h-9 flex items-center justify-center border border-[#D6DFDA] bg-[rgba(247,245,241,0.8)] backdrop-blur-sm text-[#1F1F1C] transition-all duration-200 hover:border-teal hover:text-teal"
             aria-label={playing ? 'Pause' : 'Play'}
           >
             {playing ? (
@@ -240,12 +243,12 @@ export default function VideoHeroSection({
           <div
             className="w-px h-14"
             style={{
-              background: 'linear-gradient(to bottom, #2dd4bf, transparent)',
+              background: 'linear-gradient(to bottom, #3E9F97, transparent)',
               animation: 'scrollPulse 2s ease-in-out infinite',
             }}
           />
           <span
-            className="text-[9px] tracking-[0.2em] uppercase text-[#94a3b8]"
+            className="text-[9px] tracking-[0.2em] uppercase text-[#6D6C67]"
             style={{ writingMode: 'vertical-rl' }}
           >
             Scroll
@@ -258,25 +261,30 @@ export default function VideoHeroSection({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0 }}
           transition={{ delay: 1.1, duration: 0.8 }}
-          className="absolute bottom-0 left-0 right-0 z-[4] grid grid-cols-2 md:grid-cols-4 border-t border-[rgba(45,212,191,0.12)]"
-          style={{ background: 'rgba(7,10,9,0.75)', backdropFilter: 'blur(16px)' }}
+          className="absolute bottom-0 left-0 right-0 z-[4] flex flex-col border-t border-[#D6DFDA]"
+          style={{ background: 'rgba(247,245,241,0.92)', backdropFilter: 'blur(16px)' }}
         >
-          {stats.map((stat, i) => (
-            <div
-              key={stat.label}
-              className={[
-                'py-5 px-8 flex flex-col gap-0.5',
-                i < stats.length - 1 ? 'border-r border-[rgba(45,212,191,0.12)]' : '',
-              ].join(' ')}
-            >
-              <span className="font-display text-[24px] font-bold text-teal leading-none">
-                {stat.number}
-              </span>
-              <span className="text-[9px] tracking-[0.18em] uppercase text-[#94a3b8]">
-                {stat.label}
-              </span>
-            </div>
-          ))}
+          <p className="text-center text-[11px] md:text-[12px] font-light leading-[1.6] text-[#6D6C67] px-6 md:px-12 py-3 md:py-3.5 max-w-[36rem] mx-auto border-b border-[#D6DFDA]">
+            {statsStripSubline}
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4">
+            {stats.map((stat, i) => (
+              <div
+                key={stat.label}
+                className={[
+                  'py-5 px-8 flex flex-col gap-0.5',
+                  i < stats.length - 1 ? 'border-r border-[#D6DFDA]' : '',
+                ].join(' ')}
+              >
+                <span className="font-display text-[clamp(16px,3.5vw,24px)] font-bold text-[#3E9F97] leading-tight">
+                  {stat.number}
+                </span>
+                <span className="text-[9px] tracking-[0.18em] uppercase text-[#6D6C67]">
+                  {stat.label}
+                </span>
+              </div>
+            ))}
+          </div>
         </motion.div>
 
         {/* ── CSS keyframes ────────────────────────── */}

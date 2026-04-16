@@ -4,6 +4,7 @@ import VideoHeroSection from '@/components/sections/VideoHeroSection'
 import {
   TickerSection,
   AboutSection,
+  WhyFamiliesChooseSection,
   ClassesSection,
   ScheduleSection,
   InstructorsSection,
@@ -25,6 +26,7 @@ export default function HomePage() {
         />
         <TickerSection />
         <AboutSection />
+        <WhyFamiliesChooseSection />
         <ClassesSection />
         <ScheduleSection />
         <InstructorsSection />
