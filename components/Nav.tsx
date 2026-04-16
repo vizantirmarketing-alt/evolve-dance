@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
 import { siteConfig } from '@/data/site'
 
 export interface NavLinkItem {
@@ -98,22 +99,13 @@ export default function Nav({ links }: NavProps) {
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           {/* Desktop enroll */}
-          <a href={siteConfig.jackrabbitEnroll}
-            target="_blank" rel="noopener noreferrer"
-            className="nav-desktop"
-            style={{
-              fontSize: '11px', fontWeight: 500,
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              color: 'white',
-              backgroundColor: '#0ABAB5',
-              padding: '10px 24px',
-              textDecoration: 'none',
-              clipPath: 'polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%)',
-              whiteSpace: 'nowrap',
-            }}>
-            {siteConfig.enrollCtaLabel}
-          </a>
+          <Link
+            href="/enroll"
+            className="nav-desktop group relative inline-flex items-center gap-2 bg-[#0ABAB5] px-5 py-2.5 text-xs font-medium tracking-wider text-white no-underline transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#087876] hover:shadow-lg hover:shadow-[#0ABAB5]/25 rounded-sm"
+          >
+            <span>{siteConfig.enrollCtaLabel}</span>
+            <ArrowRight className="h-3.5 w-3.5 shrink-0 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+          </Link>
 
           {/* Hamburger */}
           <button
