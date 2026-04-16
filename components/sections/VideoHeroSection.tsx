@@ -149,7 +149,14 @@ export default function VideoHeroSection({
 
             {/* CTA buttons — mobile: primary + watch link; desktop: all three */}
             <motion.div variants={item} className="mb-6 w-full md:mb-6">
-              <div className="flex flex-col items-start gap-4 md:hidden">
+              <div className="flex flex-col items-start gap-3 md:hidden">
+                <Link
+                  href="/classes"
+                  className="group pointer-events-auto inline-flex self-start items-center justify-center gap-2 bg-black/30 backdrop-blur-sm text-sm font-medium tracking-wider text-white px-4 py-2.5 rounded-sm transition-colors hover:bg-black/50"
+                >
+                  Explore Classes
+                  <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" aria-hidden />
+                </Link>
                 <button
                   type="button"
                   onClick={() => setLightbox(true)}
