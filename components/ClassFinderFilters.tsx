@@ -34,8 +34,8 @@ function Pill({
       className={cn(
         'rounded-full px-4 py-2 text-xs font-medium transition-colors',
         active
-          ? 'bg-[#2DD4BF] text-black border border-[#2DD4BF]'
-          : 'bg-[#111916] text-[#94a3b8] border border-[rgba(45,212,191,0.12)]'
+          ? 'bg-[#0ABAB5] text-black border border-[#0ABAB5]'
+          : 'bg-[#111916] text-[#94a3b8] border border-[rgba(10,186,181,0.12)]'
       )}
     >
       {children}
@@ -107,7 +107,7 @@ export default function ClassFinderFilters({
           step={1}
           value={selectedAge}
           onChange={(e) => onAgeChange(Number(e.target.value))}
-          className="w-full h-2 rounded-full appearance-none cursor-pointer bg-[#111916] accent-[#2DD4BF]"
+          className="w-full h-2 rounded-full appearance-none cursor-pointer bg-[#111916] accent-[#0ABAB5]"
         />
       </div>
 
@@ -115,7 +115,7 @@ export default function ClassFinderFilters({
         <button
           type="button"
           onClick={onReset}
-          className="self-start text-xs font-medium uppercase tracking-wider text-[#2DD4BF] border-b border-[rgba(45,212,191,0.35)] pb-0.5 hover:border-[#2DD4BF] transition-colors"
+          className="self-start text-xs font-medium uppercase tracking-wider text-[#0ABAB5] border-b border-[rgba(10,186,181,0.35)] pb-0.5 hover:border-[#0ABAB5] transition-colors"
         >
           Clear filters
         </button>

@@ -20,8 +20,8 @@ export default function HeroSection() {
         className="absolute inset-0 z-0"
         style={{
           background: `
-            radial-gradient(ellipse 80% 60% at 65% 40%, rgba(45,212,191,0.09) 0%, transparent 60%),
-            radial-gradient(ellipse 40% 40% at 80% 20%, rgba(45,212,191,0.05) 0%, transparent 50%),
+            radial-gradient(ellipse 80% 60% at 65% 40%, rgba(10,186,181,0.09) 0%, transparent 60%),
+            radial-gradient(ellipse 40% 40% at 80% 20%, rgba(10,186,181,0.05) 0%, transparent 50%),
             linear-gradient(160deg, rgba(7,10,9,0.2) 0%, rgba(7,10,9,0.85) 55%, rgba(7,10,9,0.99) 100%)
           `,
         }}
@@ -32,8 +32,8 @@ export default function HeroSection() {
         className="absolute inset-0 z-0"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(45,212,191,0.04) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(45,212,191,0.04) 1px, transparent 1px)
+            linear-gradient(rgba(10,186,181,0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(10,186,181,0.04) 1px, transparent 1px)
           `,
           backgroundSize: '80px 80px',
           maskImage: 'radial-gradient(ellipse at 70% 40%, black 20%, transparent 70%)',
@@ -45,7 +45,7 @@ export default function HeroSection() {
         className="absolute z-0 rounded-full animate-orb-float pointer-events-none"
         style={{
           width: 500, height: 500,
-          background: 'radial-gradient(circle, rgba(45,212,191,0.12) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(10,186,181,0.12) 0%, transparent 70%)',
           filter: 'blur(80px)',
           top: -100, right: '10%',
         }}
@@ -54,7 +54,7 @@ export default function HeroSection() {
         className="absolute z-0 rounded-full animate-orb-float-r pointer-events-none"
         style={{
           width: 300, height: 300,
-          background: 'radial-gradient(circle, rgba(45,212,191,0.06) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(10,186,181,0.06) 0%, transparent 70%)',
           filter: 'blur(80px)',
           bottom: '20%', right: '30%',
         }}
@@ -74,7 +74,7 @@ export default function HeroSection() {
               top: '50%',
               transform: 'translateY(-50%)',
               width: 360, height: 360,
-              border: '1px solid rgba(45,212,191,0.15)',
+              border: '1px solid rgba(10,186,181,0.15)',
             }}
           />
 
@@ -99,16 +99,16 @@ export default function HeroSection() {
                 </feMerge>
               </filter>
             </defs>
-            <circle cx="148" cy="48" r="30" fill="#2dd4bf" opacity="0.9" />
-            <line x1="148" y1="78" x2="148" y2="100" stroke="#2dd4bf" strokeWidth="12" strokeLinecap="round" opacity="0.8" />
-            <path d="M148 100 C122 125 110 162 116 198 C120 222 138 238 148 242 C158 238 176 222 180 198 C186 162 174 125 148 100Z" fill="#2dd4bf" opacity="0.85" />
-            <path d="M118 130 C96 112 68 88 42 60" stroke="#2dd4bf" strokeWidth="13" strokeLinecap="round" opacity="0.8" />
-            <path d="M178 128 C202 114 232 106 262 108" stroke="#2dd4bf" strokeWidth="13" strokeLinecap="round" opacity="0.8" />
-            <path d="M138 240 C130 278 122 316 116 352 C110 378 104 400 100 426" stroke="#2dd4bf" strokeWidth="15" strokeLinecap="round" opacity="0.8" />
-            <path d="M158 240 C168 268 184 300 208 334 C228 360 250 378 272 392" stroke="#2dd4bf" strokeWidth="15" strokeLinecap="round" opacity="0.8" />
-            <path d="M100 426 C92 440 84 450 76 452" stroke="#2dd4bf" strokeWidth="10" strokeLinecap="round" opacity="0.7" />
-            <path d="M272 392 C282 398 290 400 296 397" stroke="#2dd4bf" strokeWidth="10" strokeLinecap="round" opacity="0.7" />
-            <circle cx="148" cy="48" r="30" fill="#2dd4bf" opacity="0.15" filter="url(#glow)" />
+            <circle cx="148" cy="48" r="30" fill="#0ABAB5" opacity="0.9" />
+            <line x1="148" y1="78" x2="148" y2="100" stroke="#0ABAB5" strokeWidth="12" strokeLinecap="round" opacity="0.8" />
+            <path d="M148 100 C122 125 110 162 116 198 C120 222 138 238 148 242 C158 238 176 222 180 198 C186 162 174 125 148 100Z" fill="#0ABAB5" opacity="0.85" />
+            <path d="M118 130 C96 112 68 88 42 60" stroke="#0ABAB5" strokeWidth="13" strokeLinecap="round" opacity="0.8" />
+            <path d="M178 128 C202 114 232 106 262 108" stroke="#0ABAB5" strokeWidth="13" strokeLinecap="round" opacity="0.8" />
+            <path d="M138 240 C130 278 122 316 116 352 C110 378 104 400 100 426" stroke="#0ABAB5" strokeWidth="15" strokeLinecap="round" opacity="0.8" />
+            <path d="M158 240 C168 268 184 300 208 334 C228 360 250 378 272 392" stroke="#0ABAB5" strokeWidth="15" strokeLinecap="round" opacity="0.8" />
+            <path d="M100 426 C92 440 84 450 76 452" stroke="#0ABAB5" strokeWidth="10" strokeLinecap="round" opacity="0.7" />
+            <path d="M272 392 C282 398 290 400 296 397" stroke="#0ABAB5" strokeWidth="10" strokeLinecap="round" opacity="0.7" />
+            <circle cx="148" cy="48" r="30" fill="#0ABAB5" opacity="0.15" filter="url(#glow)" />
           </motion.svg>
         </div>
       </div>
@@ -170,7 +170,7 @@ export default function HeroSection() {
               'text-[11px] font-medium tracking-[0.15em] uppercase',
               'text-black bg-teal px-8 py-4',
               'transition-all duration-200',
-              'hover:bg-teal-light hover:shadow-[0_0_40px_rgba(45,212,191,0.35)] hover:-translate-y-0.5',
+              'hover:bg-teal-light hover:shadow-[0_0_40px_rgba(10,186,181,0.35)] hover:-translate-y-0.5',
             ].join(' ')}
           >
             View Schedule
@@ -181,7 +181,7 @@ export default function HeroSection() {
 
           <Link
             href="/enroll#free-trial"
-            className="text-[11px] font-normal tracking-[0.15em] uppercase text-[#cbd5e1] no-underline border-b border-[rgba(45,212,191,0.25)] pb-0.5 transition-colors duration-200 hover:text-teal hover:border-teal"
+            className="text-[11px] font-normal tracking-[0.15em] uppercase text-[#cbd5e1] no-underline border-b border-[rgba(10,186,181,0.25)] pb-0.5 transition-colors duration-200 hover:text-teal hover:border-teal"
           >
             Book a Free Trial
           </Link>
@@ -194,14 +194,14 @@ export default function HeroSection() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, amount: 0 }}
         transition={{ duration: 0.8, delay: 1 }}
-        className="absolute bottom-0 left-0 right-0 z-[3] grid grid-cols-4 border-t border-[rgba(45,212,191,0.12)]"
+        className="absolute bottom-0 left-0 right-0 z-[3] grid grid-cols-4 border-t border-[rgba(10,186,181,0.12)]"
       >
         {stats.map((stat, i) => (
           <div
             key={stat.label}
             className={[
               'py-5 px-8 flex flex-col gap-0.5',
-              i < stats.length - 1 ? 'border-r border-[rgba(45,212,191,0.12)]' : '',
+              i < stats.length - 1 ? 'border-r border-[rgba(10,186,181,0.12)]' : '',
             ].join(' ')}
           >
             <span className="font-display text-[28px] font-bold text-teal leading-none">
@@ -224,7 +224,7 @@ export default function HeroSection() {
       >
         <div
           className="w-px h-14 animate-scroll-line"
-          style={{ background: 'linear-gradient(to bottom, #2dd4bf, transparent)' }}
+          style={{ background: 'linear-gradient(to bottom, #0ABAB5, transparent)' }}
         />
         <span
           className="text-[9px] tracking-[0.2em] uppercase text-[#94a3b8]"

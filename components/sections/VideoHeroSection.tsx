@@ -65,7 +65,7 @@ export default function VideoHeroSection({
 
   return (
     <>
-      <section className="relative" style={{ minHeight: '100dvh', backgroundColor: 'var(--background)' }}>
+      <section className="relative pb-16 md:pb-0" style={{ minHeight: '100dvh', backgroundColor: 'var(--background)' }}>
 
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {/* Mobile — static image, no video */}
@@ -92,24 +92,17 @@ export default function VideoHeroSection({
               <source src={videoSrc} type="video/mp4" />
             </video>
           </div>
-        </div>
 
-        {/* Gradient overlay — darker left, lighter right */}
-        <div
-          className="absolute inset-0 z-10 pointer-events-none"
-          style={{
-            background:
-              'linear-gradient(to right, rgba(247,245,241,0.15) 0%, rgba(247,245,241,0.05) 50%, rgba(247,245,241,0) 100%)',
-          }}
-        />
+          <div className="absolute inset-0 z-[1] bg-gradient-to-b from-black/20 via-black/40 to-black/60 md:bg-gradient-to-r md:from-black/60 md:via-black/30 md:to-transparent pointer-events-none" />
+        </div>
 
         {/* Hero content */}
         <div
-          className="relative z-20 flex w-full flex-col justify-end px-4 pb-40 pt-16 md:px-12 md:pb-28 md:pt-24"
+          className="relative z-10 flex w-full flex-col justify-start px-4 pt-24 pb-40 md:justify-end md:px-12 md:pb-28 md:pt-32"
           style={{ minHeight: '100dvh' }}
         >
-        {/* ── Main content — z above stat strip (z-[4]) */}
-        <div className="relative z-[30] w-full">
+        {/* ── Main content — above stat strip (z-[4]) */}
+        <div className="relative z-[30] w-full md:mt-0">
           <motion.div
             variants={container}
             initial="hidden"
@@ -119,8 +112,8 @@ export default function VideoHeroSection({
           >
             {/* Eyebrow */}
             <motion.div variants={item} className="mb-7 flex w-full items-center justify-start gap-4 text-left">
-              <div className="w-8 shrink-0 bg-[#3E9F97] h-px" />
-              <span className="text-left text-[9px] font-medium uppercase tracking-[0.2em] text-[#3E9F97] opacity-100 md:text-[10px] md:tracking-[0.25em] whitespace-normal md:whitespace-nowrap">
+              <div className="w-8 shrink-0 bg-[#0ABAB5] h-px" />
+              <span className="text-left text-[9px] font-medium uppercase tracking-[0.2em] text-[#0ABAB5] opacity-100 md:text-[10px] md:tracking-[0.25em] whitespace-normal md:whitespace-nowrap">
                 Las Vegas · Ages 18mo–18yrs · All Levels
               </span>
             </motion.div>
@@ -134,9 +127,9 @@ export default function VideoHeroSection({
               <span className="block text-[#F7F5F1]">Where dancers</span>
               <span className="block text-[#F7F5F1]">become</span>
               <span
-                className="block text-[#3E9F97] italic"
+                className="block text-[#0ABAB5] italic"
                 style={{
-                  textShadow: '0 0 60px rgba(62,159,151,0.35), 0 0 140px rgba(62,159,151,0.12)',
+                  textShadow: '0 0 60px rgba(10,186,181,0.35), 0 0 140px rgba(10,186,181,0.12)',
                 }}
               >
                 extraordinary.
@@ -159,7 +152,7 @@ export default function VideoHeroSection({
               <div className="flex flex-col gap-4 md:hidden">
                 <Link
                   href="/enroll#free-trial"
-                  className="group pointer-events-auto inline-flex w-full items-center justify-center gap-2 rounded-sm bg-[#1D9E75] px-6 py-3.5 text-sm font-medium tracking-wider text-white no-underline transition-all hover:bg-[#0F6E56]"
+                  className="group pointer-events-auto inline-flex w-full items-center justify-center gap-2 rounded-sm bg-[#0ABAB5] px-6 py-3.5 text-sm font-medium tracking-wider text-white no-underline transition-all hover:bg-[#087876]"
                 >
                   BOOK A FREE TRIAL
                   <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" aria-hidden />
@@ -167,10 +160,10 @@ export default function VideoHeroSection({
                 <button
                   type="button"
                   onClick={() => setLightbox(true)}
-                  className="group pointer-events-auto inline-flex items-center justify-center gap-2 text-sm font-medium tracking-wider text-white/90 transition-colors hover:text-white"
+                  className="group pointer-events-auto inline-flex items-center justify-center gap-2 self-start bg-black/30 backdrop-blur-sm text-white text-sm font-medium tracking-wider px-4 py-2.5 rounded-sm transition-colors hover:bg-black/50"
                 >
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white/15 transition-colors group-hover:bg-white/25">
-                    <Play className="ml-0.5 h-3 w-3 fill-white text-white" aria-hidden />
+                  <span className="flex items-center justify-center w-6 h-6 rounded-full bg-white/20 group-hover:bg-white/30 transition-colors">
+                    <Play className="w-2.5 h-2.5 fill-white ml-0.5" aria-hidden />
                   </span>
                   Watch the studio
                 </button>
@@ -179,7 +172,7 @@ export default function VideoHeroSection({
               <div className="hidden md:flex md:flex-row md:flex-wrap md:items-start md:gap-4">
                 <Link
                   href="/enroll#free-trial"
-                  className="group pointer-events-auto relative inline-flex w-full items-center justify-center gap-2 rounded-sm bg-[#1D9E75] px-6 py-3 text-sm font-medium tracking-wider text-white no-underline transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#0F6E56] hover:shadow-lg hover:shadow-[#1D9E75]/25 md:w-auto md:justify-start"
+                  className="group pointer-events-auto relative inline-flex w-full items-center justify-center gap-2 rounded-sm bg-[#0ABAB5] px-6 py-3 text-sm font-medium tracking-wider text-white no-underline transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#087876] hover:shadow-lg hover:shadow-[#0ABAB5]/25 md:w-auto md:justify-start"
                 >
                   <span>Book a Free Trial</span>
                   <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
@@ -209,7 +202,7 @@ export default function VideoHeroSection({
         </div>
 
         {/* ── Video controls ───────────────────────── */}
-        <div className="absolute top-6 right-6 z-[10] hidden md:flex gap-2">
+        <div className="absolute top-6 right-6 z-[60] hidden md:flex gap-2">
           {/* Mute toggle */}
           <button
             onClick={toggleMute}
@@ -260,7 +253,7 @@ export default function VideoHeroSection({
           <div
             className="w-px h-14"
             style={{
-              background: 'linear-gradient(to bottom, #3E9F97, transparent)',
+              background: 'linear-gradient(to bottom, #0ABAB5, transparent)',
               animation: 'scrollPulse 2s ease-in-out infinite',
             }}
           />
@@ -278,7 +271,7 @@ export default function VideoHeroSection({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0 }}
           transition={{ delay: 1.1, duration: 0.8 }}
-          className="absolute bottom-0 left-0 right-0 z-[4] flex flex-col border-t border-[#D6DFDA]"
+          className="absolute bottom-0 left-0 right-0 z-40 flex flex-col border-t border-[#D6DFDA]"
           style={{ background: 'rgba(247,245,241,0.92)', backdropFilter: 'blur(16px)' }}
         >
           <p className="mx-auto max-w-[36rem] border-b border-[#D6DFDA] px-4 py-3 text-center text-[11px] font-light leading-[1.6] text-[#6D6C67] md:px-12 md:py-3.5 md:text-[12px]">
@@ -293,7 +286,7 @@ export default function VideoHeroSection({
                   i < stats.length - 1 ? 'border-r border-[#D6DFDA]' : '',
                 ].join(' ')}
               >
-                <span className="font-display text-[clamp(16px,3.5vw,24px)] font-bold text-[#3E9F97] leading-tight">
+                <span className="font-display text-[clamp(16px,3.5vw,24px)] font-bold text-[#0ABAB5] leading-tight">
                   {stat.number}
                 </span>
                 <span className="text-[9px] tracking-[0.18em] uppercase text-[#6D6C67]">
@@ -330,7 +323,7 @@ export default function VideoHeroSection({
               animate={{ scale: 1,    opacity: 1 }}
               exit={{ scale: 0.95,    opacity: 0 }}
               transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="relative w-full max-w-[900px] mx-6 border border-[rgba(45,212,191,0.2)]"
+              className="relative w-full max-w-[900px] mx-6 border border-[rgba(10,186,181,0.2)]"
               onClick={e => e.stopPropagation()}
             >
               {/* Lightbox video */}
@@ -355,7 +348,7 @@ export default function VideoHeroSection({
               </button>
 
               {/* Caption */}
-              <div className="bg-[#111916] px-6 py-4 border-t border-[rgba(45,212,191,0.12)]">
+              <div className="bg-[#111916] px-6 py-4 border-t border-[rgba(10,186,181,0.12)]">
                 <p className="text-[11px] tracking-[0.15em] uppercase text-teal font-medium">
                   Evolve Dance Center — Las Vegas
                 </p>

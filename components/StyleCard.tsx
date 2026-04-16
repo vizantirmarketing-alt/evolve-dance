@@ -54,9 +54,9 @@ export default function StyleCard({
   const href = `${siteConfig.classesPath}?style=${encodeURIComponent(id)}#${siteConfig.classFinderSectionId}`
 
   return (
-    <article className="bg-[#111916] border border-[rgba(45,212,191,0.12)] hover:border-[#2DD4BF]/20 transition-colors duration-200 p-6 flex flex-col gap-5 h-full">
+    <article className="bg-[#111916] border border-[rgba(10,186,181,0.12)] hover:border-[#0ABAB5]/20 transition-colors duration-200 p-6 flex flex-col gap-5 h-full">
       <div>
-        <p className="text-[10px] font-semibold tracking-[0.18em] uppercase text-[#2DD4BF] mb-3">
+        <p className="text-[10px] font-semibold tracking-[0.18em] uppercase text-[#0ABAB5] mb-3">
           {highlight}
         </p>
         <h3 className="font-display text-[clamp(22px,2.5vw,28px)] font-bold text-[#f0faf8] leading-tight">
@@ -70,7 +70,7 @@ export default function StyleCard({
 
       <div className="flex flex-col gap-3 text-[12px] text-[#f0faf8]">
         <div className="flex items-start gap-2.5">
-          <IconUsers className="shrink-0 mt-0.5 text-[#2DD4BF]/80" />
+          <IconUsers className="shrink-0 mt-0.5 text-[#0ABAB5]/80" />
           <div>
             <span className="text-[#94a3b8] text-[10px] uppercase tracking-wider block mb-0.5">
               Ages
@@ -79,7 +79,7 @@ export default function StyleCard({
           </div>
         </div>
         <div className="flex items-start gap-2.5">
-          <IconShoe className="shrink-0 mt-0.5 text-[#2DD4BF]/80" />
+          <IconShoe className="shrink-0 mt-0.5 text-[#0ABAB5]/80" />
           <div>
             <span className="text-[#94a3b8] text-[10px] uppercase tracking-wider block mb-0.5">
               Shoes
@@ -91,7 +91,7 @@ export default function StyleCard({
 
       <Link
         href={href}
-        className="mt-auto inline-flex items-center justify-center w-full py-3 px-4 text-[11px] font-semibold tracking-[0.15em] uppercase text-black bg-[#2DD4BF] no-underline transition-colors hover:bg-[#3ef0d8]"
+        className="mt-auto inline-flex items-center justify-center w-full py-3 px-4 text-[11px] font-semibold tracking-[0.15em] uppercase text-black bg-[#0ABAB5] no-underline transition-colors hover:bg-[#81D8D0]"
       >
         {siteConfig.viewClassesCtaLabel}
       </Link>

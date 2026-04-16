@@ -30,7 +30,7 @@ export default function Nav({ links }: NavProps) {
       <nav style={{
         position: 'fixed',
         top: 0, left: 0, right: 0,
-        zIndex: 9999,
+        zIndex: 50,
         height: '72px',
         backgroundColor: 'rgba(247,245,241,0.96)',
         backdropFilter: 'blur(20px)',
@@ -56,8 +56,8 @@ export default function Nav({ links }: NavProps) {
           <span style={{
             width: '6px', height: '6px',
             borderRadius: '50%',
-            backgroundColor: '#3E9F97',
-            boxShadow: '0 0 8px #3E9F97',
+            backgroundColor: '#0ABAB5',
+            boxShadow: '0 0 8px #0ABAB5',
             flexShrink: 0,
           }} />
           {siteConfig.name}
@@ -88,7 +88,7 @@ export default function Nav({ links }: NavProps) {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="text-sm font-medium tracking-wide uppercase text-[#1F1F1C] no-underline [text-shadow:_0_1px_1px_rgb(0_0_0_/_0.08)] transition-colors duration-200 hover:text-[#5DCAA5]"
+                className="text-sm font-medium tracking-wide uppercase text-[#1F1F1C] no-underline [text-shadow:_0_1px_1px_rgb(0_0_0_/_0.08)] transition-colors duration-200 hover:text-[#81D8D0]"
               >
                 {link.label}
               </Link>
@@ -106,7 +106,7 @@ export default function Nav({ links }: NavProps) {
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
               color: 'white',
-              backgroundColor: '#3E9F97',
+              backgroundColor: '#0ABAB5',
               padding: '10px 24px',
               textDecoration: 'none',
               clipPath: 'polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%)',
@@ -183,10 +183,10 @@ export default function Nav({ links }: NavProps) {
               background: 'none',
               border: 'none',
               cursor: 'pointer',
-              color: '#3E9F97',
+              color: '#0ABAB5',
             }}>
             <svg width="24" height="24" viewBox="0 0 24 24"
-              fill="none" stroke="#3E9F97"
+              fill="none" stroke="#0ABAB5"
               strokeWidth="1.5" strokeLinecap="round">
               <line x1="4" y1="4" x2="20" y2="20" />
               <line x1="20" y1="4" x2="4" y2="20" />
@@ -225,7 +225,7 @@ export default function Nav({ links }: NavProps) {
                   letterSpacing: '0.14em',
                   textTransform: 'uppercase',
                   color: 'white',
-                  backgroundColor: '#3E9F97',
+                  backgroundColor: '#0ABAB5',
                   padding: '14px 28px',
                   textDecoration: 'none',
                 }}>

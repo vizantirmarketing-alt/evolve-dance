@@ -12,8 +12,8 @@ export default function ComboCallout({ combos }: { combos: ComboClass[] }) {
     <section className="w-full bg-[#0d1210] py-20 md:py-28 px-6 md:px-12">
       <div className="max-w-5xl mx-auto">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-7 h-px bg-[#2DD4BF]" />
-          <span className="text-[10px] font-medium tracking-[0.22em] uppercase text-[#2DD4BF]">
+          <div className="w-7 h-px bg-[#0ABAB5]" />
+          <span className="text-[10px] font-medium tracking-[0.22em] uppercase text-[#0ABAB5]">
             {eyebrow}
           </span>
         </div>
@@ -30,9 +30,9 @@ export default function ComboCallout({ combos }: { combos: ComboClass[] }) {
           {combos.map((combo) => (
             <div
               key={combo.title}
-              className="bg-[#111916] border border-[rgba(45,212,191,0.12)] px-6 py-8 flex flex-col gap-3"
+              className="bg-[#111916] border border-[rgba(10,186,181,0.12)] px-6 py-8 flex flex-col gap-3"
             >
-              <p className="text-[14px] font-semibold text-[#2DD4BF] leading-snug">
+              <p className="text-[14px] font-semibold text-[#0ABAB5] leading-snug">
                 {combo.title}
               </p>
               <p className="text-[11px] tracking-[0.12em] uppercase text-[#94a3b8]">
@@ -46,7 +46,7 @@ export default function ComboCallout({ combos }: { combos: ComboClass[] }) {
           href={siteConfig.jackrabbitEnroll}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center py-4 px-8 text-[11px] font-semibold tracking-[0.15em] uppercase text-black bg-[#2DD4BF] no-underline transition-colors hover:bg-[#3ef0d8] [clip-path:polygon(10px_0%,100%_0%,calc(100%-10px)_100%,0%_100%)]"
+          className="inline-flex items-center justify-center py-4 px-8 text-[11px] font-semibold tracking-[0.15em] uppercase text-black bg-[#0ABAB5] no-underline transition-colors hover:bg-[#81D8D0] [clip-path:polygon(10px_0%,100%_0%,calc(100%-10px)_100%,0%_100%)]"
         >
           {ctaLabel}
         </a>

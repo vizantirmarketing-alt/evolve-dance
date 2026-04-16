@@ -11,16 +11,16 @@ const config: Config = {
       colors: {
         background: '#F7F5F1',
         'background-warm': '#FCFBF8',
-        'background-mint': '#EAF3F0',
+        'background-mint': '#D4F1EF',
         foreground: '#1F1F1C',
         'foreground-muted': '#6D6C67',
         border: '#D6DFDA',
 
         teal: {
-          DEFAULT: '#3E9F97',
-          hover: '#5FBDB3',
+          DEFAULT: '#0ABAB5',
+          hover: '#087876',
           soft: '#81D8D0',
-          light: '#EAF3F0',
+          light: '#D4F1EF',
         },
 
         project: {
@@ -30,7 +30,7 @@ const config: Config = {
         },
 
         status: {
-          open: '#3E9F97',
+          open: '#0ABAB5',
           full: '#B97568',
         },
       },
@@ -54,8 +54,8 @@ const config: Config = {
       },
       keyframes: {
         pulseDot: {
-          '0%, 100%': { opacity: '1', boxShadow: '0 0 8px #3E9F97' },
-          '50%':      { opacity: '0.6', boxShadow: '0 0 16px #3E9F97, 0 0 32px rgba(62,159,151,0.18)' },
+          '0%, 100%': { opacity: '1', boxShadow: '0 0 8px #0ABAB5' },
+          '50%':      { opacity: '0.6', boxShadow: '0 0 16px #0ABAB5, 0 0 32px rgba(10,186,181,0.18)' },
         },
         ticker: {
           '0%':   { transform: 'translateX(0)' },
@@ -79,18 +79,18 @@ const config: Config = {
           '50%':      { transform: 'translateY(-30px) scale(1.05)' },
         },
         ringPulse: {
-          '0%, 100%': { boxShadow: '0 0 0 0 rgba(62,159,151,0)' },
-          '50%':      { boxShadow: '0 0 40px 0 rgba(62,159,151,0.08)' },
+          '0%, 100%': { boxShadow: '0 0 0 0 rgba(10,186,181,0)' },
+          '50%':      { boxShadow: '0 0 40px 0 rgba(10,186,181,0.08)' },
         },
       },
       backgroundImage: {
         'teal-grid': `
-          linear-gradient(rgba(45,212,191,0.04) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(45,212,191,0.04) 1px, transparent 1px)
+          linear-gradient(rgba(10,186,181,0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(10,186,181,0.04) 1px, transparent 1px)
         `,
         'animated-grid': `
-          linear-gradient(rgba(45,212,191,0.05) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(45,212,191,0.05) 1px, transparent 1px)
+          linear-gradient(rgba(10,186,181,0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(10,186,181,0.05) 1px, transparent 1px)
         `,
       },
       backgroundSize: {

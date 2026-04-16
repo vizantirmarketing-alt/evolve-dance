@@ -4,15 +4,15 @@
 
 /* ── Brand CSS variables ─────────────────────────── */
 :root {
-  --teal:        #3E9F97;
-  --teal-hover:  #5FBDB3;
+  --teal:        #0ABAB5;
+  --teal-hover:  #087876;
   --teal-soft:   #81D8D0;
-  --teal-light:  #EAF3F0;
-  --teal-glow:   rgba(62, 159, 151, 0.18);
-  --teal-faint:  rgba(62, 159, 151, 0.06);
+  --teal-light:  #D4F1EF;
+  --teal-glow:   rgba(10, 186, 181, 0.18);
+  --teal-faint:  rgba(10, 186, 181, 0.06);
   --background:  #F7F5F1;
   --bg-warm:     #FCFBF8;
-  --bg-mint:     #EAF3F0;
+  --bg-mint:     #D4F1EF;
   --foreground:  #1F1F1C;
   --muted:       #6D6C67;
   --border:      #D6DFDA;
@@ -70,8 +70,8 @@ body {
 /* ── Teal text glow ──────────────────────────────── */
 .teal-glow-text {
   text-shadow:
-    0 0 60px rgba(45, 212, 191, 0.3),
-    0 0 120px rgba(45, 212, 191, 0.1);
+    0 0 60px rgba(10, 186, 181, 0.3),
+    0 0 120px rgba(10, 186, 181, 0.1);
 }
 
 /* ── Clip-path button shape ──────────────────────── */
@@ -126,8 +126,8 @@ body {
     0deg,
     transparent,
     transparent 3px,
-    rgba(45, 212, 191, 0.015) 3px,
-    rgba(45, 212, 191, 0.015) 4px
+    rgba(10, 186, 181, 0.015) 3px,
+    rgba(10, 186, 181, 0.015) 4px
   );
   pointer-events: none;
 }
@@ -135,15 +135,15 @@ body {
 /* ── Animated grid background ────────────────────── */
 .animated-grid {
   background-image:
-    linear-gradient(rgba(45, 212, 191, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(45, 212, 191, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(10, 186, 181, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10, 186, 181, 0.05) 1px, transparent 1px);
   background-size: 60px 60px;
   animation: gridSlide 20s linear infinite;
 }
 
 /* ── Schedule table hover ────────────────────────── */
 .schedule-row:hover td {
-  background: rgba(45, 212, 191, 0.02);
+  background: rgba(10, 186, 181, 0.02);
 }
 
 /* ── Utility: no-select ──────────────────────────── */

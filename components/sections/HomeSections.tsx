@@ -74,7 +74,7 @@ export function TickerSection() {
   ))
 
   return (
-    <div className="bg-[#3E9F97] py-[13px] overflow-hidden">
+    <div className="bg-[#0ABAB5] py-[13px] overflow-hidden">
       <div className="flex whitespace-nowrap animate-ticker">
         {track}
       </div>
@@ -96,16 +96,16 @@ export function AboutSection() {
         <div className="absolute top-0 left-0 h-px w-[120px] bg-gradient-to-r from-teal to-transparent" />
         {/* Watermark */}
         <div
-          className="absolute -bottom-10 -right-5 font-display font-black text-[#2dd4bf] pointer-events-none select-none leading-none tracking-tight"
-          style={{ fontSize: 280, color: 'rgba(45,212,191,0.025)' }}
+          className="absolute -bottom-10 -right-5 font-display font-black text-[#0ABAB5] pointer-events-none select-none leading-none tracking-tight"
+          style={{ fontSize: 280, color: 'rgba(10,186,181,0.025)' }}
         >
           E
         </div>
 
         <Reveal>
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-7 h-px bg-[#3E9F97] opacity-100" />
-            <span className="text-[10px] tracking-[0.22em] uppercase text-[#3E9F97] font-medium opacity-100">Our Studio</span>
+            <div className="w-7 h-px bg-[#0ABAB5] opacity-100" />
+            <span className="text-[10px] tracking-[0.22em] uppercase text-[#0ABAB5] font-medium opacity-100">Our Studio</span>
           </div>
         </Reveal>
         <Reveal delay={100}>
@@ -135,7 +135,7 @@ export function AboutSection() {
               { num: '2016', lbl: 'Est. Las Vegas' },
             ].map(s => (
               <div key={s.lbl} className="text-center md:text-left">
-                <div className="font-display text-[40px] font-bold leading-none text-[#3E9F97]" style={{ textShadow: '0 0 30px rgba(62,159,151,0.2)' }}>
+                <div className="font-display text-[40px] font-bold leading-none text-[#0ABAB5]" style={{ textShadow: '0 0 30px rgba(10,186,181,0.2)' }}>
                   {s.num}
                 </div>
                 <div className="mt-1 text-[10px] uppercase tracking-[0.14em] text-[#6D6C67]">{s.lbl}</div>
@@ -146,7 +146,7 @@ export function AboutSection() {
       </div>
 
       {/* Right — studio image */}
-      <div className="relative overflow-hidden h-[280px] md:h-auto bg-[#EAF3F0]">
+      <div className="relative overflow-hidden h-[280px] md:h-auto bg-[#D4F1EF]">
         <img
           src="/images/about-studio.jpg"
           alt="Young dancers in ballet class at Evolve Dance Center"
@@ -208,7 +208,7 @@ export function WhyFamiliesChooseSection() {
         </h2>
       </Reveal>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-[rgba(45,212,191,0.06)]">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-[rgba(10,186,181,0.06)]">
         {whyFamiliesCards.map((card, i) => (
           <Reveal key={card.title} delay={120 + i * 80}>
             <WhyFamilyCard {...card} />
@@ -225,7 +225,7 @@ function WhyFamilyCard({ num, title, letter, body }: (typeof whyFamiliesCards)[n
       <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-teal scale-x-0 origin-left transition-transform duration-400 group-hover:scale-x-100" />
       <div
         className="absolute -bottom-4 -right-2 font-display font-black leading-none pointer-events-none transition-colors duration-300 group-hover:opacity-[0.055]"
-        style={{ fontSize: 130, color: 'rgba(45,212,191,0.03)' }}
+        style={{ fontSize: 130, color: 'rgba(10,186,181,0.03)' }}
       >
         {letter}
       </div>
@@ -238,7 +238,7 @@ function WhyFamilyCard({ num, title, letter, body }: (typeof whyFamiliesCards)[n
         <div className="text-[12px] text-[#e2e8f0] leading-[1.65] flex-grow">{body}</div>
       </div>
 
-      <div className="mt-7 pt-5 border-t border-[rgba(45,212,191,0.06)]" aria-hidden />
+      <div className="mt-7 pt-5 border-t border-[rgba(10,186,181,0.06)]" aria-hidden />
     </div>
   )
 }
@@ -298,8 +298,8 @@ export function ClassesSection() {
         <div>
           <Reveal>
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-7 h-px bg-[#3E9F97] opacity-100" />
-              <span className="text-[10px] tracking-[0.22em] uppercase text-[#3E9F97] font-medium opacity-100">What We Teach</span>
+              <div className="w-7 h-px bg-[#0ABAB5] opacity-100" />
+              <span className="text-[10px] tracking-[0.22em] uppercase text-[#0ABAB5] font-medium opacity-100">What We Teach</span>
             </div>
           </Reveal>
           <Reveal delay={100}>
@@ -314,7 +314,7 @@ export function ClassesSection() {
           </Reveal>
         </div>
         <Reveal>
-          <Link href="/classes" className="text-[10px] tracking-[0.18em] uppercase text-[#3E9F97] no-underline border-b border-[#3E9F97] pb-0.5 mb-1.5 hover:border-[#3E9F97] transition-colors">
+          <Link href="/classes" className="text-[10px] tracking-[0.18em] uppercase text-[#0ABAB5] no-underline border-b border-[#0ABAB5] pb-0.5 mb-1.5 hover:border-[#0ABAB5] transition-colors">
             View All Classes →
           </Link>
         </Reveal>
@@ -333,7 +333,7 @@ export function ClassesSection() {
                   <Image src={program.image} alt={program.name} fill className="object-cover" sizes="85vw" />
                 ) : (
                   <div className="flex h-full w-full items-center justify-center">
-                    <span className="font-display text-3xl text-[#1D9E75]/40">{program.name}</span>
+                    <span className="font-display text-3xl text-[#0ABAB5]/40">{program.name}</span>
                   </div>
                 )}
               </div>
@@ -346,10 +346,10 @@ export function ClassesSection() {
                   {program.desc}
                 </p>
                 <div className="flex items-center justify-between border-t border-[#1F1F1C]/10 pt-4">
-                  <span className="text-xs tracking-wider text-[#1D9E75]">{program.ages}</span>
+                  <span className="text-xs tracking-wider text-[#0ABAB5]">{program.ages}</span>
                   <Link
                     href={program.href}
-                    className="flex h-10 w-10 items-center justify-center rounded-sm border border-[#1D9E75] text-[#1D9E75] transition-colors hover:bg-[#1D9E75] hover:text-white"
+                    className="flex h-10 w-10 items-center justify-center rounded-sm border border-[#0ABAB5] text-[#0ABAB5] transition-colors hover:bg-[#0ABAB5] hover:text-white"
                     aria-label={`View ${program.name} classes`}
                   >
                     <ArrowRight className="h-4 w-4" aria-hidden />
@@ -380,19 +380,19 @@ export function ClassesSection() {
 
 function ClassCard({ num, name, letter, ages, desc }: typeof classes[0]) {
   return (
-    <div className="group bg-[#FCFBF8] border border-[#D6DFDA] p-6 md:p-10 relative overflow-hidden min-h-[280px] flex flex-col justify-between transition-colors duration-300 hover:border-[#3E9F97]">
+    <div className="group bg-[#FCFBF8] border border-[#D6DFDA] p-6 md:p-10 relative overflow-hidden min-h-[280px] flex flex-col justify-between transition-colors duration-300 hover:border-[#0ABAB5]">
       {/* Bottom teal bar */}
       <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-teal scale-x-0 origin-left transition-transform duration-400 group-hover:scale-x-100" />
       {/* Bg letter */}
       <div
         className="absolute -bottom-4 -right-2 font-display font-black leading-none pointer-events-none transition-colors duration-300 group-hover:opacity-[0.055]"
-        style={{ fontSize: 130, color: 'rgba(45,212,191,0.03)' }}
+        style={{ fontSize: 130, color: 'rgba(10,186,181,0.03)' }}
       >
         {letter}
       </div>
 
       <div>
-        <div className="text-[10px] font-semibold tracking-[0.22em] text-[#6D6C67] mb-5 transition-colors duration-300 group-hover:text-[#3E9F97]">
+        <div className="text-[10px] font-semibold tracking-[0.22em] text-[#6D6C67] mb-5 transition-colors duration-300 group-hover:text-[#0ABAB5]">
           {num} — {name}
         </div>
         <div className="font-display text-[26px] font-bold leading-[1.1] mb-3 text-[#1F1F1C]">{name}</div>
@@ -400,8 +400,8 @@ function ClassCard({ num, name, letter, ages, desc }: typeof classes[0]) {
       </div>
 
       <div className="flex items-center justify-between mt-7 pt-5 border-t border-[#D6DFDA]">
-        <span className="text-[9px] tracking-[0.18em] uppercase text-[#3E9F97]">{ages}</span>
-        <div className="w-[30px] h-[30px] border border-[#3E9F97] flex items-center justify-center text-[#3E9F97] text-sm transition-all duration-200 group-hover:bg-[#3E9F97] group-hover:text-black group-hover:shadow-[0_0_16px_rgba(45,212,191,0.4)] group-hover:border-[#3E9F97]">
+        <span className="text-[9px] tracking-[0.18em] uppercase text-[#0ABAB5]">{ages}</span>
+        <div className="w-[30px] h-[30px] border border-[#0ABAB5] flex items-center justify-center text-[#0ABAB5] text-sm transition-all duration-200 group-hover:bg-[#0ABAB5] group-hover:text-black group-hover:shadow-[0_0_16px_rgba(10,186,181,0.4)] group-hover:border-[#0ABAB5]">
           →
         </div>
       </div>
@@ -441,13 +441,13 @@ export function ScheduleSection() {
             </p>
           </>
         </Reveal>
-        <Link href="/classes#schedule" className="text-[10px] tracking-[0.18em] uppercase text-teal no-underline border-b border-[rgba(45,212,191,0.3)] pb-0.5 mb-1.5 hover:border-teal transition-colors">
+        <Link href="/classes#schedule" className="text-[10px] tracking-[0.18em] uppercase text-teal no-underline border-b border-[rgba(10,186,181,0.3)] pb-0.5 mb-1.5 hover:border-teal transition-colors">
           Full Schedule →
         </Link>
       </div>
 
       {/* Day tabs */}
-      <div className="flex gap-0 border-b border-[rgba(45,212,191,0.12)] mb-12 overflow-x-auto">
+      <div className="flex gap-0 border-b border-[rgba(10,186,181,0.12)] mb-12 overflow-x-auto">
         {days.map(day => (
           <button
             key={day}
@@ -465,7 +465,7 @@ export function ScheduleSection() {
         ))}
       </div>
 
-      <div className="sm:hidden divide-y divide-[rgba(45,212,191,0.08)]">
+      <div className="sm:hidden divide-y divide-[rgba(10,186,181,0.08)]">
         {scheduleData.map((c, i) => (
           <div key={i} className="py-4 flex items-start justify-between gap-2">
             <div>
@@ -479,7 +479,7 @@ export function ScheduleSection() {
               <span className={cn(
                 'inline-block px-3 py-1 text-[9px] font-semibold tracking-[0.12em] uppercase whitespace-nowrap',
                 c.status === 'open'
-                  ? 'bg-[rgba(45,212,191,0.1)] text-teal border border-[rgba(45,212,191,0.2)]'
+                  ? 'bg-[rgba(10,186,181,0.1)] text-teal border border-[rgba(10,186,181,0.2)]'
                   : 'bg-[rgba(255,107,107,0.08)] text-[#ff6b6b] border border-[rgba(255,107,107,0.15)]'
               )}>
                 {c.status === 'open' ? 'Open' : 'Full'}
@@ -494,7 +494,7 @@ export function ScheduleSection() {
         <thead>
           <tr>
             {['Time', 'Class', 'Instructor', 'Ages', 'Status'].map(h => (
-              <th key={h} className="text-[9px] font-semibold tracking-[0.18em] uppercase text-[#94a3b8] text-left pb-3 border-b border-[rgba(45,212,191,0.12)]">
+              <th key={h} className="text-[9px] font-semibold tracking-[0.18em] uppercase text-[#94a3b8] text-left pb-3 border-b border-[rgba(10,186,181,0.12)]">
                 {h}
               </th>
             ))}
@@ -502,7 +502,7 @@ export function ScheduleSection() {
         </thead>
         <tbody>
           {scheduleData.map((row, i) => (
-            <tr key={i} className="schedule-row border-b border-[rgba(45,212,191,0.06)] last:border-0 transition-colors duration-150">
+            <tr key={i} className="schedule-row border-b border-[rgba(10,186,181,0.06)] last:border-0 transition-colors duration-150">
               <td className="py-[18px] font-display text-[18px] text-teal w-32">{row.time}</td>
               <td className="py-[18px] font-medium text-[13.5px] text-[#f1f5f9]">{row.cls}</td>
               <td className="py-[18px] text-[12px] text-[#cbd5e1]">{row.instructor}</td>
@@ -511,7 +511,7 @@ export function ScheduleSection() {
                 <span className={cn(
                   'inline-block px-3 py-1 text-[9px] font-semibold tracking-[0.12em] uppercase',
                   row.status === 'open'
-                    ? 'bg-[rgba(45,212,191,0.1)] text-teal border border-[rgba(45,212,191,0.2)]'
+                    ? 'bg-[rgba(10,186,181,0.1)] text-teal border border-[rgba(10,186,181,0.2)]'
                     : 'bg-[rgba(255,107,107,0.08)] text-[#ff6b6b] border border-[rgba(255,107,107,0.15)]'
                 )}>
                   {row.status === 'open' ? 'Open' : 'Full'}
@@ -543,8 +543,8 @@ export function InstructorsSection() {
     <section className="bg-[#F7F5F1] px-4 py-28 md:px-12 overflow-hidden">
       <Reveal>
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-7 h-px bg-[#3E9F97] opacity-100" />
-          <span className="text-[10px] tracking-[0.22em] uppercase text-[#3E9F97] font-medium opacity-100">The Faculty</span>
+          <div className="w-7 h-px bg-[#0ABAB5] opacity-100" />
+          <span className="text-[10px] tracking-[0.22em] uppercase text-[#0ABAB5] font-medium opacity-100">The Faculty</span>
         </div>
       </Reveal>
       <div className="mt-4 mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
@@ -558,7 +558,7 @@ export function InstructorsSection() {
             </p>
           </>
         </Reveal>
-        <Link href="/faculty" className="text-[10px] tracking-[0.18em] uppercase text-[#3E9F97] no-underline border-b border-[#3E9F97] pb-0.5 mb-1.5 hover:border-[#3E9F97] transition-colors">
+        <Link href="/faculty" className="text-[10px] tracking-[0.18em] uppercase text-[#0ABAB5] no-underline border-b border-[#0ABAB5] pb-0.5 mb-1.5 hover:border-[#0ABAB5] transition-colors">
           Full Faculty →
         </Link>
       </div>
@@ -569,14 +569,14 @@ export function InstructorsSection() {
             {instructors.map(inst => (
               <div
                 key={inst.name}
-                className="instructor-card group bg-[#FCFBF8] hover:bg-[#EAF3F0] relative overflow-hidden min-h-[300px] cursor-pointer transition-colors duration-300"
+                className="instructor-card group bg-[#FCFBF8] hover:bg-[#D4F1EF] relative overflow-hidden min-h-[300px] cursor-pointer transition-colors duration-300"
               >
                 {/* Top teal bar on hover */}
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-teal scale-x-0 origin-left transition-transform duration-400 group-hover:scale-x-100" />
 
                 {/* Initial watermark */}
                 <div
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[60%] font-display font-black leading-none pointer-events-none text-[#3E9F97]/10 transition-all duration-400 group-hover:opacity-[0.1] group-hover:-translate-y-[65%]"
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[60%] font-display font-black leading-none pointer-events-none text-[#0ABAB5]/10 transition-all duration-400 group-hover:opacity-[0.1] group-hover:-translate-y-[65%]"
                   style={{ fontSize: 100 }}
                 >
                   {inst.initial}
@@ -586,7 +586,7 @@ export function InstructorsSection() {
                   <div className="font-display text-[20px] font-bold leading-[1.1] mb-1 text-[#1F1F1C]">
                     {inst.name}
                   </div>
-                  <div className="text-[10px] tracking-[0.15em] uppercase text-[#3E9F97] opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                  <div className="text-[10px] tracking-[0.15em] uppercase text-[#0ABAB5] opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
                     {inst.role}
                   </div>
                 </div>
@@ -599,11 +599,11 @@ export function InstructorsSection() {
               {instructors.map(inst => {
                 const body = (
                   <>
-                    <div className="mb-3 font-serif text-5xl font-black leading-none text-[#3E9F97]/10">
+                    <div className="mb-3 font-serif text-5xl font-black leading-none text-[#0ABAB5]/10">
                       {inst.initial === '+' ? '+' : inst.name[0]}
                     </div>
                     <div className="text-sm font-medium text-[#1F1F1C]">{inst.name}</div>
-                    <div className="mt-1 text-xs text-[#3E9F97]">{inst.role}</div>
+                    <div className="mt-1 text-xs text-[#0ABAB5]">{inst.role}</div>
                   </>
                 )
                 return (
@@ -646,18 +646,18 @@ const testimonials = [
 
 export function TestimonialsSection() {
   return (
-    <section className="bg-[#EAF3F0] px-4 py-28 md:px-12">
+    <section className="bg-[#D4F1EF] px-4 py-28 md:px-12">
       <Reveal>
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-7 h-px bg-[#3E9F97] opacity-100" />
-          <span className="text-[10px] tracking-[0.22em] uppercase text-[#3E9F97] font-medium opacity-100">{siteConfig.reviewsLabel}</span>
+          <div className="w-7 h-px bg-[#0ABAB5] opacity-100" />
+          <span className="text-[10px] tracking-[0.22em] uppercase text-[#0ABAB5] font-medium opacity-100">{siteConfig.reviewsLabel}</span>
         </div>
       </Reveal>
       <Reveal delay={100}>
         <>
           <h2 className="font-display font-bold mt-4 mb-4 leading-none text-[#1F1F1C]" style={{ fontSize: 'clamp(40px, 5vw, 68px)' }}>
             What families love about Evolve —{' '}
-            <em className="italic text-[#3E9F97]">Reviews</em>
+            <em className="italic text-[#0ABAB5]">Reviews</em>
           </h2>
           <p className="text-[15px] font-light text-[#6D6C67] leading-[1.75] mb-14">
             Families choose Evolve for more than strong classes. They stay for the culture, the consistency, and the way their dancers grow over time.
@@ -676,14 +676,14 @@ export function TestimonialsSection() {
                 className={cn(
                   'w-[85vw] shrink-0 snap-start border p-6 transition-all duration-300',
                   teal
-                    ? 'border-[#1D9E75] bg-[#1D9E75]'
+                    ? 'border-[#0ABAB5] bg-[#0ABAB5]'
                     : 'border-[#D6DFDA] bg-[#FCFBF8]',
                 )}
               >
-                <span className={cn('mb-4 block text-[11px] tracking-[3px]', teal ? 'text-white/80' : 'text-[#1D9E75]')}>
+                <span className={cn('mb-4 block text-[11px] tracking-[3px]', teal ? 'text-white/80' : 'text-[#0ABAB5]')}>
                   ★★★★★
                 </span>
-                <span className={cn('font-display mb-4 block text-[56px] leading-[0.8]', teal ? 'text-white/25' : 'text-[#1D9E75]')}>
+                <span className={cn('font-display mb-4 block text-[56px] leading-[0.8]', teal ? 'text-white/25' : 'text-[#0ABAB5]')}>
                   "
                 </span>
                 <p className={cn('mb-6 font-serif text-[17px] font-normal italic leading-[1.6]', teal ? 'text-white' : 'text-[#1F1F1C]')}>
@@ -710,13 +710,13 @@ export function TestimonialsSection() {
             <div className={cn(
               'relative border p-6 transition-all duration-300 md:p-11',
               t.featured
-                ? 'bg-[#3E9F97] border-[#3E9F97]'
+                ? 'bg-[#0ABAB5] border-[#0ABAB5]'
                 : 'bg-[#FCFBF8] border-[#D6DFDA]'
             )}>
-              <span className={cn('text-[11px] tracking-[3px] mb-4 block', t.featured ? 'text-white/80' : 'text-[#3E9F97]')}>
+              <span className={cn('text-[11px] tracking-[3px] mb-4 block', t.featured ? 'text-white/80' : 'text-[#0ABAB5]')}>
                 ★★★★★
               </span>
-              <span className={cn('font-display text-[72px] leading-[0.8] mb-4 block', t.featured ? 'text-white/25' : 'text-[#3E9F97]')}>
+              <span className={cn('font-display text-[72px] leading-[0.8] mb-4 block', t.featured ? 'text-white/25' : 'text-[#0ABAB5]')}>
                 "
               </span>
               <p className={cn('font-display text-[18px] font-normal italic leading-[1.6] mb-6', t.featured ? 'text-white' : 'text-[#1F1F1C]')}>
@@ -745,7 +745,7 @@ export function ProjectSection() {
       {/* Glow */}
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(45,212,191,0.07) 0%, transparent 60%)' }}
+        style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(10,186,181,0.07) 0%, transparent 60%)' }}
       />
 
       <div className="relative z-[1] max-w-[680px] mx-auto">
@@ -776,7 +776,7 @@ export function ProjectSection() {
         <Reveal delay={300}>
           <Link
             href="/the-project"
-            className="inline-flex items-center gap-2.5 clip-btn no-underline text-[11px] font-medium tracking-[0.15em] uppercase text-[#173432] bg-[#81D8D0] px-8 py-4 transition-all duration-200 hover:bg-[#3E9F97] hover:shadow-[0_0_40px_rgba(45,212,191,0.35)] hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2.5 clip-btn no-underline text-[11px] font-medium tracking-[0.15em] uppercase text-[#173432] bg-[#81D8D0] px-8 py-4 transition-all duration-200 hover:bg-[#0ABAB5] hover:shadow-[0_0_40px_rgba(10,186,181,0.35)] hover:-translate-y-0.5"
           >
             Learn About The Project
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
@@ -795,7 +795,7 @@ export function ProjectSection() {
 
 export function EnrollSection() {
   return (
-    <section className="bg-[#3E9F97] px-4 pt-10 pb-20 md:px-12 md:py-24 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+    <section className="bg-[#0ABAB5] px-4 pt-10 pb-20 md:px-12 md:py-24 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
       <Reveal>
         <span className="text-[10px] font-semibold tracking-[0.22em] uppercase text-white/70 block mb-4">
           Ready to Begin?

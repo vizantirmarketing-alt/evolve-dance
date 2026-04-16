@@ -31,13 +31,13 @@ export default function ClassCard({
   waitlistHref = '/contact',
 }: ClassCardProps) {
   return (
-    <div className="bg-[#111916] border border-[rgba(45,212,191,0.12)] p-6 flex flex-col gap-5">
+    <div className="bg-[#111916] border border-[rgba(10,186,181,0.12)] p-6 flex flex-col gap-5">
       <div className="flex flex-wrap items-center gap-2">
-        <span className="inline-flex px-3 py-1 text-[10px] font-semibold tracking-[0.12em] uppercase bg-[rgba(45,212,191,0.12)] text-[#2DD4BF] border border-[rgba(45,212,191,0.2)] rounded-full">
+        <span className="inline-flex px-3 py-1 text-[10px] font-semibold tracking-[0.12em] uppercase bg-[rgba(10,186,181,0.12)] text-[#0ABAB5] border border-[rgba(10,186,181,0.2)] rounded-full">
           {LEVEL_LABEL[level]}
         </span>
         {spots > 3 && (
-          <span className="inline-flex px-3 py-1 text-[10px] font-semibold tracking-[0.12em] uppercase bg-[rgba(45,212,191,0.1)] text-[#2DD4BF] border border-[rgba(45,212,191,0.2)] rounded-full">
+          <span className="inline-flex px-3 py-1 text-[10px] font-semibold tracking-[0.12em] uppercase bg-[rgba(10,186,181,0.1)] text-[#0ABAB5] border border-[rgba(10,186,181,0.2)] rounded-full">
             {spots} spots left
           </span>
         )}
@@ -63,17 +63,17 @@ export default function ClassCard({
       </div>
 
       <dl className="grid grid-cols-1 gap-3 text-[13px]">
-        <div className="flex justify-between gap-4 border-b border-[rgba(45,212,191,0.08)] pb-2">
+        <div className="flex justify-between gap-4 border-b border-[rgba(10,186,181,0.08)] pb-2">
           <dt className="text-[#94a3b8] shrink-0">Ages</dt>
           <dd className="text-[#f0faf8] text-right">
             {ageMin}–{ageMax}
           </dd>
         </div>
-        <div className="flex justify-between gap-4 border-b border-[rgba(45,212,191,0.08)] pb-2">
+        <div className="flex justify-between gap-4 border-b border-[rgba(10,186,181,0.08)] pb-2">
           <dt className="text-[#94a3b8] shrink-0">Day</dt>
           <dd className="text-[#f0faf8] text-right">{day}</dd>
         </div>
-        <div className="flex justify-between gap-4 border-b border-[rgba(45,212,191,0.08)] pb-2">
+        <div className="flex justify-between gap-4 border-b border-[rgba(10,186,181,0.08)] pb-2">
           <dt className="text-[#94a3b8] shrink-0">Time</dt>
           <dd className="text-[#f0faf8] text-right">{time}</dd>
         </div>
@@ -88,14 +88,14 @@ export default function ClassCard({
           href={siteConfig.jackrabbitEnroll}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-auto inline-flex items-center justify-center w-full py-3 px-4 text-[11px] font-semibold tracking-[0.15em] uppercase text-black bg-[#2DD4BF] no-underline transition-colors hover:bg-[#3ef0d8]"
+          className="mt-auto inline-flex items-center justify-center w-full py-3 px-4 text-[11px] font-semibold tracking-[0.15em] uppercase text-black bg-[#0ABAB5] no-underline transition-colors hover:bg-[#81D8D0]"
         >
           {siteConfig.enrollCtaLabel}
         </a>
       ) : (
         <Link
           href={waitlistHref}
-          className="mt-auto inline-flex items-center justify-center w-full py-3 px-4 text-[11px] font-semibold tracking-[0.15em] uppercase text-[#94a3b8] bg-[#0d1210] border border-[rgba(45,212,191,0.12)] no-underline transition-colors hover:text-[#f0faf8] hover:border-[rgba(45,212,191,0.25)]"
+          className="mt-auto inline-flex items-center justify-center w-full py-3 px-4 text-[11px] font-semibold tracking-[0.15em] uppercase text-[#94a3b8] bg-[#0d1210] border border-[rgba(10,186,181,0.12)] no-underline transition-colors hover:text-[#f0faf8] hover:border-[rgba(10,186,181,0.25)]"
         >
           {siteConfig.waitlistCtaLabel}
         </Link>

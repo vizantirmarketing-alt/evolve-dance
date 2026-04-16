@@ -6,7 +6,7 @@ import { ArrowRight } from 'lucide-react'
 export default function MobileStickyCTA() {
   return (
     <div
-      className="fixed inset-x-0 bottom-0 z-40 border-t border-[#0F6E56] bg-[#1D9E75] transition-colors active:bg-[#0F6E56] md:hidden"
+      className="fixed inset-x-0 bottom-0 z-40 border-t border-[#087876] bg-[#0ABAB5] transition-colors active:bg-[#087876] md:hidden"
       style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
     >
       <Link
