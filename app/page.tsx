@@ -6,12 +6,12 @@ import {
   AboutSection,
   WhyFamiliesChooseSection,
   ClassesSection,
-  ScheduleSection,
   InstructorsSection,
   TestimonialsSection,
   ProjectSection,
   EnrollSection,
 } from '@/components/sections/HomeSections'
+import ScheduleSection from '@/components/sections/ScheduleSection'
 
 export default function HomePage() {
   return (
