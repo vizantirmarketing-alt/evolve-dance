@@ -154,34 +154,56 @@ export default function VideoHeroSection({
               For ages 18 months to 18 years, Evolve offers a supportive studio culture, experienced faculty, and a clear path from first class to advanced performance.
             </motion.p>
 
-            {/* CTA buttons */}
-            <motion.div variants={item} className="mb-6 flex w-full flex-col gap-3 md:mb-6 md:flex-row md:flex-wrap md:items-start md:gap-4">
-              <Link
-                href="/enroll#free-trial"
-                className="group pointer-events-auto relative inline-flex w-full items-center justify-center gap-2 rounded-sm bg-[#1D9E75] px-6 py-3 text-sm font-medium tracking-wider text-white no-underline transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#0F6E56] hover:shadow-lg hover:shadow-[#1D9E75]/25 md:w-auto md:justify-start"
-              >
-                <span>Book a Free Trial</span>
-                <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
-              </Link>
+            {/* CTA buttons — mobile: primary + watch link; desktop: all three */}
+            <motion.div variants={item} className="mb-6 w-full md:mb-6">
+              <div className="flex flex-col gap-4 md:hidden">
+                <Link
+                  href="/enroll#free-trial"
+                  className="group pointer-events-auto inline-flex w-full items-center justify-center gap-2 rounded-sm bg-[#1D9E75] px-6 py-3.5 text-sm font-medium tracking-wider text-white no-underline transition-all hover:bg-[#0F6E56]"
+                >
+                  BOOK A FREE TRIAL
+                  <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" aria-hidden />
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => setLightbox(true)}
+                  className="group pointer-events-auto inline-flex items-center justify-center gap-2 text-sm font-medium tracking-wider text-white/90 transition-colors hover:text-white"
+                >
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white/15 transition-colors group-hover:bg-white/25">
+                    <Play className="ml-0.5 h-3 w-3 fill-white text-white" aria-hidden />
+                  </span>
+                  Watch the studio
+                </button>
+              </div>
 
-              <Link
-                href="/classes"
-                className="group pointer-events-auto inline-flex w-full items-center justify-center gap-2 rounded-sm border border-white/20 bg-black/30 px-6 py-3 text-sm font-medium tracking-wider text-white no-underline backdrop-blur-md transition-all duration-300 hover:border-white/40 hover:bg-black/50 md:w-auto md:justify-start"
-              >
-                Explore Classes
-                <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" aria-hidden />
-              </Link>
+              <div className="hidden md:flex md:flex-row md:flex-wrap md:items-start md:gap-4">
+                <Link
+                  href="/enroll#free-trial"
+                  className="group pointer-events-auto relative inline-flex w-full items-center justify-center gap-2 rounded-sm bg-[#1D9E75] px-6 py-3 text-sm font-medium tracking-wider text-white no-underline transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#0F6E56] hover:shadow-lg hover:shadow-[#1D9E75]/25 md:w-auto md:justify-start"
+                >
+                  <span>Book a Free Trial</span>
+                  <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+                </Link>
 
-              <button
-                type="button"
-                onClick={() => setLightbox(true)}
-                className="group pointer-events-auto inline-flex w-full items-center justify-center gap-3 rounded-sm border border-white/20 bg-black/30 px-5 py-3 text-sm font-medium tracking-wider text-white backdrop-blur-md transition-all duration-300 hover:border-white/40 hover:bg-black/50 md:w-auto md:justify-start"
-              >
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white/15 transition-colors group-hover:bg-white/25">
-                  <Play className="ml-0.5 h-3 w-3 fill-white text-white" aria-hidden />
-                </span>
-                Watch the Studio
-              </button>
+                <Link
+                  href="/classes"
+                  className="group pointer-events-auto inline-flex w-full items-center justify-center gap-2 rounded-sm border border-white/20 bg-black/30 px-6 py-3 text-sm font-medium tracking-wider text-white no-underline backdrop-blur-md transition-all duration-300 hover:border-white/40 hover:bg-black/50 md:w-auto md:justify-start"
+                >
+                  Explore Classes
+                  <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" aria-hidden />
+                </Link>
+
+                <button
+                  type="button"
+                  onClick={() => setLightbox(true)}
+                  className="group pointer-events-auto inline-flex w-full items-center justify-center gap-3 rounded-sm border border-white/20 bg-black/30 px-5 py-3 text-sm font-medium tracking-wider text-white backdrop-blur-md transition-all duration-300 hover:border-white/40 hover:bg-black/50 md:w-auto md:justify-start"
+                >
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white/15 transition-colors group-hover:bg-white/25">
+                    <Play className="ml-0.5 h-3 w-3 fill-white text-white" aria-hidden />
+                  </span>
+                  Watch the Studio
+                </button>
+              </div>
             </motion.div>
           </motion.div>
         </div>
