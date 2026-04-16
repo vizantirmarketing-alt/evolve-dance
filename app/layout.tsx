@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Playfair_Display, DM_Sans } from 'next/font/google'
 import MobileStickyCTA from '@/components/MobileStickyCTA'
 import '../styles/globals.css'
@@ -49,6 +49,12 @@ export const metadata: Metadata = {
   },
 }
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -56,7 +62,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${playfair.variable} ${dmSans.variable}`}>
-      <body className="pb-20 md:pb-0">
+      <body className="pb-24 md:pb-0">
         {children}
         <MobileStickyCTA />
       </body>
