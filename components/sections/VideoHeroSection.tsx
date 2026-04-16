@@ -110,7 +110,10 @@ export default function VideoHeroSection({
             {/* Eyebrow */}
             <motion.div variants={item} className="mb-7 flex w-full items-center justify-start gap-4 text-left">
               <div className="w-8 shrink-0 bg-[#0ABAB5] h-px" />
-              <span className="text-left text-[9px] font-medium uppercase tracking-[0.2em] text-[#0ABAB5] opacity-100 md:text-[10px] md:tracking-[0.25em] whitespace-normal md:whitespace-nowrap">
+              <span
+                className="text-left text-[9px] font-medium uppercase tracking-[0.2em] text-white/90 md:text-[10px] md:tracking-[0.25em] whitespace-normal md:whitespace-nowrap"
+                style={{ textShadow: '0 1px 8px rgba(0,0,0,0.5)' }}
+              >
                 Las Vegas · Ages 18mo–18yrs · All Levels
               </span>
             </motion.div>
@@ -147,13 +150,6 @@ export default function VideoHeroSection({
             {/* CTA buttons — mobile: primary + watch link; desktop: all three */}
             <motion.div variants={item} className="mb-6 w-full md:mb-6">
               <div className="flex flex-col items-start gap-4 md:hidden">
-                <Link
-                  href="/enroll#free-trial"
-                  className="group pointer-events-auto inline-flex w-full items-center justify-center gap-2 rounded-sm bg-[#0ABAB5] px-6 py-3.5 text-sm font-medium tracking-wider text-white no-underline transition-all hover:bg-[#087876]"
-                >
-                  BOOK A FREE TRIAL
-                  <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" aria-hidden />
-                </Link>
                 <button
                   type="button"
                   onClick={() => setLightbox(true)}
