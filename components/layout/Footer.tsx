@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, type ReactNode } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { ChevronDown } from 'lucide-react'
 import { siteConfig } from '@/data/site'
@@ -48,9 +49,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-12">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2.5 font-sans font-semibold text-sm tracking-[0.2em] uppercase text-[rgba(247,245,241,0.9)] mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#81D8D0]" style={{ boxShadow: '0 0 6px #81D8D0' }} />
-              {siteConfig.name}
+            <div className="mb-4">
+              <Image
+                src="/logo/evolve-footer.png"
+                alt="Evolve Dance Center"
+                width={360}
+                height={240}
+                className="h-14 md:h-16 w-auto object-contain"
+              />
             </div>
             <p className="text-[13px] text-[rgba(247,245,241,0.45)] leading-[1.7] max-w-[260px]">
               {siteConfig.tagline}

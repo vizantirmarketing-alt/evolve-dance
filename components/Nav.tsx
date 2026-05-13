@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
+import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { siteConfig } from '@/data/site'
@@ -28,40 +29,22 @@ export default function Nav({ links }: NavProps) {
 
   return (
     <>
-      <nav style={{
-        position: 'fixed',
-        top: 0, left: 0, right: 0,
-        zIndex: 50,
-        height: '72px',
-        backgroundColor: 'rgba(247,245,241,0.96)',
-        backdropFilter: 'blur(20px)',
-        borderBottom: '1px solid #D6DFDA',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '0 20px',
-      }}>
+      <nav
+        className="fixed inset-x-0 top-0 z-50 flex h-[72px] items-center justify-between border-b border-[#D6DFDA] bg-[rgba(247,245,241,0.96)] px-5 backdrop-blur-[20px] md:h-[88px]"
+      >
         {/* Logo */}
-        <Link href="/" style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px',
-          fontWeight: 600,
-          fontSize: '13px',
-          letterSpacing: '0.22em',
-          textTransform: 'uppercase',
-          color: '#1F1F1C',
-          textDecoration: 'none',
-          whiteSpace: 'nowrap',
-        }}>
-          <span style={{
-            width: '6px', height: '6px',
-            borderRadius: '50%',
-            backgroundColor: '#0ABAB5',
-            boxShadow: '0 0 8px #0ABAB5',
-            flexShrink: 0,
-          }} />
-          {siteConfig.name}
+        <Link
+          href="/"
+          className="group flex items-center no-underline transition-transform duration-200 ease-out hover:scale-[1.03]"
+        >
+          <Image
+            src="/logo/evolve-navbar.png"
+            alt="Evolve Dance Center"
+            width={240}
+            height={160}
+            priority
+            className="h-12 md:h-16 w-auto object-contain transition-opacity duration-200 ease-out group-hover:opacity-85"
+          />
         </Link>
 
         {/* Desktop nav — hidden below 768px */}
