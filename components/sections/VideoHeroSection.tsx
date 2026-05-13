@@ -144,7 +144,7 @@ export default function VideoHeroSection({
                 textShadow: '0 1px 12px rgba(0,0,0,0.6)',
               }}
             >
-              For ages 18 months to 18 years, Evolve offers a supportive studio culture, experienced faculty, and a clear path from first class to advanced performance.
+              Ages 18 months to 18 years. Twenty-two working teachers. Six studio rooms in southwest Las Vegas. A team that's been training dancers here since 2016.
             </motion.p>
 
             {/* CTA buttons — mobile: primary + watch link; desktop: all three */}
