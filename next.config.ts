@@ -21,7 +21,6 @@ const nextConfig: NextConfig = {
       { source: '/newsletter',                      destination: '/about#news',        permanent: true },
       { source: '/about-3',                         destination: '/the-project',       permanent: true },
       { source: '/about-us',                        destination: '/about',             permanent: true },
-      { source: '/policies',                        destination: '/about#policies',    permanent: true },
       { source: '/register',                        destination: '/enroll',            permanent: true },
     ]
   },

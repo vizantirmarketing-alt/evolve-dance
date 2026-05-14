@@ -265,13 +265,6 @@ export default function VideoHeroSection({
           </span>
         </motion.div>
 
-        {/* ── CSS keyframes ────────────────────────── */}
-        <style>{`
-          @keyframes scrollPulse {
-            0%, 100% { opacity: 0.3; transform: scaleY(0.8) translateY(-4px); }
-            50%       { opacity: 1;   transform: scaleY(1) translateY(0); }
-          }
-        `}        </style>
         </div>
       </section>
 

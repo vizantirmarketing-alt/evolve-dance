@@ -19,7 +19,7 @@ export const footerLinks: {
     { label: 'The Faculty', href: '/faculty' },
     { label: 'The Project', href: '/the-project' },
     { label: 'Gallery', href: '/gallery' },
-    { label: 'Policies', href: '/about#policies' },
+    { label: 'Policies', href: '/policies' },
   ],
   classes: [
     { label: 'Ballet', href: '/classes?style=ballet' },

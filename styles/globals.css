@@ -84,6 +84,12 @@ body {
   clip-path: polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
 
+/* From VideoHeroSection — scroll indicator pulse animation */
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.8) translateY(-4px); }
+  50% { opacity: 1; transform: scaleY(1) translateY(0); }
+}
+
 /* ── Teal border bottom animated ────────────────── */
 .teal-underline::after {
   content: '';

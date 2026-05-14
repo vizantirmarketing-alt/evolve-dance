@@ -43,8 +43,25 @@ export const siteConfig = {
     'https://app3.jackrabbitclass.com/regv2.asp?id=531584',
   jackrabbitLogin: 'https://app3.jackrabbitclass.com/',
   socialLinks: [
-    { label: 'Instagram', href: 'https://www.instagram.com/evolvedancelv/' },
-    { label: 'Facebook', href: 'https://www.facebook.com/LasVegasDanceStudio/' },
-    { label: 'YouTube', href: 'https://www.youtube.com/@evolvedancecenter8992' },
+    {
+      label: 'Instagram',
+      href: 'https://www.instagram.com/evolvedancelv/',
+      network: 'instagram',
+    },
+    {
+      label: 'Facebook',
+      href: 'https://www.facebook.com/LasVegasDanceStudio/',
+      network: 'facebook',
+    },
+    {
+      label: 'TikTok',
+      href: 'https://www.tiktok.com/@evolvedancelv',
+      network: 'tiktok',
+    },
+    {
+      label: 'YouTube',
+      href: 'https://www.youtube.com/@evolvedancecenter8992',
+      network: 'youtube',
+    },
   ],
 } as const

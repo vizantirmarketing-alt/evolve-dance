@@ -447,7 +447,6 @@ All old Wix URLs are permanently redirected in `next.config.ts`. Never remove th
 | `/newsletter`                      | `/about#news`            |
 | `/about-3`                         | `/the-project`           |
 | `/about-us`                        | `/about`                 |
-| `/policies`                        | `/about#policies`        |
 | `/register`                        | `/enroll`                |
 
 ---
