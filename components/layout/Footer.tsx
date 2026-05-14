@@ -110,6 +110,12 @@ export default function Footer() {
                   href="/"
                   aria-label="Evolve Dance Center home"
                   className="flex items-center no-underline"
+                  onClick={(e) => {
+                    if (window.location.pathname === '/') {
+                      e.preventDefault()
+                      window.scrollTo({ top: 0, behavior: 'smooth' })
+                    }
+                  }}
                 >
                   <Image
                     src="/logo/evolve-footer.png"
