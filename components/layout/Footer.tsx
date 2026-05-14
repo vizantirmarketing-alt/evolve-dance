@@ -106,13 +106,19 @@ export default function Footer() {
           <div className="flex min-h-0 flex-col gap-8 md:h-full md:gap-0">
             <div>
               <div className="mb-4">
-                <Image
-                  src="/logo/evolve-footer.png"
-                  alt="Evolve Dance Center"
-                  width={360}
-                  height={240}
-                  className="h-16 md:h-20 w-auto object-contain"
-                />
+                <Link
+                  href="/"
+                  aria-label="Evolve Dance Center home"
+                  className="group flex items-center no-underline transition-transform duration-200 ease-out hover:scale-[1.03]"
+                >
+                  <Image
+                    src="/logo/evolve-footer.png"
+                    alt="Evolve Dance Center"
+                    width={360}
+                    height={240}
+                    className="h-16 md:h-20 w-auto object-contain transition-opacity duration-200 ease-out group-hover:opacity-85"
+                  />
+                </Link>
               </div>
               <p className="text-[13px] text-[rgba(247,245,241,0.45)] leading-[1.7] max-w-[260px]">
                 {siteConfig.tagline}
