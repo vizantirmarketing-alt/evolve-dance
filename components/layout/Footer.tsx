@@ -99,7 +99,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-[#1F1F1C] pt-[72px] pb-10 px-12">
+    <footer className="bg-[#1F1F1C] px-12 pb-[calc(2.5rem+5rem+env(safe-area-inset-bottom,0px))] pt-[72px] md:pb-10">
       <div className="pb-14 border-b border-[rgba(255,255,255,0.08)] mb-8">
         <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-12 md:items-stretch">
           {/* Brand */}

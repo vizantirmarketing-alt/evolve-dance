@@ -62,7 +62,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${playfair.variable} ${dmSans.variable}`}>
-      <body className="pb-24 md:pb-0">
+      <body>
         {children}
         <MobileStickyCTA />
       </body>
