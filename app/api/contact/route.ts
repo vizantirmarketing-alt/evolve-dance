@@ -17,7 +17,43 @@ export async function POST(request: Request) {
 
   try {
     const body = await request.json()
-    const { name, email, phone, interest, message } = body
+    const { name, email, phone, interest, message, turnstileToken } = body
+
+    // Verify Turnstile token (only if secret key is set)
+    const turnstileSecret = process.env.TURNSTILE_SECRET_KEY
+    if (turnstileSecret) {
+      if (!turnstileToken) {
+        return NextResponse.json(
+          { error: 'Security check is required.' },
+          { status: 400 }
+        )
+      }
+
+      const verifyResponse = await fetch(
+        'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({
+            secret: turnstileSecret,
+            response: turnstileToken,
+            remoteip:
+              request.headers.get('cf-connecting-ip') ||
+              request.headers.get('x-forwarded-for') ||
+              '',
+          }),
+        }
+      )
+
+      const verifyData = await verifyResponse.json()
+      if (!verifyData.success) {
+        console.error('Turnstile verification failed:', verifyData['error-codes'])
+        return NextResponse.json(
+          { error: 'Security check failed. Please try again.' },
+          { status: 400 }
+        )
+      }
+    }
 
     // Basic validation
     if (!name || !email || !message) {

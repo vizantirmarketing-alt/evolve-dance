@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, type FormEvent } from 'react'
+import { Turnstile, type TurnstileInstance } from '@marsidev/react-turnstile'
+import { useState, useRef, type FormEvent } from 'react'
 import {
   MapPin,
   Phone,
@@ -93,17 +94,39 @@ export default function ContactPage() {
   const [formData, setFormData] = useState(emptyForm)
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState('')
+  const [turnstileToken, setTurnstileToken] = useState('')
+  const turnstileRef = useRef<TurnstileInstance>(null)
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
+
+    const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY
+    if (turnstileSiteKey && !turnstileToken) {
+      setStatus('error')
+      setErrorMessage('Please complete the security check before submitting.')
+      return
+    }
+
     setStatus('submitting')
     setErrorMessage('')
+
+    const resetTurnstileWidget = () => {
+      turnstileRef.current?.reset()
+      setTurnstileToken('')
+    }
 
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          interest: formData.interest,
+          message: formData.message,
+          turnstileToken,
+        }),
       })
 
       let payload: { error?: string } = {}
@@ -116,14 +139,17 @@ export default function ContactPage() {
       if (!res.ok) {
         setStatus('error')
         setErrorMessage(payload.error ?? 'Something went wrong. Please try again.')
+        resetTurnstileWidget()
         return
       }
 
       setStatus('success')
       setFormData({ ...emptyForm })
+      resetTurnstileWidget()
     } catch {
       setStatus('error')
       setErrorMessage('Something went wrong. Please try again.')
+      resetTurnstileWidget()
     }
   }
 
@@ -265,6 +291,22 @@ export default function ContactPage() {
                         placeholder="How can we help?"
                       />
                     </div>
+
+                    {process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ? (
+                      <div className="mt-4 mb-6">
+                        <Turnstile
+                          ref={turnstileRef}
+                          siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+                          onSuccess={(token) => setTurnstileToken(token)}
+                          onError={() => setTurnstileToken('')}
+                          onExpire={() => setTurnstileToken('')}
+                          options={{
+                            theme: 'light',
+                            size: 'normal',
+                          }}
+                        />
+                      </div>
+                    ) : null}
 
                     {status === 'error' && errorMessage ? (
                       <div className="mb-4 rounded border border-red-300 bg-red-50 p-3 text-[13px] text-red-700">
