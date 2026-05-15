@@ -32,7 +32,7 @@ export default async function SchedulePage() {
         <div className="mx-auto max-w-6xl">
           {classes.length === 0 ? (
             <div className="mx-auto max-w-lg py-16 text-center">
-              <p className="text-[15px] font-light leading-[1.8] text-[#1F1F1C]">
+              <p className="text-[15px] font-light leading-[1.8] md:text-[16px] text-[#1F1F1C]">
                 Live schedule temporarily unavailable. Call{' '}
                 <a href={`tel:${siteConfig.phoneTel}`} className="text-[#0ABAB5] underline-offset-2 hover:underline">
                   {siteConfig.phone}
@@ -41,7 +41,7 @@ export default async function SchedulePage() {
               </p>
               <Link
                 href="/enroll#free-trial"
-                className="mt-8 inline-flex items-center justify-center rounded-sm bg-[#0ABAB5] px-8 py-3.5 text-xs font-medium uppercase tracking-wider text-white no-underline transition-colors hover:bg-[#087876]"
+                className="mt-8 inline-flex items-center justify-center rounded-sm bg-[#0ABAB5] px-8 py-3.5 text-[12px] font-medium uppercase tracking-[0.2em] text-white no-underline transition-colors hover:bg-[#087876] md:py-4 md:text-[13px]"
               >
                 BOOK A FREE TRIAL
               </Link>
@@ -50,19 +50,19 @@ export default async function SchedulePage() {
             <>
               <div className="mb-6 flex items-center gap-3">
                 <div className="h-px w-7 bg-[#0ABAB5] opacity-100" />
-                <span className="text-[10px] font-medium uppercase tracking-[0.22em] text-[#0ABAB5] opacity-100">
+                <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-[#0ABAB5] opacity-100">
                   Class schedule
                 </span>
               </div>
 
               <div className="mb-12 max-w-3xl">
-                <h1
-                  className="font-display font-bold leading-none text-[#1F1F1C]"
-                  style={{ fontSize: 'clamp(40px, 5vw, 68px)' }}
-                >
-                  Browse this week&apos;s <em className="italic text-[#0ABAB5]">classes</em>
+                <h1 className="font-display font-bold text-[#1F1F1C]">
+                  <span style={{ fontSize: 'clamp(40px, 5vw, 64px)', lineHeight: '0.95' }}>Browse this week&apos;s </span>
+                  <span className="italic text-[#0ABAB5]" style={{ fontSize: 'clamp(40px, 5vw, 64px)', lineHeight: '0.95' }}>
+                    classes
+                  </span>
                 </h1>
-                <p className="mt-6 text-[15px] font-light leading-[1.8] text-[#6D6C67]">
+                <p className="mt-6 text-[15px] font-light leading-[1.8] md:text-[16px] text-[#6D6C67]">
                   Live schedule updates from our registration system. Book a free trial to join any open class.
                 </p>
               </div>

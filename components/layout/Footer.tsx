@@ -80,7 +80,7 @@ function MobileFooterAccordion({
         onClick={onToggle}
         className="w-full flex items-center justify-between py-4 text-left"
       >
-        <span className="text-xs tracking-wider uppercase text-[#0ABAB5]">{title}</span>
+        <span className="text-[11px] font-medium tracking-wide uppercase text-[#0ABAB5] md:text-[12px]">{title}</span>
         <ChevronDown
           className={`w-4 h-4 text-white/60 transition-transform shrink-0 ${open ? 'rotate-180' : ''}`}
           aria-hidden
@@ -126,7 +126,7 @@ export default function Footer() {
                   />
                 </Link>
               </div>
-              <p className="text-[13px] text-[rgba(247,245,241,0.45)] leading-[1.7] max-w-[260px]">
+              <p className="text-[13px] text-[rgba(247,245,241,0.45)] leading-[1.7] max-w-[260px] md:text-[14px]">
                 {siteConfig.tagline}
               </p>
             </div>
@@ -146,7 +146,7 @@ export default function Footer() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200"
+                  className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
                 >
                   {item.label}
                 </Link>
@@ -161,7 +161,7 @@ export default function Footer() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200"
+                  className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
                 >
                   {item.label}
                 </Link>
@@ -176,7 +176,7 @@ export default function Footer() {
                 href={siteConfig.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200"
+                className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
               >
                 {siteConfig.addressLine1}
               </a>
@@ -184,25 +184,25 @@ export default function Footer() {
                 href={siteConfig.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200"
+                className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
               >
                 {siteConfig.addressLine2}
               </a>
               <a
                 href={`tel:${siteConfig.phoneTel}`}
-                className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200"
+                className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
               >
                 {siteConfig.phone}
               </a>
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200"
+                className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
               >
                 {siteConfig.email}
               </a>
               <Link
                 href="/contact"
-                className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200"
+                className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
               >
                 Schedule a Visit
               </Link>
@@ -211,13 +211,13 @@ export default function Footer() {
 
           {/* Desktop — link columns */}
           <div className="hidden md:block">
-            <div className="text-[9px] font-semibold tracking-[0.22em] uppercase text-[#81D8D0] mb-5">Classes</div>
+            <div className="text-[11px] font-semibold tracking-[0.18em] uppercase text-[#81D8D0] mb-5 md:text-[12px]">Classes</div>
             <ul className="flex flex-col gap-2.5 list-none">
               {footerLinks.classes.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200"
+                    className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
                   >
                     {item.label}
                   </Link>
@@ -227,13 +227,13 @@ export default function Footer() {
           </div>
 
           <div className="hidden md:block">
-            <div className="text-[9px] font-semibold tracking-[0.22em] uppercase text-[#81D8D0] mb-5">Studio</div>
+            <div className="text-[11px] font-semibold tracking-[0.18em] uppercase text-[#81D8D0] mb-5 md:text-[12px]">Studio</div>
             <ul className="flex flex-col gap-2.5 list-none">
               {footerLinks.studio.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200"
+                    className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
                   >
                     {item.label}
                   </Link>
@@ -243,14 +243,14 @@ export default function Footer() {
           </div>
 
           <div className="hidden md:block">
-            <div className="text-[9px] font-semibold tracking-[0.22em] uppercase text-[#81D8D0] mb-5">Contact</div>
+            <div className="text-[11px] font-semibold tracking-[0.18em] uppercase text-[#81D8D0] mb-5 md:text-[12px]">Contact</div>
             <ul className="flex flex-col gap-2.5 list-none">
               <li>
                 <a
                   href={siteConfig.mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200"
+                  className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
                 >
                   {siteConfig.addressLine1}
                 </a>
@@ -260,7 +260,7 @@ export default function Footer() {
                   href={siteConfig.mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200"
+                  className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
                 >
                   {siteConfig.addressLine2}
                 </a>
@@ -268,7 +268,7 @@ export default function Footer() {
               <li>
                 <a
                   href={`tel:${siteConfig.phoneTel}`}
-                  className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200"
+                  className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
                 >
                   {siteConfig.phone}
                 </a>
@@ -276,7 +276,7 @@ export default function Footer() {
               <li>
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200"
+                  className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
                 >
                   {siteConfig.email}
                 </a>
@@ -284,7 +284,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/contact"
-                  className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200"
+                  className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
                 >
                   Schedule a Visit
                 </Link>
@@ -299,29 +299,17 @@ export default function Footer() {
         <div className="flex flex-wrap items-center">
           <Link
             href="/privacy"
-            className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200"
+            className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
           >
             Privacy
           </Link>
           <span
-            className="text-[11px] text-[rgba(247,245,241,0.45)] mx-2 shrink-0"
+            className="text-[12px] text-[rgba(247,245,241,0.45)] mx-2 shrink-0 leading-[1.55]"
             aria-hidden
           >
             {' · '}
           </span>
-          <Link
-            href="/policies"
-            className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200"
-          >
-            Policies
-          </Link>
-          <span
-            className="text-[11px] text-[rgba(247,245,241,0.45)] mx-2 shrink-0"
-            aria-hidden
-          >
-            {' · '}
-          </span>
-          <span className="text-[11px] text-[rgba(247,245,241,0.45)]">
+          <span className="text-[12px] text-[rgba(247,245,241,0.45)] leading-[1.55]">
             © 2026 {siteConfig.name}. All rights reserved. · Site by{' '}
             <a
               href="https://vizantir.com"

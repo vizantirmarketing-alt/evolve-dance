@@ -23,7 +23,7 @@ export default async function EventsPage() {
         <div className="mx-auto max-w-6xl">
           <div className="mb-6 flex items-center gap-3">
             <div className="h-px w-7 bg-teal opacity-100" />
-            <span className="text-[10px] font-medium uppercase tracking-[0.22em] text-teal opacity-100">
+            <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-teal opacity-100">
               Events
             </span>
           </div>
@@ -31,11 +31,11 @@ export default async function EventsPage() {
           <div className="mb-12 max-w-3xl">
             <h1
               className="font-display font-bold leading-none text-foreground"
-              style={{ fontSize: 'clamp(40px, 5vw, 68px)' }}
+              style={{ fontSize: 'clamp(40px, 5vw, 64px)' }}
             >
               Upcoming &amp; Recent
             </h1>
-            <p className="mt-6 text-[15px] font-light leading-[1.8] text-foreground-muted">
+            <p className="mt-6 text-[15px] font-light leading-[1.8] md:text-[16px] text-foreground-muted">
               A running list of what&apos;s on the calendar at Evolve: performances, auditions, summer programs,
               workshops, and the days we close for holidays or breaks. Click through when you need details or a signup
               link.
@@ -49,7 +49,7 @@ export default async function EventsPage() {
 
             {upcomingEvents.length === 0 ? (
               <div className="mx-auto max-w-md py-16 text-center md:py-20">
-                <p className="text-[15px] font-light leading-[1.8] text-foreground-muted">
+                <p className="text-[15px] font-light leading-[1.8] md:text-[16px] text-foreground-muted">
                   Nothing on the calendar right now — check back soon.
                 </p>
               </div>

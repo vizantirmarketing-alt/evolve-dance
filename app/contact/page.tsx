@@ -23,9 +23,9 @@ const GOOGLE_MAPS_SEARCH_HREF =
   'https://www.google.com/maps/search/?api=1&query=6070+S+Rainbow+Blvd+Las+Vegas+NV+89118'
 
 const fieldClassName =
-  'w-full bg-transparent border border-border rounded-none px-0 py-3 text-foreground placeholder:text-foreground-muted/60 focus:outline-none focus:border-teal transition-colors border-t-0 border-l-0 border-r-0 text-[15px]'
+  'w-full bg-transparent border border-border rounded-none px-0 py-3 text-foreground placeholder:text-foreground-muted/60 focus:outline-none focus:border-teal transition-colors border-t-0 border-l-0 border-r-0 text-[14px] md:text-[15px]'
 
-const labelClassName = 'block text-[10px] uppercase tracking-[0.15em] text-foreground-muted mb-2'
+const labelClassName = 'block text-[11px] uppercase tracking-[0.15em] text-foreground-muted mb-2 md:text-[12px]'
 
 const TikTokIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden>
@@ -166,13 +166,13 @@ export default function ContactPage() {
                     <Check className="h-12 w-12 text-teal" aria-hidden />
                   </div>
                   <h3 className="mt-6 font-display text-2xl text-foreground md:text-3xl">Thanks for reaching out.</h3>
-                  <p className="mx-auto mt-3 max-w-md text-[15px] font-light leading-[1.8] text-foreground-muted">
+                  <p className="mx-auto mt-3 max-w-md text-[14px] font-light leading-[1.8] text-foreground-muted md:text-[15px]">
                     We&apos;ll get back to you within one business day. In the meantime, feel free to call us at (702)
                     897-5095.
                   </p>
                   <button
                     type="button"
-                    className="mt-8 inline-flex items-center justify-center gap-2 bg-foreground px-8 py-4 text-[12px] font-medium uppercase tracking-[0.2em] text-background transition-colors duration-200 hover:bg-foreground/85"
+                    className="mt-8 inline-flex items-center justify-center gap-2 bg-foreground px-8 py-3.5 text-[12px] font-medium uppercase tracking-[0.2em] text-background transition-colors duration-200 hover:bg-foreground/85 md:py-4 md:text-[13px]"
                     onClick={() => {
                       setStatus('idle')
                       setErrorMessage('')
@@ -185,17 +185,17 @@ export default function ContactPage() {
                 <>
                   <div className="mb-6 flex items-center gap-3">
                     <div className="h-px w-7 bg-teal" />
-                    <span className="text-[10px] font-medium uppercase tracking-[0.22em] text-teal">Send a Message</span>
+                    <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-teal">Send a Message</span>
                   </div>
 
                   <h2
                     className="mb-4 font-display font-bold leading-[0.95] text-foreground"
-                    style={{ fontSize: 'clamp(32px, 4vw, 48px)' }}
+                    style={{ fontSize: 'clamp(40px, 5vw, 64px)' }}
                   >
                     Quick inquiry.
                   </h2>
 
-                  <p className="mb-10 text-[15px] font-light leading-[1.8] text-foreground-muted">
+                  <p className="mb-10 text-[14px] font-light leading-[1.8] text-foreground-muted md:text-[15px]">
                     Send us a message and we&apos;ll get back to you within one business day.
                   </p>
 
@@ -309,7 +309,7 @@ export default function ContactPage() {
                     ) : null}
 
                     {status === 'error' && errorMessage ? (
-                      <div className="mb-4 rounded border border-red-300 bg-red-50 p-3 text-[13px] text-red-700">
+                      <div className="mb-4 rounded border border-red-300 bg-red-50 p-3 text-[13px] text-red-700 md:text-[14px]">
                         {errorMessage}
                       </div>
                     ) : null}
@@ -317,7 +317,7 @@ export default function ContactPage() {
                     <button
                       type="submit"
                       disabled={status === 'submitting'}
-                      className="mt-4 inline-flex items-center justify-center gap-2 bg-foreground px-8 py-4 text-[12px] font-medium uppercase tracking-[0.2em] text-background transition-colors duration-200 hover:bg-foreground/85 disabled:cursor-not-allowed disabled:opacity-50"
+                      className="mt-4 inline-flex items-center justify-center gap-2 bg-foreground px-8 py-3.5 text-[12px] font-medium uppercase tracking-[0.2em] text-background transition-colors duration-200 hover:bg-foreground/85 disabled:cursor-not-allowed disabled:opacity-50 md:py-4 md:text-[13px]"
                     >
                       {status === 'submitting' ? (
                         'Sending...'
@@ -338,17 +338,17 @@ export default function ContactPage() {
             <div>
               <div className="mb-6 flex items-center gap-3">
                 <div className="h-px w-7 bg-teal" />
-                <span className="text-[10px] font-medium uppercase tracking-[0.22em] text-teal">VISIT US</span>
+                <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-teal">VISIT US</span>
               </div>
 
               <h2
                 className="font-display font-bold leading-tight text-foreground"
-                style={{ fontSize: 'clamp(28px, 3.5vw, 40px)' }}
+                style={{ fontSize: 'clamp(28px, 3.5vw, 42px)' }}
               >
                 Find us in southwest Las Vegas.
               </h2>
 
-              <p className="mt-4 max-w-md text-[14px] font-light leading-[1.7] text-foreground-muted">
+              <p className="mt-4 max-w-md text-[14px] font-light leading-[1.7] text-foreground-muted md:text-[15px]">
                 Drop in to see the studio or reach out anytime. We typically respond within one business day.
               </p>
             </div>
@@ -359,8 +359,8 @@ export default function ContactPage() {
                   <MapPin className="h-4 w-4 text-teal" aria-hidden />
                 </div>
                 <div>
-                  <div className="text-[10px] uppercase tracking-[0.15em] text-foreground-muted">Studio</div>
-                  <div className="mt-1 text-[14px] font-medium text-foreground">6070 S Rainbow Blvd, Las Vegas, NV 89118</div>
+                  <div className="text-[11px] uppercase tracking-[0.15em] text-foreground-muted md:text-[12px]">Studio</div>
+                  <div className="mt-1 text-[14px] font-medium text-foreground md:text-[15px]">6070 S Rainbow Blvd, Las Vegas, NV 89118</div>
                 </div>
               </div>
 
@@ -369,10 +369,10 @@ export default function ContactPage() {
                   <Phone className="h-4 w-4 text-teal" aria-hidden />
                 </div>
                 <div>
-                  <div className="text-[10px] uppercase tracking-[0.15em] text-foreground-muted">Phone</div>
+                  <div className="text-[11px] uppercase tracking-[0.15em] text-foreground-muted md:text-[12px]">Phone</div>
                   <a
                     href={`tel:${siteConfig.phoneTel}`}
-                    className="mt-1 block text-[14px] font-medium text-foreground transition-colors hover:text-teal"
+                    className="mt-1 block text-[14px] font-medium text-foreground transition-colors hover:text-teal md:text-[15px]"
                   >
                     (702) 897-5095
                   </a>
@@ -384,10 +384,10 @@ export default function ContactPage() {
                   <Mail className="h-4 w-4 text-teal" aria-hidden />
                 </div>
                 <div>
-                  <div className="text-[10px] uppercase tracking-[0.15em] text-foreground-muted">Email</div>
+                  <div className="text-[11px] uppercase tracking-[0.15em] text-foreground-muted md:text-[12px]">Email</div>
                   <a
                     href={`mailto:${siteConfig.email}`}
-                    className="mt-1 block text-[14px] font-medium text-foreground transition-colors hover:text-teal"
+                    className="mt-1 block text-[14px] font-medium text-foreground transition-colors hover:text-teal md:text-[15px]"
                   >
                     info@evolvedancecenter.com
                   </a>
@@ -399,8 +399,8 @@ export default function ContactPage() {
                   <Clock className="h-4 w-4 text-teal" aria-hidden />
                 </div>
                 <div>
-                  <div className="text-[10px] uppercase tracking-[0.15em] text-foreground-muted">Office Hours</div>
-                  <div className="mt-1 text-[14px] font-medium text-foreground">Monday–Friday, 3pm–8pm</div>
+                  <div className="text-[11px] uppercase tracking-[0.15em] text-foreground-muted md:text-[12px]">Office Hours</div>
+                  <div className="mt-1 text-[14px] font-medium text-foreground md:text-[15px]">Monday–Friday, 3pm–8pm</div>
                 </div>
               </div>
             </div>
@@ -410,7 +410,7 @@ export default function ContactPage() {
                 href={GOOGLE_MAPS_SEARCH_HREF}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="absolute left-4 top-4 z-10 flex items-center gap-1.5 rounded bg-foreground px-3 py-2 text-[11px] text-background shadow-md transition-colors duration-200 hover:bg-foreground/85"
+                className="absolute left-4 top-4 z-10 flex items-center gap-1.5 rounded bg-foreground px-3 py-2 text-[12px] text-background shadow-md transition-colors duration-200 hover:bg-foreground/85 md:text-[13px]"
               >
                 <ArrowUpRight className="h-3 w-3 shrink-0" aria-hidden />
                 Open in Maps

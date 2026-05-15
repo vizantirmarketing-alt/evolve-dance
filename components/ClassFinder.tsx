@@ -87,9 +87,9 @@ export default function ClassFinder({ surface = 'dark' }: { surface?: 'dark' | '
 
   return (
     <div className="mx-auto flex max-w-7xl flex-col gap-10 px-6 py-16 md:px-12">
-      <h1 className={cn('font-display text-[clamp(32px,5vw,52px)] font-bold leading-tight', headingClass)}>
+      <h2 className={cn('font-display text-[clamp(28px,3.5vw,42px)] font-bold leading-tight', headingClass)}>
         Find your class
-      </h1>
+      </h2>
 
       <ClassFinderFilters
         styleOptions={styleOptions}
@@ -108,10 +108,10 @@ export default function ClassFinder({ surface = 'dark' }: { surface?: 'dark' | '
         surface={surface}
       />
 
-      <p className={cn('text-sm', bodyMuted)}>{countLabel}</p>
+      <p className={cn('text-[14px] leading-[1.7] md:text-[15px]', bodyMuted)}>{countLabel}</p>
 
       {filtered.length === 0 ? (
-        <p className={cn('text-[15px]', bodyMuted)}>No classes match — try different filters</p>
+        <p className={cn('text-[15px] md:text-[16px]', bodyMuted)}>No classes match — try different filters</p>
       ) : (
         <motion.div
           layout

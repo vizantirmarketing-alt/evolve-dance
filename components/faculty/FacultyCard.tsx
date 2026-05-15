@@ -45,7 +45,7 @@ export default function FacultyCard({ faculty }: { faculty: Faculty }) {
       </div>
 
       <div className="flex flex-1 flex-col p-5">
-        <h2 className="font-display text-xl font-bold leading-snug text-foreground">{name}</h2>
+        <h2 className="font-display text-lg font-bold leading-snug text-foreground md:text-xl">{name}</h2>
         <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.14em] text-teal">{role}</p>
 
         {tags.length > 0 ? (
@@ -53,7 +53,7 @@ export default function FacultyCard({ faculty }: { faculty: Faculty }) {
             {tags.map((tag) => (
               <li
                 key={tag}
-                className="rounded-sm border border-teal/35 bg-background px-2.5 py-1 text-[9px] font-medium uppercase tracking-[0.12em] text-foreground/80"
+                className="rounded-sm border border-teal/35 bg-background px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.12em] text-foreground/80"
               >
                 {tag}
               </li>

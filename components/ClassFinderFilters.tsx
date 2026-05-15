@@ -40,7 +40,7 @@ function Pill({
       type="button"
       onClick={onClick}
       className={cn(
-        'rounded-full border px-4 py-2 text-xs font-medium transition-colors',
+        'rounded-full border px-4 py-3 text-[12px] font-medium transition-colors md:text-[13px]',
         active ? 'border-[#0ABAB5] bg-[#0ABAB5] text-black' : inactive
       )}
     >
@@ -110,7 +110,7 @@ export default function ClassFinderFilters({
       </div>
 
       <div className="flex max-w-md flex-col gap-3">
-        <label className={cn('text-xs font-medium tracking-wide', labelClass)}>
+        <label className={cn('text-[11px] font-medium tracking-[0.15em] md:text-[12px]', labelClass)}>
           {selectedAge === 0 ? 'All ages' : `Age: ${selectedAge}`}
         </label>
         <input
@@ -131,7 +131,7 @@ export default function ClassFinderFilters({
         <button
           type="button"
           onClick={onReset}
-          className="self-start text-xs font-medium uppercase tracking-wider text-[#0ABAB5] border-b border-[rgba(10,186,181,0.35)] pb-0.5 hover:border-[#0ABAB5] transition-colors"
+          className="self-start text-[11px] font-medium uppercase tracking-wider text-[#0ABAB5] border-b border-[rgba(10,186,181,0.35)] pb-0.5 hover:border-[#0ABAB5] transition-colors md:text-[12px]"
         >
           Clear filters
         </button>

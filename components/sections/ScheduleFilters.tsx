@@ -80,9 +80,9 @@ const selectShellCream =
   'relative w-full min-w-0 rounded-sm border border-[rgba(10,186,181,0.45)] bg-white text-[#1F1F1C] shadow-none'
 
 const selectFieldDark =
-  'w-full cursor-pointer appearance-none rounded-sm border-0 bg-transparent py-3 pl-4 pr-11 text-sm font-medium text-white outline-none ring-0 focus:ring-2 focus:ring-[#0ABAB5]/40'
+  'w-full cursor-pointer appearance-none rounded-sm border-0 bg-transparent py-3 pl-4 pr-11 text-[14px] font-medium text-white outline-none ring-0 focus:ring-2 focus:ring-[#0ABAB5]/40 md:text-[15px]'
 const selectFieldCream =
-  'w-full cursor-pointer appearance-none rounded-sm border-0 bg-transparent py-3 pl-4 pr-11 text-sm font-medium text-[#1F1F1C] outline-none ring-0 focus:ring-2 focus:ring-[#0ABAB5]/40'
+  'w-full cursor-pointer appearance-none rounded-sm border-0 bg-transparent py-3 pl-4 pr-11 text-[14px] font-medium text-[#1F1F1C] outline-none ring-0 focus:ring-2 focus:ring-[#0ABAB5]/40 md:text-[15px]'
 
 export type ScheduleFiltersSurface = 'dark' | 'cream'
 
@@ -136,13 +136,13 @@ export function ScheduleFilters({
                 <ClassRowLink key={`${c.id}-${c.day}-${c.startTime}`} c={c}>
                   <div className="min-w-0 flex-1">
                     <div className="font-serif text-lg text-teal">{c.startTimeDisplay}</div>
-                    <div className="mt-0.5 text-sm font-medium text-[#f1f5f9]">{c.name}</div>
-                    {sub ? <div className="mt-0.5 text-xs text-[#cbd5e1]">{sub}</div> : null}
+                    <div className="mt-0.5 text-[14px] font-medium text-[#f1f5f9] md:text-[15px]">{c.name}</div>
+                    {sub ? <div className="mt-0.5 text-[12px] text-[#cbd5e1] md:text-[13px]">{sub}</div> : null}
                   </div>
                   <div className="flex shrink-0 items-center gap-2">
                     <span
                       className={cn(
-                        'inline-block whitespace-nowrap px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.12em]',
+                        'inline-block whitespace-nowrap px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em]',
                         isOpen
                           ? 'border border-[rgba(10,186,181,0.2)] bg-[rgba(10,186,181,0.1)] text-[#0ABAB5]'
                           : 'border border-[rgba(237,147,177,0.22)] bg-[rgba(237,147,177,0.08)] text-[#ED93B1]'
@@ -163,7 +163,7 @@ export function ScheduleFilters({
                 {['Time', 'Class', 'Instructor', 'Ages', 'Status'].map((h) => (
                   <th
                     key={h}
-                    className="border-b border-[rgba(10,186,181,0.12)] pb-3 text-left text-[9px] font-semibold uppercase tracking-[0.18em] text-[#94a3b8]"
+                    className="border-b border-[rgba(10,186,181,0.12)] pb-3 text-left text-[11px] font-semibold uppercase tracking-[0.18em] text-[#94a3b8]"
                   >
                     {h}
                   </th>
@@ -182,15 +182,15 @@ export function ScheduleFilters({
                 const cells = (
                   <>
                     <span className="font-display text-[18px] text-teal">{row.startTimeDisplay}</span>
-                    <span className="text-[13.5px] font-medium text-[#f1f5f9]">{row.name}</span>
-                    <span className="text-[12px] text-[#cbd5e1]">{instructorLine(row)}</span>
-                    <span className="text-[10px] uppercase tracking-[0.12em] text-[#cbd5e1]">
+                    <span className="text-[14px] font-medium text-[#f1f5f9] md:text-[15px]">{row.name}</span>
+                    <span className="text-[13px] text-[#cbd5e1] md:text-[14px]">{instructorLine(row)}</span>
+                    <span className="text-[11px] uppercase tracking-[0.12em] text-[#cbd5e1]">
                       {row.ageRangeDisplay}
                     </span>
                     <span className="flex items-center justify-end gap-2">
                       <span
                         className={cn(
-                          'inline-block px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.12em]',
+                          'inline-block px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em]',
                           isOpen
                             ? 'border border-[rgba(10,186,181,0.2)] bg-[rgba(10,186,181,0.1)] text-[#0ABAB5]'
                             : 'border border-[rgba(237,147,177,0.22)] bg-[rgba(237,147,177,0.08)] text-[#ED93B1]'
@@ -233,7 +233,7 @@ export function ScheduleFilters({
     <>
       <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:gap-6">
         <div className="relative min-w-[200px] flex-1 md:max-w-xs">
-          <label htmlFor="schedule-cat" className={cn('mb-2 block text-[9px] font-semibold uppercase tracking-[0.18em]', labelMuted)}>
+          <label htmlFor="schedule-cat" className={cn('mb-2 block text-[11px] font-semibold uppercase tracking-[0.18em] md:text-[12px]', labelMuted)}>
             Program
           </label>
           <div className={selectShell}>
@@ -258,7 +258,7 @@ export function ScheduleFilters({
         </div>
 
         <div className="relative min-w-[200px] flex-1 md:max-w-xs">
-          <label htmlFor="schedule-age" className={cn('mb-2 block text-[9px] font-semibold uppercase tracking-[0.18em]', labelMuted)}>
+          <label htmlFor="schedule-age" className={cn('mb-2 block text-[11px] font-semibold uppercase tracking-[0.18em] md:text-[12px]', labelMuted)}>
             Age
           </label>
           <div className={selectShell}>
@@ -283,7 +283,7 @@ export function ScheduleFilters({
       </div>
 
       {!hasAny ? (
-        <p className={cn('max-w-xl text-[15px] font-light leading-[1.8]', emptyFilterText)}>
+        <p className={cn('max-w-xl text-[15px] font-light leading-[1.8] md:text-[16px]', emptyFilterText)}>
           No classes match your filters. Try adjusting the category or age range.
         </p>
       ) : isCream ? (

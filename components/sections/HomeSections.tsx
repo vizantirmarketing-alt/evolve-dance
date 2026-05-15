@@ -15,7 +15,7 @@ function SectionEyebrow({ label }: { label: string }) {
   return (
     <div className="flex items-center gap-3 mb-6">
       <div className="w-7 h-px bg-teal opacity-100" />
-      <span className="text-[10px] tracking-[0.22em] uppercase text-teal font-medium opacity-100">{label}</span>
+      <span className="text-[11px] md:text-[12px] tracking-[0.22em] uppercase text-teal font-medium opacity-100">{label}</span>
     </div>
   )
 }
@@ -67,7 +67,7 @@ const tickerItems = [
 export function TickerSection() {
   const items = [...tickerItems, ...tickerItems, ...tickerItems]
   const track = items.map((item, i) => (
-    <span key={i} className="px-10 text-[11px] font-semibold tracking-[0.2em] uppercase text-white flex-shrink-0">
+    <span key={i} className="px-10 text-[12px] font-semibold tracking-[0.2em] uppercase text-white flex-shrink-0 md:text-[13px]">
       {item}
       {i < items.length - 1 && <span className="text-white ml-4">·</span>}
     </span>
@@ -105,25 +105,25 @@ export function AboutSection() {
         <Reveal>
           <div className="flex items-center gap-3 mb-6">
             <div className="w-7 h-px bg-[#0ABAB5] opacity-100" />
-            <span className="text-[10px] tracking-[0.22em] uppercase text-[#0ABAB5] font-medium opacity-100">Our Studio</span>
+            <span className="text-[11px] md:text-[12px] tracking-[0.22em] uppercase text-[#0ABAB5] font-medium opacity-100">Our Studio</span>
           </div>
         </Reveal>
         <Reveal delay={100}>
           <h2
             className="font-display font-bold leading-[1.08] mb-6 text-[#1F1F1C]"
-            style={{ fontSize: 'clamp(36px, 4vw, 54px)' }}
+            style={{ fontSize: 'clamp(28px, 3.5vw, 42px)' }}
           >
             A higher standard studio experience
           </h2>
         </Reveal>
         <Reveal delay={200}>
-          <p className="text-[15px] font-light text-[#6D6C67] leading-[1.8] max-w-[420px] mb-4">
+          <p className="text-[15px] font-light text-[#6D6C67] leading-[1.8] max-w-[420px] mb-4 md:text-[16px]">
             At Evolve Dance Center, training goes beyond technique. We create an environment where dancers build
             confidence, discipline, artistry, and a strong foundation for long-term growth. Whether a student is
             stepping into their first class or pursuing a more advanced path, our studio is built to support every
             stage with care, structure, and expert instruction.
           </p>
-          <p className="text-[15px] font-light text-[#6D6C67] leading-[1.8] max-w-[420px] mb-11">
+          <p className="text-[15px] font-light text-[#6D6C67] leading-[1.8] max-w-[420px] mb-11 md:text-[16px]">
             Supportive culture, experienced faculty, and training designed to help dancers grow with purpose.
           </p>
         </Reveal>
@@ -138,7 +138,7 @@ export function AboutSection() {
                 <div className="font-display text-[40px] font-bold leading-none text-[#0ABAB5]" style={{ textShadow: '0 0 30px rgba(10,186,181,0.2)' }}>
                   {s.num}
                 </div>
-                <div className="mt-1 text-[10px] uppercase tracking-[0.14em] text-[#6D6C67]">{s.lbl}</div>
+                <div className="mt-1 text-[11px] uppercase tracking-[0.14em] text-[#6D6C67] md:text-[12px]">{s.lbl}</div>
               </div>
             ))}
           </div>
@@ -202,7 +202,7 @@ export function WhyFamiliesChooseSection() {
       <Reveal delay={100}>
         <h2
           className="font-display font-bold text-[#f0faf8] leading-none mb-14"
-          style={{ fontSize: 'clamp(40px, 5vw, 68px)' }}
+          style={{ fontSize: 'clamp(28px, 3.5vw, 42px)' }}
         >
           What makes Evolve different
         </h2>
@@ -231,11 +231,11 @@ function WhyFamilyCard({ num, title, letter, body }: (typeof whyFamiliesCards)[n
       </div>
 
       <div>
-        <div className="text-[10px] font-semibold tracking-[0.22em] text-[#94a3b8] mb-5 transition-colors duration-300 group-hover:text-teal">
+        <div className="text-[11px] md:text-[12px] font-semibold tracking-[0.22em] text-[#94a3b8] mb-5 transition-colors duration-300 group-hover:text-teal">
           {num} — {title}
         </div>
-        <div className="font-display text-[26px] font-bold leading-[1.1] mb-3 text-[#f0faf8]">{title}</div>
-        <div className="text-[12px] text-[#e2e8f0] leading-[1.65] flex-grow">{body}</div>
+        <div className="font-display text-[clamp(17px,2.2vw,22px)] font-bold leading-[1.1] mb-3 text-[#f0faf8]">{title}</div>
+        <div className="text-[13px] text-[#e2e8f0] leading-[1.6] flex-grow md:text-[14px]">{body}</div>
       </div>
 
       <div className="mt-7 pt-5 border-t border-[rgba(10,186,181,0.06)]" aria-hidden />
@@ -299,22 +299,22 @@ export function ClassesSection() {
           <Reveal>
             <div className="flex items-center gap-3 mb-6">
               <div className="w-7 h-px bg-[#0ABAB5] opacity-100" />
-              <span className="text-[10px] tracking-[0.22em] uppercase text-[#0ABAB5] font-medium opacity-100">What We Teach</span>
+              <span className="text-[11px] md:text-[12px] tracking-[0.22em] uppercase text-[#0ABAB5] font-medium opacity-100">What We Teach</span>
             </div>
           </Reveal>
           <Reveal delay={100}>
             <>
-              <h2 className="font-display font-bold text-[#1F1F1C] leading-none" style={{ fontSize: 'clamp(40px, 5vw, 68px)' }}>
+              <h2 className="font-display font-bold text-[#1F1F1C] leading-none" style={{ fontSize: 'clamp(28px, 3.5vw, 42px)' }}>
                 Programs designed for every stage of growth
               </h2>
-              <p className="text-[15px] font-light text-[#6D6C67] leading-[1.75]">
+              <p className="text-[15px] font-light text-[#6D6C67] leading-[1.75] md:text-[16px]">
                 From early movement classes to advanced training, our programs are built to meet dancers where they are and help them progress with confidence.
               </p>
             </>
           </Reveal>
         </div>
         <Reveal>
-          <Link href="/classes" className="text-[10px] tracking-[0.18em] uppercase text-[#0ABAB5] no-underline border-b border-[#0ABAB5] pb-0.5 mb-1.5 hover:border-[#0ABAB5] transition-colors">
+          <Link href="/classes" className="text-[11px] md:text-[12px] tracking-[0.18em] uppercase text-[#0ABAB5] no-underline border-b border-[#0ABAB5] pb-0.5 mb-1.5 hover:border-[#0ABAB5] transition-colors">
             View All Classes →
           </Link>
         </Reveal>
@@ -338,15 +338,15 @@ export function ClassesSection() {
                 )}
               </div>
               <div className="p-5">
-                <p className="mb-2 text-xs tracking-wider text-[#1F1F1C]/60">
+                <p className="mb-2 text-[12px] font-medium tracking-wider text-[#1F1F1C]/60 md:text-[13px]">
                   {program.num} — {program.name}
                 </p>
-                <h3 className="font-display mb-3 text-2xl font-bold text-[#1F1F1C]">{program.name}</h3>
-                <p className="mb-4 text-sm leading-relaxed text-[#1F1F1C]/70">
+                <h3 className="font-display mb-3 text-[clamp(17px,2.2vw,22px)] font-bold text-[#1F1F1C]">{program.name}</h3>
+                <p className="mb-4 text-[14px] leading-[1.7] text-[#1F1F1C]/70 md:text-[15px]">
                   {program.desc}
                 </p>
                 <div className="flex items-center justify-between border-t border-[#1F1F1C]/10 pt-4">
-                  <span className="text-xs tracking-wider text-[#0ABAB5]">{program.ages}</span>
+                  <span className="text-[12px] tracking-wider text-[#0ABAB5] md:text-[13px]">{program.ages}</span>
                   <Link
                     href={program.href}
                     className="flex h-10 w-10 items-center justify-center rounded-sm border border-[#0ABAB5] text-[#0ABAB5] transition-colors hover:bg-[#0ABAB5] hover:text-white"
@@ -392,15 +392,15 @@ function ClassCard({ num, name, letter, ages, desc }: typeof classes[0]) {
       </div>
 
       <div>
-        <div className="text-[10px] font-semibold tracking-[0.22em] text-[#6D6C67] mb-5 transition-colors duration-300 group-hover:text-[#0ABAB5]">
+        <div className="text-[11px] md:text-[12px] font-semibold tracking-[0.22em] text-[#6D6C67] mb-5 transition-colors duration-300 group-hover:text-[#0ABAB5]">
           {num} — {name}
         </div>
-        <div className="font-display text-[26px] font-bold leading-[1.1] mb-3 text-[#1F1F1C]">{name}</div>
-        <div className="text-[12px] text-[#6D6C67] leading-[1.65] flex-grow">{desc}</div>
+        <div className="font-display text-[clamp(17px,2.2vw,22px)] font-bold leading-[1.1] mb-3 text-[#1F1F1C]">{name}</div>
+        <div className="text-[13px] text-[#6D6C67] leading-[1.6] flex-grow md:text-[14px]">{desc}</div>
       </div>
 
       <div className="flex items-center justify-between mt-7 pt-5 border-t border-[#D6DFDA]">
-        <span className="text-[9px] tracking-[0.18em] uppercase text-[#0ABAB5]">{ages}</span>
+        <span className="text-[11px] tracking-[0.18em] uppercase text-[#0ABAB5] md:text-[12px]">{ages}</span>
         <div className="w-[30px] h-[30px] border border-[#0ABAB5] flex items-center justify-center text-[#0ABAB5] text-sm transition-all duration-200 group-hover:bg-[#0ABAB5] group-hover:text-black group-hover:shadow-[0_0_16px_rgba(10,186,181,0.4)] group-hover:border-[#0ABAB5]">
           →
         </div>
@@ -428,21 +428,21 @@ export function InstructorsSection() {
       <Reveal>
         <div className="flex items-center gap-3 mb-6">
           <div className="w-7 h-px bg-[#0ABAB5] opacity-100" />
-          <span className="text-[10px] tracking-[0.22em] uppercase text-[#0ABAB5] font-medium opacity-100">The Faculty</span>
+          <span className="text-[11px] md:text-[12px] tracking-[0.22em] uppercase text-[#0ABAB5] font-medium opacity-100">The Faculty</span>
         </div>
       </Reveal>
       <div className="mt-4 mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <Reveal delay={100}>
           <>
-            <h2 className="font-display font-bold text-[#1F1F1C] leading-none" style={{ fontSize: 'clamp(40px, 5vw, 68px)' }}>
+            <h2 className="font-display font-bold text-[#1F1F1C] leading-none" style={{ fontSize: 'clamp(28px, 3.5vw, 42px)' }}>
               Meet the faculty behind the training
             </h2>
-            <p className="text-[15px] font-light text-[#6D6C67] leading-[1.75]">
+            <p className="text-[15px] font-light text-[#6D6C67] leading-[1.75] md:text-[16px]">
               Our team brings the experience, care, and high standards that shape confident dancers and meaningful progress in every class.
             </p>
           </>
         </Reveal>
-        <Link href="/faculty" className="text-[10px] tracking-[0.18em] uppercase text-[#0ABAB5] no-underline border-b border-[#0ABAB5] pb-0.5 mb-1.5 hover:border-[#0ABAB5] transition-colors">
+        <Link href="/faculty" className="text-[11px] md:text-[12px] tracking-[0.18em] uppercase text-[#0ABAB5] no-underline border-b border-[#0ABAB5] pb-0.5 mb-1.5 hover:border-[#0ABAB5] transition-colors">
           Full Faculty →
         </Link>
       </div>
@@ -470,7 +470,7 @@ export function InstructorsSection() {
                   <div className="font-display text-[20px] font-bold leading-[1.1] mb-1 text-[#1F1F1C]">
                     {inst.name}
                   </div>
-                  <div className="text-[10px] tracking-[0.15em] uppercase text-[#0ABAB5] opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                  <div className="text-[11px] tracking-[0.15em] uppercase text-[#0ABAB5] opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
                     {inst.role}
                   </div>
                 </div>
@@ -486,8 +486,8 @@ export function InstructorsSection() {
                     <div className="mb-3 font-serif text-5xl font-black leading-none text-[#0ABAB5]/10">
                       {inst.initial === '+' ? '+' : inst.name[0]}
                     </div>
-                    <div className="text-sm font-medium text-[#1F1F1C]">{inst.name}</div>
-                    <div className="mt-1 text-xs text-[#0ABAB5]">{inst.role}</div>
+                    <div className="text-[14px] font-medium text-[#1F1F1C] md:text-[15px]">{inst.name}</div>
+                    <div className="mt-1 text-[12px] text-[#0ABAB5] md:text-[13px]">{inst.role}</div>
                   </>
                 )
                 return (
@@ -534,16 +534,18 @@ export function TestimonialsSection() {
       <Reveal>
         <div className="flex items-center gap-3 mb-6">
           <div className="w-7 h-px bg-[#0ABAB5] opacity-100" />
-          <span className="text-[10px] tracking-[0.22em] uppercase text-[#0ABAB5] font-medium opacity-100">{siteConfig.reviewsLabel}</span>
+          <span className="text-[11px] md:text-[12px] tracking-[0.22em] uppercase text-[#0ABAB5] font-medium opacity-100">{siteConfig.reviewsLabel}</span>
         </div>
       </Reveal>
       <Reveal delay={100}>
         <>
-          <h2 className="font-display font-bold mt-4 mb-4 leading-none text-[#1F1F1C]" style={{ fontSize: 'clamp(40px, 5vw, 68px)' }}>
+          <h2 className="font-display font-bold mt-4 mb-4 text-[#1F1F1C]" style={{ fontSize: 'clamp(28px, 3.5vw, 42px)', lineHeight: '1' }}>
             What families love about Evolve —{' '}
-            <em className="italic text-[#0ABAB5]">Reviews</em>
+            <span className="italic text-[#0ABAB5]" style={{ fontSize: 'clamp(28px, 3.5vw, 42px)', lineHeight: '1' }}>
+              Reviews
+            </span>
           </h2>
-          <p className="text-[15px] font-light text-[#6D6C67] leading-[1.75] mb-14">
+          <p className="text-[15px] font-light text-[#6D6C67] leading-[1.75] mb-14 md:text-[16px]">
             Families choose Evolve for more than strong classes. They stay for the culture, the consistency, and the way their dancers grow over time.
           </p>
         </>
@@ -573,7 +575,7 @@ export function TestimonialsSection() {
                 <p className={cn('mb-6 font-serif text-[17px] font-normal italic leading-[1.6]', teal ? 'text-white' : 'text-[#1F1F1C]')}>
                   {t.quote}
                 </p>
-                <div className={cn('text-[10px] font-medium uppercase tracking-[0.16em]', teal ? 'text-white/70' : 'text-[#6D6C67]')}>
+                <div className={cn('text-[11px] font-medium uppercase tracking-[0.16em] md:text-[12px]', teal ? 'text-white/70' : 'text-[#6D6C67]')}>
                   {t.author}
                 </div>
               </article>
@@ -606,7 +608,7 @@ export function TestimonialsSection() {
               <p className={cn('font-display text-[18px] font-normal italic leading-[1.6] mb-6', t.featured ? 'text-white' : 'text-[#1F1F1C]')}>
                 {t.quote}
               </p>
-              <div className={cn('text-[10px] tracking-[0.16em] uppercase', t.featured ? 'text-white/70' : 'text-[#6D6C67]')}>
+              <div className={cn('text-[11px] tracking-[0.16em] uppercase md:text-[12px]', t.featured ? 'text-white/70' : 'text-[#6D6C67]')}>
                 {t.author}
               </div>
             </div>
@@ -624,7 +626,7 @@ export function TestimonialsSection() {
 export function ProjectSection() {
   return (
     <section
-      className="bg-[#173432] px-4 py-28 md:px-12 relative overflow-hidden text-center"
+      className="bg-[#173432] px-4 py-16 md:px-12 md:py-20 relative overflow-hidden text-center"
     >
       {/* Glow */}
       <div
@@ -632,27 +634,28 @@ export function ProjectSection() {
         style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(10,186,181,0.07) 0%, transparent 60%)' }}
       />
 
-      <div className="relative z-[1] max-w-[680px] mx-auto">
+      <div className="relative z-[1] mx-auto max-w-[680px] lg:max-w-[820px]">
         <Reveal>
           <div className="flex items-center justify-center gap-4 mb-7">
             <div className="w-10 h-px bg-[#81D8D0]" />
-            <span className="text-[10px] tracking-[0.25em] uppercase text-[#81D8D0] opacity-100">Competitive Team</span>
+            <span className="text-[11px] md:text-[12px] tracking-[0.25em] uppercase text-[#81D8D0] opacity-100">Competitive Team</span>
             <div className="w-10 h-px bg-[#81D8D0]" />
           </div>
         </Reveal>
 
         <Reveal delay={100}>
-          <h2
-            className="font-display font-black leading-[0.92] mb-7 text-[#F4FBF9]"
-            style={{ fontSize: 'clamp(44px, 6.5vw, 88px)' }}
-          >
-            For dancers ready to take the{' '}
-            <em className="italic text-[#81D8D0]">next step</em>
+          <h2 className="font-display font-black mb-7 text-[#F4FBF9]">
+            <span className="block" style={{ fontSize: 'clamp(28px, 3.5vw, 48px)', lineHeight: '1.05' }}>
+              For dancers ready to take the
+            </span>
+            <span className="block italic text-[#81D8D0]" style={{ fontSize: 'clamp(28px, 3.5vw, 48px)', lineHeight: '1.05' }}>
+              next step
+            </span>
           </h2>
         </Reveal>
 
         <Reveal delay={200}>
-          <p className="text-[15px] font-light text-[rgba(244,251,249,0.7)] leading-[1.75] mb-11 max-w-[500px] mx-auto">
+          <p className="mx-auto mb-11 max-w-[500px] text-[14px] font-light leading-[1.75] text-[rgba(244,251,249,0.7)] md:text-[15px]">
             The Project is Evolve&apos;s competitive team, created for dancers ready for a more advanced level of training, commitment, and performance opportunity.
           </p>
         </Reveal>
@@ -660,7 +663,7 @@ export function ProjectSection() {
         <Reveal delay={300}>
           <Link
             href="/the-project"
-            className="inline-flex items-center gap-2.5 clip-btn no-underline text-[11px] font-medium tracking-[0.15em] uppercase text-[#173432] bg-[#81D8D0] px-8 py-4 transition-all duration-200 hover:bg-[#0ABAB5] hover:shadow-[0_0_40px_rgba(10,186,181,0.35)] hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2.5 clip-btn no-underline text-[12px] font-medium tracking-[0.2em] uppercase text-[#173432] bg-[#81D8D0] px-8 py-3.5 transition-all duration-200 hover:bg-[#0ABAB5] hover:shadow-[0_0_40px_rgba(10,186,181,0.35)] hover:-translate-y-0.5 md:py-4 md:text-[13px]"
           >
             Learn About The Project
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
@@ -681,25 +684,25 @@ export function EnrollSection() {
   return (
     <section className="bg-[#0ABAB5] px-4 pt-10 pb-20 md:px-12 md:py-24 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
       <Reveal>
-        <span className="text-[10px] font-semibold tracking-[0.22em] uppercase text-white/70 block mb-4">
+        <span className="text-[11px] md:text-[12px] font-semibold tracking-[0.22em] uppercase text-white/70 block mb-4">
           Ready to Begin?
         </span>
         <h2
           className="font-display font-black text-white leading-[1.0]"
-          style={{ fontSize: 'clamp(36px, 4vw, 56px)' }}
+          style={{ fontSize: 'clamp(28px, 3.5vw, 42px)' }}
         >
           Start your journey at Evolve
         </h2>
       </Reveal>
 
       <Reveal delay={200}>
-        <p className="text-[15px] text-white/85 leading-[1.7] mb-8">
+        <p className="text-[15px] text-white/85 leading-[1.7] mb-8 md:text-[16px]">
           Whether your dancer is just beginning or ready for more advanced training, we&apos;re here to help them grow in a studio built on strong instruction, support, and high standards.
         </p>
         <div className="flex w-full flex-col gap-3 md:flex-row md:flex-wrap md:items-center md:gap-5">
           <Link
             href="/enroll"
-            className="inline-flex w-full items-center justify-center gap-2.5 clip-btn whitespace-nowrap no-underline text-[11px] font-semibold tracking-[0.15em] uppercase text-[#F4FBF9] bg-[#173432] px-6 py-3.5 transition-all duration-200 hover:bg-[#0f2318] md:w-auto md:px-8 md:py-4"
+            className="inline-flex w-full items-center justify-center gap-2.5 clip-btn whitespace-nowrap no-underline text-[12px] font-semibold tracking-[0.2em] uppercase text-[#F4FBF9] bg-[#173432] px-6 py-3.5 transition-all duration-200 hover:bg-[#0f2318] md:w-auto md:px-8 md:py-4 md:text-[13px]"
           >
             Enroll Now
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
@@ -708,7 +711,7 @@ export function EnrollSection() {
           </Link>
           <Link
             href="/schedule"
-            className="inline-flex w-full items-center justify-center gap-2.5 clip-btn whitespace-nowrap text-center no-underline text-[11px] font-medium leading-snug tracking-[0.12em] uppercase text-white bg-transparent border border-white/60 px-6 py-3.5 transition-colors duration-200 hover:border-white md:w-auto md:px-8 md:py-4 md:tracking-[0.15em]"
+            className="inline-flex w-full items-center justify-center gap-2.5 clip-btn whitespace-nowrap text-center no-underline text-[12px] font-medium leading-snug tracking-[0.2em] uppercase text-white bg-transparent border border-white/60 px-6 py-3.5 transition-colors duration-200 hover:border-white md:w-auto md:px-8 md:py-4 md:text-[13px]"
           >
             View Class Schedule
           </Link>

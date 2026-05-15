@@ -72,7 +72,7 @@ export default function Nav({ links }: NavProps) {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="text-sm font-medium tracking-wide uppercase text-[#1F1F1C] no-underline [text-shadow:_0_1px_1px_rgb(0_0_0_/_0.08)] transition-colors duration-200 hover:text-[#81D8D0]"
+                className="text-[12px] font-medium uppercase tracking-[0.15em] text-[#1F1F1C] no-underline [text-shadow:_0_1px_1px_rgb(0_0_0_/_0.08)] transition-colors duration-200 hover:text-[#81D8D0] md:text-[13px]"
               >
                 {link.label}
               </Link>
@@ -84,7 +84,7 @@ export default function Nav({ links }: NavProps) {
           {/* Desktop enroll */}
           <Link
             href="/enroll"
-            className="nav-desktop group relative inline-flex items-center gap-2 bg-[#0ABAB5] px-5 py-2.5 text-xs font-medium tracking-wider text-white no-underline transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#087876] hover:shadow-lg hover:shadow-[#0ABAB5]/25 rounded-sm"
+            className="nav-desktop group relative inline-flex items-center gap-2 bg-[#0ABAB5] px-5 py-3.5 text-[12px] font-medium tracking-[0.2em] text-white no-underline transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#087876] hover:shadow-lg hover:shadow-[#0ABAB5]/25 rounded-sm md:py-4 md:text-[13px]"
           >
             <span>{siteConfig.enrollCtaLabel}</span>
             <ArrowRight className="h-3.5 w-3.5 shrink-0 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
@@ -94,7 +94,6 @@ export default function Nav({ links }: NavProps) {
           <button
             className="nav-hamburger"
             onClick={() => {
-              alert('clicked')
               setMenuOpen(v => !v)
             }}
             aria-label="Toggle menu"
@@ -196,8 +195,8 @@ export default function Nav({ links }: NavProps) {
                 target="_blank" rel="noopener noreferrer"
                 style={{
                   display: 'inline-flex',
-                  fontSize: '11px', fontWeight: 500,
-                  letterSpacing: '0.14em',
+                  fontSize: '12px', fontWeight: 500,
+                  letterSpacing: '0.2em',
                   textTransform: 'uppercase',
                   color: 'white',
                   backgroundColor: '#0ABAB5',

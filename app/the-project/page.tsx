@@ -22,19 +22,19 @@ export default function TheProjectPage() {
               <div>
                 <div className="mb-4 flex items-center gap-3">
                   <div className="h-px w-7 bg-teal" />
-                  <span className="text-[10px] font-medium uppercase tracking-[0.22em] text-teal">
+                  <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-teal">
                     The Competition Team
                   </span>
                 </div>
                 <h1
                   className="font-display font-bold leading-[0.95] text-foreground"
-                  style={{ fontSize: 'clamp(48px, 7vw, 88px)' }}
+                  style={{ fontSize: 'clamp(40px, 5vw, 64px)' }}
                 >
                   The Project.
                 </h1>
                 <h2
                   className="mb-6 font-display font-bold italic leading-[0.95] text-foreground"
-                  style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}
+                  style={{ fontSize: 'clamp(28px, 3.5vw, 42px)' }}
                 >
                   Where serious dancers train.
                 </h2>
@@ -46,20 +46,20 @@ export default function TheProjectPage() {
                 <div className="flex flex-wrap gap-3">
                   <Link
                     href="/the-project#audition"
-                    className="inline-flex items-center gap-2 bg-foreground px-7 py-3.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-background transition-colors duration-200 hover:bg-foreground/85"
+                    className="inline-flex items-center gap-2 bg-foreground px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.22em] text-background transition-colors duration-200 hover:bg-foreground/85 md:text-[13px]"
                   >
                     Audition info →
                   </Link>
                   <Link
                     href="/contact"
-                    className="inline-flex items-center gap-2 border border-foreground px-7 py-3.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-foreground transition-colors duration-200 hover:bg-foreground hover:text-background"
+                    className="inline-flex items-center gap-2 border border-foreground px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.22em] text-foreground transition-colors duration-200 hover:bg-foreground hover:text-background md:text-[13px]"
                   >
                     Contact us
                   </Link>
                 </div>
               </div>
               <div className="flex aspect-[4/5] items-center justify-center rounded border border-border bg-background-warm">
-                <span className="text-[11px] uppercase tracking-[0.15em] text-foreground-muted">
+                <span className="text-[12px] uppercase tracking-[0.15em] text-foreground-muted md:text-[13px]">
                   [Hero photo of the team]
                 </span>
               </div>
@@ -71,11 +71,11 @@ export default function TheProjectPage() {
         <section className="bg-background-warm px-6 py-16 md:px-16 md:py-24 lg:px-20">
           <div className="mx-auto max-w-7xl">
             <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-[1fr_1.5fr] md:gap-16">
-              <div className="pt-2 text-[10px] uppercase tracking-[0.22em] text-foreground-muted">01 — What it is</div>
+              <div className="pt-2 text-[11px] md:text-[12px] uppercase tracking-[0.22em] text-foreground-muted">01 — What it is</div>
               <div>
                 <h2
                   className="mb-6 font-display font-bold text-foreground"
-                  style={{ fontSize: 'clamp(28px, 4vw, 42px)', lineHeight: '1.1' }}
+                  style={{ fontSize: 'clamp(28px, 3.5vw, 42px)', lineHeight: '1.1' }}
                 >
                   A serious commitment for serious dancers.
                 </h2>
@@ -109,7 +109,7 @@ export default function TheProjectPage() {
                 >
                   15+
                 </div>
-                <div className="mt-2 text-[10px] uppercase tracking-[0.18em] text-foreground-muted">Years competing</div>
+                <div className="mt-2 text-[11px] md:text-[12px] uppercase tracking-[0.18em] text-foreground-muted">Years competing</div>
               </div>
               <div>
                 <div
@@ -118,7 +118,7 @@ export default function TheProjectPage() {
                 >
                   6
                 </div>
-                <div className="mt-2 text-[10px] uppercase tracking-[0.18em] text-foreground-muted">
+                <div className="mt-2 text-[11px] md:text-[12px] uppercase tracking-[0.18em] text-foreground-muted">
                   Competitions / season
                 </div>
               </div>
@@ -129,7 +129,7 @@ export default function TheProjectPage() {
                 >
                   3
                 </div>
-                <div className="mt-2 text-[10px] uppercase tracking-[0.18em] text-foreground-muted">Team levels</div>
+                <div className="mt-2 text-[11px] md:text-[12px] uppercase tracking-[0.18em] text-foreground-muted">Team levels</div>
               </div>
               <div>
                 <div
@@ -138,7 +138,7 @@ export default function TheProjectPage() {
                 >
                   100%
                 </div>
-                <div className="mt-2 text-[10px] uppercase tracking-[0.18em] text-foreground-muted">
+                <div className="mt-2 text-[11px] md:text-[12px] uppercase tracking-[0.18em] text-foreground-muted">
                   Senior placement rate
                 </div>
               </div>
@@ -152,86 +152,86 @@ export default function TheProjectPage() {
             <div className="mb-14 text-center">
               <div className="mb-5 flex items-center justify-center gap-3">
                 <div className="h-px w-7 bg-white/40" />
-                <span className="text-[10px] font-medium uppercase tracking-[0.22em] text-white/60">Team Levels</span>
+                <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-white/60">Team Levels</span>
                 <div className="h-px w-7 bg-white/40" />
               </div>
               <h2
                 className="font-display font-bold text-background"
-                style={{ fontSize: 'clamp(32px, 4.5vw, 48px)', lineHeight: '1.05' }}
+                style={{ fontSize: 'clamp(28px, 3.5vw, 42px)', lineHeight: '1.05' }}
               >
                 Three levels. One team.
               </h2>
-              <p className="mx-auto mt-4 max-w-md text-[14px] leading-[1.7] text-white/65">
+              <p className="mx-auto mt-4 max-w-md text-[14px] leading-[1.7] text-white/65 md:text-[15px]">
                 Dancers are placed by age, training, and audition performance.
               </p>
             </div>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
               <div className="rounded-lg border border-white/10 bg-white/[0.04] p-8">
-                <div className="mb-3 text-[10px] uppercase tracking-[0.2em] text-teal">Ages 5–8</div>
+                <div className="mb-3 text-[11px] md:text-[12px] uppercase tracking-[0.2em] text-teal">Ages 5–8</div>
                 <div className="mb-4 font-display font-bold text-background" style={{ fontSize: '26px', lineHeight: '1.1' }}>
                   Prep
                 </div>
-                <div className="mb-5 text-[13px] leading-[1.65] text-white/65">
+                <div className="mb-5 text-[14px] leading-[1.6] text-white/65 md:text-[15px]">
                   Introduction to competition for young dancers. One group routine, local competitions, foundation
                   training.
                 </div>
                 <div className="space-y-2 border-t border-white/10 pt-4">
-                  <div className="flex justify-between text-[12px]">
+                  <div className="flex justify-between text-[13px] md:text-[14px]">
                     <span className="text-white/50">Classes / week</span>
                     <span className="font-medium text-background">4–6 hrs</span>
                   </div>
-                  <div className="flex justify-between text-[12px]">
+                  <div className="flex justify-between text-[13px] md:text-[14px]">
                     <span className="text-white/50">Competitions</span>
                     <span className="font-medium text-background">2 local</span>
                   </div>
-                  <div className="flex justify-between text-[12px]">
+                  <div className="flex justify-between text-[13px] md:text-[14px]">
                     <span className="text-white/50">Nationals</span>
                     <span className="font-medium text-background">Optional</span>
                   </div>
                 </div>
               </div>
               <div className="rounded-lg border border-white/10 bg-white/[0.04] p-8">
-                <div className="mb-3 text-[10px] uppercase tracking-[0.2em] text-teal">Ages 9–13</div>
+                <div className="mb-3 text-[11px] md:text-[12px] uppercase tracking-[0.2em] text-teal">Ages 9–13</div>
                 <div className="mb-4 font-display font-bold text-background" style={{ fontSize: '26px', lineHeight: '1.1' }}>
                   Junior
                 </div>
-                <div className="mb-5 text-[13px] leading-[1.65] text-white/65">
+                <div className="mb-5 text-[14px] leading-[1.6] text-white/65 md:text-[15px]">
                   Intermediate competitors building advanced technique across multiple styles. Regional travel begins.
                 </div>
                 <div className="space-y-2 border-t border-white/10 pt-4">
-                  <div className="flex justify-between text-[12px]">
+                  <div className="flex justify-between text-[13px] md:text-[14px]">
                     <span className="text-white/50">Classes / week</span>
                     <span className="font-medium text-background">8–10 hrs</span>
                   </div>
-                  <div className="flex justify-between text-[12px]">
+                  <div className="flex justify-between text-[13px] md:text-[14px]">
                     <span className="text-white/50">Competitions</span>
                     <span className="font-medium text-background">4 regional</span>
                   </div>
-                  <div className="flex justify-between text-[12px]">
+                  <div className="flex justify-between text-[13px] md:text-[14px]">
                     <span className="text-white/50">Nationals</span>
                     <span className="font-medium text-background">Required</span>
                   </div>
                 </div>
               </div>
               <div className="rounded-lg border border-white/10 bg-white/[0.04] p-8">
-                <div className="mb-3 text-[10px] uppercase tracking-[0.2em] text-teal">Ages 14–18</div>
+                <div className="mb-3 text-[11px] md:text-[12px] uppercase tracking-[0.2em] text-teal">Ages 14–18</div>
                 <div className="mb-4 font-display font-bold text-background" style={{ fontSize: '26px', lineHeight: '1.1' }}>
                   Senior
                 </div>
-                <div className="mb-5 text-[13px] leading-[1.65] text-white/65">
+                <div className="mb-5 text-[14px] leading-[1.6] text-white/65 md:text-[15px]">
                   Advanced dancers preparing for collegiate, professional, or industry-level training. Conventions and
                   out-of-state competition.
                 </div>
                 <div className="space-y-2 border-t border-white/10 pt-4">
-                  <div className="flex justify-between text-[12px]">
+                  <div className="flex justify-between text-[13px] md:text-[14px]">
                     <span className="text-white/50">Classes / week</span>
                     <span className="font-medium text-background">12+ hrs</span>
                   </div>
-                  <div className="flex justify-between text-[12px]">
+                  <div className="flex justify-between text-[13px] md:text-[14px]">
                     <span className="text-white/50">Competitions</span>
                     <span className="font-medium text-background">6+ regional + Nationals</span>
                   </div>
-                  <div className="flex justify-between text-[12px]">
+                  <div className="flex justify-between text-[13px] md:text-[14px]">
                     <span className="text-white/50">Nationals</span>
                     <span className="font-medium text-background">Required</span>
                   </div>
@@ -248,15 +248,15 @@ export default function TheProjectPage() {
               <div>
                 <div className="mb-5 flex items-center gap-3">
                   <div className="h-px w-7 bg-teal" />
-                  <span className="text-[10px] font-medium uppercase tracking-[0.22em] text-teal">The Commitment</span>
+                  <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-teal">The Commitment</span>
                 </div>
                 <h2
                   className="mb-5 font-display font-bold text-foreground"
-                  style={{ fontSize: 'clamp(28px, 3.5vw, 40px)', lineHeight: '1.1' }}
+                  style={{ fontSize: 'clamp(28px, 3.5vw, 42px)', lineHeight: '1.1' }}
                 >
                   What it takes.
                 </h2>
-                <p className="text-[14px] leading-[1.75] text-foreground-muted">
+                <p className="text-[14px] leading-[1.75] text-foreground-muted md:text-[15px]">
                   Project is a year-round commitment. Here&apos;s what families should expect.
                 </p>
               </div>
@@ -266,7 +266,7 @@ export default function TheProjectPage() {
                     ◆
                   </div>
                   <div className="flex-1">
-                    <div className="mb-1 text-[10px] uppercase tracking-[0.18em] text-foreground-muted">Season</div>
+                    <div className="mb-1 text-[11px] md:text-[12px] uppercase tracking-[0.18em] text-foreground-muted">Season</div>
                     <div className="text-[14px] leading-[1.6] text-foreground">
                       August through June, with competitions January through April.
                     </div>
@@ -277,7 +277,7 @@ export default function TheProjectPage() {
                     ◆
                   </div>
                   <div className="flex-1">
-                    <div className="mb-1 text-[10px] uppercase tracking-[0.18em] text-foreground-muted">
+                    <div className="mb-1 text-[11px] md:text-[12px] uppercase tracking-[0.18em] text-foreground-muted">
                       Required classes
                     </div>
                     <div className="text-[14px] leading-[1.6] text-foreground">
@@ -290,7 +290,7 @@ export default function TheProjectPage() {
                     ◆
                   </div>
                   <div className="flex-1">
-                    <div className="mb-1 text-[10px] uppercase tracking-[0.18em] text-foreground-muted">
+                    <div className="mb-1 text-[11px] md:text-[12px] uppercase tracking-[0.18em] text-foreground-muted">
                       Choreography camps
                     </div>
                     <div className="text-[14px] leading-[1.6] text-foreground">
@@ -303,7 +303,7 @@ export default function TheProjectPage() {
                     ◆
                   </div>
                   <div className="flex-1">
-                    <div className="mb-1 text-[10px] uppercase tracking-[0.18em] text-foreground-muted">Conventions</div>
+                    <div className="mb-1 text-[11px] md:text-[12px] uppercase tracking-[0.18em] text-foreground-muted">Conventions</div>
                     <div className="text-[14px] leading-[1.6] text-foreground">
                       All Junior and Senior dancers attend at least one convention per season.
                     </div>
@@ -314,7 +314,7 @@ export default function TheProjectPage() {
                     ◆
                   </div>
                   <div className="flex-1">
-                    <div className="mb-1 text-[10px] uppercase tracking-[0.18em] text-foreground-muted">
+                    <div className="mb-1 text-[11px] md:text-[12px] uppercase tracking-[0.18em] text-foreground-muted">
                       Additional fees
                     </div>
                     <div className="text-[14px] leading-[1.6] text-foreground">
@@ -334,35 +334,35 @@ export default function TheProjectPage() {
             <div className="mb-12 text-center">
               <div className="mb-5 flex items-center justify-center gap-3">
                 <div className="h-px w-7 bg-teal" />
-                <span className="text-[10px] font-medium uppercase tracking-[0.22em] text-teal">Recent Achievements</span>
+                <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-teal">Recent Achievements</span>
                 <div className="h-px w-7 bg-teal" />
               </div>
               <h2
                 className="font-display font-bold text-foreground"
-                style={{ fontSize: 'clamp(28px, 4vw, 42px)', lineHeight: '1.05' }}
+                style={{ fontSize: 'clamp(28px, 3.5vw, 42px)', lineHeight: '1.05' }}
               >
                 Hard work, recognized.
               </h2>
             </div>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
               <div className="rounded-lg border border-border bg-background p-7">
-                <div className="mb-3 text-[10px] font-semibold uppercase tracking-[0.22em] text-teal">2024 Season</div>
+                <div className="mb-3 text-[11px] md:text-[12px] font-semibold uppercase tracking-[0.22em] text-teal">2024 Season</div>
                 <div className="mb-2 font-display font-bold text-foreground" style={{ fontSize: '20px', lineHeight: '1.2' }}>
                   Platinum Award
                 </div>
-                <div className="text-[12px] leading-[1.5] text-foreground-muted">Senior Lyrical Group — KAR Nationals</div>
+                <div className="text-[13px] leading-[1.6] text-foreground-muted md:text-[14px]">Senior Lyrical Group — KAR Nationals</div>
               </div>
               <div className="rounded-lg border border-border bg-background p-7">
-                <div className="mb-3 text-[10px] font-semibold uppercase tracking-[0.22em] text-teal">2024 Season</div>
+                <div className="mb-3 text-[11px] md:text-[12px] font-semibold uppercase tracking-[0.22em] text-teal">2024 Season</div>
                 <div className="mb-2 font-display font-bold text-foreground" style={{ fontSize: '20px', lineHeight: '1.2' }}>
                   1st Place Overall
                 </div>
-                <div className="text-[12px] leading-[1.5] text-foreground-muted">
+                <div className="text-[13px] leading-[1.6] text-foreground-muted md:text-[14px]">
                   Junior Jazz Line — Showbiz Regionals
                 </div>
               </div>
               <div className="rounded-lg border border-border bg-background p-7">
-                <div className="mb-3 text-[10px] font-semibold uppercase tracking-[0.22em] text-teal">2023 Season</div>
+                <div className="mb-3 text-[11px] md:text-[12px] font-semibold uppercase tracking-[0.22em] text-teal">2023 Season</div>
                 <div className="mb-2 font-display font-bold text-foreground" style={{ fontSize: '20px', lineHeight: '1.2' }}>
                   Studio Excellence Award
                 </div>
@@ -377,29 +377,29 @@ export default function TheProjectPage() {
           <div className="mx-auto max-w-7xl">
             <div className="mb-4 flex items-center gap-3">
               <div className="h-px w-7 bg-teal" />
-              <span className="text-[10px] font-medium uppercase tracking-[0.22em] text-teal">Gallery</span>
+              <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-teal">Gallery</span>
             </div>
             <h2
               className="mb-10 font-display font-bold text-foreground"
-              style={{ fontSize: 'clamp(28px, 3.5vw, 36px)', lineHeight: '1.1' }}
+              style={{ fontSize: 'clamp(28px, 3.5vw, 30px)', lineHeight: '1.1' }}
             >
               On stage.
             </h2>
             <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
               <div className="flex aspect-[8/4] items-center justify-center border border-border bg-background-warm md:col-span-2">
-                <span className="text-[11px] uppercase tracking-[0.15em] text-foreground-muted">[Performance photo]</span>
+                <span className="text-[12px] uppercase tracking-[0.15em] text-foreground-muted md:text-[13px]">[Performance photo]</span>
               </div>
               <div className="flex aspect-[3/4] items-center justify-center border border-border bg-background-warm">
-                <span className="text-[11px] uppercase tracking-[0.15em] text-foreground-muted">[Group shot]</span>
+                <span className="text-[12px] uppercase tracking-[0.15em] text-foreground-muted md:text-[13px]">[Group shot]</span>
               </div>
               <div className="flex aspect-[3/4] items-center justify-center border border-border bg-background-warm">
-                <span className="text-[11px] uppercase tracking-[0.15em] text-foreground-muted">[Solo competition]</span>
+                <span className="text-[12px] uppercase tracking-[0.15em] text-foreground-muted md:text-[13px]">[Solo competition]</span>
               </div>
               <div className="flex aspect-[3/4] items-center justify-center border border-border bg-background-warm">
-                <span className="text-[11px] uppercase tracking-[0.15em] text-foreground-muted">[Backstage]</span>
+                <span className="text-[12px] uppercase tracking-[0.15em] text-foreground-muted md:text-[13px]">[Backstage]</span>
               </div>
               <div className="flex aspect-[8/4] items-center justify-center border border-border bg-background-warm md:col-span-2">
-                <span className="text-[11px] uppercase tracking-[0.15em] text-foreground-muted">[Awards ceremony]</span>
+                <span className="text-[12px] uppercase tracking-[0.15em] text-foreground-muted md:text-[13px]">[Awards ceremony]</span>
               </div>
             </div>
           </div>
@@ -410,12 +410,12 @@ export default function TheProjectPage() {
           <div className="mx-auto max-w-3xl text-center">
             <div className="mb-5 flex items-center justify-center gap-3">
               <div className="h-px w-7 bg-white/40" />
-              <span className="text-[10px] font-medium uppercase tracking-[0.22em] text-white/60">Auditions</span>
+              <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-white/60">Auditions</span>
               <div className="h-px w-7 bg-white/40" />
             </div>
             <h2
               className="mb-5 font-display font-bold text-background"
-              style={{ fontSize: 'clamp(36px, 5vw, 56px)', lineHeight: '1' }}
+              style={{ fontSize: 'clamp(28px, 3.5vw, 42px)', lineHeight: '1' }}
             >
               Ready to join The Project?
             </h2>
@@ -429,13 +429,13 @@ export default function TheProjectPage() {
             <div className="flex flex-wrap justify-center gap-3">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 bg-teal px-7 py-3.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-foreground transition-colors duration-200 hover:bg-teal/90"
+                className="inline-flex items-center gap-2 bg-teal px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.22em] text-foreground transition-colors duration-200 hover:bg-teal/90 md:text-[13px]"
               >
                 Sign up for auditions →
               </Link>
               <Link
                 href="mailto:info@evolvedancecenter.com"
-                className="inline-flex items-center gap-2 border border-white px-7 py-3.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-background transition-colors duration-200 hover:bg-white hover:text-foreground"
+                className="inline-flex items-center gap-2 border border-white px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.22em] text-background transition-colors duration-200 hover:bg-white hover:text-foreground md:text-[13px]"
               >
                 Email us
               </Link>

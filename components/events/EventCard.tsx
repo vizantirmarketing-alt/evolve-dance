@@ -111,13 +111,13 @@ export default function EventCard({ event, variant = 'default' }: EventCardProps
           <>
             <span
               className={cn(
-                'font-sans text-[10px] font-medium uppercase tracking-[0.22em]',
+                'font-sans text-[11px] font-medium uppercase tracking-[0.22em] md:text-[12px]',
                 isClosure ? 'text-foreground-muted' : 'text-teal',
               )}
             >
               {dateBlock.month}
             </span>
-            <span className="font-display text-[clamp(2.25rem,6vw,3rem)] font-bold leading-none">
+            <span className="font-display text-[clamp(1.5rem,4vw,2rem)] font-bold leading-none">
               {dateBlock.day}
             </span>
           </>
@@ -127,24 +127,24 @@ export default function EventCard({ event, variant = 'default' }: EventCardProps
       <div className="min-w-0 flex-1">
         <p
           className={cn(
-            'text-[10px] font-medium uppercase tracking-[0.22em]',
+            'text-[11px] font-medium uppercase tracking-[0.22em] md:text-[12px]',
             isClosure ? 'text-foreground-muted' : 'text-teal',
           )}
         >
           {EVENT_TYPE_LABELS[event.type]}
         </p>
-        <h2 className="mt-2 font-display text-2xl font-bold leading-snug text-foreground md:text-[1.65rem]">
+        <h2 className="mt-2 font-display text-[clamp(18px,2.2vw,22px)] font-bold leading-snug text-foreground">
           {event.title}
         </h2>
 
         {metaParts.length > 0 ? (
-          <p className="mt-3 text-[13px] font-light leading-relaxed text-foreground-muted">
+          <p className="mt-3 text-[14px] font-light leading-[1.7] text-foreground-muted md:text-[15px]">
             {metaParts.join(' · ')}
           </p>
         ) : null}
 
         {descriptionPreview ? (
-          <p className="mt-4 text-[13px] font-light leading-relaxed text-foreground-muted">
+          <p className="mt-4 text-[14px] font-light leading-[1.7] text-foreground-muted md:text-[15px]">
             {descriptionPreview}
           </p>
         ) : null}
@@ -155,7 +155,7 @@ export default function EventCard({ event, variant = 'default' }: EventCardProps
               href={registrationUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-1 text-[13px] font-medium text-teal underline-offset-4 transition-colors hover:text-teal/90 hover:underline"
+              className="group inline-flex items-center gap-1 text-[14px] font-medium text-teal underline-offset-4 transition-colors hover:text-teal/90 hover:underline md:text-[15px]"
             >
               <span className="transition-transform duration-200 ease-out group-hover:translate-x-0.5">
                 {registrationCtaLabel(event.type)}

@@ -111,7 +111,7 @@ export default function VideoHeroSection({
             <motion.div variants={item} className="mb-7 flex w-full items-center justify-start gap-4 text-left">
               <div className="w-8 shrink-0 bg-[#0ABAB5] h-px" />
               <span
-                className="text-left text-[9px] font-medium uppercase tracking-[0.2em] text-white/90 md:text-[10px] md:tracking-[0.25em] whitespace-normal md:whitespace-nowrap"
+                className="text-left text-[11px] font-medium uppercase tracking-[0.2em] text-white/90 md:text-[12px] md:tracking-[0.25em] whitespace-normal md:whitespace-nowrap"
                 style={{ textShadow: '0 1px 8px rgba(0,0,0,0.5)' }}
               >
                 Las Vegas · Ages 18mo–18yrs · All Levels
@@ -122,7 +122,7 @@ export default function VideoHeroSection({
             <motion.h1
               variants={item}
               className="text-left font-display font-black leading-[0.88] tracking-tight mb-6"
-              style={{ fontSize: 'clamp(52px, 8vw, 112px)' }}
+              style={{ fontSize: 'clamp(48px, 7vw, 96px)' }}
             >
               <span className="block text-[#F7F5F1]">Where dancers</span>
               <span className="block text-[#F7F5F1]">become</span>
@@ -152,7 +152,7 @@ export default function VideoHeroSection({
               <div className="flex flex-col items-start gap-3 md:hidden">
                 <Link
                   href="/classes"
-                  className="group pointer-events-auto inline-flex self-start items-center justify-center gap-2 bg-black/30 backdrop-blur-sm text-sm font-medium tracking-wider text-white px-4 py-2.5 rounded-sm transition-colors hover:bg-black/50"
+                  className="group pointer-events-auto inline-flex self-start items-center justify-center gap-2 bg-black/30 backdrop-blur-sm text-[12px] font-medium tracking-[0.2em] text-white px-4 py-3.5 rounded-sm transition-colors hover:bg-black/50 md:text-[13px]"
                 >
                   Explore Classes
                   <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" aria-hidden />
@@ -160,7 +160,7 @@ export default function VideoHeroSection({
                 <button
                   type="button"
                   onClick={() => setLightbox(true)}
-                  className="group pointer-events-auto inline-flex self-start items-center justify-center gap-2 bg-black/30 backdrop-blur-sm text-sm font-medium tracking-wider text-white px-4 py-2.5 rounded-sm transition-colors hover:bg-black/50"
+                  className="group pointer-events-auto inline-flex self-start items-center justify-center gap-2 bg-black/30 backdrop-blur-sm text-[12px] font-medium tracking-[0.2em] text-white px-4 py-3.5 rounded-sm transition-colors hover:bg-black/50 md:text-[13px]"
                 >
                   <span className="flex items-center justify-center w-6 h-6 rounded-full bg-white/20 group-hover:bg-white/30 transition-colors">
                     <Play className="w-2.5 h-2.5 fill-white ml-0.5" aria-hidden />
@@ -172,7 +172,7 @@ export default function VideoHeroSection({
               <div className="hidden md:flex md:flex-row md:flex-wrap md:items-start md:gap-4">
                 <Link
                   href="/enroll#free-trial"
-                  className="group pointer-events-auto relative inline-flex w-full items-center justify-center gap-2 rounded-sm bg-[#0ABAB5] px-6 py-3 text-sm font-medium tracking-wider text-white no-underline transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#087876] hover:shadow-lg hover:shadow-[#0ABAB5]/25 md:w-auto md:justify-start"
+                  className="group pointer-events-auto relative inline-flex w-full items-center justify-center gap-2 rounded-sm bg-[#0ABAB5] px-6 py-3.5 text-[12px] font-medium tracking-[0.2em] text-white no-underline transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#087876] hover:shadow-lg hover:shadow-[#0ABAB5]/25 md:w-auto md:justify-start md:py-4 md:text-[13px]"
                 >
                   <span>Book a Free Trial</span>
                   <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
@@ -180,7 +180,7 @@ export default function VideoHeroSection({
 
                 <Link
                   href="/classes"
-                  className="group pointer-events-auto inline-flex w-full items-center justify-center gap-2 rounded-sm border border-white/20 bg-black/30 px-6 py-3 text-sm font-medium tracking-wider text-white no-underline backdrop-blur-md transition-all duration-300 hover:border-white/40 hover:bg-black/50 md:w-auto md:justify-start"
+                  className="group pointer-events-auto inline-flex w-full items-center justify-center gap-2 rounded-sm border border-white/20 bg-black/30 px-6 py-3.5 text-[12px] font-medium tracking-[0.2em] text-white no-underline backdrop-blur-md transition-all duration-300 hover:border-white/40 hover:bg-black/50 md:w-auto md:justify-start md:py-4 md:text-[13px]"
                 >
                   Explore Classes
                   <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" aria-hidden />
@@ -189,7 +189,7 @@ export default function VideoHeroSection({
                 <button
                   type="button"
                   onClick={() => setLightbox(true)}
-                  className="group pointer-events-auto inline-flex w-full items-center justify-center gap-3 rounded-sm border border-white/20 bg-black/30 px-5 py-3 text-sm font-medium tracking-wider text-white backdrop-blur-md transition-all duration-300 hover:border-white/40 hover:bg-black/50 md:w-auto md:justify-start"
+                  className="group pointer-events-auto inline-flex w-full items-center justify-center gap-3 rounded-sm border border-white/20 bg-black/30 px-5 py-3.5 text-[12px] font-medium tracking-[0.2em] text-white backdrop-blur-md transition-all duration-300 hover:border-white/40 hover:bg-black/50 md:w-auto md:justify-start md:py-4 md:text-[13px]"
                 >
                   <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white/15 transition-colors group-hover:bg-white/25">
                     <Play className="ml-0.5 h-3 w-3 fill-white text-white" aria-hidden />
@@ -258,7 +258,7 @@ export default function VideoHeroSection({
             }}
           />
           <span
-            className="text-[9px] tracking-[0.2em] uppercase text-[#6D6C67]"
+            className="text-[11px] tracking-[0.2em] uppercase text-[#6D6C67]"
             style={{ writingMode: 'vertical-rl' }}
           >
             Scroll
@@ -275,7 +275,7 @@ export default function VideoHeroSection({
         transition={{ delay: 0.3, duration: 0.8 }}
         className="relative z-10 flex flex-col border-t border-[#D6DFDA] bg-[#F7F5F1]"
       >
-        <p className="mx-auto max-w-[36rem] border-b border-[#D6DFDA] px-4 py-3 text-center text-[11px] font-light leading-[1.6] text-[#6D6C67] md:px-12 md:py-3.5 md:text-[12px]">
+        <p className="mx-auto max-w-[36rem] border-b border-[#D6DFDA] px-4 py-3 text-center text-[12px] font-light leading-[1.6] text-[#6D6C67] md:px-12 md:py-3.5 md:text-[13px]">
           {statsStripSubline}
         </p>
         <div className="grid grid-cols-2 md:grid-cols-4">
@@ -290,7 +290,7 @@ export default function VideoHeroSection({
               <span className="font-display text-[clamp(16px,3.5vw,24px)] font-bold text-[#0ABAB5] leading-tight">
                 {stat.number}
               </span>
-              <span className="text-[9px] tracking-[0.18em] uppercase text-[#6D6C67]">
+              <span className="text-[11px] uppercase tracking-[0.18em] text-[#6D6C67] md:text-[12px]">
                 {stat.label}
               </span>
             </div>

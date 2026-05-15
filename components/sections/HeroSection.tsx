@@ -125,7 +125,7 @@ export default function HeroSection() {
           className="flex items-center gap-4 mb-6"
         >
           <div className="w-8 h-px bg-teal" />
-          <span className="text-[10px] tracking-[0.25em] uppercase text-teal font-medium opacity-100">
+          <span className="text-[11px] md:text-[12px] tracking-[0.25em] uppercase text-teal font-medium opacity-100">
             Las Vegas · Ages 18mo–18yrs · All Levels
           </span>
         </motion.div>
@@ -137,7 +137,7 @@ export default function HeroSection() {
           viewport={{ once: true, amount: 0 }}
           transition={{ duration: 0.8, delay: 0.35 }}
           className="font-display font-black leading-[0.88] tracking-tight mb-7"
-          style={{ fontSize: 'clamp(56px, 8.5vw, 118px)' }}
+          style={{ fontSize: 'clamp(48px, 7vw, 96px)' }}
         >
           <span className="block text-[#f0faf8]">Where</span>
           <span className="block text-teal italic teal-glow-text">dancers</span>
@@ -150,7 +150,7 @@ export default function HeroSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-[15px] font-light text-[#cbd5e1] leading-[1.75] max-w-[400px] mb-11"
+          className="text-[15px] font-light text-[#cbd5e1] leading-[1.75] max-w-[400px] mb-11 md:text-[16px]"
         >
           Ballet, jazz, hip hop, contemporary, acro, and more — serious training in a positive environment that produces real results.
         </motion.p>
@@ -167,10 +167,11 @@ export default function HeroSection() {
             href="/classes"
             className={[
               'inline-flex items-center gap-2.5 clip-btn no-underline',
-              'text-[11px] font-medium tracking-[0.15em] uppercase',
-              'text-black bg-teal px-8 py-4',
+              'text-[12px] font-medium tracking-[0.2em] uppercase',
+              'text-black bg-teal px-8 py-3.5',
               'transition-all duration-200',
               'hover:bg-teal-light hover:shadow-[0_0_40px_rgba(10,186,181,0.35)] hover:-translate-y-0.5',
+              'md:py-4 md:text-[13px]',
             ].join(' ')}
           >
             View Schedule
@@ -181,7 +182,7 @@ export default function HeroSection() {
 
           <Link
             href="/enroll#free-trial"
-            className="text-[11px] font-normal tracking-[0.15em] uppercase text-[#cbd5e1] no-underline border-b border-[rgba(10,186,181,0.25)] pb-0.5 transition-colors duration-200 hover:text-teal hover:border-teal"
+            className="text-[12px] font-normal tracking-[0.2em] uppercase text-[#cbd5e1] no-underline border-b border-[rgba(10,186,181,0.25)] pb-0.5 transition-colors duration-200 hover:text-teal hover:border-teal md:text-[13px]"
           >
             Book a Free Trial
           </Link>
@@ -207,7 +208,7 @@ export default function HeroSection() {
             <span className="font-display text-[28px] font-bold text-teal leading-none">
               {stat.number}
             </span>
-            <span className="text-[9px] tracking-[0.18em] uppercase text-[#94a3b8]">
+            <span className="text-[11px] uppercase tracking-[0.18em] text-[#94a3b8] md:text-[12px]">
               {stat.label}
             </span>
           </div>
@@ -227,7 +228,7 @@ export default function HeroSection() {
           style={{ background: 'linear-gradient(to bottom, #0ABAB5, transparent)' }}
         />
         <span
-          className="text-[9px] tracking-[0.2em] uppercase text-[#94a3b8]"
+          className="text-[11px] tracking-[0.2em] uppercase text-[#94a3b8]"
           style={{ writingMode: 'vertical-rl' }}
         >
           Scroll
