@@ -31,16 +31,16 @@ export default async function ScheduleSection() {
           <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-teal opacity-100">Upcoming Classes</span>
         </div>
       </RevealOnScroll>
-      <div className="mt-4 mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+      <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <RevealOnScroll delay={100}>
           <>
-            <h2 className="font-display font-bold text-[#f0faf8]">
+            <h2 className="font-display max-w-3xl font-bold text-[#f0faf8]">
               <span style={{ fontSize: 'clamp(40px, 5vw, 64px)', lineHeight: '0.95' }}>Class </span>
               <span className="italic text-teal" style={{ fontSize: 'clamp(40px, 5vw, 64px)', lineHeight: '0.95' }}>
                 schedule
               </span>
             </h2>
-            <p className="text-[15px] font-light leading-[1.8] text-[#e2e8f0] md:text-[16px]">{siteConfig.scheduleIntro}</p>
+            <p className="mt-4 max-w-2xl text-[15px] font-light leading-[1.8] text-[#e2e8f0] md:text-[16px]">{siteConfig.scheduleIntro}</p>
           </>
         </RevealOnScroll>
         <Link

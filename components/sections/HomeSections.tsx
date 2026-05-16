@@ -201,7 +201,7 @@ export function WhyFamiliesChooseSection() {
       </Reveal>
       <Reveal delay={100}>
         <h2
-          className="font-display font-bold text-[#f0faf8] leading-none mb-14"
+          className="font-display font-bold max-w-3xl text-[#f0faf8] leading-none mb-14"
           style={{ fontSize: 'clamp(28px, 3.5vw, 42px)' }}
         >
           What makes Evolve different
@@ -304,10 +304,10 @@ export function ClassesSection() {
           </Reveal>
           <Reveal delay={100}>
             <>
-              <h2 className="font-display font-bold text-[#1F1F1C] leading-none" style={{ fontSize: 'clamp(28px, 3.5vw, 42px)' }}>
+              <h2 className="font-display font-bold max-w-3xl text-[#1F1F1C] leading-none" style={{ fontSize: 'clamp(28px, 3.5vw, 42px)' }}>
                 Programs designed for every stage of growth
               </h2>
-              <p className="text-[15px] font-light text-[#6D6C67] leading-[1.75] md:text-[16px]">
+              <p className="mt-4 max-w-2xl text-[15px] font-light text-[#6D6C67] leading-[1.75] md:text-[16px]">
                 From early movement classes to advanced training, our programs are built to meet dancers where they are and help them progress with confidence.
               </p>
             </>
@@ -431,13 +431,13 @@ export function InstructorsSection() {
           <span className="text-[11px] md:text-[12px] tracking-[0.22em] uppercase text-[#0ABAB5] font-medium opacity-100">The Faculty</span>
         </div>
       </Reveal>
-      <div className="mt-4 mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+      <div className="mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <Reveal delay={100}>
           <>
-            <h2 className="font-display font-bold text-[#1F1F1C] leading-none" style={{ fontSize: 'clamp(28px, 3.5vw, 42px)' }}>
+            <h2 className="font-display font-bold max-w-3xl text-[#1F1F1C] leading-none" style={{ fontSize: 'clamp(28px, 3.5vw, 42px)' }}>
               Meet the faculty behind the training
             </h2>
-            <p className="text-[15px] font-light text-[#6D6C67] leading-[1.75] md:text-[16px]">
+            <p className="mt-4 max-w-2xl text-[15px] font-light text-[#6D6C67] leading-[1.75] md:text-[16px]">
               Our team brings the experience, care, and high standards that shape confident dancers and meaningful progress in every class.
             </p>
           </>
@@ -539,13 +539,13 @@ export function TestimonialsSection() {
       </Reveal>
       <Reveal delay={100}>
         <>
-          <h2 className="font-display font-bold mt-4 mb-4 text-[#1F1F1C]" style={{ fontSize: 'clamp(28px, 3.5vw, 42px)', lineHeight: '1' }}>
+          <h2 className="font-display font-bold mt-4 mb-4 max-w-3xl text-[#1F1F1C]" style={{ fontSize: 'clamp(28px, 3.5vw, 42px)', lineHeight: '1' }}>
             What families love about Evolve —{' '}
             <span className="italic text-[#0ABAB5]" style={{ fontSize: 'clamp(28px, 3.5vw, 42px)', lineHeight: '1' }}>
               Reviews
             </span>
           </h2>
-          <p className="text-[15px] font-light text-[#6D6C67] leading-[1.75] mb-14 md:text-[16px]">
+          <p className="max-w-2xl text-[15px] font-light text-[#6D6C67] leading-[1.75] mb-14 md:text-[16px]">
             Families choose Evolve for more than strong classes. They stay for the culture, the consistency, and the way their dancers grow over time.
           </p>
         </>
@@ -626,7 +626,7 @@ export function TestimonialsSection() {
 export function ProjectSection() {
   return (
     <section
-      className="bg-[#173432] px-4 py-16 md:px-12 md:py-20 relative overflow-hidden text-center"
+      className="bg-[#173432] px-4 py-28 md:px-12 relative overflow-hidden text-center"
     >
       {/* Glow */}
       <div
@@ -682,7 +682,7 @@ export function ProjectSection() {
 
 export function EnrollSection() {
   return (
-    <section className="bg-[#0ABAB5] px-4 pt-10 pb-20 md:px-12 md:py-24 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+    <section className="bg-[#0ABAB5] px-4 py-28 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
       <Reveal>
         <span className="text-[11px] md:text-[12px] font-semibold tracking-[0.22em] uppercase text-white/70 block mb-4">
           Ready to Begin?
