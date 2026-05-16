@@ -19,6 +19,9 @@ const DAY_LABEL: Record<DayKey, string> = {
 
 const DAY_SORT_ORDER = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] as const
 
+/** Weekdays shown on schedule surfaces (Sunday excluded; matches full-page schedule). */
+export const DAY_ORDER_MON_SAT = DAY_SORT_ORDER.slice(0, -1)
+
 export interface JackrabbitMeetingDays {
   mon: boolean
   tue: boolean
@@ -149,6 +152,13 @@ export function groupByDay(classes: JackrabbitClass[]): DayGroup[] {
     day,
     classes: map.get(day)!,
   }))
+}
+
+const MON_SAT_DAY_SET = new Set<string>(DAY_ORDER_MON_SAT)
+
+/** Drop Sunday (and any non–Mon–Sat labels) while preserving `groupByDay` order. */
+export function filterDayGroupsMonSat(groups: DayGroup[]): DayGroup[] {
+  return groups.filter((g) => MON_SAT_DAY_SET.has(g.day))
 }
 
 function mapRowToClass(raw: JackrabbitOpeningsRow, dayLabel: string): JackrabbitClass {

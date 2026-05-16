@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { siteConfig } from '@/data/site'
-import { getJackrabbitClasses, getPublicClasses, groupByDay } from '@/lib/jackrabbit'
+import { filterDayGroupsMonSat, getJackrabbitClasses, getPublicClasses, groupByDay } from '@/lib/jackrabbit'
 import { RevealOnScroll } from '@/components/sections/RevealOnScroll'
 import { ScheduleTabs } from '@/components/sections/ScheduleTabs'
 
@@ -10,7 +10,7 @@ export default async function ScheduleSection() {
     const all = await getJackrabbitClasses()
     const publicClasses = getPublicClasses(all)
     const grouped = groupByDay(publicClasses)
-    preview = grouped.slice(0, 3)
+    preview = filterDayGroupsMonSat(grouped).slice(0, 3)
   } catch {
     preview = []
   }
