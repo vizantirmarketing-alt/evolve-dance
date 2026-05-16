@@ -18,6 +18,7 @@ export const footerLinks: {
     { label: 'About Us', href: '/about' },
     { label: 'The Faculty', href: '/faculty' },
     { label: 'The Project', href: '/the-project' },
+    { label: 'Blog', href: '/blog' },
     { label: 'FAQ', href: '/faq' },
     { label: 'Gallery', href: '/gallery' },
     { label: 'Policies', href: '/policies' },
