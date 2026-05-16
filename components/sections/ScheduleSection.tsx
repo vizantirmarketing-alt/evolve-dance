@@ -1,28 +1,34 @@
 import Link from 'next/link'
 import { siteConfig } from '@/data/site'
+import {
+  buildHomepageSchedulePreview,
+  type HomepageSchedulePreviewDay,
+} from '@/lib/homepageSchedulePreview'
 import { filterDayGroupsMonSat, getJackrabbitClasses, getPublicClasses, groupByDay } from '@/lib/jackrabbit'
 import { RevealOnScroll } from '@/components/sections/RevealOnScroll'
 import { ScheduleTabs } from '@/components/sections/ScheduleTabs'
 
 export default async function ScheduleSection() {
-  let preview: Awaited<ReturnType<typeof groupByDay>> = []
+  let preview: HomepageSchedulePreviewDay[] = []
   try {
     const all = await getJackrabbitClasses()
     const publicClasses = getPublicClasses(all)
     const grouped = groupByDay(publicClasses)
-    preview = filterDayGroupsMonSat(grouped).slice(0, 3)
+    const monSat = filterDayGroupsMonSat(grouped)
+    preview = buildHomepageSchedulePreview(monSat)
   } catch {
     preview = []
   }
 
   const hasClasses = preview.length > 0
+  const defaultTabKey = preview.find((d) => d.isToday)?.dateISO ?? preview[0]?.dateISO ?? ''
 
   return (
     <section className="bg-[#0f2318] px-4 py-28 md:px-12">
       <RevealOnScroll>
         <div className="mb-6 flex items-center gap-3">
           <div className="h-px w-7 bg-teal opacity-100" />
-          <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-teal opacity-100">This Week</span>
+          <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-teal opacity-100">Upcoming Classes</span>
         </div>
       </RevealOnScroll>
       <div className="mt-4 mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
@@ -62,7 +68,7 @@ export default async function ScheduleSection() {
           </Link>
         </div>
       ) : (
-        <ScheduleTabs groups={preview} />
+        <ScheduleTabs days={preview} defaultTabKey={defaultTabKey} />
       )}
     </section>
   )

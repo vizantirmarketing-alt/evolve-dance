@@ -3,36 +3,49 @@
 import { useMemo, useState } from 'react'
 import { ScheduleDayRows } from '@/components/ScheduleDayRows'
 import { cn } from '@/lib/utils'
-import type { DayGroup } from '@/lib/jackrabbit'
+import type { HomepageSchedulePreviewDay } from '@/lib/homepageSchedulePreview'
 
-export function ScheduleTabs({ groups }: { groups: DayGroup[] }) {
-  const firstDay = groups[0]?.day ?? ''
-  const [activeDay, setActiveDay] = useState(firstDay)
+export function ScheduleTabs({
+  days,
+  defaultTabKey,
+}: {
+  days: HomepageSchedulePreviewDay[]
+  defaultTabKey: string
+}) {
+  const [activeKey, setActiveKey] = useState(defaultTabKey)
 
   const activeClasses = useMemo(() => {
-    const g = groups.find((d) => d.day === activeDay)
-    return g?.classes ?? []
-  }, [groups, activeDay])
+    const row = days.find((d) => d.dateISO === activeKey)
+    return row?.classes ?? []
+  }, [days, activeKey])
 
-  if (groups.length === 0) return null
+  if (days.length === 0) return null
 
   return (
     <>
       <div className="mb-12 flex gap-0 overflow-x-auto border-b border-[rgba(10,186,181,0.12)]">
-        {groups.map((g) => (
+        {days.map((row) => (
           <button
-            key={g.day}
+            key={row.dateISO}
             type="button"
-            onClick={() => setActiveDay(g.day)}
+            onClick={() => setActiveKey(row.dateISO)}
             className={cn(
-              'whitespace-nowrap px-6 py-3.5 text-[12px] font-medium uppercase tracking-[0.15em] md:text-[13px]',
+              'whitespace-nowrap px-6 py-3.5 text-left text-[13px] font-medium tracking-[0.02em] md:text-[14px]',
+              'normal-case',
               '-mb-px border-b-2 transition-colors duration-200',
-              activeDay === g.day
+              activeKey === row.dateISO
                 ? 'border-teal text-white'
                 : 'border-transparent text-[#94a3b8] hover:text-white'
             )}
           >
-            {g.day}
+            <span className="flex flex-col gap-0.5">
+              <span className="leading-snug">{row.displayLabel}</span>
+              {row.isToday ? (
+                <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-teal/75 md:text-[11px]">
+                  Today
+                </span>
+              ) : null}
+            </span>
           </button>
         ))}
       </div>
