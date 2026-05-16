@@ -67,6 +67,14 @@ export type EventRecitalDetails = {
   showLineupUrl?: string | null
 } | null
 
+export type FaqDoc = {
+  _id: string
+  question: string
+  answer: string
+  category?: string | null
+  order?: number | null
+}
+
 export type EventDoc = {
   _id: string
   title: string
@@ -124,6 +132,14 @@ export const pastEventsQuery = `*[_type == "event" && published == true && (endD
   ${eventProjection}
 }`
 
+export const publishedFaqsQuery = `*[_type == "faq" && published == true] | order(order asc, question asc) {
+  _id,
+  question,
+  answer,
+  category,
+  order
+}`
+
 export const publishedFacultyQuery = `*[_type == "faculty" && published == true] | order(order asc, name asc) {
   _id,
   name,
@@ -148,6 +164,10 @@ export const publishedFacultyQuery = `*[_type == "faculty" && published == true]
 
 export async function getPublishedFaculty(): Promise<Faculty[]> {
   return client.fetch<Faculty[]>(publishedFacultyQuery)
+}
+
+export async function getPublishedFaqs(): Promise<FaqDoc[]> {
+  return client.fetch<FaqDoc[]>(publishedFaqsQuery)
 }
 
 export async function getUpcomingEvents(): Promise<EventDoc[]> {
