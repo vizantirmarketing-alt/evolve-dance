@@ -40,7 +40,7 @@ export default function Nav({ links }: NavProps) {
         className={`fixed inset-x-0 top-0 z-50 flex items-center justify-between transition-all duration-300 ${
           isScrolled
             ? 'py-2 px-5 bg-background/95 backdrop-blur-md'
-            : 'py-3 px-5 bg-background'
+            : 'py-2 px-5 bg-background'
         }`}
       >
         {/* Logo */}
