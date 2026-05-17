@@ -129,12 +129,6 @@ export default function Nav({ links }: NavProps) {
               display: 'block', width: '24px', height: '1.5px',
               backgroundColor: '#1F1F1C',
               transition: 'all 0.3s',
-              opacity: menuOpen ? 0 : 1,
-            }} />
-            <span style={{
-              display: 'block', width: '24px', height: '1.5px',
-              backgroundColor: '#1F1F1C',
-              transition: 'all 0.3s',
               transform: menuOpen ? 'rotate(-45deg) translateY(-6px)' : 'none',
             }} />
           </button>
