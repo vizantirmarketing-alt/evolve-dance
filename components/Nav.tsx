@@ -53,7 +53,7 @@ export default function Nav({ links }: NavProps) {
             alt="Evolve Dance Center"
             width={240}
             height={160}
-            className="h-10 md:h-16 w-auto object-contain transition-opacity duration-200 ease-out group-hover:opacity-85"
+            className="h-12 md:h-16 w-auto object-contain transition-opacity duration-200 ease-out group-hover:opacity-85"
           />
         </Link>
 
