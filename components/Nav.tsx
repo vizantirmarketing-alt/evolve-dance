@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
-import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { siteConfig } from '@/data/site'
@@ -37,12 +36,11 @@ export default function Nav({ links }: NavProps) {
           href="/"
           className="group flex items-center no-underline transition-transform duration-200 ease-out hover:scale-[1.03]"
         >
-          <Image
-            src="/logo/evolve-navbar.png"
+          <img
+            src="/logo/evolve-navbar.svg"
             alt="Evolve Dance Center"
             width={240}
             height={160}
-            priority
             className="h-12 md:h-16 w-auto object-contain transition-opacity duration-200 ease-out group-hover:opacity-85"
           />
         </Link>
