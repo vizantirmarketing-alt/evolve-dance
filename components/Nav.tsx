@@ -16,8 +16,16 @@ export interface NavProps {
 }
 
 export default function Nav({ links }: NavProps) {
+  const [isScrolled, setIsScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 100)
+    handleScroll()
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   useEffect(() => { setMounted(true) }, [])
 
@@ -29,7 +37,11 @@ export default function Nav({ links }: NavProps) {
   return (
     <>
       <nav
-        className="fixed inset-x-0 top-0 z-50 flex h-[72px] items-center justify-between border-b border-[#D6DFDA] bg-[rgba(247,245,241,0.96)] px-5 backdrop-blur-[20px] md:h-[88px]"
+        className={`fixed inset-x-0 top-0 z-50 flex items-center justify-between transition-all duration-300 ${
+          isScrolled
+            ? 'py-2 px-5 bg-background/95 backdrop-blur-md'
+            : 'py-3 px-5 bg-background'
+        }`}
       >
         {/* Logo */}
         <Link
@@ -41,7 +53,7 @@ export default function Nav({ links }: NavProps) {
             alt="Evolve Dance Center"
             width={240}
             height={160}
-            className="h-12 md:h-16 w-auto object-contain transition-opacity duration-200 ease-out group-hover:opacity-85"
+            className="h-10 md:h-16 w-auto object-contain transition-opacity duration-200 ease-out group-hover:opacity-85"
           />
         </Link>
 
