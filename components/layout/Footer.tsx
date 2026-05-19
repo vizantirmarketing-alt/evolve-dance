@@ -91,10 +91,13 @@ function MobileFooterAccordion({
   )
 }
 
-export default function Footer() {
-  const [openSection, setOpenSection] = useState<'classes' | 'studio' | 'contact' | null>(null)
+const footerLinkClass =
+  'text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]'
 
-  const toggle = (id: 'classes' | 'studio' | 'contact') => {
+export default function Footer() {
+  const [openSection, setOpenSection] = useState<'studio' | 'contact' | null>(null)
+
+  const toggle = (id: 'studio' | 'contact') => {
     setOpenSection((current) => (current === id ? null : id))
   }
 
@@ -102,7 +105,7 @@ export default function Footer() {
     <footer className="bg-[#1F1F1C] pb-[calc(2.5rem+5rem+env(safe-area-inset-bottom,0px))] pt-[72px] md:pb-10">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="pb-14 border-b border-[rgba(255,255,255,0.08)] mb-8">
-        <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-12 md:items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr] gap-12 md:items-stretch">
           {/* Brand */}
           <div className="flex min-h-0 flex-col gap-8 md:h-full md:gap-0">
             <div>
@@ -133,31 +136,15 @@ export default function Footer() {
           {/* Mobile — accordions */}
           <div className="md:hidden -mt-2">
             <MobileFooterAccordion
-              title="Classes"
-              open={openSection === 'classes'}
-              onToggle={() => toggle('classes')}
-            >
-              {footerLinks.classes.map((item) => (
-                <SmartLink
-                  key={item.href}
-                  href={item.href}
-                  className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
-                >
-                  {item.label}
-                </SmartLink>
-              ))}
-            </MobileFooterAccordion>
-            <MobileFooterAccordion
               title="Studio"
               open={openSection === 'studio'}
               onToggle={() => toggle('studio')}
             >
+              <SmartLink href="/classes" className={footerLinkClass}>
+                View Classes
+              </SmartLink>
               {footerLinks.studio.map((item) => (
-                <SmartLink
-                  key={item.href}
-                  href={item.href}
-                  className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
-                >
+                <SmartLink key={item.href} href={item.href} className={footerLinkClass}>
                   {item.label}
                 </SmartLink>
               ))}
@@ -206,30 +193,16 @@ export default function Footer() {
 
           {/* Desktop — link columns */}
           <div className="hidden md:block">
-            <div className="text-[11px] font-semibold tracking-[0.18em] uppercase text-[#81D8D0] mb-5 md:text-[12px]">Classes</div>
-            <ul className="flex flex-col gap-2.5 list-none">
-              {footerLinks.classes.map((item) => (
-                <li key={item.href}>
-                  <SmartLink
-                    href={item.href}
-                    className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
-                  >
-                    {item.label}
-                  </SmartLink>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="hidden md:block">
             <div className="text-[11px] font-semibold tracking-[0.18em] uppercase text-[#81D8D0] mb-5 md:text-[12px]">Studio</div>
             <ul className="flex flex-col gap-2.5 list-none">
+              <li>
+                <SmartLink href="/classes" className={footerLinkClass}>
+                  View Classes
+                </SmartLink>
+              </li>
               {footerLinks.studio.map((item) => (
                 <li key={item.href}>
-                  <SmartLink
-                    href={item.href}
-                    className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
-                  >
+                  <SmartLink href={item.href} className={footerLinkClass}>
                     {item.label}
                   </SmartLink>
                 </li>
