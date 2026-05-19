@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import SmartLink from '@/components/SmartLink'
 import { ArrowRight } from 'lucide-react'
 import { siteConfig } from '@/data/site'
 
@@ -17,7 +16,6 @@ export interface NavProps {
 }
 
 export default function Nav({ links }: NavProps) {
-  const pathname = usePathname()
   const [isScrolled, setIsScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
@@ -46,16 +44,10 @@ export default function Nav({ links }: NavProps) {
         }`}
       >
         {/* Logo */}
-        <Link
+        <SmartLink
           href="/"
           aria-label="Evolve Dance Center home"
           className="group flex items-center no-underline transition-transform duration-200 ease-out hover:scale-[1.03]"
-          onClick={(e) => {
-            if (pathname === '/') {
-              e.preventDefault()
-              window.scrollTo({ top: 0, behavior: 'smooth' })
-            }
-          }}
         >
           <img
             src="/logo/evolve-navbar.svg"
@@ -64,7 +56,7 @@ export default function Nav({ links }: NavProps) {
             height={160}
             className="h-12 md:h-16 w-auto object-contain transition-opacity duration-200 ease-out group-hover:opacity-85"
           />
-        </Link>
+        </SmartLink>
 
         {/* Desktop nav — hidden below 768px */}
         <style>{`
@@ -89,25 +81,25 @@ export default function Nav({ links }: NavProps) {
         }}>
           {links.map(link => (
             <li key={link.href}>
-              <Link
+              <SmartLink
                 href={link.href}
                 className="text-[12px] font-medium uppercase tracking-[0.15em] text-[#1F1F1C] no-underline [text-shadow:_0_1px_1px_rgb(0_0_0_/_0.08)] transition-colors duration-200 hover:text-[#81D8D0] md:text-[13px]"
               >
                 {link.label}
-              </Link>
+              </SmartLink>
             </li>
           ))}
         </ul>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           {/* Desktop enroll */}
-          <Link
+          <SmartLink
             href="/enroll"
             className="nav-desktop group relative inline-flex items-center gap-2 bg-[#0ABAB5] px-5 py-3.5 text-[12px] font-medium tracking-[0.2em] text-white no-underline transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#087876] hover:shadow-lg hover:shadow-[#0ABAB5]/25 rounded-sm md:py-4 md:text-[13px]"
           >
             <span>{siteConfig.enrollCtaLabel}</span>
             <ArrowRight className="h-3.5 w-3.5 shrink-0 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
-          </Link>
+          </SmartLink>
 
           {/* Hamburger */}
           <button
@@ -186,7 +178,7 @@ export default function Nav({ links }: NavProps) {
           }}>
             {links.map(link => (
               <li key={link.href}>
-                <Link href={link.href}
+                <SmartLink href={link.href}
                   onClick={() => setMenuOpen(false)}
                   style={{
                     display: 'block',
@@ -200,7 +192,7 @@ export default function Nav({ links }: NavProps) {
                     borderBottom: '1px solid #D6DFDA',
                   }}>
                   {link.label}
-                </Link>
+                </SmartLink>
               </li>
             ))}
             <li style={{ marginTop: '28px' }}>

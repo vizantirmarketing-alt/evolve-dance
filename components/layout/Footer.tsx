@@ -2,8 +2,7 @@
 
 import { useState, type ReactNode } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import SmartLink from '@/components/SmartLink'
 import { ChevronDown } from 'lucide-react'
 import { siteConfig } from '@/data/site'
 import { footerLinks } from '@/data/navigation'
@@ -93,7 +92,6 @@ function MobileFooterAccordion({
 }
 
 export default function Footer() {
-  const pathname = usePathname()
   const [openSection, setOpenSection] = useState<'classes' | 'studio' | 'contact' | null>(null)
 
   const toggle = (id: 'classes' | 'studio' | 'contact') => {
@@ -108,16 +106,10 @@ export default function Footer() {
           <div className="flex min-h-0 flex-col gap-8 md:h-full md:gap-0">
             <div>
               <div className="mb-4">
-                <Link
+                <SmartLink
                   href="/"
                   aria-label="Evolve Dance Center home"
                   className="flex items-center no-underline"
-                  onClick={(e) => {
-                    if (pathname === '/') {
-                      e.preventDefault()
-                      window.scrollTo({ top: 0, behavior: 'smooth' })
-                    }
-                  }}
                 >
                   <Image
                     src="/logo/evolve-footer.png"
@@ -126,7 +118,7 @@ export default function Footer() {
                     height={240}
                     className="h-16 md:h-20 w-auto object-contain"
                   />
-                </Link>
+                </SmartLink>
               </div>
               <p className="text-[13px] text-[rgba(247,245,241,0.45)] leading-[1.7] max-w-[260px] md:text-[14px]">
                 {siteConfig.tagline}
@@ -145,13 +137,13 @@ export default function Footer() {
               onToggle={() => toggle('classes')}
             >
               {footerLinks.classes.map((item) => (
-                <Link
+                <SmartLink
                   key={item.href}
                   href={item.href}
                   className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
                 >
                   {item.label}
-                </Link>
+                </SmartLink>
               ))}
             </MobileFooterAccordion>
             <MobileFooterAccordion
@@ -160,13 +152,13 @@ export default function Footer() {
               onToggle={() => toggle('studio')}
             >
               {footerLinks.studio.map((item) => (
-                <Link
+                <SmartLink
                   key={item.href}
                   href={item.href}
                   className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
                 >
                   {item.label}
-                </Link>
+                </SmartLink>
               ))}
             </MobileFooterAccordion>
             <MobileFooterAccordion
@@ -202,12 +194,12 @@ export default function Footer() {
               >
                 {siteConfig.email}
               </a>
-              <Link
+              <SmartLink
                 href="/contact"
                 className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
               >
                 Schedule a Visit
-              </Link>
+              </SmartLink>
             </MobileFooterAccordion>
           </div>
 
@@ -217,12 +209,12 @@ export default function Footer() {
             <ul className="flex flex-col gap-2.5 list-none">
               {footerLinks.classes.map((item) => (
                 <li key={item.href}>
-                  <Link
+                  <SmartLink
                     href={item.href}
                     className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
                   >
                     {item.label}
-                  </Link>
+                  </SmartLink>
                 </li>
               ))}
             </ul>
@@ -233,12 +225,12 @@ export default function Footer() {
             <ul className="flex flex-col gap-2.5 list-none">
               {footerLinks.studio.map((item) => (
                 <li key={item.href}>
-                  <Link
+                  <SmartLink
                     href={item.href}
                     className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
                   >
                     {item.label}
-                  </Link>
+                  </SmartLink>
                 </li>
               ))}
             </ul>
@@ -284,12 +276,12 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <Link
+                <SmartLink
                   href="/contact"
                   className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
                 >
                   Schedule a Visit
-                </Link>
+                </SmartLink>
               </li>
             </ul>
           </div>
@@ -299,24 +291,24 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="flex flex-wrap items-center gap-4">
         <div className="flex flex-wrap items-center">
-          <Link
+          <SmartLink
             href="/privacy"
             className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
           >
             Privacy
-          </Link>
+          </SmartLink>
           <span
             className="text-[12px] text-[rgba(247,245,241,0.45)] mx-2 shrink-0 leading-[1.55]"
             aria-hidden
           >
             {' · '}
           </span>
-          <Link
+          <SmartLink
             href="/policies"
             className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
           >
             Policies
-          </Link>
+          </SmartLink>
           <span
             className="text-[12px] text-[rgba(247,245,241,0.45)] mx-2 shrink-0 leading-[1.55]"
             aria-hidden
