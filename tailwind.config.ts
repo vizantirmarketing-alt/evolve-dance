@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import plugin from 'tailwindcss/plugin'
 
 const config: Config = {
   content: [
@@ -107,9 +108,47 @@ const config: Config = {
         '300': '300ms',
         '400': '400ms',
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: 'none',
+            '--tw-prose-body': '#6D6C67',
+            '--tw-prose-headings': '#1F1F1C',
+            '--tw-prose-links': '#0ABAB5',
+            color: '#6D6C67',
+            fontFamily: 'var(--font-dm-sans), system-ui, sans-serif',
+            'h1, h2, h3, h4': {
+              fontFamily: 'var(--font-playfair), Georgia, serif',
+              color: '#1F1F1C',
+              fontWeight: '700',
+            },
+            a: {
+              color: '#0ABAB5',
+              fontWeight: '500',
+              textDecoration: 'underline',
+              textDecorationColor: 'rgba(10, 186, 181, 0.4)',
+              textUnderlineOffset: '4px',
+              transitionProperty: 'color',
+              transitionDuration: '200ms',
+              '&:hover': {
+                color: '#087876',
+              },
+            },
+          },
+        },
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+    plugin(function ({ addComponents }) {
+      addComponents({
+        '.prose-evolve': {
+          '@apply prose max-w-none': {},
+        },
+      })
+    }),
+  ],
 }
 
 export default config
