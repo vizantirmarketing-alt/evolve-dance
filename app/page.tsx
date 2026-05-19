@@ -7,7 +7,6 @@ import {
   WhyFamiliesChooseSection,
   ClassesSection,
   InstructorsSection,
-  ProjectSection,
   EnrollSection,
 } from '@/components/sections/HomeSections'
 import ScheduleSection from '@/components/sections/ScheduleSection'
@@ -33,7 +32,6 @@ export default function HomePage() {
         <ScheduleSection />
         <InstructorsSection />
         <TestimonialsSection />
-        <ProjectSection />
         <EnrollSection />
       </main>
 

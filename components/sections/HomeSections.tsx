@@ -516,103 +516,91 @@ export function InstructorsSection() {
     </section>
   )
 }
-
-
-// ─────────────────────────────────────────
-// THE PROJECT
-// ─────────────────────────────────────────
-
-export function ProjectSection() {
-  return (
-    <section
-      className="bg-[#173432] px-4 py-28 md:px-12 relative overflow-hidden text-center"
-    >
-      {/* Glow */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(10,186,181,0.07) 0%, transparent 60%)' }}
-      />
-
-      <div className="relative z-[1] mx-auto max-w-[680px] lg:max-w-[820px]">
-        <Reveal>
-          <div className="flex items-center justify-center gap-4 mb-7">
-            <div className="w-10 h-px bg-[#81D8D0]" />
-            <span className="text-[11px] md:text-[12px] tracking-[0.25em] uppercase text-[#81D8D0] opacity-100">Competitive Team</span>
-            <div className="w-10 h-px bg-[#81D8D0]" />
-          </div>
-        </Reveal>
-
-        <Reveal delay={100}>
-          <h2 className="font-display font-black mb-7 text-[#F4FBF9]">
-            <span className="block" style={{ fontSize: 'clamp(28px, 3.5vw, 48px)', lineHeight: '1.05' }}>
-              For dancers ready to take the
-            </span>
-            <span className="block italic text-[#81D8D0]" style={{ fontSize: 'clamp(28px, 3.5vw, 48px)', lineHeight: '1.05' }}>
-              next step
-            </span>
-          </h2>
-        </Reveal>
-
-        <Reveal delay={200}>
-          <p className="mx-auto mb-11 max-w-[500px] text-[14px] font-light leading-[1.75] text-[rgba(244,251,249,0.7)] md:text-[15px]">
-            The Project is Evolve&apos;s competitive team, created for dancers ready for a more advanced level of training, commitment, and performance opportunity.
-          </p>
-        </Reveal>
-
-        <Reveal delay={300}>
-          <Link
-            href="/the-project"
-            className="inline-flex items-center gap-2.5 clip-btn no-underline text-[12px] font-medium tracking-[0.2em] uppercase text-[#173432] bg-[#81D8D0] px-8 py-3.5 transition-all duration-200 hover:bg-[#0ABAB5] hover:shadow-[0_0_40px_rgba(10,186,181,0.35)] hover:-translate-y-0.5 md:py-4 md:text-[13px]"
-          >
-            Learn About The Project
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-              <path d="M1 7h12M8 2l5 5-5 5" />
-            </svg>
-          </Link>
-        </Reveal>
-      </div>
-    </section>
-  )
-}
-
 // ─────────────────────────────────────────
 // ENROLL CTA
 // ─────────────────────────────────────────
 
 export function EnrollSection() {
   return (
-    <section className="bg-[#0ABAB5] px-4 py-14 md:px-12 md:py-28 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
-      <Reveal>
-        <span className="text-[11px] md:text-[12px] font-semibold tracking-[0.22em] uppercase text-white/70 block mb-3 md:mb-4">
-          Ready to Begin?
-        </span>
-        <h2 className="font-display font-black text-white text-[26px] leading-[1.05] md:text-[clamp(28px,3.5vw,42px)] md:leading-[1.0]">
-          Start your journey at Evolve
-        </h2>
-      </Reveal>
+    <section className="relative overflow-hidden bg-[#1a2e2c] px-4 py-14 md:px-12 md:py-32">
+      <svg
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 h-full w-full"
+        viewBox="0 0 1200 480"
+        preserveAspectRatio="xMidYMid slice"
+        fill="none"
+      >
+        <path
+          className="enroll-ribbon--1"
+          d="M 0 240 Q 200 100, 400 240 T 800 240 T 1200 240"
+          stroke="#3E9F97"
+          strokeWidth={2}
+          strokeLinecap="round"
+          opacity={0.6}
+        />
+        <path
+          className="enroll-ribbon--2"
+          d="M 0 180 Q 250 350, 500 180 T 1000 180 T 1200 180"
+          stroke="#3E9F97"
+          strokeWidth={1}
+          strokeLinecap="round"
+          opacity={0.3}
+        />
+        <path
+          className="enroll-ribbon--3"
+          d="M 0 320 Q 300 200, 600 320 T 1200 320"
+          stroke="#3E9F97"
+          strokeWidth={1.5}
+          strokeLinecap="round"
+          opacity={0.4}
+        />
+        <path
+          className="enroll-ribbon--4"
+          d="M 100 400 Q 400 100, 700 400 T 1300 200"
+          stroke="#3E9F97"
+          strokeWidth={1.5}
+          strokeLinecap="round"
+          opacity={0.5}
+        />
+      </svg>
 
-      <Reveal delay={200}>
-        <p className="text-[15px] text-white/85 leading-[1.7] mb-5 md:text-[16px] md:mb-8">
-          Whether your dancer is just beginning or ready for more advanced training, we&apos;re here to help them grow in a studio built on strong instruction, support, and high standards.
-        </p>
-        <div className="flex w-full flex-col gap-2 md:flex-row md:flex-wrap md:items-center md:gap-5">
-          <Link
-            href="/enroll"
-            className="inline-flex w-full items-center justify-center gap-2.5 clip-btn whitespace-nowrap no-underline text-[12px] font-semibold tracking-[0.2em] uppercase text-[#F4FBF9] bg-[#173432] px-6 py-3.5 transition-all duration-200 hover:bg-[#0f2318] md:w-auto md:px-8 md:py-4 md:text-[13px]"
-          >
-            Enroll Now
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-              <path d="M1 7h12M8 2l5 5-5 5" />
-            </svg>
-          </Link>
-          <Link
-            href="/schedule"
-            className="inline-flex w-full items-center justify-center gap-2.5 clip-btn whitespace-nowrap text-center no-underline text-[12px] font-medium leading-snug tracking-[0.2em] uppercase text-white bg-transparent border border-white/60 px-6 py-3.5 transition-colors duration-200 hover:border-white md:w-auto md:px-8 md:py-4 md:text-[13px]"
-          >
-            View Class Schedule
-          </Link>
-        </div>
-      </Reveal>
+      <div className="relative z-[1] mx-auto max-w-[580px] text-center">
+        <Reveal>
+          <span className="mb-5 block text-[11px] font-semibold uppercase tracking-[0.3em] text-[#3E9F97] md:mb-6 md:text-[12px]">
+            Ready to Begin?
+          </span>
+          <h2 className="font-display font-bold leading-tight text-[32px] text-[#F7F5F1] md:text-[clamp(36px,5vw,56px)] md:leading-[1.08]">
+            Where movement{' '}
+            <em className="italic text-[#3E9F97]">becomes art</em>.
+          </h2>
+        </Reveal>
+
+        <Reveal delay={150}>
+          <p className="mx-auto mt-5 max-w-[480px] text-[15px] leading-[1.7] text-[#F7F5F1]/75 md:mt-6 md:text-[16px] md:leading-[1.75]">
+            Whether your dancer is just beginning or ready for more advanced training, we&apos;re here to help them grow.
+          </p>
+        </Reveal>
+
+        <Reveal delay={250}>
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 md:mt-10 md:flex-row md:gap-[14px]">
+            <Link
+              href="/enroll"
+              className="inline-flex w-full items-center justify-center gap-2.5 whitespace-nowrap no-underline text-[12px] font-semibold uppercase tracking-wide text-[#F7F5F1] bg-[#3E9F97] px-8 py-3.5 transition-colors duration-200 hover:bg-[#358f88] md:w-auto md:py-4 md:text-[13px]"
+            >
+              Enroll Now
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden>
+                <path d="M1 7h12M8 2l5 5-5 5" />
+              </svg>
+            </Link>
+            <Link
+              href="/schedule"
+              className="inline-flex w-full items-center justify-center whitespace-nowrap no-underline text-[12px] font-medium uppercase tracking-wide text-[#F7F5F1] bg-transparent border border-[rgba(247,245,241,0.4)] px-8 py-3.5 transition-colors duration-200 hover:border-[rgba(247,245,241,0.7)] md:w-auto md:py-4 md:text-[13px]"
+            >
+              View Class Schedule
+            </Link>
+          </div>
+        </Reveal>
+      </div>
     </section>
   )
 }

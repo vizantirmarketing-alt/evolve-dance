@@ -142,6 +142,52 @@ body {
   animation: none;
 }
 
+/* Enroll CTA — ribbon trail drift */
+@keyframes enrollRibbonDrift1 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(24px, -20px); }
+}
+
+@keyframes enrollRibbonDrift2 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-28px, 22px); }
+}
+
+@keyframes enrollRibbonDrift3 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(20px, 28px); }
+}
+
+@keyframes enrollRibbonDrift4 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-26px, -24px); }
+}
+
+.enroll-ribbon--1 {
+  animation: enrollRibbonDrift1 10s ease-in-out infinite;
+}
+
+.enroll-ribbon--2 {
+  animation: enrollRibbonDrift2 12s ease-in-out infinite;
+}
+
+.enroll-ribbon--3 {
+  animation: enrollRibbonDrift3 15s ease-in-out infinite;
+}
+
+.enroll-ribbon--4 {
+  animation: enrollRibbonDrift4 18s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .enroll-ribbon--1,
+  .enroll-ribbon--2,
+  .enroll-ribbon--3,
+  .enroll-ribbon--4 {
+    animation: none;
+  }
+}
+
 /* ── Teal border bottom animated ────────────────── */
 .teal-underline::after {
   content: '';
