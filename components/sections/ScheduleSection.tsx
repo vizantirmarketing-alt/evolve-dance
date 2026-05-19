@@ -16,11 +16,15 @@ export default async function ScheduleSection() {
     const grouped = groupByDay(publicClasses)
     const monSat = filterDayGroupsMonSat(grouped)
     preview = buildHomepageSchedulePreview(monSat)
-  } catch {
-    preview = []
+  } catch (error) {
+    console.error('[ScheduleTabs] Jackrabbit fetch failed:', error)
+    return null
   }
 
-  const hasClasses = preview.length > 0
+  if (!preview || preview.length === 0) {
+    return null
+  }
+
   const defaultTabKey = preview.find((d) => d.isToday)?.dateISO ?? preview[0]?.dateISO ?? ''
 
   return (
@@ -51,25 +55,7 @@ export default async function ScheduleSection() {
         </Link>
       </div>
 
-      {!hasClasses ? (
-        <div className="mx-auto max-w-lg text-center">
-          <p className="text-[15px] font-light leading-[1.8] text-[#e2e8f0] md:text-[16px]">
-            Live schedule temporarily unavailable. Call{' '}
-            <a href={`tel:${siteConfig.phoneTel}`} className="text-teal underline-offset-2 hover:underline">
-              {siteConfig.phone}
-            </a>{' '}
-            or book a free trial.
-          </p>
-          <Link
-            href="/enroll#free-trial"
-            className="mt-8 inline-flex items-center justify-center rounded-sm bg-[#0ABAB5] px-8 py-3.5 text-[12px] font-medium uppercase tracking-[0.2em] text-white no-underline transition-colors hover:bg-[#087876] md:py-4 md:text-[13px]"
-          >
-            BOOK A FREE TRIAL
-          </Link>
-        </div>
-      ) : (
-        <ScheduleTabs days={preview} defaultTabKey={defaultTabKey} />
-      )}
+      <ScheduleTabs days={preview} defaultTabKey={defaultTabKey} />
     </section>
   )
 }
