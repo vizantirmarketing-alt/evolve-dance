@@ -581,24 +581,21 @@ export function ProjectSection() {
 
 export function EnrollSection() {
   return (
-    <section className="bg-[#0ABAB5] px-4 py-28 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+    <section className="bg-[#0ABAB5] px-4 py-14 md:px-12 md:py-28 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
       <Reveal>
-        <span className="text-[11px] md:text-[12px] font-semibold tracking-[0.22em] uppercase text-white/70 block mb-4">
+        <span className="text-[11px] md:text-[12px] font-semibold tracking-[0.22em] uppercase text-white/70 block mb-3 md:mb-4">
           Ready to Begin?
         </span>
-        <h2
-          className="font-display font-black text-white leading-[1.0]"
-          style={{ fontSize: 'clamp(28px, 3.5vw, 42px)' }}
-        >
+        <h2 className="font-display font-black text-white text-[26px] leading-[1.05] md:text-[clamp(28px,3.5vw,42px)] md:leading-[1.0]">
           Start your journey at Evolve
         </h2>
       </Reveal>
 
       <Reveal delay={200}>
-        <p className="text-[15px] text-white/85 leading-[1.7] mb-8 md:text-[16px]">
+        <p className="text-[15px] text-white/85 leading-[1.7] mb-5 md:text-[16px] md:mb-8">
           Whether your dancer is just beginning or ready for more advanced training, we&apos;re here to help them grow in a studio built on strong instruction, support, and high standards.
         </p>
-        <div className="flex w-full flex-col gap-3 md:flex-row md:flex-wrap md:items-center md:gap-5">
+        <div className="flex w-full flex-col gap-2 md:flex-row md:flex-wrap md:items-center md:gap-5">
           <Link
             href="/enroll"
             className="inline-flex w-full items-center justify-center gap-2.5 clip-btn whitespace-nowrap no-underline text-[12px] font-semibold tracking-[0.2em] uppercase text-[#F4FBF9] bg-[#173432] px-6 py-3.5 transition-all duration-200 hover:bg-[#0f2318] md:w-auto md:px-8 md:py-4 md:text-[13px]"
