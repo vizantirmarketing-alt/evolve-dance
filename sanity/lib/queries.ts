@@ -177,3 +177,149 @@ export async function getUpcomingEvents(): Promise<EventDoc[]> {
 export async function getPastEvents(): Promise<EventDoc[]> {
   return client.fetch<EventDoc[]>(pastEventsQuery)
 }
+
+export type ProjectAuditionInfo = {
+  date?: string | null
+  location?: string | null
+  ageRange?: string | null
+  ctaText?: string | null
+  ctaLink?: string | null
+} | null
+
+export type ProjectTeamLevel = {
+  name: string
+  ageRange?: string | null
+  description?: string | null
+  commitmentLevel: 'recreational' | 'pre-competitive' | 'competitive'
+  photo: SanityImage | null
+  order?: number | null
+}
+
+export type ProjectAward = {
+  title: string
+  year: number
+  competition: string
+  placement: string
+}
+
+export type ProjectPage = {
+  _id: string
+  pageIntro?: PortableTextBlock[] | null
+  auditionInfo?: ProjectAuditionInfo
+  teamLevels?: ProjectTeamLevel[] | null
+  awards?: ProjectAward[] | null
+  seoDescription?: string | null
+}
+
+export type BlogCategory = {
+  _id: string
+  title: string
+  slug: FacultySlug | null
+  description?: string | null
+}
+
+export type BlogPost = {
+  _id: string
+  title: string
+  slug: FacultySlug | null
+  publishedAt: string
+  excerpt?: string | null
+  seoDescription?: string | null
+  coverImage: SanityImage | null
+  body?: PortableTextBlock[] | null
+  categories?: BlogCategory[] | null
+  tags?: string[] | null
+  featured: boolean
+}
+
+const sanityImageProjection = `
+  _type,
+  alt,
+  hotspot,
+  crop,
+  asset->{
+    _id,
+    _type
+  }
+`
+
+const blogPostProjection = `
+  _id,
+  title,
+  slug,
+  publishedAt,
+  excerpt,
+  seoDescription,
+  coverImage {
+    ${sanityImageProjection}
+  },
+  body[]{
+    ...,
+    _type == "image" => {
+      ${sanityImageProjection}
+    }
+  },
+  categories[]->{
+    _id,
+    title,
+    slug,
+    description
+  },
+  tags,
+  featured
+`
+
+export const projectPageQuery = `*[_type == "theProject"][0] {
+  _id,
+  pageIntro,
+  auditionInfo {
+    date,
+    location,
+    ageRange,
+    ctaText,
+    ctaLink
+  },
+  "teamLevels": teamLevels | order(order asc) {
+    name,
+    ageRange,
+    description,
+    commitmentLevel,
+    order,
+    photo {
+      ${sanityImageProjection}
+    }
+  },
+  "awards": awards | order(year desc) {
+    title,
+    year,
+    competition,
+    placement
+  },
+  seoDescription
+}`
+
+export const publishedPostsQuery = `*[_type == "blogPost" && published == true] | order(publishedAt desc) {
+  ${blogPostProjection}
+}`
+
+export const postBySlugQuery = `*[_type == "blogPost" && published == true && slug.current == $slug][0] {
+  ${blogPostProjection}
+}`
+
+export const allPostSlugsQuery = `*[_type == "blogPost" && published == true].slug.current`
+
+export async function getProjectPage(): Promise<ProjectPage | null> {
+  return client.fetch<ProjectPage | null>(projectPageQuery)
+}
+
+export async function getPublishedPosts(): Promise<BlogPost[]> {
+  return client.fetch<BlogPost[]>(publishedPostsQuery)
+}
+
+export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
+  return client.fetch<BlogPost | null>(postBySlugQuery, { slug })
+}
+
+export async function getAllPostSlugs(): Promise<string[]> {
+  return client.fetch<string[]>(allPostSlugsQuery)
+}

@@ -1,16 +1,169 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
+import { PortableText, type PortableTextComponents } from '@portabletext/react'
+
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
+import { urlFor } from '@/sanity/lib/image'
+import {
+  getProjectPage,
+  type PortableTextBlock,
+  type ProjectPage,
+  type ProjectTeamLevel,
+} from '@/sanity/lib/queries'
 
-export const metadata: Metadata = {
-  title: 'The Project | Evolve Dance Center',
-  description:
-    "The Project is Evolve Dance Center's competition team — serious training for serious dancers. Auditions held annually in May. Located in southwest Las Vegas.",
-  robots: { index: true, follow: true },
+const DEFAULT_DESCRIPTION =
+  "The Project is Evolve Dance Center's competition team — serious training for serious dancers. Auditions held annually in May. Located in southwest Las Vegas."
+
+const heroIntroComponents: PortableTextComponents = {
+  block: {
+    normal: ({ children }) => (
+      <p className="mb-8 max-w-md text-[15px] font-light leading-[1.75] text-foreground-muted md:text-[16px]">
+        {children}
+      </p>
+    ),
+    h2: ({ children }) => (
+      <h2
+        className="mb-6 font-display font-bold text-foreground"
+        style={{ fontSize: 'clamp(28px, 3.5vw, 42px)', lineHeight: '1.1' }}
+      >
+        {children}
+      </h2>
+    ),
+    h3: ({ children }) => (
+      <h3 className="mb-4 font-display text-xl font-bold text-foreground md:text-2xl">{children}</h3>
+    ),
+    blockquote: ({ children }) => (
+      <blockquote className="mb-4 border-l-2 border-teal pl-4 text-[14px] italic leading-[1.75] text-foreground-muted md:text-[15px]">
+        {children}
+      </blockquote>
+    ),
+  },
 }
 
-export default function TheProjectPage() {
+const pageIntroComponents: PortableTextComponents = {
+  block: {
+    normal: ({ children }) => (
+      <p className="mb-4 text-[14px] leading-[1.75] text-foreground-muted md:text-[15px]">{children}</p>
+    ),
+    h2: ({ children }) => (
+      <h2
+        className="mb-6 font-display font-bold text-foreground"
+        style={{ fontSize: 'clamp(28px, 3.5vw, 42px)', lineHeight: '1.1' }}
+      >
+        {children}
+      </h2>
+    ),
+    h3: ({ children }) => (
+      <h3 className="mb-4 font-display text-xl font-bold text-foreground md:text-2xl">{children}</h3>
+    ),
+    blockquote: ({ children }) => (
+      <blockquote className="mb-4 border-l-2 border-teal pl-4 text-[14px] italic leading-[1.75] text-foreground-muted md:text-[15px]">
+        {children}
+      </blockquote>
+    ),
+  },
+}
+
+function formatAuditionDate(date: string | null | undefined): string | null {
+  if (!date) return null
+  const parsed = new Date(date)
+  if (Number.isNaN(parsed.getTime())) return null
+  return new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric' }).format(parsed)
+}
+
+function splitPageIntro(pageIntro: PortableTextBlock[] | null | undefined) {
+  const blocks = pageIntro ?? []
+  return {
+    hero: blocks.slice(0, 1),
+    body: blocks.slice(1),
+  }
+}
+
+function TeamLevelPhoto({ level }: { level: ProjectTeamLevel }) {
+  const hasImage = Boolean(level.photo?.asset?._id)
+
+  if (hasImage && level.photo) {
+    const src = urlFor(level.photo).width(640).height(480).fit('crop').quality(85).auto('format').url()
+    const alt = level.photo.alt?.trim() || `Photo of ${level.name} team level`
+
+    return (
+      <div className="mb-5 aspect-[4/3] w-full overflow-hidden rounded bg-background-warm">
+        <Image src={src} alt={alt} width={640} height={480} className="h-full w-full object-cover" />
+      </div>
+    )
+  }
+
+  return <div className="mb-5 aspect-[4/3] w-full rounded bg-background-warm" aria-hidden />
+}
+
+function CtaLink({
+  href,
+  className,
+  children,
+}: {
+  href: string
+  className: string
+  children: React.ReactNode
+}) {
+  const isInternal = href.startsWith('/')
+
+  if (isInternal) {
+    return (
+      <Link href={href} className={className}>
+        {children}
+      </Link>
+    )
+  }
+
+  return (
+    <a href={href} className={className}>
+      {children}
+    </a>
+  )
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getProjectPage()
+
+  return {
+    title: 'The Project | Evolve Dance Center',
+    description: page?.seoDescription?.trim() || DEFAULT_DESCRIPTION,
+    robots: { index: true, follow: true },
+  }
+}
+
+export default async function TheProjectPage() {
+  const page = await getProjectPage()
+
+  if (!page) {
+    return (
+      <>
+        <Navbar />
+        <main className="min-h-screen bg-background pb-24 pt-24 md:pb-28 md:pt-28">
+          <section className="px-6 md:px-16 lg:px-20">
+            <div className="mx-auto max-w-md rounded-lg border border-border bg-background-warm px-8 py-12 text-center">
+              <p className="text-[13px] leading-relaxed text-foreground-muted md:text-[14px]">Content coming soon.</p>
+            </div>
+          </section>
+        </main>
+        <Footer />
+      </>
+    )
+  }
+
+  return <TheProjectPageContent page={page} />
+}
+
+function TheProjectPageContent({ page }: { page: ProjectPage }) {
+  const { hero: heroIntro, body: bodyIntro } = splitPageIntro(page.pageIntro)
+  const teamLevels = page.teamLevels ?? []
+  const awards = page.awards ?? []
+  const audition = page.auditionInfo
+  const auditionDateLabel = formatAuditionDate(audition?.date)
+  const teamLevelCount = teamLevels.length > 0 ? teamLevels.length : 3
+
   return (
     <>
       <Navbar />
@@ -22,7 +175,7 @@ export default function TheProjectPage() {
               <div>
                 <div className="mb-4 flex items-center gap-3">
                   <div className="h-px w-7 bg-teal" />
-                  <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-teal">
+                  <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-teal md:text-[12px]">
                     The Competition Team
                   </span>
                 </div>
@@ -38,11 +191,9 @@ export default function TheProjectPage() {
                 >
                   Where serious dancers train.
                 </h2>
-                <p className="mb-8 max-w-md text-[15px] font-light leading-[1.75] text-foreground-muted md:text-[16px]">
-                  Evolve&apos;s invitation-only competition team for dancers ready to take their training to the next
-                  level. We compete locally and nationally, and our dancers go on to drill teams, college programs, and
-                  professional companies.
-                </p>
+                {heroIntro.length > 0 ? (
+                  <PortableText value={heroIntro} components={heroIntroComponents} />
+                ) : null}
                 <div className="flex flex-wrap gap-3">
                   <Link
                     href="/the-project#audition"
@@ -71,7 +222,9 @@ export default function TheProjectPage() {
         <section className="bg-background-warm px-6 py-16 md:px-16 md:py-24 lg:px-20">
           <div className="mx-auto max-w-7xl">
             <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-[1fr_1.5fr] md:gap-16">
-              <div className="pt-2 text-[11px] md:text-[12px] uppercase tracking-[0.22em] text-foreground-muted">01 — What it is</div>
+              <div className="pt-2 text-[11px] uppercase tracking-[0.22em] text-foreground-muted md:text-[12px]">
+                01 — What it is
+              </div>
               <div>
                 <h2
                   className="mb-6 font-display font-bold text-foreground"
@@ -79,20 +232,9 @@ export default function TheProjectPage() {
                 >
                   A serious commitment for serious dancers.
                 </h2>
-                <p className="mb-4 text-[14px] leading-[1.75] text-foreground-muted md:text-[15px]">
-                  The Project is Evolve&apos;s competition team — a dedicated group of dancers who train across ballet,
-                  jazz, contemporary, lyrical, hip hop, and acro. We don&apos;t just chase trophies. We build dancers
-                  who carry themselves with discipline, artistry, and confidence on and off the stage.
-                </p>
-                <p className="mb-4 text-[14px] leading-[1.75] text-foreground-muted md:text-[15px]">
-                  Project dancers commit to multiple weekly classes, additional rehearsals, and a competition schedule
-                  that runs January through April. We attend regional competitions, conventions, and out-of-state
-                  Nationals annually.
-                </p>
-                <p className="mb-4 text-[14px] leading-[1.75] text-foreground-muted md:text-[15px]">
-                  If you&apos;re considering The Project, talk to us before auditioning. We&apos;ll be honest about
-                  whether your child is ready — and what training will get them there.
-                </p>
+                {bodyIntro.length > 0 ? (
+                  <PortableText value={bodyIntro} components={pageIntroComponents} />
+                ) : null}
               </div>
             </div>
           </div>
@@ -109,7 +251,9 @@ export default function TheProjectPage() {
                 >
                   15+
                 </div>
-                <div className="mt-2 text-[11px] md:text-[12px] uppercase tracking-[0.18em] text-foreground-muted">Years competing</div>
+                <div className="mt-2 text-[11px] uppercase tracking-[0.18em] text-foreground-muted md:text-[12px]">
+                  Years competing
+                </div>
               </div>
               <div>
                 <div
@@ -118,7 +262,7 @@ export default function TheProjectPage() {
                 >
                   6
                 </div>
-                <div className="mt-2 text-[11px] md:text-[12px] uppercase tracking-[0.18em] text-foreground-muted">
+                <div className="mt-2 text-[11px] uppercase tracking-[0.18em] text-foreground-muted md:text-[12px]">
                   Competitions / season
                 </div>
               </div>
@@ -127,9 +271,11 @@ export default function TheProjectPage() {
                   className="font-display font-bold leading-none text-foreground"
                   style={{ fontSize: 'clamp(36px, 4vw, 52px)' }}
                 >
-                  3
+                  {teamLevelCount}
                 </div>
-                <div className="mt-2 text-[11px] md:text-[12px] uppercase tracking-[0.18em] text-foreground-muted">Team levels</div>
+                <div className="mt-2 text-[11px] uppercase tracking-[0.18em] text-foreground-muted md:text-[12px]">
+                  Team levels
+                </div>
               </div>
               <div>
                 <div
@@ -138,7 +284,7 @@ export default function TheProjectPage() {
                 >
                   100%
                 </div>
-                <div className="mt-2 text-[11px] md:text-[12px] uppercase tracking-[0.18em] text-foreground-muted">
+                <div className="mt-2 text-[11px] uppercase tracking-[0.18em] text-foreground-muted md:text-[12px]">
                   Senior placement rate
                 </div>
               </div>
@@ -152,7 +298,9 @@ export default function TheProjectPage() {
             <div className="mb-14 text-center">
               <div className="mb-5 flex items-center justify-center gap-3">
                 <div className="h-px w-7 bg-white/40" />
-                <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-white/60">Team Levels</span>
+                <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-white/60 md:text-[12px]">
+                  Team Levels
+                </span>
                 <div className="h-px w-7 bg-white/40" />
               </div>
               <h2
@@ -166,77 +314,27 @@ export default function TheProjectPage() {
               </p>
             </div>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-              <div className="rounded-lg border border-white/10 bg-white/[0.04] p-8">
-                <div className="mb-3 text-[11px] md:text-[12px] uppercase tracking-[0.2em] text-teal">Ages 5–8</div>
-                <div className="mb-4 font-display font-bold text-background" style={{ fontSize: '26px', lineHeight: '1.1' }}>
-                  Prep
-                </div>
-                <div className="mb-5 text-[14px] leading-[1.6] text-white/65 md:text-[15px]">
-                  Introduction to competition for young dancers. One group routine, local competitions, foundation
-                  training.
-                </div>
-                <div className="space-y-2 border-t border-white/10 pt-4">
-                  <div className="flex justify-between text-[13px] md:text-[14px]">
-                    <span className="text-white/50">Classes / week</span>
-                    <span className="font-medium text-background">4–6 hrs</span>
+              {teamLevels.map((level, index) => (
+                <div
+                  key={`${level.name}-${level.order ?? index}`}
+                  className="rounded-lg border border-white/10 bg-white/[0.04] p-8"
+                >
+                  <TeamLevelPhoto level={level} />
+                  {level.ageRange ? (
+                    <div className="mb-3 text-[11px] uppercase tracking-[0.2em] text-teal md:text-[12px]">
+                      {level.ageRange}
+                    </div>
+                  ) : null}
+                  <div className="mb-4 font-display font-bold text-background" style={{ fontSize: '26px', lineHeight: '1.1' }}>
+                    {level.name}
                   </div>
-                  <div className="flex justify-between text-[13px] md:text-[14px]">
-                    <span className="text-white/50">Competitions</span>
-                    <span className="font-medium text-background">2 local</span>
-                  </div>
-                  <div className="flex justify-between text-[13px] md:text-[14px]">
-                    <span className="text-white/50">Nationals</span>
-                    <span className="font-medium text-background">Optional</span>
-                  </div>
+                  {level.description ? (
+                    <div className="mb-5 text-[14px] leading-[1.6] text-white/65 md:text-[15px]">
+                      {level.description}
+                    </div>
+                  ) : null}
                 </div>
-              </div>
-              <div className="rounded-lg border border-white/10 bg-white/[0.04] p-8">
-                <div className="mb-3 text-[11px] md:text-[12px] uppercase tracking-[0.2em] text-teal">Ages 9–13</div>
-                <div className="mb-4 font-display font-bold text-background" style={{ fontSize: '26px', lineHeight: '1.1' }}>
-                  Junior
-                </div>
-                <div className="mb-5 text-[14px] leading-[1.6] text-white/65 md:text-[15px]">
-                  Intermediate competitors building advanced technique across multiple styles. Regional travel begins.
-                </div>
-                <div className="space-y-2 border-t border-white/10 pt-4">
-                  <div className="flex justify-between text-[13px] md:text-[14px]">
-                    <span className="text-white/50">Classes / week</span>
-                    <span className="font-medium text-background">8–10 hrs</span>
-                  </div>
-                  <div className="flex justify-between text-[13px] md:text-[14px]">
-                    <span className="text-white/50">Competitions</span>
-                    <span className="font-medium text-background">4 regional</span>
-                  </div>
-                  <div className="flex justify-between text-[13px] md:text-[14px]">
-                    <span className="text-white/50">Nationals</span>
-                    <span className="font-medium text-background">Required</span>
-                  </div>
-                </div>
-              </div>
-              <div className="rounded-lg border border-white/10 bg-white/[0.04] p-8">
-                <div className="mb-3 text-[11px] md:text-[12px] uppercase tracking-[0.2em] text-teal">Ages 14–18</div>
-                <div className="mb-4 font-display font-bold text-background" style={{ fontSize: '26px', lineHeight: '1.1' }}>
-                  Senior
-                </div>
-                <div className="mb-5 text-[14px] leading-[1.6] text-white/65 md:text-[15px]">
-                  Advanced dancers preparing for collegiate, professional, or industry-level training. Conventions and
-                  out-of-state competition.
-                </div>
-                <div className="space-y-2 border-t border-white/10 pt-4">
-                  <div className="flex justify-between text-[13px] md:text-[14px]">
-                    <span className="text-white/50">Classes / week</span>
-                    <span className="font-medium text-background">12+ hrs</span>
-                  </div>
-                  <div className="flex justify-between text-[13px] md:text-[14px]">
-                    <span className="text-white/50">Competitions</span>
-                    <span className="font-medium text-background">6+ regional + Nationals</span>
-                  </div>
-                  <div className="flex justify-between text-[13px] md:text-[14px]">
-                    <span className="text-white/50">Nationals</span>
-                    <span className="font-medium text-background">Required</span>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
@@ -248,7 +346,9 @@ export default function TheProjectPage() {
               <div>
                 <div className="mb-5 flex items-center gap-3">
                   <div className="h-px w-7 bg-teal" />
-                  <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-teal">The Commitment</span>
+                  <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-teal md:text-[12px]">
+                    The Commitment
+                  </span>
                 </div>
                 <h2
                   className="mb-5 font-display font-bold text-foreground"
@@ -266,7 +366,9 @@ export default function TheProjectPage() {
                     ◆
                   </div>
                   <div className="flex-1">
-                    <div className="mb-1 text-[11px] md:text-[12px] uppercase tracking-[0.18em] text-foreground-muted">Season</div>
+                    <div className="mb-1 text-[11px] uppercase tracking-[0.18em] text-foreground-muted md:text-[12px]">
+                      Season
+                    </div>
                     <div className="text-[14px] leading-[1.6] text-foreground">
                       August through June, with competitions January through April.
                     </div>
@@ -277,7 +379,7 @@ export default function TheProjectPage() {
                     ◆
                   </div>
                   <div className="flex-1">
-                    <div className="mb-1 text-[11px] md:text-[12px] uppercase tracking-[0.18em] text-foreground-muted">
+                    <div className="mb-1 text-[11px] uppercase tracking-[0.18em] text-foreground-muted md:text-[12px]">
                       Required classes
                     </div>
                     <div className="text-[14px] leading-[1.6] text-foreground">
@@ -290,7 +392,7 @@ export default function TheProjectPage() {
                     ◆
                   </div>
                   <div className="flex-1">
-                    <div className="mb-1 text-[11px] md:text-[12px] uppercase tracking-[0.18em] text-foreground-muted">
+                    <div className="mb-1 text-[11px] uppercase tracking-[0.18em] text-foreground-muted md:text-[12px]">
                       Choreography camps
                     </div>
                     <div className="text-[14px] leading-[1.6] text-foreground">
@@ -303,7 +405,9 @@ export default function TheProjectPage() {
                     ◆
                   </div>
                   <div className="flex-1">
-                    <div className="mb-1 text-[11px] md:text-[12px] uppercase tracking-[0.18em] text-foreground-muted">Conventions</div>
+                    <div className="mb-1 text-[11px] uppercase tracking-[0.18em] text-foreground-muted md:text-[12px]">
+                      Conventions
+                    </div>
                     <div className="text-[14px] leading-[1.6] text-foreground">
                       All Junior and Senior dancers attend at least one convention per season.
                     </div>
@@ -314,7 +418,7 @@ export default function TheProjectPage() {
                     ◆
                   </div>
                   <div className="flex-1">
-                    <div className="mb-1 text-[11px] md:text-[12px] uppercase tracking-[0.18em] text-foreground-muted">
+                    <div className="mb-1 text-[11px] uppercase tracking-[0.18em] text-foreground-muted md:text-[12px]">
                       Additional fees
                     </div>
                     <div className="text-[14px] leading-[1.6] text-foreground">
@@ -334,7 +438,9 @@ export default function TheProjectPage() {
             <div className="mb-12 text-center">
               <div className="mb-5 flex items-center justify-center gap-3">
                 <div className="h-px w-7 bg-teal" />
-                <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-teal">Recent Achievements</span>
+                <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-teal md:text-[12px]">
+                  Recent Achievements
+                </span>
                 <div className="h-px w-7 bg-teal" />
               </div>
               <h2
@@ -345,29 +451,19 @@ export default function TheProjectPage() {
               </h2>
             </div>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-              <div className="rounded-lg border border-border bg-background p-7">
-                <div className="mb-3 text-[11px] md:text-[12px] font-semibold uppercase tracking-[0.22em] text-teal">2024 Season</div>
-                <div className="mb-2 font-display font-bold text-foreground" style={{ fontSize: '20px', lineHeight: '1.2' }}>
-                  Platinum Award
+              {awards.map((award, index) => (
+                <div key={`${award.title}-${award.year}-${index}`} className="rounded-lg border border-border bg-background p-7">
+                  <div className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-teal md:text-[12px]">
+                    {award.year} Season
+                  </div>
+                  <div className="mb-2 font-display font-bold text-foreground" style={{ fontSize: '20px', lineHeight: '1.2' }}>
+                    {award.placement}
+                  </div>
+                  <div className="text-[13px] leading-[1.6] text-foreground-muted md:text-[14px]">
+                    {award.title} — {award.competition}
+                  </div>
                 </div>
-                <div className="text-[13px] leading-[1.6] text-foreground-muted md:text-[14px]">Senior Lyrical Group — KAR Nationals</div>
-              </div>
-              <div className="rounded-lg border border-border bg-background p-7">
-                <div className="mb-3 text-[11px] md:text-[12px] font-semibold uppercase tracking-[0.22em] text-teal">2024 Season</div>
-                <div className="mb-2 font-display font-bold text-foreground" style={{ fontSize: '20px', lineHeight: '1.2' }}>
-                  1st Place Overall
-                </div>
-                <div className="text-[13px] leading-[1.6] text-foreground-muted md:text-[14px]">
-                  Junior Jazz Line — Showbiz Regionals
-                </div>
-              </div>
-              <div className="rounded-lg border border-border bg-background p-7">
-                <div className="mb-3 text-[11px] md:text-[12px] font-semibold uppercase tracking-[0.22em] text-teal">2023 Season</div>
-                <div className="mb-2 font-display font-bold text-foreground" style={{ fontSize: '20px', lineHeight: '1.2' }}>
-                  Studio Excellence Award
-                </div>
-                <div className="text-[12px] leading-[1.5] text-foreground-muted">Hollywood Vibe Las Vegas</div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
@@ -377,7 +473,7 @@ export default function TheProjectPage() {
           <div className="mx-auto max-w-7xl">
             <div className="mb-4 flex items-center gap-3">
               <div className="h-px w-7 bg-teal" />
-              <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-teal">Gallery</span>
+              <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-teal md:text-[12px]">Gallery</span>
             </div>
             <h2
               className="mb-10 font-display font-bold text-foreground"
@@ -387,19 +483,25 @@ export default function TheProjectPage() {
             </h2>
             <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
               <div className="flex aspect-[8/4] items-center justify-center border border-border bg-background-warm md:col-span-2">
-                <span className="text-[12px] uppercase tracking-[0.15em] text-foreground-muted md:text-[13px]">[Performance photo]</span>
+                <span className="text-[12px] uppercase tracking-[0.15em] text-foreground-muted md:text-[13px]">
+                  [Performance photo]
+                </span>
               </div>
               <div className="flex aspect-[3/4] items-center justify-center border border-border bg-background-warm">
                 <span className="text-[12px] uppercase tracking-[0.15em] text-foreground-muted md:text-[13px]">[Group shot]</span>
               </div>
               <div className="flex aspect-[3/4] items-center justify-center border border-border bg-background-warm">
-                <span className="text-[12px] uppercase tracking-[0.15em] text-foreground-muted md:text-[13px]">[Solo competition]</span>
+                <span className="text-[12px] uppercase tracking-[0.15em] text-foreground-muted md:text-[13px]">
+                  [Solo competition]
+                </span>
               </div>
               <div className="flex aspect-[3/4] items-center justify-center border border-border bg-background-warm">
                 <span className="text-[12px] uppercase tracking-[0.15em] text-foreground-muted md:text-[13px]">[Backstage]</span>
               </div>
               <div className="flex aspect-[8/4] items-center justify-center border border-border bg-background-warm md:col-span-2">
-                <span className="text-[12px] uppercase tracking-[0.15em] text-foreground-muted md:text-[13px]">[Awards ceremony]</span>
+                <span className="text-[12px] uppercase tracking-[0.15em] text-foreground-muted md:text-[13px]">
+                  [Awards ceremony]
+                </span>
               </div>
             </div>
           </div>
@@ -410,7 +512,9 @@ export default function TheProjectPage() {
           <div className="mx-auto max-w-3xl text-center">
             <div className="mb-5 flex items-center justify-center gap-3">
               <div className="h-px w-7 bg-white/40" />
-              <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-white/60">Auditions</span>
+              <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-white/60 md:text-[12px]">
+                Auditions
+              </span>
               <div className="h-px w-7 bg-white/40" />
             </div>
             <h2
@@ -420,19 +524,31 @@ export default function TheProjectPage() {
               Ready to join The Project?
             </h2>
             <p className="mx-auto mb-8 max-w-xl text-[15px] leading-[1.7] text-white/70">
+              {audition?.ageRange ? (
+                <>
+                  Open to {audition.ageRange}.{' '}
+                </>
+              ) : null}
+              {audition?.location ? (
+                <>
+                  Auditions at {audition.location}.{' '}
+                </>
+              ) : null}
               Auditions are held annually in May for the following season. New dancers and current Evolve students are
               both welcome to audition.
             </p>
-            <div className="mb-8 inline-block rounded border border-teal/30 bg-teal/[0.12] px-4 py-2 text-[12px] uppercase tracking-[0.15em] text-teal">
-              Next Audition: May 2026
-            </div>
+            {auditionDateLabel ? (
+              <div className="mb-8 inline-block rounded border border-teal/30 bg-teal/[0.12] px-4 py-2 text-[12px] uppercase tracking-[0.15em] text-teal">
+                Next Audition: {auditionDateLabel}
+              </div>
+            ) : null}
             <div className="flex flex-wrap justify-center gap-3">
-              <Link
-                href="/contact"
+              <CtaLink
+                href={audition?.ctaLink?.trim() || '/contact'}
                 className="inline-flex items-center gap-2 bg-teal px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.22em] text-foreground transition-colors duration-200 hover:bg-teal/90 md:text-[13px]"
               >
-                Sign up for auditions →
-              </Link>
+                {audition?.ctaText?.trim() || 'Sign up for auditions →'}
+              </CtaLink>
               <Link
                 href="mailto:info@evolvedancecenter.com"
                 className="inline-flex items-center gap-2 border border-white px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.22em] text-background transition-colors duration-200 hover:bg-white hover:text-foreground md:text-[13px]"
