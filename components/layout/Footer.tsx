@@ -309,6 +309,18 @@ export default function Footer() {
           >
             {' · '}
           </span>
+          <Link
+            href="/policies"
+            className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
+          >
+            Policies
+          </Link>
+          <span
+            className="text-[12px] text-[rgba(247,245,241,0.45)] mx-2 shrink-0 leading-[1.55]"
+            aria-hidden
+          >
+            {' · '}
+          </span>
           <span className="text-[12px] text-[rgba(247,245,241,0.45)] leading-[1.55]">
             © 2026 {siteConfig.name}. All rights reserved. · Site by{' '}
             <a

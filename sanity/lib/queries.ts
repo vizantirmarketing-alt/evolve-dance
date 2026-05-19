@@ -323,3 +323,45 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
 export async function getAllPostSlugs(): Promise<string[]> {
   return client.fetch<string[]>(allPostSlugsQuery)
 }
+
+export type StudioRegularHours = {
+  day:
+    | 'Monday'
+    | 'Tuesday'
+    | 'Wednesday'
+    | 'Thursday'
+    | 'Friday'
+    | 'Saturday'
+    | 'Sunday'
+  isOpen: boolean
+  openTime?: string | null
+  closeTime?: string | null
+  note?: string | null
+}
+
+export type StudioSpecialHours = {
+  date: string
+  label: string
+  isClosed: boolean
+  openTime?: string | null
+  closeTime?: string | null
+  note?: string | null
+}
+
+export type StudioHours = {
+  _id: string
+  regularHours?: StudioRegularHours[] | null
+  specialHours?: StudioSpecialHours[] | null
+  holidayMessage?: string | null
+}
+
+export const studioHoursQuery = `*[_type == "studioHours"][0] {
+  _id,
+  regularHours,
+  "specialHours": specialHours[date >= string(dateTime(now()) - 60*60*24)[0...10]] | order(date asc),
+  holidayMessage
+}`
+
+export async function getStudioHours(): Promise<StudioHours | null> {
+  return client.fetch<StudioHours | null>(studioHoursQuery)
+}

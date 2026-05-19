@@ -1,31 +1,29 @@
-'use client'
-
-import { Turnstile, type TurnstileInstance } from '@marsidev/react-turnstile'
-import { useState, useRef, type FormEvent } from 'react'
 import {
   MapPin,
   Phone,
   Mail,
   Clock,
   ArrowUpRight,
-  ChevronDown,
-  ArrowRight,
-  Check,
 } from 'lucide-react'
 
 import Footer from '@/components/layout/Footer'
 import Navbar from '@/components/layout/Navbar'
 import { siteConfig } from '@/data/site'
+import {
+  getStudioHours,
+  type StudioHours,
+  type StudioRegularHours,
+  type StudioSpecialHours,
+} from '@/sanity/lib/queries'
+
+import ContactForm from './ContactForm'
+
+export const revalidate = 300
 
 const GOOGLE_MAPS_EMBED_SRC =
   'https://maps.google.com/maps?q=6070+S+Rainbow+Blvd+Las+Vegas+NV+89118&t=&z=15&ie=UTF8&iwloc=&output=embed'
 const GOOGLE_MAPS_SEARCH_HREF =
   'https://www.google.com/maps/search/?api=1&query=6070+S+Rainbow+Blvd+Las+Vegas+NV+89118'
-
-const fieldClassName =
-  'w-full bg-transparent border border-border rounded-none px-0 py-3 text-foreground placeholder:text-foreground-muted/60 focus:outline-none focus:border-teal transition-colors border-t-0 border-l-0 border-r-0 text-[14px] md:text-[15px]'
-
-const labelClassName = 'block text-[11px] uppercase tracking-[0.15em] text-foreground-muted mb-2 md:text-[12px]'
 
 const TikTokIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden>
@@ -82,76 +80,99 @@ function ContactSocialRow() {
   )
 }
 
-const emptyForm = {
-  name: '',
-  email: '',
-  phone: '',
-  interest: '',
-  message: '',
+function formatRegularDayLine(day: StudioRegularHours): string {
+  if (!day.isOpen) return `${day.day}: Closed`
+  if (day.openTime && day.closeTime) return `${day.day}: ${day.openTime} – ${day.closeTime}`
+  if (day.openTime || day.closeTime) {
+    return `${day.day}: ${[day.openTime, day.closeTime].filter(Boolean).join(' – ')}`
+  }
+  return `${day.day}: Open`
 }
 
-export default function ContactPage() {
-  const [formData, setFormData] = useState(emptyForm)
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
-  const [errorMessage, setErrorMessage] = useState('')
-  const [turnstileToken, setTurnstileToken] = useState('')
-  const turnstileRef = useRef<TurnstileInstance>(null)
+function formatSpecialDate(dateStr: string): string {
+  const [year, month, day] = dateStr.split('-').map(Number)
+  const date = new Date(year, month - 1, day)
+  return date.toLocaleDateString('en-US', {
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  })
+}
 
-  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-
-    const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY
-    if (turnstileSiteKey && !turnstileToken) {
-      setStatus('error')
-      setErrorMessage('Please complete the security check before submitting.')
-      return
-    }
-
-    setStatus('submitting')
-    setErrorMessage('')
-
-    const resetTurnstileWidget = () => {
-      turnstileRef.current?.reset()
-      setTurnstileToken('')
-    }
-
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          interest: formData.interest,
-          message: formData.message,
-          turnstileToken,
-        }),
-      })
-
-      let payload: { error?: string } = {}
-      try {
-        payload = await res.json()
-      } catch {
-        /* ignore */
-      }
-
-      if (!res.ok) {
-        setStatus('error')
-        setErrorMessage(payload.error ?? 'Something went wrong. Please try again.')
-        resetTurnstileWidget()
-        return
-      }
-
-      setStatus('success')
-      setFormData({ ...emptyForm })
-      resetTurnstileWidget()
-    } catch {
-      setStatus('error')
-      setErrorMessage('Something went wrong. Please try again.')
-      resetTurnstileWidget()
-    }
+function formatSpecialHoursLine(entry: StudioSpecialHours): string {
+  if (entry.isClosed) return 'Closed'
+  if (entry.openTime && entry.closeTime) return `${entry.openTime} – ${entry.closeTime}`
+  if (entry.openTime || entry.closeTime) {
+    return [entry.openTime, entry.closeTime].filter(Boolean).join(' – ')
   }
+  return 'Open'
+}
+
+function StudioHoursBlock({ studioHours }: { studioHours: StudioHours | null }) {
+  const regularHours = studioHours?.regularHours ?? []
+  const specialHours = studioHours?.specialHours ?? []
+  const holidayMessage = studioHours?.holidayMessage?.trim()
+
+  if (!studioHours || regularHours.length === 0) {
+    return (
+      <p className="mt-1 text-[14px] font-medium text-foreground md:text-[15px]">
+        Studio hours coming soon
+      </p>
+    )
+  }
+
+  return (
+    <div className="mt-1 space-y-3">
+      {holidayMessage ? (
+        <p className="rounded border border-teal/20 bg-teal/8 px-3 py-2 text-[13px] font-medium leading-[1.6] text-foreground md:text-[14px]">
+          {holidayMessage}
+        </p>
+      ) : null}
+
+      <div className="space-y-1">
+        {regularHours.map((day) => (
+          <div key={day.day}>
+            <p className="text-[14px] font-medium text-foreground md:text-[15px]">
+              {formatRegularDayLine(day)}
+            </p>
+            {day.note?.trim() ? (
+              <p className="text-[13px] font-light text-foreground-muted md:text-[14px]">
+                {day.note.trim()}
+              </p>
+            ) : null}
+          </div>
+        ))}
+      </div>
+
+      {specialHours.length > 0 ? (
+        <div className="space-y-2 pt-1">
+          <p className="text-[11px] uppercase tracking-[0.15em] text-foreground-muted md:text-[12px]">
+            Upcoming schedule changes
+          </p>
+          <ul className="space-y-2">
+            {specialHours.map((entry) => (
+              <li key={`${entry.date}-${entry.label}`}>
+                <p className="text-[14px] font-medium text-foreground md:text-[15px]">{entry.label}</p>
+                <p className="text-[13px] font-light text-foreground-muted md:text-[14px]">
+                  {formatSpecialDate(entry.date)} · {formatSpecialHoursLine(entry)}
+                </p>
+                {entry.note?.trim() ? (
+                  <p className="text-[13px] font-light text-foreground-muted md:text-[14px]">
+                    {entry.note.trim()}
+                  </p>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+    </div>
+  )
+}
+
+export default async function ContactPage() {
+  const studioHours = await getStudioHours()
 
   return (
     <>
@@ -159,179 +180,7 @@ export default function ContactPage() {
       <main className="bg-background">
         <section className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 py-16 md:grid-cols-2 md:gap-16 md:px-12 md:py-24 lg:px-16">
           <div className="flex flex-col">
-            <div className="max-w-2xl w-full">
-              {status === 'success' ? (
-                <div className="text-center">
-                  <div className="flex justify-center">
-                    <Check className="h-12 w-12 text-teal" aria-hidden />
-                  </div>
-                  <h3 className="mt-6 font-display text-2xl text-foreground md:text-3xl">Thanks for reaching out.</h3>
-                  <p className="mx-auto mt-3 max-w-md text-[14px] font-light leading-[1.8] text-foreground-muted md:text-[15px]">
-                    We&apos;ll get back to you within one business day. In the meantime, feel free to call us at (702)
-                    897-5095.
-                  </p>
-                  <button
-                    type="button"
-                    className="mt-8 inline-flex items-center justify-center gap-2 bg-foreground px-8 py-3.5 text-[12px] font-medium uppercase tracking-[0.2em] text-background transition-colors duration-200 hover:bg-foreground/85 md:py-4 md:text-[13px]"
-                    onClick={() => {
-                      setStatus('idle')
-                      setErrorMessage('')
-                    }}
-                  >
-                    Send another message
-                  </button>
-                </div>
-              ) : (
-                <>
-                  <div className="mb-6 flex items-center gap-3">
-                    <div className="h-px w-7 bg-teal" />
-                    <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-teal">Send a Message</span>
-                  </div>
-
-                  <h2
-                    className="mb-4 font-display font-bold leading-[0.95] text-foreground"
-                    style={{ fontSize: 'clamp(40px, 5vw, 64px)' }}
-                  >
-                    Quick inquiry.
-                  </h2>
-
-                  <p className="mb-10 text-[14px] font-light leading-[1.8] text-foreground-muted md:text-[15px]">
-                    Send us a message and we&apos;ll get back to you within one business day.
-                  </p>
-
-                  <form onSubmit={handleSubmit} noValidate>
-                    <div className="mb-6">
-                      <label htmlFor="contact-name" className={labelClassName}>
-                        Name
-                      </label>
-                      <input
-                        id="contact-name"
-                        name="name"
-                        type="text"
-                        autoComplete="name"
-                        required
-                        value={formData.name}
-                        onChange={(e) => setFormData((d) => ({ ...d, name: e.target.value }))}
-                        className={fieldClassName}
-                        placeholder="Your name"
-                      />
-                    </div>
-
-                    <div className="mb-6">
-                      <label htmlFor="contact-email" className={labelClassName}>
-                        Email
-                      </label>
-                      <input
-                        id="contact-email"
-                        name="email"
-                        type="email"
-                        autoComplete="email"
-                        required
-                        value={formData.email}
-                        onChange={(e) => setFormData((d) => ({ ...d, email: e.target.value }))}
-                        className={fieldClassName}
-                        placeholder="you@example.com"
-                      />
-                    </div>
-
-                    <div className="mb-6">
-                      <label htmlFor="contact-phone" className={labelClassName}>
-                        Phone
-                      </label>
-                      <input
-                        id="contact-phone"
-                        name="phone"
-                        type="text"
-                        autoComplete="tel"
-                        value={formData.phone}
-                        onChange={(e) => setFormData((d) => ({ ...d, phone: e.target.value }))}
-                        className={fieldClassName}
-                        placeholder="(702) 555-0100"
-                      />
-                    </div>
-
-                    <div className="mb-6">
-                      <label htmlFor="contact-interest" className={labelClassName}>
-                        Interest
-                      </label>
-                      <div className="relative">
-                        <select
-                          id="contact-interest"
-                          name="interest"
-                          value={formData.interest}
-                          onChange={(e) => setFormData((d) => ({ ...d, interest: e.target.value }))}
-                          className={`${fieldClassName} appearance-none pr-8`}
-                        >
-                          <option value="">What can we help with?</option>
-                          <option value="Trial class">Trial class</option>
-                          <option value="Class information">Class information</option>
-                          <option value="Pricing & enrollment">Pricing & enrollment</option>
-                          <option value="The Project (competition team)">The Project (competition team)</option>
-                          <option value="Other">Other</option>
-                        </select>
-                        <ChevronDown
-                          className="pointer-events-none absolute right-0 top-1/2 h-4 w-4 -translate-y-1/2 text-teal"
-                          aria-hidden
-                        />
-                      </div>
-                    </div>
-
-                    <div className="mb-6">
-                      <label htmlFor="contact-message" className={labelClassName}>
-                        Message
-                      </label>
-                      <textarea
-                        id="contact-message"
-                        name="message"
-                        required
-                        rows={4}
-                        value={formData.message}
-                        onChange={(e) => setFormData((d) => ({ ...d, message: e.target.value }))}
-                        className={fieldClassName}
-                        placeholder="How can we help?"
-                      />
-                    </div>
-
-                    {process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ? (
-                      <div className="mt-4 mb-6">
-                        <Turnstile
-                          ref={turnstileRef}
-                          siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
-                          onSuccess={(token) => setTurnstileToken(token)}
-                          onError={() => setTurnstileToken('')}
-                          onExpire={() => setTurnstileToken('')}
-                          options={{
-                            theme: 'light',
-                            size: 'normal',
-                          }}
-                        />
-                      </div>
-                    ) : null}
-
-                    {status === 'error' && errorMessage ? (
-                      <div className="mb-4 rounded border border-red-300 bg-red-50 p-3 text-[13px] text-red-700 md:text-[14px]">
-                        {errorMessage}
-                      </div>
-                    ) : null}
-
-                    <button
-                      type="submit"
-                      disabled={status === 'submitting'}
-                      className="mt-4 inline-flex items-center justify-center gap-2 bg-foreground px-8 py-3.5 text-[12px] font-medium uppercase tracking-[0.2em] text-background transition-colors duration-200 hover:bg-foreground/85 disabled:cursor-not-allowed disabled:opacity-50 md:py-4 md:text-[13px]"
-                    >
-                      {status === 'submitting' ? (
-                        'Sending...'
-                      ) : (
-                        <>
-                          Send Message
-                          <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
-                        </>
-                      )}
-                    </button>
-                  </form>
-                </>
-              )}
-            </div>
+            <ContactForm />
           </div>
 
           <div className="flex flex-col gap-8 md:gap-10">
@@ -399,8 +248,10 @@ export default function ContactPage() {
                   <Clock className="h-4 w-4 text-teal" aria-hidden />
                 </div>
                 <div>
-                  <div className="text-[11px] uppercase tracking-[0.15em] text-foreground-muted md:text-[12px]">Office Hours</div>
-                  <div className="mt-1 text-[14px] font-medium text-foreground md:text-[15px]">Monday–Friday, 3pm–8pm</div>
+                  <div className="text-[11px] uppercase tracking-[0.15em] text-foreground-muted md:text-[12px]">
+                    Studio Hours
+                  </div>
+                  <StudioHoursBlock studioHours={studioHours} />
                 </div>
               </div>
             </div>
