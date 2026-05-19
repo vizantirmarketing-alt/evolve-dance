@@ -99,8 +99,9 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-[#1F1F1C] px-12 pb-[calc(2.5rem+5rem+env(safe-area-inset-bottom,0px))] pt-[72px] md:pb-10">
-      <div className="pb-14 border-b border-[rgba(255,255,255,0.08)] mb-8">
+    <footer className="bg-[#1F1F1C] pb-[calc(2.5rem+5rem+env(safe-area-inset-bottom,0px))] pt-[72px] md:pb-10">
+      <div className="mx-auto max-w-7xl px-6 md:px-12">
+        <div className="pb-14 border-b border-[rgba(255,255,255,0.08)] mb-8">
         <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-12 md:items-stretch">
           {/* Brand */}
           <div className="flex min-h-0 flex-col gap-8 md:h-full md:gap-0">
@@ -288,8 +289,8 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom bar */}
-      <div className="flex flex-wrap items-center gap-4">
+        {/* Bottom bar */}
+        <div className="flex flex-wrap items-center gap-4">
         <div className="flex flex-wrap items-center">
           <SmartLink
             href="/privacy"
@@ -326,6 +327,7 @@ export default function Footer() {
               Vizantir
             </a>
           </span>
+        </div>
         </div>
       </div>
     </footer>
