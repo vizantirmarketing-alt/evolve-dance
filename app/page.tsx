@@ -7,11 +7,13 @@ import {
   WhyFamiliesChooseSection,
   ClassesSection,
   InstructorsSection,
-  TestimonialsSection,
   ProjectSection,
   EnrollSection,
 } from '@/components/sections/HomeSections'
 import ScheduleSection from '@/components/sections/ScheduleSection'
+import TestimonialsSection from '@/components/sections/TestimonialsSection'
+
+export const revalidate = 300
 
 export default function HomePage() {
   return (

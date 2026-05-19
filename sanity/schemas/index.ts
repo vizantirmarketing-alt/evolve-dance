@@ -6,6 +6,7 @@ import { event } from './event'
 import { faq } from './faq'
 import { faculty } from './faculty'
 import { studioHours } from './studioHours'
+import { testimonial } from './testimonial'
 import { theProject } from './theProject'
 
 export const schemaTypes: SchemaTypeDefinition[] = [
@@ -16,4 +17,5 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   studioHours,
   blogPost,
   category,
+  testimonial,
 ]

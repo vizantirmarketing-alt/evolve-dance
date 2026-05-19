@@ -6,7 +6,6 @@ import { ArrowRight } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 import { siteConfig } from '@/data/site'
-
 // ─────────────────────────────────────────
 // SHARED COMPONENTS
 // ─────────────────────────────────────────
@@ -518,106 +517,6 @@ export function InstructorsSection() {
   )
 }
 
-// ─────────────────────────────────────────
-// TESTIMONIALS
-// ─────────────────────────────────────────
-
-const testimonials = [
-  { quote: 'The classes are perfectly structured and the environment is positive, encouraging, and fun. She has shown so much growth under the instruction here.', author: 'Dance Parent · Google Review', featured: true },
-  { quote: 'Our staff is passionate about creating a positive atmosphere and an all-around great experience for each and every dancer.', author: 'Dance Parent · Google Review', featured: false },
-  { quote: 'Strong technical base, self-confidence, and a genuine passion for dance. My daughter looks forward to every single class.', author: 'Dance Parent · Google Review', featured: false },
-]
-
-export function TestimonialsSection() {
-  return (
-    <section className="bg-[#D4F1EF] px-4 py-28 md:px-12">
-      <Reveal>
-        <div className="flex items-center gap-3 mb-6">
-          <div className="w-7 h-px bg-[#0ABAB5] opacity-100" />
-          <span className="text-[11px] md:text-[12px] tracking-[0.22em] uppercase text-[#0ABAB5] font-medium opacity-100">{siteConfig.reviewsLabel}</span>
-        </div>
-      </Reveal>
-      <Reveal delay={100}>
-        <>
-          <h2 className="font-display font-bold mt-4 mb-4 max-w-3xl text-[#1F1F1C]" style={{ fontSize: 'clamp(28px, 3.5vw, 42px)', lineHeight: '1' }}>
-            What families love about Evolve —{' '}
-            <span className="italic text-[#0ABAB5]" style={{ fontSize: 'clamp(28px, 3.5vw, 42px)', lineHeight: '1' }}>
-              Reviews
-            </span>
-          </h2>
-          <p className="max-w-2xl text-[15px] font-light text-[#6D6C67] leading-[1.75] mb-14 md:text-[16px]">
-            Families choose Evolve for more than strong classes. They stay for the culture, the consistency, and the way their dancers grow over time.
-          </p>
-        </>
-      </Reveal>
-
-      {/* Mobile: horizontal scroll-snap reviews */}
-      <div className="md:hidden -mx-4">
-        <div className="scrollbar-hide flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4">
-          {testimonials.map((t, i) => {
-            const teal = i % 2 === 0
-            return (
-              <article
-                key={i}
-                className={cn(
-                  'w-[85vw] shrink-0 snap-start border p-6 transition-all duration-300',
-                  teal
-                    ? 'border-[#0ABAB5] bg-[#0ABAB5]'
-                    : 'border-[#D6DFDA] bg-[#FCFBF8]',
-                )}
-              >
-                <span className={cn('mb-4 block text-[11px] tracking-[3px]', teal ? 'text-white/80' : 'text-[#0ABAB5]')}>
-                  ★★★★★
-                </span>
-                <span className={cn('font-display mb-4 block text-[56px] leading-[0.8]', teal ? 'text-white/25' : 'text-[#0ABAB5]')}>
-                  "
-                </span>
-                <p className={cn('mb-6 font-serif text-[17px] font-normal italic leading-[1.6]', teal ? 'text-white' : 'text-[#1F1F1C]')}>
-                  {t.quote}
-                </p>
-                <div className={cn('text-[11px] font-medium uppercase tracking-[0.16em] md:text-[12px]', teal ? 'text-white/70' : 'text-[#6D6C67]')}>
-                  {t.author}
-                </div>
-              </article>
-            )
-          })}
-        </div>
-      </div>
-      <div className="mt-6 flex justify-center gap-1.5 md:hidden">
-        {testimonials.map((_, i) => (
-          <span key={i} className="h-1.5 w-1.5 rounded-full bg-[#1F1F1C]/20" aria-hidden />
-        ))}
-      </div>
-
-      {/* Desktop: existing grid (unchanged) */}
-      <div className="hidden gap-px md:grid md:grid-cols-[1.4fr_1fr_1fr]">
-        {testimonials.map((t, i) => (
-          <Reveal key={i} delay={i * 100}>
-            <div className={cn(
-              'relative border p-6 transition-all duration-300 md:p-11',
-              t.featured
-                ? 'bg-[#0ABAB5] border-[#0ABAB5]'
-                : 'bg-[#FCFBF8] border-[#D6DFDA]'
-            )}>
-              <span className={cn('text-[11px] tracking-[3px] mb-4 block', t.featured ? 'text-white/80' : 'text-[#0ABAB5]')}>
-                ★★★★★
-              </span>
-              <span className={cn('font-display text-[72px] leading-[0.8] mb-4 block', t.featured ? 'text-white/25' : 'text-[#0ABAB5]')}>
-                "
-              </span>
-              <p className={cn('font-display text-[18px] font-normal italic leading-[1.6] mb-6', t.featured ? 'text-white' : 'text-[#1F1F1C]')}>
-                {t.quote}
-              </p>
-              <div className={cn('text-[11px] tracking-[0.16em] uppercase md:text-[12px]', t.featured ? 'text-white/70' : 'text-[#6D6C67]')}>
-                {t.author}
-              </div>
-            </div>
-          </Reveal>
-        ))}
-      </div>
-    </section>
-  )
-}
 
 // ─────────────────────────────────────────
 // THE PROJECT

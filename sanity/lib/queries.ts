@@ -365,3 +365,29 @@ export const studioHoursQuery = `*[_type == "studioHours"][0] {
 export async function getStudioHours(): Promise<StudioHours | null> {
   return client.fetch<StudioHours | null>(studioHoursQuery)
 }
+
+export type Testimonial = {
+  _id: string
+  reviewerName: string
+  rating: number
+  reviewDate: string
+  reviewText: string
+  source: string
+  featured: boolean
+  order?: number | null
+}
+
+export const featuredTestimonialsQuery = `*[_type == "testimonial" && published == true && featured == true] | order(order asc) {
+  _id,
+  reviewerName,
+  rating,
+  reviewDate,
+  reviewText,
+  source,
+  featured,
+  order
+}`
+
+export async function getFeaturedTestimonials(): Promise<Testimonial[]> {
+  return client.fetch<Testimonial[]>(featuredTestimonialsQuery)
+}

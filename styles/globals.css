@@ -90,6 +90,58 @@ body {
   50% { opacity: 1; transform: scaleY(1) translateY(0); }
 }
 
+/* Testimonials hero — ambient drift + progress fill */
+@keyframes testimonialDrift1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(12%, -8%) scale(1.05); }
+}
+
+@keyframes testimonialDrift2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-14%, 10%) scale(1.08); }
+  66% { transform: translate(8%, 6%) scale(0.96); }
+}
+
+@keyframes testimonialProgress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.animate-testimonial-progress {
+  animation: testimonialProgress 6s linear forwards;
+}
+
+.testimonial-hero-bg {
+  opacity: 0.55;
+}
+
+.testimonial-hero-bg--one {
+  background: radial-gradient(
+    ellipse 55% 70% at 18% 42%,
+    rgba(62, 159, 151, 0.38) 0%,
+    transparent 68%
+  );
+  animation: testimonialDrift1 12s ease-in-out infinite;
+}
+
+.testimonial-hero-bg--two {
+  background: radial-gradient(
+    ellipse 50% 65% at 82% 58%,
+    rgba(10, 186, 181, 0.28) 0%,
+    transparent 70%
+  );
+  animation: testimonialDrift2 16s ease-in-out infinite;
+}
+
+.testimonial-hero-stage--paused .testimonial-hero-bg,
+.testimonial-hero-stage--paused .animate-testimonial-progress {
+  animation-play-state: paused;
+}
+
+.testimonial-hero-stage--reduced-motion .testimonial-hero-bg {
+  animation: none;
+}
+
 /* ── Teal border bottom animated ────────────────── */
 .teal-underline::after {
   content: '';
