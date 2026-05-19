@@ -46,6 +46,14 @@ export const faq = defineType({
       validation: (Rule) => Rule.required().integer().min(0),
     }),
     defineField({
+      name: 'seoDescription',
+      title: 'SEO Meta Description',
+      type: 'string',
+      description:
+        'Used for search engine descriptions and AI Overview metadata. Max 155 characters.',
+      validation: (Rule) => Rule.max(155),
+    }),
+    defineField({
       name: 'published',
       title: 'Published',
       type: 'boolean',

@@ -10,6 +10,23 @@ export default async function FaqPage() {
   return (
     <>
       <Navbar />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: faqs.map((faq) => ({
+              '@type': 'Question',
+              name: faq.question,
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: faq.answer,
+              },
+            })),
+          }),
+        }}
+      />
       <main className="min-h-screen bg-background pb-24 pt-24 md:pb-28 md:pt-28">
         <section className="px-6 md:px-16 lg:px-20">
           <div className="mx-auto max-w-7xl">
