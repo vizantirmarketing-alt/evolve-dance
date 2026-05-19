@@ -3,6 +3,7 @@
 import { useState, type ReactNode } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { ChevronDown } from 'lucide-react'
 import { siteConfig } from '@/data/site'
 import { footerLinks } from '@/data/navigation'
@@ -92,6 +93,7 @@ function MobileFooterAccordion({
 }
 
 export default function Footer() {
+  const pathname = usePathname()
   const [openSection, setOpenSection] = useState<'classes' | 'studio' | 'contact' | null>(null)
 
   const toggle = (id: 'classes' | 'studio' | 'contact') => {
@@ -111,7 +113,7 @@ export default function Footer() {
                   aria-label="Evolve Dance Center home"
                   className="flex items-center no-underline"
                   onClick={(e) => {
-                    if (window.location.pathname === '/') {
+                    if (pathname === '/') {
                       e.preventDefault()
                       window.scrollTo({ top: 0, behavior: 'smooth' })
                     }

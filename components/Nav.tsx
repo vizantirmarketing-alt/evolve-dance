@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { ArrowRight } from 'lucide-react'
 import { siteConfig } from '@/data/site'
 
@@ -16,6 +17,7 @@ export interface NavProps {
 }
 
 export default function Nav({ links }: NavProps) {
+  const pathname = usePathname()
   const [isScrolled, setIsScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
@@ -46,7 +48,14 @@ export default function Nav({ links }: NavProps) {
         {/* Logo */}
         <Link
           href="/"
+          aria-label="Evolve Dance Center home"
           className="group flex items-center no-underline transition-transform duration-200 ease-out hover:scale-[1.03]"
+          onClick={(e) => {
+            if (pathname === '/') {
+              e.preventDefault()
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+            }
+          }}
         >
           <img
             src="/logo/evolve-navbar.svg"
