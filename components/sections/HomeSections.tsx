@@ -437,17 +437,17 @@ export function InstructorsSection() {
 
       <Reveal>
         <>
-          <div className="hidden md:flex instructor-strip bg-[#D6DFDA]">
+          <div className="hidden md:flex gap-0.5 bg-[#D6DFDA]">
             {instructors.map(inst => (
               <div
                 key={inst.name}
-                className="instructor-card group bg-[#FCFBF8] hover:bg-[#D4F1EF] relative overflow-hidden min-h-[190px] cursor-pointer transition-colors duration-300"
+                className="group relative flex min-h-[190px] min-w-0 flex-1 cursor-pointer overflow-hidden bg-[#FCFBF8] transition-colors duration-300 hover:bg-[#D4F1EF]"
               >
                 {/* Top teal bar on hover */}
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-teal scale-x-0 origin-left transition-transform duration-400 group-hover:scale-x-100" />
 
-                <div className="absolute bottom-0 left-0 right-0 z-[1] px-6 py-5">
-                  <div className="font-display text-[clamp(17px,2.2vw,22px)] font-bold leading-[1.1] mb-1.5 text-[#1F1F1C]">
+                <div className="absolute bottom-0 left-0 right-0 z-[1] px-4 py-5">
+                  <div className="font-display text-[15px] font-bold leading-[1.1] mb-1.5 text-[#1F1F1C] whitespace-nowrap tracking-tight">
                     {inst.name}
                   </div>
                   <div className="text-[11px] font-medium tracking-[0.12em] uppercase text-[#0ABAB5] md:text-[12px]">
