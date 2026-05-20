@@ -530,7 +530,7 @@ export function InstructorsSection() {
 
 export function EnrollSection() {
   return (
-    <section className="relative overflow-hidden bg-[#1a2e2c] px-4 py-14 md:px-12 md:py-32">
+    <section className="relative overflow-hidden bg-[#1a2e2c] px-4 py-14 md:px-12 md:py-20">
       <svg
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 h-full w-full"
@@ -584,13 +584,13 @@ export function EnrollSection() {
         </Reveal>
 
         <Reveal delay={150}>
-          <p className="mx-auto mt-5 max-w-[480px] text-[15px] leading-[1.7] text-[#F7F5F1]/75 md:mt-6 md:text-[16px] md:leading-[1.75]">
+          <p className="mx-auto mt-5 max-w-[480px] text-[15px] leading-[1.7] text-[#F7F5F1]/75 md:mt-5 md:text-[16px] md:leading-[1.75]">
             Whether your dancer is just beginning or ready for more advanced training, we&apos;re here to help them grow.
           </p>
         </Reveal>
 
         <Reveal delay={250}>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 md:mt-10 md:flex-row md:gap-[14px]">
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 md:mt-8 md:flex-row md:gap-[14px]">
             <Link
               href="/enroll"
               className="inline-flex w-full items-center justify-center gap-2.5 whitespace-nowrap no-underline text-[12px] font-semibold uppercase tracking-wide text-[#F7F5F1] bg-[#3E9F97] px-8 py-3.5 transition-colors duration-200 hover:bg-[#358f88] md:w-auto md:py-4 md:text-[13px]"
