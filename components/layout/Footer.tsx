@@ -105,33 +105,33 @@ export default function Footer() {
     <footer className="bg-[#1F1F1C] pb-[calc(2.5rem+5rem+env(safe-area-inset-bottom,0px))] pt-[72px] md:pb-10">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="pb-14 border-b border-[rgba(255,255,255,0.08)] mb-8">
-        <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr] gap-12 md:items-stretch">
-          {/* Brand */}
-          <div className="flex min-h-0 flex-col gap-8 md:h-full md:gap-0">
-            <div>
-              <div className="mb-4">
-                <SmartLink
-                  href="/"
-                  aria-label="Evolve Dance Center home"
-                  className="flex items-center no-underline"
-                >
-                  <Image
-                    src="/logo/evolve-footer.png"
-                    alt="Evolve Dance Center"
-                    width={360}
-                    height={240}
-                    className="h-16 md:h-20 w-auto object-contain"
-                  />
-                </SmartLink>
+          <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr] gap-12 md:items-start">
+            {/* Brand */}
+            <div className="flex min-h-0 flex-col gap-8">
+              <div>
+                <div className="mb-4">
+                  <SmartLink
+                    href="/"
+                    aria-label="Evolve Dance Center home"
+                    className="flex items-start no-underline"
+                  >
+                    <Image
+                      src="/logo/evolve-footer.png"
+                      alt="Evolve Dance Center"
+                      width={360}
+                      height={240}
+                      className="h-16 md:h-[6.5rem] w-auto object-contain"
+                    />
+                  </SmartLink>
+                </div>
+                <p className="text-[13px] text-[rgba(247,245,241,0.45)] leading-[1.7] max-w-[260px] md:text-[14px]">
+                  {siteConfig.tagline}
+                </p>
               </div>
-              <p className="text-[13px] text-[rgba(247,245,241,0.45)] leading-[1.7] max-w-[260px] md:text-[14px]">
-                {siteConfig.tagline}
-              </p>
+              <div className="shrink-0">
+                <SocialIconsRow />
+              </div>
             </div>
-            <div className="md:mt-auto md:shrink-0">
-              <SocialIconsRow />
-            </div>
-          </div>
 
           {/* Mobile — accordions */}
           <div className="md:hidden -mt-2">
@@ -258,49 +258,49 @@ export default function Footer() {
                 </SmartLink>
               </li>
             </ul>
+            </div>
           </div>
         </div>
-      </div>
 
         {/* Bottom bar */}
         <div className="flex flex-wrap items-center gap-4">
-        <div className="flex flex-wrap items-center">
-          <SmartLink
-            href="/privacy"
-            className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
-          >
-            Privacy
-          </SmartLink>
-          <span
-            className="text-[12px] text-[rgba(247,245,241,0.45)] mx-2 shrink-0 leading-[1.55]"
-            aria-hidden
-          >
-            {' · '}
-          </span>
-          <SmartLink
-            href="/policies"
-            className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
-          >
-            Policies
-          </SmartLink>
-          <span
-            className="text-[12px] text-[rgba(247,245,241,0.45)] mx-2 shrink-0 leading-[1.55]"
-            aria-hidden
-          >
-            {' · '}
-          </span>
-          <span className="text-[12px] text-[rgba(247,245,241,0.45)] leading-[1.55]">
-            © 2026 {siteConfig.name}. All rights reserved. · Site by{' '}
-            <a
-              href="https://vizantir.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#81D8D0] no-underline hover:underline"
+          <div className="flex flex-wrap items-center">
+            <SmartLink
+              href="/privacy"
+              className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
             >
-              Vizantir
-            </a>
-          </span>
-        </div>
+              Privacy
+            </SmartLink>
+            <span
+              className="text-[12px] text-[rgba(247,245,241,0.45)] mx-2 shrink-0 leading-[1.55]"
+              aria-hidden
+            >
+              {' · '}
+            </span>
+            <SmartLink
+              href="/policies"
+              className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
+            >
+              Policies
+            </SmartLink>
+            <span
+              className="text-[12px] text-[rgba(247,245,241,0.45)] mx-2 shrink-0 leading-[1.55]"
+              aria-hidden
+            >
+              {' · '}
+            </span>
+            <span className="text-[12px] text-[rgba(247,245,241,0.45)] leading-[1.55]">
+              © 2026 {siteConfig.name}. All rights reserved. · Site by{' '}
+              <a
+                href="https://vizantir.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#81D8D0] no-underline hover:underline"
+              >
+                Vizantir
+              </a>
+            </span>
+          </div>
         </div>
       </div>
     </footer>
