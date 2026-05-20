@@ -3,7 +3,20 @@
 import { useMemo, useState } from 'react'
 import { ScheduleDayRows } from '@/components/ScheduleDayRows'
 import { cn } from '@/lib/utils'
-import type { HomepageSchedulePreviewDay } from '@/lib/homepageSchedulePreview'
+import {
+  STUDIO_TIMEZONE,
+  type HomepageSchedulePreviewDay,
+} from '@/lib/homepageSchedulePreview'
+
+function shortTabLabel(dateISO: string): string {
+  const [y, m, d] = dateISO.split('-').map(Number)
+  return new Intl.DateTimeFormat('en-US', {
+    timeZone: STUDIO_TIMEZONE,
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric',
+  }).format(new Date(Date.UTC(y, m - 1, d, 12, 0, 0)))
+}
 
 export function ScheduleTabs({
   days,
@@ -23,14 +36,14 @@ export function ScheduleTabs({
 
   return (
     <>
-      <div className="mb-12 flex gap-0 overflow-x-auto border-b border-[rgba(10,186,181,0.12)]">
+      <div className="mb-12 flex gap-0 border-b border-[rgba(10,186,181,0.12)]">
         {days.map((row) => (
           <button
             key={row.dateISO}
             type="button"
             onClick={() => setActiveKey(row.dateISO)}
             className={cn(
-              'whitespace-nowrap px-6 py-3.5 text-left text-[13px] font-medium tracking-[0.02em] md:text-[14px]',
+              'min-w-0 flex-1 whitespace-nowrap px-3 py-3.5 text-left text-[12px] font-medium tracking-[0.02em] md:px-6 md:text-[14px]',
               'normal-case',
               '-mb-px border-b-2 transition-colors duration-200',
               activeKey === row.dateISO
@@ -39,9 +52,10 @@ export function ScheduleTabs({
             )}
           >
             <span className="flex flex-col gap-0.5">
-              <span className="leading-snug">{row.displayLabel}</span>
+              <span className="leading-snug md:hidden">{shortTabLabel(row.dateISO)}</span>
+              <span className="hidden leading-snug md:inline">{row.displayLabel}</span>
               {row.isToday ? (
-                <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-teal/75 md:text-[11px]">
+                <span className="text-[9px] font-semibold uppercase tracking-[0.12em] text-teal/75 md:text-[11px] md:tracking-[0.14em]">
                   Today
                 </span>
               ) : null}
