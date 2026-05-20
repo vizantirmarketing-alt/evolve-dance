@@ -283,7 +283,7 @@ const classes = [
 
 export function ClassesSection() {
   return (
-    <section className="bg-[#F7F5F1] px-4 py-6 md:px-12 md:py-28">
+    <section className="bg-[#F7F5F1] px-4 py-10 md:px-12 md:py-28">
       <Reveal>
         <div className="flex items-center gap-3 mb-1 md:mb-6">
           <div className="w-7 h-px bg-[#0ABAB5] opacity-100" />
