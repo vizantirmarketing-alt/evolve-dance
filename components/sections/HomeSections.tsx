@@ -198,7 +198,7 @@ export function WhyFamiliesChooseSection() {
         <SectionEyebrow label="Why Families Choose Evolve" />
       </Reveal>
       <Reveal delay={100}>
-        <h2 className="font-display mb-10 max-w-3xl text-[clamp(28px,3.5vw,42px)] font-bold leading-none text-[#f0faf8] md:mb-8 md:text-4xl">
+        <h2 className="font-display mb-10 max-w-3xl text-[clamp(28px,3.5vw,42px)] font-bold leading-none text-[#f0faf8] md:mb-8">
           What makes Evolve different
         </h2>
       </Reveal>
@@ -291,16 +291,16 @@ export function ClassesSection() {
       <div className="mb-3 flex flex-col gap-0 md:mb-14 md:gap-8 md:flex-row md:items-end md:justify-between">
         <Reveal delay={100}>
           <>
-            <h2 className="font-display font-bold max-w-3xl text-[#1F1F1C] text-xl leading-[1.05] mb-1 md:mb-0 md:leading-none md:text-[clamp(28px,3.5vw,42px)]">
+            <h2 className="font-display font-bold max-w-3xl text-[#1F1F1C] text-[26px] leading-[1.05] mb-1 md:mb-0 md:leading-none md:text-[clamp(28px,3.5vw,42px)]">
               Programs designed for every stage of growth
             </h2>
-            <p className="mb-2 max-w-2xl text-[13px] font-light text-[#6D6C67] leading-tight md:mb-0 md:mt-4 md:text-[16px] md:leading-[1.75]">
+            <p className="mb-2 max-w-2xl text-[15px] font-light text-[#6D6C67] leading-snug md:mb-0 md:mt-4 md:text-[16px] md:leading-relaxed">
               From early movement classes to advanced training, our programs are built to meet dancers where they are and help them progress with confidence.
             </p>
           </>
         </Reveal>
         <Reveal>
-          <Link href="/classes" className="mt-1 self-start text-[10px] tracking-[0.18em] uppercase text-[#0ABAB5] no-underline border-b border-[#0ABAB5] pb-0.5 md:mt-0 md:text-[12px] md:mb-1.5 hover:border-[#0ABAB5] transition-colors">
+          <Link href="/classes" className="mt-1 self-start text-[11px] tracking-[0.18em] uppercase text-[#0ABAB5] no-underline border-b border-[#0ABAB5] pb-0.5 md:mt-0 md:text-[12px] md:mb-1.5 hover:border-[#0ABAB5] transition-colors">
             View All Classes →
           </Link>
         </Reveal>
@@ -328,7 +328,7 @@ export function ClassesSection() {
                   {program.num} — {program.name}
                 </p>
                 <h3 className="font-display mb-2 text-[clamp(17px,2.2vw,22px)] font-bold text-[#1F1F1C]">{program.name}</h3>
-                <p className="mb-3 text-[14px] leading-snug text-[#1F1F1C]/70 md:text-[15px] md:leading-[1.7]">
+                <p className="mb-3 text-[13px] leading-snug text-[#1F1F1C]/70 md:text-[14px] md:leading-[1.6]">
                   {program.desc}
                 </p>
                 <div className="flex items-center justify-between border-t border-[#1F1F1C]/10 pt-3">
@@ -454,7 +454,7 @@ export function InstructorsSection() {
                 </div>
 
                 <div className="absolute bottom-0 left-0 right-0 z-[1] px-6 py-5">
-                  <div className="font-display text-2xl font-bold leading-[1.1] mb-1.5 text-[#1F1F1C]">
+                  <div className="font-display text-[clamp(17px,2.2vw,22px)] font-bold leading-[1.1] mb-1.5 text-[#1F1F1C]">
                     {inst.name}
                   </div>
                   <div className="text-[11px] font-medium tracking-[0.12em] uppercase text-[#0ABAB5] md:text-[12px]">
@@ -477,7 +477,7 @@ export function InstructorsSection() {
                       {inst.initial === '+' ? '+' : inst.name[0]}
                     </div>
                     <div className="relative z-[1] mt-auto">
-                      <div className="font-display text-xl font-bold leading-[1.1] text-[#1F1F1C]">{inst.name}</div>
+                      <div className="font-display text-[clamp(17px,2.2vw,22px)] font-bold leading-[1.1] text-[#1F1F1C]">{inst.name}</div>
                       <div className="mt-1.5 text-[12px] font-medium text-[#0ABAB5] md:text-[13px]">{inst.role}</div>
                     </div>
                   </>
