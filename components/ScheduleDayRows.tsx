@@ -21,7 +21,7 @@ function ClassRowLink({ c, children }: { c: JackrabbitClass; children: ReactNode
   const href = rowHref(c)
   const external = /^https?:\/\//i.test(href)
   const className = cn(
-    'group -mx-2 flex items-start justify-between gap-3 rounded-sm px-2 py-4 text-inherit no-underline transition-colors',
+    'group -mx-2 flex items-start justify-between gap-2 rounded-sm px-2 py-3 text-inherit no-underline transition-colors md:gap-3 md:py-4',
     'hover:bg-white/[0.04] hover:underline hover:decoration-[#0ABAB5]/70 hover:underline-offset-4',
     'sm:-mx-0 sm:px-0'
   )
@@ -101,9 +101,9 @@ export function ScheduleDayRows({
             return (
               <ClassRowLink key={key} c={c}>
                 <div className="min-w-0 flex-1">
-                  <div className="font-serif text-lg text-teal">{c.startTimeDisplay}</div>
-                  <div className="mt-0.5 text-[14px] font-medium text-[#f1f5f9] md:text-[15px]">{c.name}</div>
-                  {sub ? <div className="mt-0.5 text-[12px] text-[#cbd5e1] md:text-[13px]">{sub}</div> : null}
+                  <div className="font-serif text-lg leading-tight text-teal">{c.startTimeDisplay}</div>
+                  <div className="mt-0 text-[14px] font-medium leading-snug text-[#f1f5f9] md:mt-0.5 md:text-[15px]">{c.name}</div>
+                  {sub ? <div className="mt-0 text-[12px] leading-snug text-[#cbd5e1] md:mt-0.5 md:text-[13px]">{sub}</div> : null}
                 </div>
                 <div className="flex shrink-0 items-center gap-2">
                   {statusBadgeMobile(isOpen)}
@@ -114,11 +114,11 @@ export function ScheduleDayRows({
           }
 
           return (
-            <div key={key} className="flex items-start justify-between gap-2 py-4">
+            <div key={key} className="flex items-start justify-between gap-2 py-3 md:py-4">
               <div>
-                <div className="font-serif text-lg text-teal">{c.startTimeDisplay}</div>
-                <div className="mt-0.5 text-[14px] font-medium text-[#f1f5f9] md:text-[15px]">{c.name}</div>
-                {sub ? <div className="mt-0.5 text-[12px] text-[#cbd5e1] md:text-[13px]">{sub}</div> : null}
+                <div className="font-serif text-lg leading-tight text-teal">{c.startTimeDisplay}</div>
+                <div className="mt-0 text-[14px] font-medium leading-snug text-[#f1f5f9] md:mt-0.5 md:text-[15px]">{c.name}</div>
+                {sub ? <div className="mt-0 text-[12px] leading-snug text-[#cbd5e1] md:mt-0.5 md:text-[13px]">{sub}</div> : null}
               </div>
               <div>{statusBadgeMobile(isOpen)}</div>
             </div>

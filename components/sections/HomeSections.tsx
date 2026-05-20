@@ -116,13 +116,15 @@ export function AboutSection() {
           </h2>
         </Reveal>
         <Reveal delay={200}>
-          <p className="text-[15px] font-light text-[#6D6C67] leading-[1.8] max-w-[420px] mb-4 md:text-[16px]">
+          <p className="mb-3 max-w-[420px] text-[15px] font-light leading-[1.8] text-[#6D6C67] md:mb-4 md:text-[16px]">
             At Evolve Dance Center, training goes beyond technique. We create an environment where dancers build
-            confidence, discipline, artistry, and a strong foundation for long-term growth. Whether a student is
-            stepping into their first class or pursuing a more advanced path, our studio is built to support every
-            stage with care, structure, and expert instruction.
+            confidence, discipline, artistry, and a strong foundation for long-term growth.
           </p>
-          <p className="text-[15px] font-light text-[#6D6C67] leading-[1.8] max-w-[420px] mb-11 md:text-[16px]">
+          <p className="mb-3 max-w-[420px] text-[15px] font-light leading-[1.8] text-[#6D6C67] md:mb-4 md:text-[16px]">
+            Whether a student is stepping into their first class or pursuing a more advanced path, our studio is
+            built to support every stage with care, structure, and expert instruction.
+          </p>
+          <p className="mb-11 max-w-[420px] text-[15px] font-light leading-[1.8] text-[#6D6C67] md:text-[16px]">
             Supportive culture, experienced faculty, and training designed to help dancers grow with purpose.
           </p>
         </Reveal>
@@ -216,7 +218,7 @@ export function WhyFamiliesChooseSection() {
 
 function WhyFamilyCard({ num, title, body }: (typeof whyFamiliesCards)[number]) {
   return (
-    <div className="group relative flex flex-col overflow-hidden border border-[rgba(255,255,255,0.08)] bg-[#0f2318] px-6 py-10 transition-colors duration-300 hover:bg-[#132a1f] md:min-h-[160px] md:p-6">
+    <div className="group relative flex flex-col overflow-hidden border border-[rgba(255,255,255,0.08)] bg-[#0f2318] px-6 py-6 transition-colors duration-300 hover:bg-[#132a1f] md:min-h-[160px] md:p-6">
       <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-teal scale-x-0 origin-left transition-transform duration-400 group-hover:scale-x-100" />
 
       <div className="relative z-[1]">
@@ -400,12 +402,12 @@ function ClassCard({ num, name, letter, ages, desc }: typeof classes[0]) {
 // ─────────────────────────────────────────
 
 const instructors = [
-  { name: 'Cheryl Snow',      role: 'Director · Ballet · Contemporary', initial: 'C' },
-  { name: 'Meghan Hoover',    role: 'Jazz · Hip Hop',                   initial: 'M' },
-  { name: 'Alannah Newcomer', role: 'Lyrical · Contemporary',           initial: 'A' },
-  { name: 'Brooke DeSoto',    role: 'Acro · Tumbling',                  initial: 'B' },
-  { name: 'Eric Lehn',        role: 'Hip Hop · Jazz',                   initial: 'E' },
-  { name: '+ 17 More',        role: 'View All Faculty →',               initial: '+' },
+  { name: 'Cheryl Snow',      role: 'Director · Ballet · Contemporary' },
+  { name: 'Meghan Hoover',    role: 'Jazz · Hip Hop' },
+  { name: 'Alannah Newcomer', role: 'Lyrical · Contemporary' },
+  { name: 'Brooke DeSoto',    role: 'Acro · Tumbling' },
+  { name: 'Eric Lehn',        role: 'Hip Hop · Jazz' },
+  { name: '+ 17 More',        role: 'View All Faculty →' },
 ]
 
 export function InstructorsSection() {
@@ -444,15 +446,6 @@ export function InstructorsSection() {
                 {/* Top teal bar on hover */}
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-teal scale-x-0 origin-left transition-transform duration-400 group-hover:scale-x-100" />
 
-                {/* Initial watermark */}
-                <div
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display font-black leading-none pointer-events-none text-[#0ABAB5]/10 transition-opacity duration-400 group-hover:text-[#0ABAB5]/[0.12]"
-                  style={{ fontSize: 52 }}
-                  aria-hidden
-                >
-                  {inst.initial}
-                </div>
-
                 <div className="absolute bottom-0 left-0 right-0 z-[1] px-6 py-5">
                   <div className="font-display text-[clamp(17px,2.2vw,22px)] font-bold leading-[1.1] mb-1.5 text-[#1F1F1C]">
                     {inst.name}
@@ -470,13 +463,7 @@ export function InstructorsSection() {
               {instructors.map(inst => {
                 const body = (
                   <>
-                    <div
-                      className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-2xl font-black leading-none text-[#0ABAB5]/10"
-                      aria-hidden
-                    >
-                      {inst.initial === '+' ? '+' : inst.name[0]}
-                    </div>
-                    <div className="relative z-[1] mt-auto">
+                    <div className="mt-auto">
                       <div className="font-display text-[clamp(17px,2.2vw,22px)] font-bold leading-[1.1] text-[#1F1F1C]">{inst.name}</div>
                       <div className="mt-1.5 text-[12px] font-medium text-[#0ABAB5] md:text-[13px]">{inst.role}</div>
                     </div>
