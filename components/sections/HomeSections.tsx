@@ -293,7 +293,7 @@ export function ClassesSection() {
       <div className="mb-3 flex flex-col gap-0 md:mb-14 md:gap-8 md:flex-row md:items-end md:justify-between">
         <Reveal delay={100}>
           <>
-            <h2 className="font-display font-bold max-w-3xl text-[#1F1F1C] text-[26px] leading-[1.05] mb-1 md:mb-0 md:leading-none md:text-[clamp(28px,3.5vw,42px)]">
+            <h2 className="font-display font-bold max-w-3xl text-[#1F1F1C] text-[26px] leading-[1.05] mb-4 md:mb-0 md:leading-none md:text-[clamp(28px,3.5vw,42px)]">
               Programs designed for every stage of growth
             </h2>
             <p className="mb-2 max-w-2xl text-[15px] font-light text-[#6D6C67] leading-snug md:mb-0 md:mt-4 md:text-[16px] md:leading-relaxed">
