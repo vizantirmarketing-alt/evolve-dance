@@ -1,9 +1,9 @@
 'use client'
 
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState, type MouseEvent } from 'react'
 import { createPortal } from 'react-dom'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
-import { Expand, X } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Expand, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import type { Testimonial } from '@/sanity/lib/queries'
 
@@ -11,6 +11,7 @@ const TEAL = '#3E9F97'
 const NAVY = '#1a2e2c'
 const IVORY = '#F7F5F1'
 const ROTATION_MS = 6000
+const MANUAL_RESUME_MS = 12000
 
 function formatReviewDate(iso: string): string {
   const date = new Date(iso)
@@ -57,45 +58,79 @@ function ProgressIndicators({
   isPaused,
   reducedMotion,
   cycleKey,
+  onSelect,
 }: {
   count: number
   currentIndex: number
   isPaused: boolean
   reducedMotion: boolean
   cycleKey: number
+  onSelect?: (index: number) => void
 }) {
   return (
     <div
-      className="absolute bottom-4 left-4 flex gap-1.5 md:bottom-8 md:left-10"
-      aria-hidden
+      className="flex gap-1.5"
+      role={onSelect ? 'tablist' : undefined}
+      aria-label={onSelect ? 'Testimonial progress' : undefined}
     >
-      {Array.from({ length: count }).map((_, i) => (
-        <div
-          key={i}
-          className={cn(
-            'h-[2px] w-8 overflow-hidden rounded-full md:w-10',
-            i === currentIndex ? 'bg-white/25' : 'bg-white/15',
-          )}
-        >
-          {i < currentIndex && (
-            <div className="h-full w-full" style={{ backgroundColor: TEAL }} />
-          )}
-          {i === currentIndex && (
+      {Array.from({ length: count }).map((_, i) => {
+        const bar = (
+          <>
+            {i < currentIndex && (
+              <div className="h-full w-full" style={{ backgroundColor: TEAL }} />
+            )}
+            {i === currentIndex && (
+              <div
+                key={`${cycleKey}-${currentIndex}`}
+                className={cn(
+                  'h-full w-full origin-left',
+                  !reducedMotion && 'animate-testimonial-progress',
+                  isPaused && '[animation-play-state:paused]',
+                )}
+                style={{
+                  backgroundColor: TEAL,
+                  ...(reducedMotion ? { transform: 'scaleX(1)' } : {}),
+                }}
+              />
+            )}
+          </>
+        )
+
+        if (!onSelect) {
+          return (
             <div
-              key={`${cycleKey}-${currentIndex}`}
+              key={i}
               className={cn(
-                'h-full w-full origin-left',
-                !reducedMotion && 'animate-testimonial-progress',
-                isPaused && '[animation-play-state:paused]',
+                'h-[2px] w-8 overflow-hidden rounded-full md:w-10',
+                i === currentIndex ? 'bg-white/25' : 'bg-white/15',
               )}
-              style={{
-                backgroundColor: TEAL,
-                ...(reducedMotion ? { transform: 'scaleX(1)' } : {}),
-              }}
-            />
-          )}
-        </div>
-      ))}
+              aria-hidden
+            >
+              {bar}
+            </div>
+          )
+        }
+
+        return (
+          <button
+            key={i}
+            type="button"
+            role="tab"
+            aria-selected={i === currentIndex}
+            aria-label={`Go to testimonial ${i + 1}`}
+            onClick={(event) => {
+              event.stopPropagation()
+              onSelect(i)
+            }}
+            className={cn(
+              'h-[2px] w-8 overflow-hidden rounded-full transition-opacity hover:opacity-100 md:w-10',
+              i === currentIndex ? 'bg-white/25 opacity-100' : 'bg-white/15 opacity-70',
+            )}
+          >
+            {bar}
+          </button>
+        )
+      })}
     </div>
   )
 }
@@ -245,7 +280,7 @@ function TestimonialModal({
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: reducedMotion ? 1 : 0.95 }}
             transition={modalTransition}
-            className="relative w-full max-w-[720px] rounded-sm px-8 py-10 md:px-14 md:py-12"
+            className="relative mx-auto my-auto flex w-full max-h-[85vh] max-w-[90vw] flex-col overflow-hidden rounded-sm p-6 md:max-w-[720px] md:p-12"
             style={{ backgroundColor: NAVY, color: IVORY }}
             onClick={(event) => event.stopPropagation()}
           >
@@ -283,14 +318,16 @@ function TestimonialModal({
               </div>
             </header>
 
-            <StarRating className="mb-5" />
+            <StarRating className="mb-5 shrink-0" />
 
-            <p
-              className="font-display mb-8 text-[17px] font-normal italic leading-[1.65] md:text-[19px]"
-              style={{ color: IVORY }}
-            >
-              &ldquo;{testimonial.reviewText}&rdquo;
-            </p>
+            <div className="mb-6 max-h-[60vh] min-h-0 overflow-y-auto md:mb-8">
+              <p
+                className="font-display text-[17px] font-normal italic leading-[1.65] md:text-[19px]"
+                style={{ color: IVORY }}
+              >
+                &ldquo;{testimonial.reviewText}&rdquo;
+              </p>
+            </div>
 
             <a
               href="#"
@@ -340,7 +377,8 @@ export default function TestimonialsHero({
   testimonials: Testimonial[]
 }) {
   const reducedMotion = useReducedMotion()
-  const heroRef = useRef<HTMLButtonElement>(null)
+  const heroRef = useRef<HTMLDivElement>(null)
+  const manualResumeTimeoutRef = useRef<number | null>(null)
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [modalIndex, setModalIndex] = useState(0)
@@ -382,6 +420,32 @@ export default function TestimonialsHero({
   }, [currentIndex])
 
   useEffect(() => {
+    return () => {
+      if (manualResumeTimeoutRef.current) {
+        window.clearTimeout(manualResumeTimeoutRef.current)
+      }
+    }
+  }, [])
+
+  const engageManualControl = useCallback(() => {
+    setIsPaused(true)
+    if (manualResumeTimeoutRef.current) {
+      window.clearTimeout(manualResumeTimeoutRef.current)
+    }
+    manualResumeTimeoutRef.current = window.setTimeout(() => {
+      setIsPaused(false)
+      manualResumeTimeoutRef.current = null
+    }, MANUAL_RESUME_MS)
+  }, [])
+
+  const clearManualResume = useCallback(() => {
+    if (manualResumeTimeoutRef.current) {
+      window.clearTimeout(manualResumeTimeoutRef.current)
+      manualResumeTimeoutRef.current = null
+    }
+  }, [])
+
+  useEffect(() => {
     if (!canRotate || rotationPaused) return
 
     const elapsed = Date.now() - slideStartRef.current
@@ -395,15 +459,17 @@ export default function TestimonialsHero({
   }, [canRotate, count, currentIndex, rotationPaused])
 
   const openModal = useCallback(() => {
+    clearManualResume()
     setModalIndex(currentIndex)
     setIsModalOpen(true)
     setIsPaused(true)
-  }, [currentIndex])
+  }, [clearManualResume, currentIndex])
 
   const closeModal = useCallback(() => {
     setIsModalOpen(false)
+    clearManualResume()
     setIsPaused(false)
-  }, [])
+  }, [clearManualResume])
 
   const goToPrevious = useCallback(() => {
     setModalIndex((index) => (index - 1 + count) % count)
@@ -413,19 +479,42 @@ export default function TestimonialsHero({
     setModalIndex((index) => (index + 1) % count)
   }, [count])
 
+  const goToHeroPrevious = useCallback(
+    (event: MouseEvent) => {
+      event.stopPropagation()
+      setCurrentIndex((index) => (index - 1 + count) % count)
+      engageManualControl()
+    },
+    [count, engageManualControl],
+  )
+
+  const goToHeroNext = useCallback(
+    (event: MouseEvent) => {
+      event.stopPropagation()
+      setCurrentIndex((index) => (index + 1) % count)
+      engageManualControl()
+    },
+    [count, engageManualControl],
+  )
+
+  const goToHeroIndex = useCallback(
+    (index: number) => {
+      setCurrentIndex(index)
+      engageManualControl()
+    },
+    [engageManualControl],
+  )
+
   const current = testimonials[currentIndex]
 
   return (
     <>
-      <button
+      <div
         ref={heroRef}
-        type="button"
-        onClick={openModal}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        aria-label="View testimonial details"
         className={cn(
-          'testimonial-hero-stage group relative h-[340px] w-full cursor-pointer overflow-hidden rounded-sm text-left transition-transform duration-300 ease-out hover:-translate-y-0.5 md:h-[360px]',
+          'testimonial-hero-stage group relative h-[340px] w-full overflow-hidden rounded-sm text-left transition-transform duration-300 ease-out md:h-[360px]',
           (rotationPaused || reducedMotion) && 'testimonial-hero-stage--paused',
           reducedMotion && 'testimonial-hero-stage--reduced-motion',
         )}
@@ -445,7 +534,12 @@ export default function TestimonialsHero({
           <Expand className="h-3.5 w-3.5" aria-hidden />
         </div>
 
-        <div className="relative z-[1] flex h-full flex-col justify-center">
+        <button
+          type="button"
+          onClick={openModal}
+          aria-label="View testimonial details"
+          className="relative z-[1] flex h-full w-full cursor-pointer flex-col justify-center transition-transform duration-300 ease-out group-hover:-translate-y-0.5"
+        >
           <AnimatePresence mode="wait">
             <motion.div
               key={current._id}
@@ -458,18 +552,58 @@ export default function TestimonialsHero({
               <HeroSlideContent testimonial={current} />
             </motion.div>
           </AnimatePresence>
-        </div>
+        </button>
 
         {canRotate && (
-          <ProgressIndicators
-            count={count}
-            currentIndex={currentIndex}
-            isPaused={rotationPaused}
-            reducedMotion={!!reducedMotion}
-            cycleKey={cycleKey}
-          />
+          <>
+            <button
+              type="button"
+              onClick={goToHeroPrevious}
+              aria-label="Previous testimonial"
+              className="absolute left-3 top-1/2 z-20 hidden h-10 w-10 -translate-y-1/2 items-center justify-center opacity-40 transition-opacity hover:opacity-90 md:flex"
+            >
+              <ChevronLeft className="h-6 w-6" style={{ color: TEAL }} aria-hidden />
+            </button>
+            <button
+              type="button"
+              onClick={goToHeroNext}
+              aria-label="Next testimonial"
+              className="absolute right-3 top-1/2 z-20 hidden h-10 w-10 -translate-y-1/2 items-center justify-center opacity-40 transition-opacity hover:opacity-90 md:flex"
+            >
+              <ChevronRight className="h-6 w-6" style={{ color: TEAL }} aria-hidden />
+            </button>
+
+            <div className="absolute bottom-4 left-4 right-4 z-20 flex items-center md:bottom-8 md:left-10 md:right-auto">
+              <button
+                type="button"
+                onClick={goToHeroPrevious}
+                aria-label="Previous testimonial"
+                className="flex h-8 w-8 shrink-0 items-center justify-center opacity-70 transition-opacity hover:opacity-100 md:hidden"
+              >
+                <ChevronLeft className="h-5 w-5" style={{ color: TEAL }} aria-hidden />
+              </button>
+              <div className="flex flex-1 justify-center md:flex-none md:justify-start">
+                <ProgressIndicators
+                  count={count}
+                  currentIndex={currentIndex}
+                  isPaused={rotationPaused}
+                  reducedMotion={!!reducedMotion}
+                  cycleKey={cycleKey}
+                  onSelect={goToHeroIndex}
+                />
+              </div>
+              <button
+                type="button"
+                onClick={goToHeroNext}
+                aria-label="Next testimonial"
+                className="flex h-8 w-8 shrink-0 items-center justify-center opacity-70 transition-opacity hover:opacity-100 md:hidden"
+              >
+                <ChevronRight className="h-5 w-5" style={{ color: TEAL }} aria-hidden />
+              </button>
+            </div>
+          </>
         )}
-      </button>
+      </div>
 
       <TestimonialModal
         testimonials={testimonials}
