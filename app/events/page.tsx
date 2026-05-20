@@ -6,9 +6,10 @@ import Navbar from '@/components/layout/Navbar'
 import { getPastEvents, getUpcomingEvents } from '@/sanity/lib/queries'
 
 export const metadata: Metadata = {
-  title: 'Events | Evolve Dance Center',
+  title: 'Studio Events & Recitals',
   description:
-    'Recitals, auditions, summer programs, workshops, and important dates at Evolve Dance Center in Las Vegas.',
+    'Recitals, auditions, summer programs, workshops, and important dates at Evolve Dance Center — your Las Vegas dance studio for families and competitive dancers.',
+  alternates: { canonical: '/events' },
 }
 
 export const revalidate = 60

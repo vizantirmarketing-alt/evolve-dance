@@ -4,9 +4,10 @@ import Footer from '@/components/layout/Footer'
 import Navbar from '@/components/layout/Navbar'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Evolve Dance Center',
+  title: 'Privacy Policy',
   description:
-    'How Evolve Dance Center handles your information when you visit our website or contact us.',
+    'How Evolve Dance Center collects, uses, and protects your information when you visit our Las Vegas dance studio website or contact us.',
+  alternates: { canonical: '/privacy' },
   robots: {
     index: true,
     follow: true,

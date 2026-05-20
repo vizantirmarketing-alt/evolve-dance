@@ -114,8 +114,7 @@ export default function ContactForm() {
           </div>
 
           <h2
-            className="mb-4 font-display font-bold leading-[0.95] text-foreground"
-            style={{ fontSize: 'clamp(40px, 5vw, 64px)' }}
+            className="mb-4 font-display text-[clamp(28px,3.5vw,42px)] font-bold leading-tight text-foreground"
           >
             Quick inquiry.
           </h2>

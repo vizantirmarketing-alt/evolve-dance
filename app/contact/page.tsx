@@ -178,7 +178,23 @@ export default async function ContactPage() {
     <>
       <Navbar />
       <main className="bg-background">
-        <section className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 py-16 md:grid-cols-2 md:gap-16 md:px-12 md:py-24 lg:px-16">
+        <section className="mx-auto max-w-7xl px-6 py-16 md:px-12 md:py-24 lg:px-16">
+          <div className="mb-10 md:mb-12">
+            <div className="mb-4 flex items-center gap-3">
+              <div className="h-px w-7 bg-teal" />
+              <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-teal">
+                Contact
+              </span>
+            </div>
+            <h1
+              className="font-display font-bold leading-tight text-foreground"
+              style={{ fontSize: 'clamp(32px, 4vw, 48px)' }}
+            >
+              Contact Evolve Dance Center
+            </h1>
+          </div>
+
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16">
           <div className="flex flex-col">
             <ContactForm />
           </div>
@@ -190,12 +206,12 @@ export default async function ContactPage() {
                 <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-teal">VISIT US</span>
               </div>
 
-              <h2
+              <h3
                 className="font-display font-bold leading-tight text-foreground"
                 style={{ fontSize: 'clamp(28px, 3.5vw, 42px)' }}
               >
                 Find us in southwest Las Vegas.
-              </h2>
+              </h3>
 
               <p className="mt-4 max-w-md text-[14px] font-light leading-[1.7] text-foreground-muted md:text-[15px]">
                 Drop in to see the studio or reach out anytime. We typically respond within one business day.
@@ -279,6 +295,7 @@ export default async function ContactPage() {
             </div>
 
             <ContactSocialRow />
+          </div>
           </div>
         </section>
       </main>

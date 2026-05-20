@@ -129,8 +129,9 @@ export async function generateMetadata(): Promise<Metadata> {
   const page = await getProjectPage()
 
   return {
-    title: 'The Project | Evolve Dance Center',
+    title: 'The Project Competition Team',
     description: page?.seoDescription?.trim() || DEFAULT_DESCRIPTION,
+    alternates: { canonical: '/the-project' },
     robots: { index: true, follow: true },
   }
 }

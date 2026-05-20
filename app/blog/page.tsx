@@ -10,12 +10,13 @@ import { getPublishedPosts, type BlogPost } from '@/sanity/lib/queries'
 export const revalidate = 300
 
 const JOURNAL_DESCRIPTION =
-  'Stories, studio news, and dance insights from Evolve Dance Center — a Las Vegas dance studio training dancers ages 18 months to 18 years.'
+  'Stories, studio news, and dance insights from Evolve Dance Center — a Las Vegas dance studio for dancers ages 18 months to 18 years.'
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: 'Journal | Evolve Dance Center',
+    title: 'Dance Studio Journal',
     description: JOURNAL_DESCRIPTION,
+    alternates: { canonical: '/blog' },
     robots: { index: true, follow: true },
   }
 }

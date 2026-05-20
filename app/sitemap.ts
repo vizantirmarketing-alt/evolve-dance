@@ -1,8 +1,7 @@
 import type { MetadataRoute } from 'next'
 
+import { siteUrl } from '@/lib/site-url'
 import { getAllPostSlugs } from '@/sanity/lib/queries'
-
-const baseUrl = 'https://evolvedancecenter.com'
 
 type StaticRoute = {
   path: string
@@ -28,7 +27,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const slugs = await getAllPostSlugs()
 
   const staticEntries: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
-    url: `${baseUrl}${route.path}`,
+    url: `${siteUrl}${route.path}`,
     changeFrequency: route.changeFrequency,
     priority: route.priority,
   }))
@@ -36,7 +35,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const blogEntries: MetadataRoute.Sitemap = slugs
     .filter(Boolean)
     .map((slug) => ({
-      url: `${baseUrl}/blog/${slug}`,
+      url: `${siteUrl}/blog/${slug}`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.6,

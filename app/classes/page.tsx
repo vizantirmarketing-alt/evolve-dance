@@ -9,9 +9,10 @@ import Navbar from '@/components/layout/Navbar'
 import { danceStyles } from '@/data/styles'
 
 export const metadata: Metadata = {
-  title: 'Classes | Evolve Dance Center',
+  title: 'Dance Classes in Las Vegas',
   description:
-    'Find the right class for your dancer — ages 18 months to 18 years. Search by style, day, level, and age.',
+    'Find the right Las Vegas dance class for your dancer — ages 18 months to 18 years. Search ballet, jazz, hip hop, contemporary, acro, tap, and more by style, day, and level.',
+  alternates: { canonical: '/classes' },
 }
 
 const stylesForGrid = danceStyles.filter((s) => s.id !== 'combo')
@@ -26,7 +27,7 @@ export default function ClassesPage() {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-[#F7F5F1]">
+      <main className="min-h-screen bg-[#F7F5F1]">
         {/* 1. Hero */}
         <section className="w-full border-b border-[#D6DFDA] bg-[#F7F5F1] px-6 pb-20 pt-28 md:px-12 md:pb-28 md:pt-32">
           <div className="mx-auto max-w-4xl">
@@ -114,7 +115,7 @@ export default function ClassesPage() {
             </Link>
           </div>
         </section>
-      </div>
+      </main>
       <Footer />
     </>
   )

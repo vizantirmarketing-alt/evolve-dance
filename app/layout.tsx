@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Playfair_Display, DM_Sans } from 'next/font/google'
 import '../styles/globals.css'
+import { siteUrl } from '@/lib/site-url'
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -18,9 +19,13 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'Evolve Dance Center — Las Vegas Dance Studio',
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: 'Las Vegas Dance Studio',
+    template: '%s | Evolve Dance Center',
+  },
   description:
-    'Las Vegas dance studio offering ballet, jazz, hip hop, contemporary, acro, lyrical, tap, and more for ages 18 months to 18 years. Quality training in a positive environment.',
+    'Las Vegas dance studio for ages 18 months to 18 years. Ballet, jazz, hip hop, contemporary, acro, tap, and more — quality training in a supportive environment.',
   keywords: [
     'Las Vegas dance studio',
     'dance classes Las Vegas',
@@ -29,18 +34,32 @@ export const metadata: Metadata = {
     'kids dance classes Las Vegas',
     'Evolve Dance Center',
   ],
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
-    title: 'Evolve Dance Center — Las Vegas',
-    description: 'Serious training. Positive environment. Real results — for dancers ages 18 months to 18 years.',
-    url: 'https://evolvedancecenter.com',
+    title: 'Las Vegas Dance Studio | Evolve Dance Center',
+    description:
+      'Serious training, positive environment, and real results for dancers ages 18 months to 18 years in southwest Las Vegas.',
+    url: siteUrl,
     siteName: 'Evolve Dance Center',
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: 'Evolve Dance Center',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Evolve Dance Center — Las Vegas',
-    description: 'Serious training. Positive environment. Real results.',
+    title: 'Las Vegas Dance Studio | Evolve Dance Center',
+    description:
+      'Serious training, positive environment, and real results for dancers ages 18 months to 18 years.',
+    images: ['/opengraph-image'],
   },
   robots: {
     index: true,

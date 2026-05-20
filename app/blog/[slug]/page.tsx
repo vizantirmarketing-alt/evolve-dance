@@ -124,15 +124,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!post) {
     return {
-      title: 'Post not found | Evolve Dance Center',
+      title: 'Post Not Found',
     }
   }
 
   const description = post.seoDescription?.trim() || post.excerpt?.trim() || undefined
 
   return {
-    title: `${post.title} | Evolve Dance Center`,
+    title: post.title,
     description,
+    alternates: { canonical: `/blog/${slug}` },
     robots: { index: true, follow: true },
   }
 }

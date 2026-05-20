@@ -5,8 +5,8 @@ import Footer from '@/components/layout/Footer'
 import { buttonVariants } from '@/components/ui/button-styles'
 
 export const metadata: Metadata = {
-  title: 'Page not found | Evolve Dance Center',
-  description: 'The page you are looking for could not be found.',
+  title: 'Page Not Found',
+  description: 'The page you are looking for could not be found at Evolve Dance Center.',
   robots: { index: false, follow: true },
 }
 

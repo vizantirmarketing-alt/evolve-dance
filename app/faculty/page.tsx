@@ -6,9 +6,10 @@ import Navbar from '@/components/layout/Navbar'
 import { getPublishedFaculty } from '@/sanity/lib/queries'
 
 export const metadata: Metadata = {
-  title: 'The Faculty | Evolve Dance Center',
+  title: 'Our Dance Faculty',
   description:
-    'Meet the teachers behind Evolve Dance Center — a team of working professionals training the next generation of dancers in Las Vegas.',
+    'Meet the Las Vegas dance teachers at Evolve Dance Center — working professionals training the next generation with care, technique, and high standards.',
+  alternates: { canonical: '/faculty' },
 }
 
 export const revalidate = 300

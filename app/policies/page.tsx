@@ -4,9 +4,10 @@ import Footer from '@/components/layout/Footer'
 import Navbar from '@/components/layout/Navbar'
 
 export const metadata: Metadata = {
-  title: 'Studio Policies | Evolve Dance Center',
+  title: 'Studio Policies',
   description:
-    'Tuition, attendance, dress code, recital, and other policies for families enrolled at Evolve Dance Center.',
+    'Tuition, attendance, dress code, recital, and studio policies for families enrolled at Evolve Dance Center — Las Vegas dance studio.',
+  alternates: { canonical: '/policies' },
   robots: {
     index: true,
     follow: true,

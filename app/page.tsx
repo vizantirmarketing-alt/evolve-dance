@@ -1,3 +1,6 @@
+import Script from 'next/script'
+import type { Metadata } from 'next'
+
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import VideoHeroSection from '@/components/sections/VideoHeroSection'
@@ -11,12 +14,28 @@ import {
 } from '@/components/sections/HomeSections'
 import ScheduleSection from '@/components/sections/ScheduleSection'
 import TestimonialsSection from '@/components/sections/TestimonialsSection'
+import { buildDanceSchoolJsonLd } from '@/lib/dance-school-jsonld'
+import { getStudioHours } from '@/sanity/lib/queries'
 
 export const revalidate = 300
 
-export default function HomePage() {
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+}
+
+export default async function HomePage() {
+  const studioHours = await getStudioHours()
+  const jsonLd = buildDanceSchoolJsonLd(studioHours)
+
   return (
     <>
+      <Script
+        id="dance-school-jsonld"
+        type="application/ld+json"
+        strategy="lazyOnload"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       <Navbar />
 
       <main>
