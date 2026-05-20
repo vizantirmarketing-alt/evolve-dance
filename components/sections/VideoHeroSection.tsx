@@ -242,29 +242,6 @@ export default function VideoHeroSection({
           </button>
         </div>
 
-        {/* ── Scroll indicator ─────────────────────── */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0 }}
-          transition={{ delay: 1.4, duration: 0.8 }}
-          className="absolute bottom-24 right-12 z-[3] flex flex-col items-center gap-2"
-        >
-          <div
-            className="w-px h-14"
-            style={{
-              background: 'linear-gradient(to bottom, #0ABAB5, transparent)',
-              animation: 'scrollPulse 2s ease-in-out infinite',
-            }}
-          />
-          <span
-            className="text-[11px] tracking-[0.2em] uppercase text-[#6D6C67]"
-            style={{ writingMode: 'vertical-rl' }}
-          >
-            Scroll
-          </span>
-        </motion.div>
-
         </div>
       </section>
 

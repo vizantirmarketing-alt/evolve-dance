@@ -47,7 +47,6 @@ const config: Config = {
         'pulse-dot':    'pulseDot 2s ease-in-out infinite',
         'ticker':       'ticker 25s linear infinite',
         'fade-up':      'fadeUp 0.8s ease forwards',
-        'scroll-line':  'scrollLine 2s ease-in-out infinite',
         'grid-slide':   'gridSlide 20s linear infinite',
         'orb-float':    'orbFloat 8s ease-in-out infinite',
         'orb-float-r':  'orbFloat 12s ease-in-out infinite reverse',
@@ -65,11 +64,6 @@ const config: Config = {
         fadeUp: {
           from: { opacity: '0', transform: 'translateY(24px)' },
           to:   { opacity: '1', transform: 'translateY(0)' },
-        },
-        scrollLine: {
-          '0%':   { opacity: '0.3', transform: 'scaleY(0.8) translateY(-4px)' },
-          '50%':  { opacity: '1',   transform: 'scaleY(1) translateY(0)' },
-          '100%': { opacity: '0.3', transform: 'scaleY(0.8) translateY(4px)' },
         },
         gridSlide: {
           '0%':   { backgroundPosition: '0 0' },
