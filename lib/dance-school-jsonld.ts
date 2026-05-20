@@ -54,10 +54,6 @@ export function buildDanceSchoolJsonLd(studioHours: StudioHours | null) {
     '@context': 'https://schema.org',
     '@type': 'DanceSchool',
     name: siteConfig.name,
-    founder: {
-      '@type': 'Person',
-      name: 'Cheryl Snow',
-    },
     foundingDate: '2016',
     address: {
       '@type': 'PostalAddress',
