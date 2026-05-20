@@ -431,25 +431,25 @@ const instructors = [
 
 export function InstructorsSection() {
   return (
-    <section className="bg-[#F7F5F1] px-4 py-16 md:px-12 md:py-24 overflow-hidden">
+    <section className="bg-[#F7F5F1] px-4 py-10 md:px-12 md:py-24 overflow-hidden">
       <Reveal>
-        <div className="flex items-center gap-3 mb-6">
+        <div className="flex items-center gap-3 mb-3 md:mb-6">
           <div className="w-7 h-px bg-[#0ABAB5] opacity-100" />
           <span className="text-[11px] md:text-[12px] tracking-[0.22em] uppercase text-[#0ABAB5] font-medium opacity-100">The Faculty</span>
         </div>
       </Reveal>
-      <div className="mb-6 flex flex-col gap-6 md:mb-12 md:flex-row md:items-end md:justify-between">
+      <div className="mb-4 flex flex-col gap-3 md:mb-12 md:gap-6 md:flex-row md:items-end md:justify-between">
         <Reveal delay={100}>
           <>
-            <h2 className="font-display font-bold max-w-3xl text-[#1F1F1C] leading-none" style={{ fontSize: 'clamp(28px, 3.5vw, 42px)' }}>
+            <h2 className="font-display font-bold max-w-3xl text-[#1F1F1C] leading-none mb-3 text-[26px] md:mb-0 md:text-[clamp(28px,3.5vw,42px)]">
               Meet the faculty behind the training
             </h2>
-            <p className="mt-4 max-w-2xl text-[15px] font-light text-[#6D6C67] leading-[1.75] md:text-[16px]">
+            <p className="mt-0 mb-4 max-w-2xl text-[15px] font-light text-[#6D6C67] leading-snug md:mt-4 md:mb-0 md:text-[16px] md:leading-[1.75]">
               Our team brings the experience, care, and high standards that shape confident dancers and meaningful progress in every class.
             </p>
           </>
         </Reveal>
-        <Link href="/faculty" className="text-[11px] md:text-[12px] tracking-[0.18em] uppercase text-[#0ABAB5] no-underline border-b border-[#0ABAB5] pb-0.5 mb-1.5 hover:border-[#0ABAB5] transition-colors">
+        <Link href="/faculty" className="self-start text-[11px] md:text-[12px] tracking-[0.18em] uppercase text-[#0ABAB5] no-underline border-b border-[#0ABAB5] pb-0.5 md:mb-1.5 hover:border-[#0ABAB5] transition-colors">
           Full Faculty →
         </Link>
       </div>
@@ -506,7 +506,7 @@ export function InstructorsSection() {
                 return (
                   <article
                     key={inst.name}
-                    className="relative flex aspect-[3/4] w-[58vw] shrink-0 snap-start flex-col overflow-hidden rounded-sm border border-[#D6DFDA] bg-[#FCFBF8] px-5 py-4"
+                    className="relative flex aspect-[5/4] w-[58vw] shrink-0 snap-start flex-col overflow-hidden rounded-sm border border-[#D6DFDA] bg-[#FCFBF8] px-5 py-4"
                   >
                     {inst.name === '+ 17 More' ? (
                       <Link href="/faculty" className="flex h-full flex-col text-left no-underline text-inherit">
