@@ -431,14 +431,14 @@ const instructors = [
 
 export function InstructorsSection() {
   return (
-    <section className="bg-[#F7F5F1] px-4 py-20 md:px-12 md:py-24 overflow-hidden">
+    <section className="bg-[#F7F5F1] px-4 py-16 md:px-12 md:py-24 overflow-hidden">
       <Reveal>
         <div className="flex items-center gap-3 mb-6">
           <div className="w-7 h-px bg-[#0ABAB5] opacity-100" />
           <span className="text-[11px] md:text-[12px] tracking-[0.22em] uppercase text-[#0ABAB5] font-medium opacity-100">The Faculty</span>
         </div>
       </Reveal>
-      <div className="mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+      <div className="mb-6 flex flex-col gap-6 md:mb-12 md:flex-row md:items-end md:justify-between">
         <Reveal delay={100}>
           <>
             <h2 className="font-display font-bold max-w-3xl text-[#1F1F1C] leading-none" style={{ fontSize: 'clamp(28px, 3.5vw, 42px)' }}>
@@ -487,12 +487,12 @@ export function InstructorsSection() {
           </div>
 
           <div className="md:hidden -mx-4">
-            <div className="scrollbar-hide flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2">
+            <div className="scrollbar-hide flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-0">
               {instructors.map(inst => {
                 const body = (
                   <>
                     <div
-                      className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-3xl font-black leading-none text-[#0ABAB5]/10"
+                      className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-2xl font-black leading-none text-[#0ABAB5]/10"
                       aria-hidden
                     >
                       {inst.initial === '+' ? '+' : inst.name[0]}
@@ -506,7 +506,7 @@ export function InstructorsSection() {
                 return (
                   <article
                     key={inst.name}
-                    className="relative flex aspect-[4/5] w-[58vw] shrink-0 snap-start flex-col overflow-hidden rounded-sm border border-[#D6DFDA] bg-[#FCFBF8] px-6 py-5"
+                    className="relative flex aspect-[3/4] w-[58vw] shrink-0 snap-start flex-col overflow-hidden rounded-sm border border-[#D6DFDA] bg-[#FCFBF8] px-5 py-4"
                   >
                     {inst.name === '+ 17 More' ? (
                       <Link href="/faculty" className="flex h-full flex-col text-left no-underline text-inherit">
@@ -520,7 +520,7 @@ export function InstructorsSection() {
               })}
             </div>
           </div>
-          <div className="mt-2 flex justify-center gap-1.5 md:hidden">
+          <div className="mt-1 flex justify-center gap-1.5 md:hidden">
             {instructors.map((_, i) => (
               <span key={i} className="h-1.5 w-1.5 rounded-full bg-[#1F1F1C]/20" aria-hidden />
             ))}
