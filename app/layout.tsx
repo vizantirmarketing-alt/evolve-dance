@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next'
 import { Playfair_Display, DM_Sans } from 'next/font/google'
-import MobileStickyCTA from '@/components/MobileStickyCTA'
 import '../styles/globals.css'
 
 const playfair = Playfair_Display({
@@ -64,7 +63,6 @@ export default function RootLayout({
     <html lang="en" className={`${playfair.variable} ${dmSans.variable}`}>
       <body>
         {children}
-        <MobileStickyCTA />
       </body>
     </html>
   )
