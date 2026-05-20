@@ -66,7 +66,7 @@ function ProgressIndicators({
 }) {
   return (
     <div
-      className="absolute bottom-6 left-6 flex gap-1.5 md:bottom-8 md:left-10"
+      className="absolute bottom-4 left-4 flex gap-1.5 md:bottom-8 md:left-10"
       aria-hidden
     >
       {Array.from({ length: count }).map((_, i) => (
@@ -102,7 +102,7 @@ function ProgressIndicators({
 
 function HeroSlideContent({ testimonial }: { testimonial: Testimonial }) {
   return (
-    <div className="grid min-h-0 flex-1 grid-cols-1 items-center gap-6 px-6 py-10 md:grid-cols-[auto_1fr] md:gap-10 md:px-12 md:py-0">
+    <div className="grid min-h-0 flex-1 grid-cols-1 items-center gap-4 px-6 py-8 md:grid-cols-[auto_1fr] md:gap-10 md:px-12 md:py-0">
       <div
         className="mx-auto flex h-[72px] w-[72px] shrink-0 items-center justify-center rounded-full font-display text-[26px] font-normal md:mx-0"
         style={{ backgroundColor: TEAL, color: IVORY }}
@@ -111,9 +111,9 @@ function HeroSlideContent({ testimonial }: { testimonial: Testimonial }) {
         {reviewerInitial(testimonial.reviewerName)}
       </div>
       <div className="min-w-0 text-center md:text-left">
-        <StarRating className="mb-3 md:mb-4" />
+        <StarRating className="mb-2 md:mb-4" />
         <p
-          className="font-display mb-4 line-clamp-3 text-[17px] font-normal italic leading-relaxed md:mb-5 md:text-[19px]"
+          className="font-display mb-3 line-clamp-3 text-[16px] font-normal italic leading-snug md:mb-5 md:text-[19px] md:leading-relaxed"
           style={{ color: IVORY }}
         >
           &ldquo;{testimonial.reviewText}&rdquo;
@@ -425,7 +425,7 @@ export default function TestimonialsHero({
         onMouseLeave={() => setIsHovered(false)}
         aria-label="View testimonial details"
         className={cn(
-          'testimonial-hero-stage group relative h-[480px] w-full cursor-pointer overflow-hidden rounded-sm text-left transition-transform duration-300 ease-out hover:-translate-y-0.5 md:h-[360px]',
+          'testimonial-hero-stage group relative h-[340px] w-full cursor-pointer overflow-hidden rounded-sm text-left transition-transform duration-300 ease-out hover:-translate-y-0.5 md:h-[360px]',
           (rotationPaused || reducedMotion) && 'testimonial-hero-stage--paused',
           reducedMotion && 'testimonial-hero-stage--reduced-motion',
         )}
@@ -440,7 +440,7 @@ export default function TestimonialsHero({
           aria-hidden
         />
 
-        <div className="absolute right-6 top-6 z-10 flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.18em] opacity-60 transition-opacity group-hover:opacity-90 md:right-10 md:top-8 md:text-[11px]">
+        <div className="absolute right-4 top-4 z-10 flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.18em] opacity-60 transition-opacity group-hover:opacity-90 md:right-10 md:top-8 md:text-[11px]">
           Read full
           <Expand className="h-3.5 w-3.5" aria-hidden />
         </div>
