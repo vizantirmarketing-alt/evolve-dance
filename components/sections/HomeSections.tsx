@@ -300,28 +300,26 @@ const classes = [
 
 export function ClassesSection() {
   return (
-    <section className="bg-[#F7F5F1] px-4 py-16 md:px-12 md:py-28">
-      <div className="mb-6 flex flex-col gap-3 md:mb-14 md:gap-8 md:flex-row md:items-end md:justify-between">
-        <div>
-          <Reveal>
-            <div className="flex items-center gap-3 mb-3 md:mb-6">
-              <div className="w-7 h-px bg-[#0ABAB5] opacity-100" />
-              <span className="text-[11px] md:text-[12px] tracking-[0.22em] uppercase text-[#0ABAB5] font-medium opacity-100">What We Teach</span>
-            </div>
-          </Reveal>
-          <Reveal delay={100}>
-            <>
-              <h2 className="font-display font-bold max-w-3xl text-[#1F1F1C] leading-none mb-3 text-[26px] md:mb-0 md:text-[clamp(28px,3.5vw,42px)]">
-                Programs designed for every stage of growth
-              </h2>
-              <p className="mt-0 max-w-2xl text-[15px] font-light text-[#6D6C67] leading-snug md:mt-4 md:text-[16px] md:leading-[1.75]">
-                From early movement classes to advanced training, our programs are built to meet dancers where they are and help them progress with confidence.
-              </p>
-            </>
-          </Reveal>
+    <section className="bg-[#F7F5F1] px-4 py-10 md:px-12 md:py-28">
+      <Reveal>
+        <div className="flex items-center gap-3 mb-2 md:mb-6">
+          <div className="w-7 h-px bg-[#0ABAB5] opacity-100" />
+          <span className="text-[11px] md:text-[12px] tracking-[0.22em] uppercase text-[#0ABAB5] font-medium opacity-100">What We Teach</span>
         </div>
+      </Reveal>
+      <div className="mb-4 flex flex-col gap-0 md:mb-14 md:gap-8 md:flex-row md:items-end md:justify-between">
+        <Reveal delay={100}>
+          <>
+            <h2 className="font-display font-bold max-w-3xl text-[#1F1F1C] leading-tight mb-2 text-[22px] md:mb-0 md:leading-none md:text-[clamp(28px,3.5vw,42px)]">
+              Programs designed for every stage of growth
+            </h2>
+            <p className="mb-3 max-w-2xl text-[14px] font-light text-[#6D6C67] leading-snug md:mb-0 md:mt-4 md:text-[16px] md:leading-[1.75]">
+              From early movement classes to advanced training, our programs are built to meet dancers where they are and help them progress with confidence.
+            </p>
+          </>
+        </Reveal>
         <Reveal>
-          <Link href="/classes" className="self-start text-[11px] md:text-[12px] tracking-[0.18em] uppercase text-[#0ABAB5] no-underline border-b border-[#0ABAB5] pb-0.5 md:mb-1.5 hover:border-[#0ABAB5] transition-colors">
+          <Link href="/classes" className="mt-2 self-start text-[10px] tracking-[0.18em] uppercase text-[#0ABAB5] no-underline border-b border-[#0ABAB5] pb-0.5 md:mt-0 md:text-[12px] md:mb-1.5 hover:border-[#0ABAB5] transition-colors">
             View All Classes →
           </Link>
         </Reveal>
