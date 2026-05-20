@@ -300,28 +300,28 @@ const classes = [
 
 export function ClassesSection() {
   return (
-    <section className="bg-[#F7F5F1] px-4 py-28 md:px-12">
-      <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between mb-14">
+    <section className="bg-[#F7F5F1] px-4 py-16 md:px-12 md:py-28">
+      <div className="mb-6 flex flex-col gap-3 md:mb-14 md:gap-8 md:flex-row md:items-end md:justify-between">
         <div>
           <Reveal>
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-3 mb-3 md:mb-6">
               <div className="w-7 h-px bg-[#0ABAB5] opacity-100" />
               <span className="text-[11px] md:text-[12px] tracking-[0.22em] uppercase text-[#0ABAB5] font-medium opacity-100">What We Teach</span>
             </div>
           </Reveal>
           <Reveal delay={100}>
             <>
-              <h2 className="font-display font-bold max-w-3xl text-[#1F1F1C] leading-none" style={{ fontSize: 'clamp(28px, 3.5vw, 42px)' }}>
+              <h2 className="font-display font-bold max-w-3xl text-[#1F1F1C] leading-none mb-3 text-[26px] md:mb-0 md:text-[clamp(28px,3.5vw,42px)]">
                 Programs designed for every stage of growth
               </h2>
-              <p className="mt-4 max-w-2xl text-[15px] font-light text-[#6D6C67] leading-[1.75] md:text-[16px]">
+              <p className="mt-0 max-w-2xl text-[15px] font-light text-[#6D6C67] leading-snug md:mt-4 md:text-[16px] md:leading-[1.75]">
                 From early movement classes to advanced training, our programs are built to meet dancers where they are and help them progress with confidence.
               </p>
             </>
           </Reveal>
         </div>
         <Reveal>
-          <Link href="/classes" className="text-[11px] md:text-[12px] tracking-[0.18em] uppercase text-[#0ABAB5] no-underline border-b border-[#0ABAB5] pb-0.5 mb-1.5 hover:border-[#0ABAB5] transition-colors">
+          <Link href="/classes" className="self-start text-[11px] md:text-[12px] tracking-[0.18em] uppercase text-[#0ABAB5] no-underline border-b border-[#0ABAB5] pb-0.5 md:mb-1.5 hover:border-[#0ABAB5] transition-colors">
             View All Classes →
           </Link>
         </Reveal>
@@ -329,34 +329,34 @@ export function ClassesSection() {
 
       {/* Mobile: horizontal scroll-snap gallery */}
       <div className="md:hidden -mx-4">
-        <div className="scrollbar-hide flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4">
+        <div className="scrollbar-hide flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2">
           {classes.map(program => (
             <article
               key={program.id}
               className="w-[85vw] shrink-0 snap-start overflow-hidden rounded-sm bg-[#F5F2EC]"
             >
-              <div className="relative aspect-[4/5] bg-[var(--teal-light)]">
+              <div className="relative aspect-[3/2] bg-[var(--teal-light)]">
                 {program.image ? (
                   <Image src={program.image} alt={program.name} fill className="object-cover" sizes="85vw" />
                 ) : (
                   <div className="flex h-full w-full items-center justify-center">
-                    <span className="font-display text-3xl text-[#0ABAB5]/40">{program.name}</span>
+                    <span className="font-display text-2xl text-[#0ABAB5]/40">{program.name}</span>
                   </div>
                 )}
               </div>
-              <div className="p-5">
-                <p className="mb-2 text-[12px] font-medium tracking-wider text-[#1F1F1C]/60 md:text-[13px]">
+              <div className="px-4 py-4">
+                <p className="mb-1 text-[12px] font-medium tracking-wider text-[#1F1F1C]/60 md:text-[13px]">
                   {program.num} — {program.name}
                 </p>
-                <h3 className="font-display mb-3 text-[clamp(17px,2.2vw,22px)] font-bold text-[#1F1F1C]">{program.name}</h3>
-                <p className="mb-4 text-[14px] leading-[1.7] text-[#1F1F1C]/70 md:text-[15px]">
+                <h3 className="font-display mb-2 text-[clamp(17px,2.2vw,22px)] font-bold text-[#1F1F1C]">{program.name}</h3>
+                <p className="mb-3 text-[14px] leading-snug text-[#1F1F1C]/70 md:text-[15px] md:leading-[1.7]">
                   {program.desc}
                 </p>
-                <div className="flex items-center justify-between border-t border-[#1F1F1C]/10 pt-4">
+                <div className="flex items-center justify-between border-t border-[#1F1F1C]/10 pt-3">
                   <span className="text-[12px] tracking-wider text-[#0ABAB5] md:text-[13px]">{program.ages}</span>
                   <Link
                     href={program.href}
-                    className="flex h-10 w-10 items-center justify-center rounded-sm border border-[#0ABAB5] text-[#0ABAB5] transition-colors hover:bg-[#0ABAB5] hover:text-white"
+                    className="flex h-9 w-9 items-center justify-center rounded-sm border border-[#0ABAB5] text-[#0ABAB5] transition-colors hover:bg-[#0ABAB5] hover:text-white"
                     aria-label={`View ${program.name} classes`}
                   >
                     <ArrowRight className="h-4 w-4" aria-hidden />
@@ -367,7 +367,7 @@ export function ClassesSection() {
           ))}
         </div>
       </div>
-      <div className="mt-6 flex justify-center gap-1.5 md:hidden">
+      <div className="mt-3 flex justify-center gap-1.5 pb-1 md:hidden">
         {classes.map((_, i) => (
           <span key={i} className="h-1.5 w-1.5 rounded-full bg-[#1F1F1C]/20" aria-hidden />
         ))}
