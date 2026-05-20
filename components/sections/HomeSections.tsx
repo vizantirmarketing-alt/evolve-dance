@@ -12,7 +12,7 @@ import { siteConfig } from '@/data/site'
 
 function SectionEyebrow({ label }: { label: string }) {
   return (
-    <div className="flex items-center gap-3 mb-6">
+    <div className="flex items-center gap-3 mb-6 md:mb-3">
       <div className="w-7 h-px bg-teal opacity-100" />
       <span className="text-[11px] md:text-[12px] tracking-[0.22em] uppercase text-teal font-medium opacity-100">{label}</span>
     </div>
@@ -165,28 +165,24 @@ const whyFamiliesCards = [
   {
     num: '01',
     title: 'Expert Faculty',
-    letter: 'E',
     body:
       'Our instructors bring experience, professionalism, and a commitment to helping every dancer build strong technique and confidence.',
   },
   {
     num: '02',
     title: 'Training with Purpose',
-    letter: 'T',
     body:
       'Each class is designed to develop more than movement — shaping discipline, artistry, performance quality, and long-term progression.',
   },
   {
     num: '03',
     title: 'A Path for Every Dancer',
-    letter: 'P',
     body:
       'From recreational programs to more advanced opportunities, dancers can grow at their own pace in a studio that supports both joy and excellence.',
   },
   {
     num: '04',
     title: 'A Studio Culture That Matters',
-    letter: 'C',
     body:
       'We believe high standards and a positive environment should go hand in hand — creating a space where dancers feel encouraged, challenged, and proud.',
   },
@@ -194,20 +190,20 @@ const whyFamiliesCards = [
 
 export function WhyFamiliesChooseSection() {
   return (
-    <section className="bg-[#0f2318] px-4 py-28 md:px-12">
+    <section
+      id="why-families-choose"
+      className="bg-[#0f2318] px-4 py-16 md:px-12 md:py-16"
+    >
       <Reveal>
         <SectionEyebrow label="Why Families Choose Evolve" />
       </Reveal>
       <Reveal delay={100}>
-        <h2
-          className="font-display font-bold max-w-3xl text-[#f0faf8] leading-none mb-14"
-          style={{ fontSize: 'clamp(28px, 3.5vw, 42px)' }}
-        >
+        <h2 className="font-display mb-10 max-w-3xl text-[clamp(28px,3.5vw,42px)] font-bold leading-none text-[#f0faf8] md:mb-8 md:text-4xl">
           What makes Evolve different
         </h2>
       </Reveal>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-[rgba(10,186,181,0.06)]">
+      <div className="grid grid-cols-1 gap-px bg-[rgba(10,186,181,0.06)] sm:grid-cols-2 md:gap-4">
         {whyFamiliesCards.map((card, i) => (
           <Reveal key={card.title} delay={120 + i * 80}>
             <WhyFamilyCard {...card} />
@@ -218,34 +214,19 @@ export function WhyFamiliesChooseSection() {
   )
 }
 
-function WhyFamilyCard({ num, title, letter, body }: (typeof whyFamiliesCards)[number]) {
+function WhyFamilyCard({ num, title, body }: (typeof whyFamiliesCards)[number]) {
   return (
-    <div className="group relative flex flex-col overflow-hidden border border-[rgba(255,255,255,0.08)] bg-[#0f2318] px-6 py-12 transition-colors duration-300 hover:bg-[#132a1f] md:min-h-[280px] md:justify-between md:p-10">
+    <div className="group relative flex flex-col overflow-hidden border border-[rgba(255,255,255,0.08)] bg-[#0f2318] px-6 py-10 transition-colors duration-300 hover:bg-[#132a1f] md:min-h-[160px] md:p-6">
       <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-teal scale-x-0 origin-left transition-transform duration-400 group-hover:scale-x-100" />
-      <div
-        className="pointer-events-none absolute right-0 bottom-2 font-display text-[72px] font-black leading-none transition-colors duration-300 select-none md:hidden group-hover:opacity-[0.055]"
-        style={{ color: 'rgba(10,186,181,0.04)' }}
-        aria-hidden
-      >
-        {letter}
-      </div>
-      <div
-        className="pointer-events-none absolute -bottom-4 -right-2 hidden font-display font-black leading-none transition-colors duration-300 md:block group-hover:opacity-[0.055]"
-        style={{ fontSize: 130, color: 'rgba(10,186,181,0.03)' }}
-        aria-hidden
-      >
-        {letter}
-      </div>
 
       <div className="relative z-[1]">
-        <div className="mb-4 text-[11px] font-semibold tracking-[0.22em] text-[#94a3b8] transition-colors duration-300 group-hover:text-teal md:mb-5 md:text-[12px]">
+        <div className="mb-4 text-[11px] font-semibold tracking-[0.22em] text-[#94a3b8] transition-colors duration-300 group-hover:text-teal md:mb-4 md:text-[12px]">
           {num} — {title}
         </div>
-        <div className="font-display mb-2 text-[clamp(17px,2.2vw,22px)] font-bold leading-[1.1] text-[#f0faf8] md:mb-3">{title}</div>
-        <div className="max-w-[92%] text-[13px] leading-[1.6] text-[#e2e8f0] md:max-w-none md:flex-grow md:text-[14px]">{body}</div>
+        <div className="font-display mb-2 text-[clamp(17px,2.2vw,22px)] font-bold leading-[1.1] text-[#f0faf8] md:mb-2">{title}</div>
+        <div className="max-w-[92%] text-[13px] leading-[1.6] text-[#e2e8f0] md:max-w-none md:text-[14px]">{body}</div>
       </div>
 
-      <div className="mt-7 hidden border-t border-[rgba(10,186,181,0.06)] pt-5 md:block" aria-hidden />
     </div>
   )
 }
