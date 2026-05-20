@@ -220,24 +220,32 @@ export function WhyFamiliesChooseSection() {
 
 function WhyFamilyCard({ num, title, letter, body }: (typeof whyFamiliesCards)[number]) {
   return (
-    <div className="group bg-[#0f2318] border border-[rgba(255,255,255,0.08)] p-6 md:p-10 relative overflow-hidden min-h-[280px] flex flex-col justify-between transition-colors duration-300 hover:bg-[#132a1f]">
+    <div className="group relative flex flex-col overflow-hidden border border-[rgba(255,255,255,0.08)] bg-[#0f2318] px-6 py-12 transition-colors duration-300 hover:bg-[#132a1f] md:min-h-[280px] md:justify-between md:p-10">
       <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-teal scale-x-0 origin-left transition-transform duration-400 group-hover:scale-x-100" />
       <div
-        className="absolute -bottom-4 -right-2 font-display font-black leading-none pointer-events-none transition-colors duration-300 group-hover:opacity-[0.055]"
+        className="pointer-events-none absolute right-0 bottom-2 font-display text-[72px] font-black leading-none transition-colors duration-300 select-none md:hidden group-hover:opacity-[0.055]"
+        style={{ color: 'rgba(10,186,181,0.04)' }}
+        aria-hidden
+      >
+        {letter}
+      </div>
+      <div
+        className="pointer-events-none absolute -bottom-4 -right-2 hidden font-display font-black leading-none transition-colors duration-300 md:block group-hover:opacity-[0.055]"
         style={{ fontSize: 130, color: 'rgba(10,186,181,0.03)' }}
+        aria-hidden
       >
         {letter}
       </div>
 
-      <div>
-        <div className="text-[11px] md:text-[12px] font-semibold tracking-[0.22em] text-[#94a3b8] mb-5 transition-colors duration-300 group-hover:text-teal">
+      <div className="relative z-[1]">
+        <div className="mb-4 text-[11px] font-semibold tracking-[0.22em] text-[#94a3b8] transition-colors duration-300 group-hover:text-teal md:mb-5 md:text-[12px]">
           {num} — {title}
         </div>
-        <div className="font-display text-[clamp(17px,2.2vw,22px)] font-bold leading-[1.1] mb-3 text-[#f0faf8]">{title}</div>
-        <div className="text-[13px] text-[#e2e8f0] leading-[1.6] flex-grow md:text-[14px]">{body}</div>
+        <div className="font-display mb-2 text-[clamp(17px,2.2vw,22px)] font-bold leading-[1.1] text-[#f0faf8] md:mb-3">{title}</div>
+        <div className="max-w-[92%] text-[13px] leading-[1.6] text-[#e2e8f0] md:max-w-none md:flex-grow md:text-[14px]">{body}</div>
       </div>
 
-      <div className="mt-7 pt-5 border-t border-[rgba(10,186,181,0.06)]" aria-hidden />
+      <div className="mt-7 hidden border-t border-[rgba(10,186,181,0.06)] pt-5 md:block" aria-hidden />
     </div>
   )
 }
