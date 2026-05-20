@@ -431,7 +431,7 @@ const instructors = [
 
 export function InstructorsSection() {
   return (
-    <section className="bg-[#F7F5F1] px-4 py-28 md:px-12 overflow-hidden">
+    <section className="bg-[#F7F5F1] px-4 py-20 md:px-12 md:py-24 overflow-hidden">
       <Reveal>
         <div className="flex items-center gap-3 mb-6">
           <div className="w-7 h-px bg-[#0ABAB5] opacity-100" />
@@ -460,24 +460,25 @@ export function InstructorsSection() {
             {instructors.map(inst => (
               <div
                 key={inst.name}
-                className="instructor-card group bg-[#FCFBF8] hover:bg-[#D4F1EF] relative overflow-hidden min-h-[300px] cursor-pointer transition-colors duration-300"
+                className="instructor-card group bg-[#FCFBF8] hover:bg-[#D4F1EF] relative overflow-hidden min-h-[190px] cursor-pointer transition-colors duration-300"
               >
                 {/* Top teal bar on hover */}
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-teal scale-x-0 origin-left transition-transform duration-400 group-hover:scale-x-100" />
 
                 {/* Initial watermark */}
                 <div
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[60%] font-display font-black leading-none pointer-events-none text-[#0ABAB5]/10 transition-all duration-400 group-hover:opacity-[0.1] group-hover:-translate-y-[65%]"
-                  style={{ fontSize: 100 }}
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display font-black leading-none pointer-events-none text-[#0ABAB5]/10 transition-opacity duration-400 group-hover:text-[#0ABAB5]/[0.12]"
+                  style={{ fontSize: 52 }}
+                  aria-hidden
                 >
                   {inst.initial}
                 </div>
 
-                <div className="absolute bottom-6 left-6 z-[1]">
-                  <div className="font-display text-[20px] font-bold leading-[1.1] mb-1 text-[#1F1F1C]">
+                <div className="absolute bottom-0 left-0 right-0 z-[1] px-6 py-5">
+                  <div className="font-display text-2xl font-bold leading-[1.1] mb-1.5 text-[#1F1F1C]">
                     {inst.name}
                   </div>
-                  <div className="text-[11px] tracking-[0.15em] uppercase text-[#0ABAB5] opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                  <div className="text-[11px] font-medium tracking-[0.12em] uppercase text-[#0ABAB5] md:text-[12px]">
                     {inst.role}
                   </div>
                 </div>
@@ -486,24 +487,29 @@ export function InstructorsSection() {
           </div>
 
           <div className="md:hidden -mx-4">
-            <div className="scrollbar-hide flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4">
+            <div className="scrollbar-hide flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2">
               {instructors.map(inst => {
                 const body = (
                   <>
-                    <div className="mb-3 font-serif text-5xl font-black leading-none text-[#0ABAB5]/10">
+                    <div
+                      className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-3xl font-black leading-none text-[#0ABAB5]/10"
+                      aria-hidden
+                    >
                       {inst.initial === '+' ? '+' : inst.name[0]}
                     </div>
-                    <div className="text-[14px] font-medium text-[#1F1F1C] md:text-[15px]">{inst.name}</div>
-                    <div className="mt-1 text-[12px] text-[#0ABAB5] md:text-[13px]">{inst.role}</div>
+                    <div className="relative z-[1] mt-auto">
+                      <div className="font-display text-xl font-bold leading-[1.1] text-[#1F1F1C]">{inst.name}</div>
+                      <div className="mt-1.5 text-[12px] font-medium text-[#0ABAB5] md:text-[13px]">{inst.role}</div>
+                    </div>
                   </>
                 )
                 return (
                   <article
                     key={inst.name}
-                    className="w-[65vw] shrink-0 snap-start overflow-hidden rounded-sm border border-[#D6DFDA] bg-[#FCFBF8] p-4"
+                    className="relative flex aspect-[4/5] w-[58vw] shrink-0 snap-start flex-col overflow-hidden rounded-sm border border-[#D6DFDA] bg-[#FCFBF8] px-6 py-5"
                   >
                     {inst.name === '+ 17 More' ? (
-                      <Link href="/faculty" className="block text-left no-underline text-inherit">
+                      <Link href="/faculty" className="flex h-full flex-col text-left no-underline text-inherit">
                         {body}
                       </Link>
                     ) : (
@@ -514,7 +520,7 @@ export function InstructorsSection() {
               })}
             </div>
           </div>
-          <div className="mt-6 flex justify-center gap-1.5 md:hidden">
+          <div className="mt-2 flex justify-center gap-1.5 md:hidden">
             {instructors.map((_, i) => (
               <span key={i} className="h-1.5 w-1.5 rounded-full bg-[#1F1F1C]/20" aria-hidden />
             ))}
