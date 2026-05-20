@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { buttonVariants } from '@/components/ui/button-styles'
 
 const stats = [
   { number: '10+',  label: 'Dance Styles' },
@@ -164,27 +165,20 @@ export default function HeroSection() {
           className="flex gap-5 items-center"
         >
           <Link
-            href="/classes"
-            className={[
-              'inline-flex items-center gap-2.5 clip-btn no-underline',
-              'text-[12px] font-medium tracking-[0.2em] uppercase',
-              'text-black bg-teal px-8 py-3.5',
-              'transition-all duration-200',
-              'hover:bg-teal-light hover:shadow-[0_0_40px_rgba(10,186,181,0.35)] hover:-translate-y-0.5',
-              'md:py-4 md:text-[13px]',
-            ].join(' ')}
+            href="/enroll#free-trial"
+            className={buttonVariants({ variant: 'primary', size: 'wide' })}
+          >
+            Book a Free Trial
+          </Link>
+
+          <Link
+            href="/schedule"
+            className={buttonVariants({ variant: 'secondary', size: 'wide' })}
           >
             View Schedule
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
               <path d="M1 7h12M8 2l5 5-5 5" />
             </svg>
-          </Link>
-
-          <Link
-            href="/enroll#free-trial"
-            className="text-[12px] font-normal tracking-[0.2em] uppercase text-[#cbd5e1] no-underline border-b border-[rgba(10,186,181,0.25)] pb-0.5 transition-colors duration-200 hover:text-teal hover:border-teal md:text-[13px]"
-          >
-            Book a Free Trial
           </Link>
         </motion.div>
       </div>

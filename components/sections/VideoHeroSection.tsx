@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, Play } from 'lucide-react'
+import { buttonVariants } from '@/components/ui/button-styles'
 
 // ── Types ────────────────────────────────────────────
 interface VideoHeroProps {
@@ -151,8 +152,23 @@ export default function VideoHeroSection({
             <motion.div variants={item} className="mb-6 w-full md:mb-6">
               <div className="flex flex-col items-start gap-3 md:hidden">
                 <Link
+                  href="/enroll#free-trial"
+                  className={buttonVariants({
+                    variant: 'primary',
+                    surface: 'dark',
+                    className: 'group pointer-events-auto self-start w-full sm:w-auto',
+                  })}
+                >
+                  Book a Free Trial
+                  <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" aria-hidden />
+                </Link>
+                <Link
                   href="/classes"
-                  className="group pointer-events-auto inline-flex self-start items-center justify-center gap-2 bg-black/30 backdrop-blur-sm text-[12px] font-medium tracking-[0.2em] text-white px-4 py-3.5 rounded-sm transition-colors hover:bg-black/50 md:text-[13px]"
+                  className={buttonVariants({
+                    variant: 'secondary',
+                    surface: 'dark',
+                    className: 'group pointer-events-auto self-start w-full sm:w-auto',
+                  })}
                 >
                   Explore Classes
                   <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" aria-hidden />
@@ -160,19 +176,25 @@ export default function VideoHeroSection({
                 <button
                   type="button"
                   onClick={() => setLightbox(true)}
-                  className="group pointer-events-auto inline-flex self-start items-center justify-center gap-2 bg-black/30 backdrop-blur-sm text-[12px] font-medium tracking-[0.2em] text-white px-4 py-3.5 rounded-sm transition-colors hover:bg-black/50 md:text-[13px]"
+                  className={buttonVariants({
+                    variant: 'tertiary',
+                    surface: 'dark',
+                    className: 'group pointer-events-auto self-start gap-2.5 px-2',
+                  })}
                 >
-                  <span className="flex items-center justify-center w-6 h-6 rounded-full bg-white/20 group-hover:bg-white/30 transition-colors">
-                    <Play className="w-2.5 h-2.5 fill-white ml-0.5" aria-hidden />
-                  </span>
-                  Watch the studio
+                  <Play className="h-3.5 w-3.5 shrink-0 fill-current opacity-80 transition-opacity group-hover:opacity-100" aria-hidden />
+                  Watch the Studio
                 </button>
               </div>
 
               <div className="hidden md:flex md:flex-row md:flex-wrap md:items-start md:gap-4">
                 <Link
                   href="/enroll#free-trial"
-                  className="group pointer-events-auto relative inline-flex w-full items-center justify-center gap-2 rounded-sm bg-[#0ABAB5] px-6 py-3.5 text-[12px] font-medium tracking-[0.2em] text-white no-underline transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#087876] hover:shadow-lg hover:shadow-[#0ABAB5]/25 md:w-auto md:justify-start md:py-4 md:text-[13px]"
+                  className={buttonVariants({
+                    variant: 'primary',
+                    surface: 'dark',
+                    className: 'group pointer-events-auto md:w-auto md:justify-start',
+                  })}
                 >
                   <span>Book a Free Trial</span>
                   <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
@@ -180,7 +202,11 @@ export default function VideoHeroSection({
 
                 <Link
                   href="/classes"
-                  className="group pointer-events-auto inline-flex w-full items-center justify-center gap-2 rounded-sm border border-white/20 bg-black/30 px-6 py-3.5 text-[12px] font-medium tracking-[0.2em] text-white no-underline backdrop-blur-md transition-all duration-300 hover:border-white/40 hover:bg-black/50 md:w-auto md:justify-start md:py-4 md:text-[13px]"
+                  className={buttonVariants({
+                    variant: 'secondary',
+                    surface: 'dark',
+                    className: 'group pointer-events-auto md:w-auto md:justify-start',
+                  })}
                 >
                   Explore Classes
                   <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" aria-hidden />
@@ -189,11 +215,13 @@ export default function VideoHeroSection({
                 <button
                   type="button"
                   onClick={() => setLightbox(true)}
-                  className="group pointer-events-auto inline-flex w-full items-center justify-center gap-3 rounded-sm border border-white/20 bg-black/30 px-5 py-3.5 text-[12px] font-medium tracking-[0.2em] text-white backdrop-blur-md transition-all duration-300 hover:border-white/40 hover:bg-black/50 md:w-auto md:justify-start md:py-4 md:text-[13px]"
+                  className={buttonVariants({
+                    variant: 'tertiary',
+                    surface: 'dark',
+                    className: 'group pointer-events-auto gap-2.5 px-2 md:w-auto md:justify-start',
+                  })}
                 >
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white/15 transition-colors group-hover:bg-white/25">
-                    <Play className="ml-0.5 h-3 w-3 fill-white text-white" aria-hidden />
-                  </span>
+                  <Play className="h-3.5 w-3.5 shrink-0 fill-current opacity-80 transition-opacity group-hover:opacity-100" aria-hidden />
                   Watch the Studio
                 </button>
               </div>

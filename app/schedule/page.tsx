@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { buttonVariants } from '@/components/ui/button-styles'
 import Footer from '@/components/layout/Footer'
 import Navbar from '@/components/layout/Navbar'
 import { ScheduleFilters } from '@/components/sections/ScheduleFilters'
@@ -41,9 +42,9 @@ export default async function SchedulePage() {
               </p>
               <Link
                 href="/enroll#free-trial"
-                className="mt-8 inline-flex items-center justify-center rounded-sm bg-[#0ABAB5] px-8 py-3.5 text-[12px] font-medium uppercase tracking-[0.2em] text-white no-underline transition-colors hover:bg-[#087876] md:py-4 md:text-[13px]"
+                className={buttonVariants({ variant: 'primary', size: 'wide', className: 'mt-8' })}
               >
-                BOOK A FREE TRIAL
+                Book a Free Trial
               </Link>
             </div>
           ) : (

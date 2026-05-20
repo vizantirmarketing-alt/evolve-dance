@@ -1,4 +1,5 @@
 import { cn } from '@/lib/utils'
+import { buttonVariants } from '@/components/ui/button-styles'
 import { siteConfig } from '@/data/site'
 
 export interface ComboClass {
@@ -70,7 +71,7 @@ export default function ComboCallout({
           href={siteConfig.jackrabbitEnroll}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center py-3.5 px-8 text-[12px] font-semibold tracking-[0.2em] uppercase text-black bg-[#0ABAB5] no-underline transition-colors hover:bg-[#81D8D0] [clip-path:polygon(10px_0%,100%_0%,calc(100%-10px)_100%,0%_100%)] md:py-4 md:text-[13px]"
+          className={buttonVariants({ variant: 'primary', size: 'wide' })}
         >
           {ctaLabel}
         </a>

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { buttonVariants } from '@/components/ui/button-styles'
 import ClassFinder from '@/components/ClassFinder'
 import StyleCard from '@/components/StyleCard'
 import ComboCallout from '@/components/ComboCallout'
@@ -44,13 +45,13 @@ export default function ClassesPage() {
             <div className="flex flex-col gap-4 sm:flex-row">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center bg-[#0ABAB5] px-8 py-3.5 text-center text-[12px] font-semibold uppercase tracking-[0.2em] text-black no-underline transition-colors [clip-path:polygon(10px_0%,100%_0%,calc(100%-10px)_100%,0%_100%)] hover:bg-[#81D8D0] md:py-4 md:text-[13px]"
+                className={buttonVariants({ variant: 'primary', size: 'wide' })}
               >
                 Book a Free Trial
               </Link>
               <Link
                 href="/schedule"
-                className="inline-flex items-center justify-center border border-[rgba(10,186,181,0.45)] bg-white px-8 py-3.5 text-center text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1F1F1C] no-underline transition-colors hover:border-[#0ABAB5] hover:text-[#0ABAB5] md:py-4 md:text-[13px]"
+                className={buttonVariants({ variant: 'secondary', size: 'wide' })}
               >
                 View Schedule
               </Link>
@@ -107,7 +108,7 @@ export default function ClassesPage() {
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center bg-[#070a09] px-8 py-3.5 text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0ABAB5] no-underline transition-opacity [clip-path:polygon(10px_0%,100%_0%,calc(100%-10px)_100%,0%_100%)] hover:opacity-90 md:py-4 md:text-[13px]"
+              className={buttonVariants({ variant: 'primary', surface: 'inverse', size: 'wide' })}
             >
               Book a Free Trial
             </Link>

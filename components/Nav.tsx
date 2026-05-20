@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import SmartLink from '@/components/SmartLink'
+import { buttonVariants } from '@/components/ui/button-styles'
 import { ArrowRight } from 'lucide-react'
 import { siteConfig } from '@/data/site'
 
@@ -95,7 +96,7 @@ export default function Nav({ links }: NavProps) {
           {/* Desktop enroll */}
           <SmartLink
             href="/enroll"
-            className="nav-desktop group relative inline-flex items-center gap-2 bg-[#0ABAB5] px-5 py-3.5 text-[12px] font-medium tracking-[0.2em] text-white no-underline transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#087876] hover:shadow-lg hover:shadow-[#0ABAB5]/25 rounded-sm md:py-4 md:text-[13px]"
+            className={buttonVariants({ variant: 'primary', size: 'nav', className: 'nav-desktop group relative' })}
           >
             <span>{siteConfig.enrollCtaLabel}</span>
             <ArrowRight className="h-3.5 w-3.5 shrink-0 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
@@ -198,16 +199,8 @@ export default function Nav({ links }: NavProps) {
             <li style={{ marginTop: '28px' }}>
               <a href={siteConfig.jackrabbitEnroll}
                 target="_blank" rel="noopener noreferrer"
-                style={{
-                  display: 'inline-flex',
-                  fontSize: '12px', fontWeight: 500,
-                  letterSpacing: '0.2em',
-                  textTransform: 'uppercase',
-                  color: 'white',
-                  backgroundColor: '#0ABAB5',
-                  padding: '14px 28px',
-                  textDecoration: 'none',
-                }}>
+                className={buttonVariants({ variant: 'primary', size: 'nav' })}
+                style={{ textDecoration: 'none' }}>
                 {siteConfig.enrollCtaLabel}
               </a>
             </li>

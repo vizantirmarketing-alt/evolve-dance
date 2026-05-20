@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
+import { buttonVariants } from '@/components/ui/button-styles'
 import { siteConfig } from '@/data/site'
 
 const LEVEL_LABEL: Record<'1' | '2' | '3', string> = {
@@ -115,7 +116,7 @@ export default function ClassCard({
           href={siteConfig.jackrabbitEnroll}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-auto inline-flex items-center justify-center w-full py-3 px-4 text-[12px] font-semibold tracking-[0.2em] uppercase text-black bg-[#0ABAB5] no-underline transition-colors hover:bg-[#81D8D0] md:text-[13px]"
+          className={buttonVariants({ variant: 'primary', size: 'card', className: 'mt-auto' })}
         >
           {siteConfig.enrollCtaLabel}
         </a>
@@ -123,10 +124,10 @@ export default function ClassCard({
         <Link
           href={waitlistHref}
           className={cn(
-            'mt-auto inline-flex w-full items-center justify-center border px-4 py-3 text-[12px] font-semibold uppercase tracking-[0.2em] no-underline transition-colors md:text-[13px]',
-            isLight
-              ? 'border-[#D6DFDA] bg-[#F7F5F1] text-[#6D6C67] hover:border-[#0ABAB5] hover:text-[#1F1F1C]'
-              : 'border-[rgba(10,186,181,0.12)] bg-[#0d1210] text-[#94a3b8] hover:border-[rgba(10,186,181,0.25)] hover:text-[#f0faf8]'
+            buttonVariants({ variant: 'secondary', size: 'card' }),
+            'mt-auto',
+            isLight && 'border-border text-foreground-muted hover:border-teal hover:text-foreground',
+            !isLight && 'border-[rgba(10,186,181,0.12)] text-[#94a3b8] hover:border-teal hover:text-[#f0faf8]',
           )}
         >
           {siteConfig.waitlistCtaLabel}

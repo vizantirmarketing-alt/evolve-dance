@@ -3,6 +3,7 @@
 import { Turnstile, type TurnstileInstance } from '@marsidev/react-turnstile'
 import { useState, useRef, type FormEvent } from 'react'
 import { ChevronDown, ArrowRight, Check } from 'lucide-react'
+import Button from '@/components/ui/Button'
 
 const fieldClassName =
   'w-full bg-transparent border border-border rounded-none px-0 py-3 text-foreground placeholder:text-foreground-muted/60 focus:outline-none focus:border-teal transition-colors border-t-0 border-l-0 border-r-0 text-[14px] md:text-[15px]'
@@ -92,16 +93,18 @@ export default function ContactForm() {
             We&apos;ll get back to you within one business day. In the meantime, feel free to call us at (702)
             897-5095.
           </p>
-          <button
+          <Button
             type="button"
-            className="mt-8 inline-flex items-center justify-center gap-2 bg-foreground px-8 py-3.5 text-[12px] font-medium uppercase tracking-[0.2em] text-background transition-colors duration-200 hover:bg-foreground/85 md:py-4 md:text-[13px]"
+            variant="secondary"
+            size="wide"
+            className="mt-8"
             onClick={() => {
               setStatus('idle')
               setErrorMessage('')
             }}
           >
             Send another message
-          </button>
+          </Button>
         </div>
       ) : (
         <>
@@ -236,10 +239,12 @@ export default function ContactForm() {
               </div>
             ) : null}
 
-            <button
+            <Button
               type="submit"
+              variant="primary"
+              size="wide"
               disabled={status === 'submitting'}
-              className="mt-4 inline-flex items-center justify-center gap-2 bg-foreground px-8 py-3.5 text-[12px] font-medium uppercase tracking-[0.2em] text-background transition-colors duration-200 hover:bg-foreground/85 disabled:cursor-not-allowed disabled:opacity-50 md:py-4 md:text-[13px]"
+              className="mt-4 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {status === 'submitting' ? (
                 'Sending...'
@@ -249,7 +254,7 @@ export default function ContactForm() {
                   <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
                 </>
               )}
-            </button>
+            </Button>
           </form>
         </>
       )}

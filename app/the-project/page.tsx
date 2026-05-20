@@ -5,6 +5,7 @@ import { PortableText, type PortableTextComponents } from '@portabletext/react'
 
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
+import { buttonVariants } from '@/components/ui/button-styles'
 import { urlFor } from '@/sanity/lib/image'
 import {
   getProjectPage,
@@ -197,13 +198,13 @@ function TheProjectPageContent({ page }: { page: ProjectPage }) {
                 <div className="flex flex-wrap gap-3">
                   <Link
                     href="/the-project#audition"
-                    className="inline-flex items-center gap-2 bg-foreground px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.22em] text-background transition-colors duration-200 hover:bg-foreground/85 md:text-[13px]"
+                    className={buttonVariants({ variant: 'primary', size: 'wide' })}
                   >
                     Audition info →
                   </Link>
                   <Link
                     href="/contact"
-                    className="inline-flex items-center gap-2 border border-foreground px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.22em] text-foreground transition-colors duration-200 hover:bg-foreground hover:text-background md:text-[13px]"
+                    className={buttonVariants({ variant: 'secondary', size: 'wide' })}
                   >
                     Contact us
                   </Link>
@@ -545,13 +546,13 @@ function TheProjectPageContent({ page }: { page: ProjectPage }) {
             <div className="flex flex-wrap justify-center gap-3">
               <CtaLink
                 href={audition?.ctaLink?.trim() || '/contact'}
-                className="inline-flex items-center gap-2 bg-teal px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.22em] text-foreground transition-colors duration-200 hover:bg-teal/90 md:text-[13px]"
+                className={buttonVariants({ variant: 'primary', surface: 'dark', size: 'wide' })}
               >
                 {audition?.ctaText?.trim() || 'Sign up for auditions →'}
               </CtaLink>
               <Link
                 href="mailto:info@evolvedancecenter.com"
-                className="inline-flex items-center gap-2 border border-white px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.22em] text-background transition-colors duration-200 hover:bg-white hover:text-foreground md:text-[13px]"
+                className={buttonVariants({ variant: 'secondary', surface: 'dark', size: 'wide' })}
               >
                 Email us
               </Link>

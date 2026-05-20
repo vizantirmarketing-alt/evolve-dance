@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import type { DanceStyle } from '@/data/styles'
+import { buttonVariants } from '@/components/ui/button-styles'
 import { siteConfig } from '@/data/site'
 
 function IconUsers({ className }: { className?: string }) {
@@ -91,7 +92,7 @@ export default function StyleCard({
 
       <Link
         href={href}
-        className="mt-auto inline-flex items-center justify-center w-full py-3 px-4 text-[12px] font-semibold tracking-[0.2em] uppercase text-black bg-[#0ABAB5] no-underline transition-colors hover:bg-[#81D8D0] md:text-[13px]"
+        className={buttonVariants({ variant: 'secondary', size: 'card' })}
       >
         {siteConfig.viewClassesCtaLabel}
       </Link>

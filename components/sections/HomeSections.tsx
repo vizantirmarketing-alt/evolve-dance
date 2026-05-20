@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import { buttonVariants } from '@/components/ui/button-styles'
 import { ArrowRight } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
@@ -565,7 +566,12 @@ export function EnrollSection() {
           <div className="mt-8 flex flex-col items-center justify-center gap-3 md:mt-8 md:flex-row md:gap-[14px]">
             <Link
               href="/enroll"
-              className="inline-flex w-full items-center justify-center gap-2.5 whitespace-nowrap no-underline text-[12px] font-semibold uppercase tracking-wide text-[#F7F5F1] bg-[#3E9F97] px-8 py-3.5 transition-colors duration-200 hover:bg-[#358f88] md:w-auto md:py-4 md:text-[13px]"
+              className={buttonVariants({
+                variant: 'primary',
+                surface: 'dark',
+                size: 'wide',
+                className: 'w-full md:w-auto whitespace-nowrap',
+              })}
             >
               Enroll Now
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden>
@@ -574,7 +580,12 @@ export function EnrollSection() {
             </Link>
             <Link
               href="/schedule"
-              className="inline-flex w-full items-center justify-center whitespace-nowrap no-underline text-[12px] font-medium uppercase tracking-wide text-[#F7F5F1] bg-transparent border border-[rgba(247,245,241,0.4)] px-8 py-3.5 transition-colors duration-200 hover:border-[rgba(247,245,241,0.7)] md:w-auto md:py-4 md:text-[13px]"
+              className={buttonVariants({
+                variant: 'secondary',
+                surface: 'dark',
+                size: 'wide',
+                className: 'w-full md:w-auto whitespace-nowrap',
+              })}
             >
               View Class Schedule
             </Link>

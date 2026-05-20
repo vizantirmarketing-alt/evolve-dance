@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
+import { buttonVariants } from '@/components/ui/button-styles'
 
 export const metadata: Metadata = {
   title: 'Page not found | Evolve Dance Center',
@@ -65,7 +66,7 @@ export default function NotFound() {
 
           <Link
             href="/"
-            className="inline-flex items-center gap-2 px-7 py-3.5 bg-foreground text-background text-[12px] font-semibold uppercase tracking-[0.2em] hover:bg-foreground/85 transition-colors duration-200 md:py-4 md:text-[13px]"
+            className={buttonVariants({ variant: 'primary', size: 'wide' })}
           >
             <svg
               width="14"
