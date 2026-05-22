@@ -231,12 +231,11 @@ export function FreeTrialContent() {
           className="font-display font-bold leading-tight text-foreground"
           style={{ fontSize: 'clamp(32px, 4vw, 48px)' }}
         >
-          Try your first class on us
+          Try a class before you enroll
         </h1>
         <p className="mt-5 max-w-2xl text-[14px] font-light leading-[1.8] text-foreground-muted md:text-[15px]">
-          Your dancer&apos;s first class at Evolve is on the house. Pick a class that fits their age and interest, come
-          experience the studio in person, and meet the instructors before you enroll. No pressure, no payment required
-          — just a chance to see if Evolve is the right fit for your family.
+          Your dancer&apos;s first class at Evolve is free. Come experience the studio, meet the instructors, and see if
+          it feels like the right fit for your family before you enroll. No pressure, no payment required.
         </p>
       </div>
 
