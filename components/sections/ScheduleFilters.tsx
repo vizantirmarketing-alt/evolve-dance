@@ -1,10 +1,11 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { ChevronDown } from 'lucide-react'
 import { ScheduleDayRows } from '@/components/ScheduleDayRows'
 import { cn } from '@/lib/utils'
 import { filterDayGroupsMonSat, groupByDay, type JackrabbitClass } from '@/lib/jackrabbit'
+import { getCurrentWeekDates, type WeekDayInfo } from '@/lib/schedule-today'
 
 export type AgeFilterValue = 'all' | '18m-3' | '3-5' | '5-7' | '7-11' | '11-14' | '14+'
 
@@ -60,6 +61,27 @@ export function ScheduleFilters({
 }) {
   const [category, setCategory] = useState<string>('all')
   const [age, setAge] = useState<AgeFilterValue>('all')
+  const [weekDates, setWeekDates] = useState<Record<string, WeekDayInfo> | null>(null)
+
+  useEffect(() => {
+    setWeekDates(getCurrentWeekDates())
+  }, [])
+
+  useEffect(() => {
+    if (!weekDates) return
+    if (window.scrollY > 100) return
+
+    const todayEntry = Object.entries(weekDates).find(([, info]) => info.isToday)
+    if (!todayEntry) return
+    const [todayName] = todayEntry
+
+    const el = document.getElementById(`day-${todayName.toLowerCase()}`)
+    if (!el) return
+
+    const offset = 80
+    const top = el.getBoundingClientRect().top + window.scrollY - offset
+    window.scrollTo({ top, behavior: 'smooth' })
+  }, [weekDates])
 
   const filtered = useMemo(() => {
     return classes.filter((c) => {
@@ -83,22 +105,43 @@ export function ScheduleFilters({
 
   const scheduleBody = (
     <div className="space-y-0">
-      {groupedMonSat.map((g, i) => (
-        <section
-          key={g.day}
-          className={cn(i > 0 && 'mt-12 border-t border-[rgba(10,186,181,0.12)] pt-12')}
-        >
-          <h2 className="font-display text-[clamp(26px,4vw,36px)] font-bold leading-tight text-teal">{g.day}</h2>
+      {groupedMonSat.map((g, i) => {
+        const dayInfo = weekDates?.[g.day]
+        const isToday = dayInfo?.isToday ?? false
+        const displayDate = dayInfo?.displayDate ?? ''
 
-          <ScheduleDayRows
-            classes={g.classes}
-            linkRows
-            surface={surface}
-            listClassName="mt-6"
-            tableClassName="mt-6"
-          />
-        </section>
-      ))}
+        return (
+          <section
+            key={g.day}
+            id={`day-${g.day.toLowerCase()}`}
+            className={cn(
+              i > 0 && 'mt-12 border-t border-[rgba(10,186,181,0.12)] pt-12',
+            )}
+          >
+            <div className="flex flex-col gap-1.5">
+              <h2 className="font-display text-[clamp(26px,4vw,36px)] font-bold leading-tight text-white">
+                {g.day}{displayDate ? `, ${displayDate}` : ''}
+              </h2>
+              {isToday ? (
+                <>
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-teal md:text-[11px]">
+                    Today
+                  </span>
+                  <div className="mt-1 h-px w-full bg-teal/40" aria-hidden />
+                </>
+              ) : null}
+            </div>
+
+            <ScheduleDayRows
+              classes={g.classes}
+              linkRows
+              surface={surface}
+              listClassName="mt-6"
+              tableClassName="mt-6"
+            />
+          </section>
+        )
+      })}
     </div>
   )
 
