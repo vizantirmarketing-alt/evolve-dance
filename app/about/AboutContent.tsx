@@ -43,6 +43,54 @@ const cherylSnowBio = [
   'Cheryl continues to receive top score, judges recognition, and choreography awards every year. She has also had the opportunity to judge national competitions throughout the country. She had the opportunity to help run the dance program and head up the competition team for Kingman Dance Factory along side the director, Judy Reese. Following that she became the assistant director alongside Meghan Hoover for Studio One\'s Southwest Dance Academy. Cheryl is so thrilled to continue her journey with Evolve Dance Center while striving to connect with her students and inspire them through an energetic yet disciplined atmosphere. Her passion and drive to continue to educate, inspire and train grows each day.',
 ] as const
 
+const founderPortraitSizes =
+  '(max-width: 640px) 176px, (max-width: 768px) 192px, (max-width: 1024px) 208px, 224px'
+
+function FounderCard({
+  imageSrc,
+  imageAlt,
+  name,
+  role,
+  bio,
+}: {
+  imageSrc: string
+  imageAlt: string
+  name: string
+  role: string
+  bio: readonly string[]
+}) {
+  return (
+    <article className="relative border-t-2 border-teal-500 bg-white shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+      <div className="p-8 md:p-10 lg:p-12">
+        <div className="mb-8 flex flex-col items-start gap-6 sm:flex-row sm:gap-8 md:mb-10">
+          <div className="relative aspect-[4/5] w-44 shrink-0 overflow-hidden sm:w-48 md:w-52 lg:w-56">
+            <Image
+              src={imageSrc}
+              alt={imageAlt}
+              fill
+              sizes={founderPortraitSizes}
+              quality={85}
+              className="object-cover"
+            />
+          </div>
+          <div className="min-w-0 flex-1 pt-2">
+            <h3 className="font-display text-3xl font-bold leading-[1.1] tracking-tight text-[#1F1F1C] md:text-4xl lg:text-5xl">
+              {name}
+            </h3>
+            <div className="mb-4 mt-4 h-px w-12 bg-teal-500" aria-hidden />
+            <p className="text-xs font-medium uppercase tracking-[0.15em] text-neutral-600 md:text-sm">{role}</p>
+          </div>
+        </div>
+        <div className="space-y-5 text-[15px] leading-[1.75] text-neutral-700 md:text-base">
+          {bio.map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
+        </div>
+      </div>
+    </article>
+  )
+}
+
 export default function AboutContent() {
   return (
     <>
@@ -150,57 +198,25 @@ export default function AboutContent() {
             </p>
           </RevealOnScroll>
 
-          <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2 md:mt-14">
+          <div className="mt-10 grid grid-cols-1 gap-8 md:mt-14 md:gap-10 lg:grid-cols-2">
             <RevealOnScroll delay={180}>
-              <article className="flex h-full flex-col overflow-hidden border border-[#D6DFDA] bg-white shadow-sm">
-                <div className="h-[2px] w-full shrink-0 bg-[#0ABAB5]" aria-hidden />
-                <div className="relative aspect-[4/5] w-full overflow-hidden">
-                  <Image
-                    src="/founders/meghan-hoover.jpg"
-                    alt="Meghan Hoover, co-founder of Evolve Dance Center"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="flex flex-1 flex-col p-6 md:p-8">
-                  <h3 className="font-display text-3xl font-bold text-[#1F1F1C] md:text-4xl">Meghan Hoover</h3>
-                  <p className="mt-2 text-sm font-medium uppercase tracking-wide text-teal-500">
-                    BFA in Dance · Co-Founder
-                  </p>
-                  <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-neutral-700 md:text-base">
-                    {meghanHooverBio.map((paragraph) => (
-                      <p key={paragraph.slice(0, 40)}>{paragraph}</p>
-                    ))}
-                  </div>
-                </div>
-              </article>
+              <FounderCard
+                imageSrc="/founders/meghan-hoover.jpg"
+                imageAlt="Meghan Hoover, co-founder of Evolve Dance Center"
+                name="Meghan Hoover"
+                role="BFA in Dance · Co-Founder"
+                bio={meghanHooverBio}
+              />
             </RevealOnScroll>
 
             <RevealOnScroll delay={260}>
-              <article className="flex h-full flex-col overflow-hidden border border-[#D6DFDA] bg-white shadow-sm">
-                <div className="h-[2px] w-full shrink-0 bg-[#0ABAB5]" aria-hidden />
-                <div className="relative aspect-[4/5] w-full overflow-hidden">
-                  <Image
-                    src="/founders/cheryl-snow.jpg"
-                    alt="Cheryl Snow, co-founder of Evolve Dance Center"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="flex flex-1 flex-col p-6 md:p-8">
-                  <h3 className="font-display text-3xl font-bold text-[#1F1F1C] md:text-4xl">Cheryl Snow</h3>
-                  <p className="mt-2 text-sm font-medium uppercase tracking-wide text-teal-500">
-                    BFA in Dance · Co-Founder · Ballet, Contemporary
-                  </p>
-                  <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-neutral-700 md:text-base">
-                    {cherylSnowBio.map((paragraph) => (
-                      <p key={paragraph.slice(0, 40)}>{paragraph}</p>
-                    ))}
-                  </div>
-                </div>
-              </article>
+              <FounderCard
+                imageSrc="/founders/cheryl-snow.jpg"
+                imageAlt="Cheryl Snow, co-founder of Evolve Dance Center"
+                name="Cheryl Snow"
+                role="BFA in Dance · Co-Founder · Ballet, Contemporary"
+                bio={cherylSnowBio}
+              />
             </RevealOnScroll>
           </div>
 
