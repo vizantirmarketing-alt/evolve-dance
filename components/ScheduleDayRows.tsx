@@ -4,7 +4,7 @@ import Link from 'next/link'
 import type { ReactNode } from 'react'
 import { ChevronRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import type { JackrabbitClass } from '@/lib/jackrabbit'
+import { JACKRABBIT_ENROLL_URL, type JackrabbitClass } from '@/lib/jackrabbit'
 
 export function instructorLine(c: JackrabbitClass): string {
   const ins = c.instructors.filter(Boolean)
@@ -14,7 +14,7 @@ export function instructorLine(c: JackrabbitClass): string {
 
 function rowHref(c: JackrabbitClass): string {
   const r = c.registerLink?.trim()
-  return r || '/enroll#free-trial'
+  return r || JACKRABBIT_ENROLL_URL
 }
 
 function ClassRowLink({ c, children }: { c: JackrabbitClass; children: ReactNode }) {

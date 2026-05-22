@@ -7,6 +7,7 @@ import { ArrowRight } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 import { siteConfig } from '@/data/site'
+import { JACKRABBIT_ENROLL_URL } from '@/lib/jackrabbit'
 // ─────────────────────────────────────────
 // SHARED COMPONENTS
 // ─────────────────────────────────────────
@@ -564,8 +565,10 @@ export function EnrollSection() {
 
         <Reveal delay={250}>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 md:mt-8 md:flex-row md:gap-[14px]">
-            <Link
-              href="/enroll"
+            <a
+              href={JACKRABBIT_ENROLL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className={buttonVariants({
                 variant: 'primary',
                 surface: 'dark',
@@ -577,7 +580,7 @@ export function EnrollSection() {
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden>
                 <path d="M1 7h12M8 2l5 5-5 5" />
               </svg>
-            </Link>
+            </a>
             <Link
               href="/schedule"
               className={buttonVariants({

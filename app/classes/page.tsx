@@ -7,6 +7,7 @@ import ComboCallout from '@/components/ComboCallout'
 import Footer from '@/components/layout/Footer'
 import Navbar from '@/components/layout/Navbar'
 import { danceStyles } from '@/data/styles'
+import { JACKRABBIT_ENROLL_URL } from '@/lib/jackrabbit'
 
 export const metadata: Metadata = {
   title: 'Dance Classes in Las Vegas',
@@ -44,12 +45,14 @@ export default function ClassesPage() {
               Ages 18 months to 18 years. All levels. First class is on us.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row">
-              <Link
-                href="/contact"
+              <a
+                href={JACKRABBIT_ENROLL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={buttonVariants({ variant: 'primary', size: 'wide' })}
               >
                 Book a Free Trial
-              </Link>
+              </a>
               <Link
                 href="/schedule"
                 className={buttonVariants({ variant: 'secondary', size: 'wide' })}
@@ -107,12 +110,14 @@ export default function ClassesPage() {
               Come in for a free trial class. No commitment. Our instructors will help place your dancer in the right
               level.
             </p>
-            <Link
-              href="/contact"
+            <a
+              href={JACKRABBIT_ENROLL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className={buttonVariants({ variant: 'primary', surface: 'inverse', size: 'wide' })}
             >
               Book a Free Trial
-            </Link>
+            </a>
           </div>
         </section>
       </main>

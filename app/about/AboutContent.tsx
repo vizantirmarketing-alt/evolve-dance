@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { RevealOnScroll } from '@/components/sections/RevealOnScroll'
 import { buttonVariants } from '@/components/ui/button-styles'
 import { siteConfig } from '@/data/site'
+import { JACKRABBIT_ENROLL_URL } from '@/lib/jackrabbit'
 
 function SectionEyebrow({ label, light = false }: { label: string; light?: boolean }) {
   return (
@@ -308,8 +309,10 @@ export default function AboutContent() {
           </RevealOnScroll>
           <RevealOnScroll delay={220}>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 md:flex-row md:gap-[14px]">
-              <Link
-                href="/enroll#free-trial"
+              <a
+                href={JACKRABBIT_ENROLL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={buttonVariants({
                   variant: 'primary',
                   surface: 'dark',
@@ -330,7 +333,7 @@ export default function AboutContent() {
                 >
                   <path d="M1 7h12M8 2l5 5-5 5" />
                 </svg>
-              </Link>
+              </a>
               <Link
                 href="/contact"
                 className={buttonVariants({

@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { buttonVariants } from '@/components/ui/button-styles'
 import { siteConfig } from '@/data/site'
+import { JACKRABBIT_ENROLL_URL } from '@/lib/jackrabbit'
 
 const LEVEL_LABEL: Record<'1' | '2' | '3', string> = {
   '1': 'Beginner',
@@ -113,7 +114,7 @@ export default function ClassCard({
 
       {spots > 0 ? (
         <a
-          href={siteConfig.jackrabbitEnroll}
+          href={JACKRABBIT_ENROLL_URL}
           target="_blank"
           rel="noopener noreferrer"
           className={buttonVariants({ variant: 'primary', size: 'card', className: 'mt-auto' })}

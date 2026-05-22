@@ -39,9 +39,6 @@ export const siteConfig = {
       'For ages 18 months to 6 years, we offer combination classes that split the hour between two dance styles. Perfect for little ones discovering movement for the first time.',
     ctaLabel: 'Enroll a Little One',
   },
-  jackrabbitEnroll:
-    'https://app3.jackrabbitclass.com/regv2.asp?id=531584',
-  jackrabbitLogin: 'https://app3.jackrabbitclass.com/',
   socialLinks: [
     {
       label: 'Instagram',

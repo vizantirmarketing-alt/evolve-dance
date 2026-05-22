@@ -1,6 +1,7 @@
 import { cn } from '@/lib/utils'
 import { buttonVariants } from '@/components/ui/button-styles'
 import { siteConfig } from '@/data/site'
+import { JACKRABBIT_ENROLL_URL } from '@/lib/jackrabbit'
 
 export interface ComboClass {
   title: string
@@ -68,7 +69,7 @@ export default function ComboCallout({
         </div>
 
         <a
-          href={siteConfig.jackrabbitEnroll}
+          href={JACKRABBIT_ENROLL_URL}
           target="_blank"
           rel="noopener noreferrer"
           className={buttonVariants({ variant: 'primary', size: 'wide' })}

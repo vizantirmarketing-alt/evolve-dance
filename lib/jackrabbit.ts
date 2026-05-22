@@ -2,6 +2,10 @@
  * Jackrabbit Class Openings (jr3.0) — fetch + normalize for Evolve Dance Center.
  */
 
+export const JACKRABBIT_ENROLL_URL =
+  process.env.NEXT_PUBLIC_JACKRABBIT_ENROLL_URL ||
+  'https://app.jackrabbitclass.com/regv2.asp?id=531584'
+
 const OPENINGS_URL = 'https://app.jackrabbitclass.com/jr3.0/Openings/OpeningsJson'
 
 const DAY_KEYS = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'] as const

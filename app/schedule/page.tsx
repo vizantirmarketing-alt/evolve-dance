@@ -5,7 +5,7 @@ import Footer from '@/components/layout/Footer'
 import Navbar from '@/components/layout/Navbar'
 import { ScheduleFilters } from '@/components/sections/ScheduleFilters'
 import { siteConfig } from '@/data/site'
-import { getJackrabbitClasses, getPublicClasses } from '@/lib/jackrabbit'
+import { getJackrabbitClasses, getPublicClasses, JACKRABBIT_ENROLL_URL } from '@/lib/jackrabbit'
 
 export const metadata: Metadata = {
   title: 'Weekly Class Schedule',
@@ -60,12 +60,14 @@ export default async function SchedulePage() {
                 </a>{' '}
                 or book a free trial.
               </p>
-              <Link
-                href="/enroll#free-trial"
+              <a
+                href={JACKRABBIT_ENROLL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={buttonVariants({ variant: 'primary', size: 'wide', className: 'mt-8' })}
               >
                 Book a Free Trial
-              </Link>
+              </a>
             </div>
           ) : (
             <ScheduleFilters classes={classes} categories={categories} surface="cream" />

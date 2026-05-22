@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { buttonVariants } from '@/components/ui/button-styles'
+import { JACKRABBIT_ENROLL_URL } from '@/lib/jackrabbit'
 
 const stats = [
   { number: '10+',  label: 'Dance Styles' },
@@ -163,12 +164,14 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.65 }}
           className="flex gap-5 items-center"
         >
-          <Link
-            href="/enroll#free-trial"
+          <a
+            href={JACKRABBIT_ENROLL_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className={buttonVariants({ variant: 'primary', size: 'wide' })}
           >
             Book a Free Trial
-          </Link>
+          </a>
 
           <Link
             href="/schedule"

@@ -1,5 +1,7 @@
 import type { NextConfig } from 'next'
 
+import { JACKRABBIT_ENROLL_URL } from './lib/jackrabbit'
+
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
@@ -13,15 +15,15 @@ const nextConfig: NextConfig = {
       { source: '/the-center-1',                    destination: '/about',             permanent: true },
       { source: '/copy-of-news',                    destination: '/about#calendar',    permanent: true },
       { source: '/copy-of-2024-summer-schedule',    destination: '/schedule',  permanent: true },
-      { source: '/copy-of-register',                destination: '/enroll',            permanent: true },
+      { source: '/copy-of-register',                destination: JACKRABBIT_ENROLL_URL, permanent: true },
       { source: '/copy-of-policies',                destination: '/about#dress-code',  permanent: true },
       { source: '/services-4',                      destination: '/classes',           permanent: true },
-      { source: '/tuition',                         destination: '/enroll#pricing',    permanent: true },
+      { source: '/tuition',                         destination: JACKRABBIT_ENROLL_URL, permanent: true },
       { source: '/the-faculty',                     destination: '/faculty',           permanent: true },
       { source: '/newsletter',                      destination: '/about#news',        permanent: true },
       { source: '/about-3',                         destination: '/the-project',       permanent: true },
       { source: '/about-us',                        destination: '/about',             permanent: true },
-      { source: '/register',                        destination: '/enroll',            permanent: true },
+      { source: '/register',                        destination: JACKRABBIT_ENROLL_URL, permanent: true },
     ]
   },
 }

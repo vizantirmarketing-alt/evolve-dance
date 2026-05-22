@@ -6,6 +6,7 @@ import SmartLink from '@/components/SmartLink'
 import { buttonVariants } from '@/components/ui/button-styles'
 import { ArrowRight } from 'lucide-react'
 import { siteConfig } from '@/data/site'
+import { JACKRABBIT_ENROLL_URL } from '@/lib/jackrabbit'
 
 export interface NavLinkItem {
   label: string
@@ -94,13 +95,15 @@ export default function Nav({ links }: NavProps) {
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           {/* Desktop enroll */}
-          <SmartLink
-            href="/enroll"
+          <a
+            href={JACKRABBIT_ENROLL_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className={buttonVariants({ variant: 'primary', size: 'nav', className: 'nav-desktop group relative' })}
           >
             <span>{siteConfig.enrollCtaLabel}</span>
             <ArrowRight className="h-3.5 w-3.5 shrink-0 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
-          </SmartLink>
+          </a>
 
           {/* Hamburger */}
           <button
@@ -197,7 +200,7 @@ export default function Nav({ links }: NavProps) {
               </li>
             ))}
             <li style={{ marginTop: '28px' }}>
-              <a href={siteConfig.jackrabbitEnroll}
+              <a href={JACKRABBIT_ENROLL_URL}
                 target="_blank" rel="noopener noreferrer"
                 className={buttonVariants({ variant: 'primary', size: 'nav' })}
                 style={{ textDecoration: 'none' }}>
