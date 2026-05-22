@@ -6,10 +6,16 @@ import Navbar from '@/components/layout/Navbar'
 import AboutContent from './AboutContent'
 
 export const metadata: Metadata = {
-  title: 'About Evolve Dance Center',
+  title: 'About Evolve Dance Center | Las Vegas Dance Studio Founded 2017',
   description:
-    'Premier Las Vegas dance studio established in 2016. Six professional studios, twenty-two working teachers, programs for ages 18 months to 18 years.',
+    'Founded in 2017 by BFA-trained dancers Meghan Hoover and Cheryl Snow, Evolve Dance Center offers exceptional dance training in Southwest Las Vegas — from recreational classes to elite competitive programs.',
   alternates: { canonical: '/about' },
+  openGraph: {
+    title: 'About Evolve Dance Center | Las Vegas Dance Studio',
+    description:
+      'Meet the co-founders behind Las Vegas\'s premier dance studio. BFA-trained professionals offering recreational to elite competitive dance training since 2017.',
+    url: '/about',
+  },
 }
 
 export default function AboutPage() {

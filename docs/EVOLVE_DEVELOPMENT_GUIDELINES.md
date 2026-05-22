@@ -402,7 +402,7 @@ import '../styles/globals.css'
 | Secondary CTA  | "Watch the Studio" — opens lightbox                     |
 | Tertiary CTA   | "View Schedule" — ghost link, links to `/classes`       |
 | Controls       | Mute + Play/Pause — top right, frosted glass            |
-| Stats strip    | 10+ styles, 22 faculty, 9 seasons, ★ 5.0                |
+| Stats strip    | 10+ styles, 22 faculty, 8 seasons, ★ 5.0                |
 | Scroll hint    | Teal gradient line + "Scroll" vertical text             |
 
 ### ClassFinder (`components/sections/ClassFinder.tsx`)

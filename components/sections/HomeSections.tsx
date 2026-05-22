@@ -134,7 +134,7 @@ export function AboutSection() {
             {[
               { num: '6',    lbl: 'Dance Rooms' },
               { num: '18mo', lbl: 'Youngest Dancer' },
-              { num: '2016', lbl: 'Est. Las Vegas' },
+              { num: '2017', lbl: 'Est. Las Vegas' },
             ].map(s => (
               <div key={s.lbl} className="text-center md:text-left">
                 <div className="font-display text-[40px] font-bold leading-none text-[#0ABAB5]" style={{ textShadow: '0 0 30px rgba(10,186,181,0.2)' }}>

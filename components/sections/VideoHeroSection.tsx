@@ -15,8 +15,7 @@ interface VideoHeroProps {
 
 // ── Stat strip data ──────────────────────────────────
 const stats = [
-  { number: '9', label: 'Seasons Strong' },
-  { number: '4.6★', label: 'Google Rating' },
+  { number: '8', label: 'Seasons Strong' },
   { number: 'Ages 18mo–18yrs', label: 'All Levels Welcome' },
   { number: '6', label: 'Dance Rooms' },
 ]
@@ -145,7 +144,7 @@ export default function VideoHeroSection({
                 textShadow: '0 1px 12px rgba(0,0,0,0.6)',
               }}
             >
-              Ages 18 months to 18 years. Twenty-two working teachers. Six studio rooms in southwest Las Vegas. A team that's been training dancers here since 2016.
+              Ages 18 months to 18 years. Twenty-two working teachers. Six studio rooms in southwest Las Vegas. A team that's been training dancers here since 2017.
             </motion.p>
 
             {/* CTA buttons — mobile: primary + watch link; desktop: all three */}
@@ -283,7 +282,7 @@ export default function VideoHeroSection({
         <p className="mx-auto max-w-[36rem] border-b border-[#D6DFDA] px-4 py-3 text-center text-[12px] font-light leading-[1.6] text-[#6D6C67] md:px-12 md:py-3.5 md:text-[13px]">
           {statsStripSubline}
         </p>
-        <div className="grid grid-cols-2 md:grid-cols-4">
+        <div className="grid grid-cols-1 md:grid-cols-3">
           {stats.map((stat, i) => (
             <div
               key={stat.label}

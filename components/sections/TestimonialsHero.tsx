@@ -40,18 +40,6 @@ function reviewerInitial(name: string): string {
   return name.trim().charAt(0).toUpperCase() || '?'
 }
 
-function StarRating({ className }: { className?: string }) {
-  return (
-    <span
-      className={cn('block text-[11px] tracking-[3px]', className)}
-      style={{ color: TEAL }}
-      aria-hidden
-    >
-      ★★★★★
-    </span>
-  )
-}
-
 function ProgressIndicators({
   count,
   currentIndex,
@@ -146,7 +134,6 @@ function HeroSlideContent({ testimonial }: { testimonial: Testimonial }) {
         {reviewerInitial(testimonial.reviewerName)}
       </div>
       <div className="min-w-0 text-center md:text-left">
-        <StarRating className="mb-2 md:mb-4" />
         <p
           className="font-display mb-3 line-clamp-3 text-[16px] font-normal italic leading-snug md:mb-5 md:text-[19px] md:leading-relaxed"
           style={{ color: IVORY }}
@@ -317,8 +304,6 @@ function TestimonialModal({
                 </p>
               </div>
             </header>
-
-            <StarRating className="mb-5 shrink-0" />
 
             <div className="mb-6 max-h-[60vh] min-h-0 overflow-y-auto md:mb-8">
               <p

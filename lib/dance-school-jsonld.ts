@@ -54,7 +54,11 @@ export function buildDanceSchoolJsonLd(studioHours: StudioHours | null) {
     '@context': 'https://schema.org',
     '@type': 'DanceSchool',
     name: siteConfig.name,
-    foundingDate: '2016',
+    foundingDate: '2017',
+    founder: [
+      { '@type': 'Person', name: 'Meghan Hoover' },
+      { '@type': 'Person', name: 'Cheryl Snow' },
+    ],
     address: {
       '@type': 'PostalAddress',
       streetAddress: '6070 S Rainbow Blvd',
@@ -78,11 +82,5 @@ export function buildDanceSchoolJsonLd(studioHours: StudioHours | null) {
     },
     sameAs: siteConfig.socialLinks.map((link) => link.href),
     ...(openingHoursSpecification.length > 0 ? { openingHoursSpecification } : {}),
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.6',
-      bestRating: '5',
-      ratingCount: '50',
-    },
   }
 }

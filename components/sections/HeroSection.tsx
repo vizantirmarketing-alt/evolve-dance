@@ -7,8 +7,7 @@ import { buttonVariants } from '@/components/ui/button-styles'
 const stats = [
   { number: '10+',  label: 'Dance Styles' },
   { number: '22',   label: 'Expert Faculty' },
-  { number: '9',    label: 'Seasons Strong' },
-  { number: '★ 5.0', label: 'Google Rating' },
+  { number: '8',    label: 'Seasons Strong' },
 ]
 
 export default function HeroSection() {
@@ -189,7 +188,7 @@ export default function HeroSection() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, amount: 0 }}
         transition={{ duration: 0.8, delay: 1 }}
-        className="absolute bottom-0 left-0 right-0 z-[3] grid grid-cols-4 border-t border-[rgba(10,186,181,0.12)]"
+        className="absolute bottom-0 left-0 right-0 z-[3] grid grid-cols-3 border-t border-[rgba(10,186,181,0.12)]"
       >
         {stats.map((stat, i) => (
           <div

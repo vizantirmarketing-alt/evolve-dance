@@ -85,7 +85,7 @@ export default function OpenGraphImage() {
           }}
         >
           <span style={{ fontSize: 20, color: '#0ABAB5' }}>evolvedancecenter.com</span>
-          <span style={{ fontSize: 18, color: 'rgba(247, 245, 241, 0.45)' }}>Est. 2016 · Southwest Las Vegas</span>
+          <span style={{ fontSize: 18, color: 'rgba(247, 245, 241, 0.45)' }}>Est. 2017 · Southwest Las Vegas</span>
         </div>
       </div>
     ),
