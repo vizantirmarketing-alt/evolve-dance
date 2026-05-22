@@ -161,16 +161,21 @@ export default function VideoHeroSection({
                   Explore Classes
                   <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" aria-hidden />
                 </Link>
-                <Link
-                  href="/free-trial"
-                  className={buttonVariants({
-                    variant: 'secondary',
-                    surface: 'dark',
-                    className: 'pointer-events-auto self-start w-full sm:w-auto',
-                  })}
-                >
-                  Book a Free Trial
-                </Link>
+                <div className="flex flex-col items-start gap-1.5">
+                  <Link
+                    href="/free-trial"
+                    className={buttonVariants({
+                      variant: 'secondary',
+                      surface: 'dark',
+                      className: 'pointer-events-auto self-start w-full sm:w-auto',
+                    })}
+                  >
+                    Book a Free Trial
+                  </Link>
+                  <span className="pl-0.5 text-[11px] font-medium uppercase tracking-[0.12em] text-white/55">
+                    First class on us
+                  </span>
+                </div>
                 <button
                   type="button"
                   onClick={() => setLightbox(true)}
@@ -197,16 +202,21 @@ export default function VideoHeroSection({
                   Explore Classes
                   <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" aria-hidden />
                 </Link>
-                <Link
-                  href="/free-trial"
-                  className={buttonVariants({
-                    variant: 'secondary',
-                    surface: 'dark',
-                    className: 'pointer-events-auto md:w-auto md:justify-start',
-                  })}
-                >
-                  Book a Free Trial
-                </Link>
+                <div className="flex flex-col items-start gap-1.5">
+                  <Link
+                    href="/free-trial"
+                    className={buttonVariants({
+                      variant: 'secondary',
+                      surface: 'dark',
+                      className: 'pointer-events-auto md:w-auto md:justify-start',
+                    })}
+                  >
+                    Book a Free Trial
+                  </Link>
+                  <span className="pl-0.5 text-[11px] font-medium uppercase tracking-[0.12em] text-white/55">
+                    First class on us
+                  </span>
+                </div>
 
                 <button
                   type="button"

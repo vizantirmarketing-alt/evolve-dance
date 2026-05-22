@@ -7,14 +7,14 @@ import Navbar from '@/components/layout/Navbar'
 import { FreeTrialContent } from './FreeTrialContent'
 
 export const metadata: Metadata = {
-  title: 'Book a Free Trial Class | Evolve Dance Center Las Vegas',
+  title: 'Free First Dance Class | Evolve Dance Center Las Vegas',
   description:
-    'Try a free dance class at Evolve Dance Center in Southwest Las Vegas. BFA-trained instructors, ballet, hip hop, contemporary, jazz, and more. Ages 18 months to 18 years.',
+    "Your dancer's first class at Evolve Dance Center is free. BFA-trained instructors, ballet, hip hop, contemporary, jazz, and more. Ages 18 months to 18 years. Southwest Las Vegas.",
   alternates: { canonical: '/free-trial' },
   openGraph: {
-    title: 'Book a Free Trial Class | Evolve Dance Center',
+    title: 'Free First Dance Class | Evolve Dance Center',
     description:
-      "Try a free dance class at Las Vegas's premier dance studio. BFA-trained instructors, all genres, ages 18 months to 18 years.",
+      "Try a free first class at Las Vegas's premier dance studio. BFA-trained instructors, all genres, ages 18 months to 18 years.",
     url: '/free-trial',
   },
 }

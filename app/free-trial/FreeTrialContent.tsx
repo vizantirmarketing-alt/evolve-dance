@@ -41,9 +41,10 @@ const CLASS_INTEREST_OPTIONS = [
 ] as const
 
 const WHAT_TO_EXPECT = [
-  "We'll reach out within 1 business day to confirm your trial class time",
-  "You'll come to the studio, meet the instructor, and watch or participate in a class",
-  "If you love it, we'll help you enroll. If not, no pressure — we appreciate you giving us a try.",
+  "We'll reach out within 1 business day to confirm your trial class",
+  'Your dancer attends their first class completely free',
+  'Meet the instructors and see the studio in person',
+  "If you love it, we'll help you enroll — no pressure",
 ] as const
 
 const TRUST_ELEMENTS = [
@@ -120,6 +121,7 @@ export function FreeTrialContent() {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState('')
   const [submittedParentName, setSubmittedParentName] = useState('')
+  const [submittedChildName, setSubmittedChildName] = useState('')
   const [turnstileToken, setTurnstileToken] = useState('')
   const turnstileRef = useRef<TurnstileInstance>(null)
 
@@ -204,6 +206,7 @@ export function FreeTrialContent() {
       }
 
       setSubmittedParentName(formData.parentName.trim())
+      setSubmittedChildName(formData.childName.trim())
       setStatus('success')
       setFormData({ ...emptyForm })
       setTouched({})
@@ -221,19 +224,19 @@ export function FreeTrialContent() {
         <div className="mb-4 flex items-center gap-3">
           <div className="h-px w-7 bg-teal" />
           <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-teal md:text-[12px]">
-            Free Trial Class
+            First Class Free
           </span>
         </div>
         <h1
           className="font-display font-bold leading-tight text-foreground"
           style={{ fontSize: 'clamp(32px, 4vw, 48px)' }}
         >
-          Come try a class before you commit
+          Try your first class on us
         </h1>
         <p className="mt-5 max-w-2xl text-[14px] font-light leading-[1.8] text-foreground-muted md:text-[15px]">
-          Pick a class that fits your dancer, come experience the studio in person, and meet the instructors before you
-          enroll. There&apos;s no pressure and no payment required — just a chance to see if Evolve is the right fit for
-          your family.
+          Your dancer&apos;s first class at Evolve is on the house. Pick a class that fits their age and interest, come
+          experience the studio in person, and meet the instructors before you enroll. No pressure, no payment required
+          — just a chance to see if Evolve is the right fit for your family.
         </p>
       </div>
 
@@ -248,12 +251,12 @@ export function FreeTrialContent() {
                 </span>
               </div>
               <h2 className="font-display text-[clamp(28px,3.5vw,42px)] font-bold leading-tight text-foreground">
-                Trial request received
+                Free class request received
               </h2>
               <p className="mt-4 text-[14px] font-light leading-[1.8] text-foreground-muted md:text-[15px]">
                 Thanks, {submittedParentName}! We&apos;ve received your request and will reach out within 1 business day
-                to confirm your trial class. Keep an eye on your email — and if you don&apos;t hear back within 24 hours,
-                feel free to call us at{' '}
+                to confirm {submittedChildName}&apos;s free class. Keep an eye on your email — and if you don&apos;t hear
+                back within 24 hours, feel free to call us at{' '}
                 <a href={`tel:${siteConfig.phoneTel}`} className="text-teal underline-offset-2 hover:underline">
                   {siteConfig.phone}
                 </a>
@@ -521,7 +524,7 @@ export function FreeTrialContent() {
                     </>
                   ) : (
                     <>
-                      Book My Free Trial
+                      Book My Dancer&apos;s Free Class
                       <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
                     </>
                   )}

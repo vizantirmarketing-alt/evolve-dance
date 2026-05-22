@@ -172,9 +172,14 @@ export default function HeroSection() {
               <path d="M1 7h12M8 2l5 5-5 5" />
             </svg>
           </Link>
-          <Link href="/free-trial" className={buttonVariants({ variant: 'secondary', size: 'wide' })}>
-            Book a Free Trial
-          </Link>
+          <div className="flex flex-col items-start gap-1.5">
+            <Link href="/free-trial" className={buttonVariants({ variant: 'secondary', size: 'wide' })}>
+              Book a Free Trial
+            </Link>
+            <span className="pl-0.5 text-[11px] font-medium uppercase tracking-[0.12em] text-foreground-muted">
+              First class on us
+            </span>
+          </div>
         </motion.div>
       </div>
 
