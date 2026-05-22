@@ -95,8 +95,8 @@ export default function AboutContent() {
   return (
     <>
       {/* Section 1 — Hero */}
-      <section className="bg-background px-4 pb-14 pt-24 md:px-12 md:pb-20 md:pt-28">
-        <div className="mx-auto max-w-7xl">
+      <section className="bg-background pb-14 pt-24 md:pb-20 md:pt-28">
+        <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
           <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-16">
             <div>
               <RevealOnScroll>
@@ -139,8 +139,8 @@ export default function AboutContent() {
       </section>
 
       {/* Section 2 — Founding Story */}
-      <section className="bg-[#F7F5F1] px-4 py-14 md:px-12 md:py-20">
-        <div className="mx-auto max-w-7xl">
+      <section className="bg-[#F7F5F1] py-14 md:py-20">
+        <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-[1fr_1.4fr] md:gap-16">
             <div>
               <RevealOnScroll>
@@ -183,14 +183,14 @@ export default function AboutContent() {
       </section>
 
       {/* Section 3 — Co-Founders */}
-      <section className="bg-[#FCFBF8] px-4 py-14 md:px-12 md:py-20">
-        <div className="mx-auto max-w-7xl">
+      <section className="bg-[#FCFBF8] py-14 md:py-20">
+        <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
           <RevealOnScroll>
             <SectionEyebrow label="Meet Our Co-Founders" />
           </RevealOnScroll>
           <RevealOnScroll delay={100}>
-            <h2 className="max-w-3xl font-display font-bold leading-[1.05] text-[#1F1F1C] text-[26px] md:text-[clamp(28px,3.5vw,42px)]">
-              Meghan Hoover &amp; Cheryl Snow
+            <h2 className="max-w-3xl font-display font-bold leading-[1.1] tracking-tight text-[#1F1F1C] text-[22px] sm:text-[26px] md:text-[clamp(28px,3.5vw,42px)]">
+              Meghan&nbsp;Hoover &amp; Cheryl&nbsp;Snow
             </h2>
             <p className="mt-4 max-w-3xl text-[15px] font-light leading-[1.8] text-[#6D6C67] md:mt-5 md:text-[16px]">
               Two BFA-trained dance professionals with decades of combined teaching, performing, and choreography
@@ -240,8 +240,8 @@ export default function AboutContent() {
       </section>
 
       {/* Section 4 — Mission */}
-      <section className="bg-[#F7F5F1] px-4 py-14 md:px-12 md:py-20">
-        <div className="mx-auto max-w-7xl">
+      <section className="bg-[#F7F5F1] py-14 md:py-20">
+        <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-[1fr_1.4fr] md:gap-16">
             <div>
               <RevealOnScroll>
@@ -283,8 +283,8 @@ export default function AboutContent() {
       </section>
 
       {/* Section 5 — The Studio */}
-      <section className="bg-[#0f2318] px-4 py-14 md:px-12 md:py-20">
-        <div className="mx-auto max-w-7xl">
+      <section className="bg-[#0f2318] py-14 md:py-20">
+        <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
           <RevealOnScroll>
             <SectionEyebrow label="The Studio" light />
           </RevealOnScroll>
@@ -327,8 +327,8 @@ export default function AboutContent() {
       </section>
 
       {/* Section 6 — CTA */}
-      <section className="relative overflow-hidden bg-[#1a2e2c] px-4 py-14 md:px-12 md:py-20">
-        <div className="relative z-[1] mx-auto max-w-[580px] text-center">
+      <section className="relative overflow-hidden bg-[#1a2e2c] py-14 md:py-20">
+        <div className="relative z-[1] mx-auto max-w-[580px] px-6 text-center md:px-8 lg:px-12">
           <RevealOnScroll>
             <h2 className="font-display font-bold leading-tight text-[#F7F5F1] text-[26px] md:text-[clamp(28px,3.5vw,42px)]">
               Come see the studio
