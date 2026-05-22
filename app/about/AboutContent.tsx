@@ -63,7 +63,7 @@ function FounderCard({
     <article className="relative border-t-2 border-teal-500 bg-white shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
       <div className="p-8 md:p-10 lg:p-12">
         <div className="mb-8 flex flex-col items-start gap-6 sm:flex-row sm:gap-8 md:mb-10">
-          <div className="relative aspect-[4/5] w-44 shrink-0 overflow-hidden sm:w-48 md:w-52 lg:w-56">
+          <div className="relative aspect-[4/5] w-44 shrink-0 overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.08)] ring-1 ring-black/5 sm:w-48 md:w-52 lg:w-56">
             <Image
               src={imageSrc}
               alt={imageAlt}
