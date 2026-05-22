@@ -6,7 +6,6 @@ import Link from 'next/link'
 import { RevealOnScroll } from '@/components/sections/RevealOnScroll'
 import { buttonVariants } from '@/components/ui/button-styles'
 import { siteConfig } from '@/data/site'
-import { JACKRABBIT_ENROLL_URL } from '@/lib/jackrabbit'
 
 function SectionEyebrow({ label, light = false }: { label: string; light?: boolean }) {
   return (
@@ -303,16 +302,14 @@ export default function AboutContent() {
           </RevealOnScroll>
           <RevealOnScroll delay={120}>
             <p className="mx-auto mt-4 max-w-md text-[15px] leading-[1.7] text-[#F7F5F1]/75 md:text-[16px]">
-              Visit us at {siteConfig.addressLine1} in southwest Las Vegas, or book a free trial to experience a class
-              firsthand.
+              Visit us at {siteConfig.addressLine1} in southwest Las Vegas, or browse our schedule to find the right
+              class for your dancer.
             </p>
           </RevealOnScroll>
           <RevealOnScroll delay={220}>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 md:flex-row md:gap-[14px]">
-              <a
-                href={JACKRABBIT_ENROLL_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/schedule"
                 className={buttonVariants({
                   variant: 'primary',
                   surface: 'dark',
@@ -320,7 +317,7 @@ export default function AboutContent() {
                   className: 'w-full whitespace-nowrap md:w-auto',
                 })}
               >
-                Book a Free Trial
+                View Class Schedule
                 <svg
                   width="14"
                   height="14"
@@ -333,7 +330,7 @@ export default function AboutContent() {
                 >
                   <path d="M1 7h12M8 2l5 5-5 5" />
                 </svg>
-              </a>
+              </Link>
               <Link
                 href="/contact"
                 className={buttonVariants({

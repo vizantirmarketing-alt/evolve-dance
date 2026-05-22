@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, Play } from 'lucide-react'
 import { buttonVariants } from '@/components/ui/button-styles'
-import { JACKRABBIT_ENROLL_URL } from '@/lib/jackrabbit'
 
 // ── Types ────────────────────────────────────────────
 interface VideoHeroProps {
@@ -151,23 +150,10 @@ export default function VideoHeroSection({
             {/* CTA buttons — mobile: primary + watch link; desktop: all three */}
             <motion.div variants={item} className="mb-6 w-full md:mb-6">
               <div className="flex flex-col items-start gap-3 md:hidden">
-                <a
-                  href={JACKRABBIT_ENROLL_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={buttonVariants({
-                    variant: 'primary',
-                    surface: 'dark',
-                    className: 'group pointer-events-auto self-start w-full sm:w-auto',
-                  })}
-                >
-                  Book a Free Trial
-                  <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" aria-hidden />
-                </a>
                 <Link
                   href="/classes"
                   className={buttonVariants({
-                    variant: 'secondary',
+                    variant: 'primary',
                     surface: 'dark',
                     className: 'group pointer-events-auto self-start w-full sm:w-auto',
                   })}
@@ -190,24 +176,10 @@ export default function VideoHeroSection({
               </div>
 
               <div className="hidden md:flex md:flex-row md:flex-wrap md:items-start md:gap-4">
-                <a
-                  href={JACKRABBIT_ENROLL_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={buttonVariants({
-                    variant: 'primary',
-                    surface: 'dark',
-                    className: 'group pointer-events-auto md:w-auto md:justify-start',
-                  })}
-                >
-                  <span>Book a Free Trial</span>
-                  <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
-                </a>
-
                 <Link
                   href="/classes"
                   className={buttonVariants({
-                    variant: 'secondary',
+                    variant: 'primary',
                     surface: 'dark',
                     className: 'group pointer-events-auto md:w-auto md:justify-start',
                   })}

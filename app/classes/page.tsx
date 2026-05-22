@@ -7,8 +7,6 @@ import ComboCallout from '@/components/ComboCallout'
 import Footer from '@/components/layout/Footer'
 import Navbar from '@/components/layout/Navbar'
 import { danceStyles } from '@/data/styles'
-import { JACKRABBIT_ENROLL_URL } from '@/lib/jackrabbit'
-
 export const metadata: Metadata = {
   title: 'Dance Classes in Las Vegas',
   description:
@@ -45,14 +43,12 @@ export default function ClassesPage() {
               Ages 18 months to 18 years. All levels. First class is on us.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row">
-              <a
-                href={JACKRABBIT_ENROLL_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/contact"
                 className={buttonVariants({ variant: 'primary', size: 'wide' })}
               >
-                Book a Free Trial
-              </a>
+                Contact Us
+              </Link>
               <Link
                 href="/schedule"
                 className={buttonVariants({ variant: 'secondary', size: 'wide' })}
@@ -107,17 +103,14 @@ export default function ClassesPage() {
               Still not sure where to start?
             </h2>
             <p className="mb-10 text-[15px] leading-[1.75] text-[#070a09]/85">
-              Come in for a free trial class. No commitment. Our instructors will help place your dancer in the right
-              level.
+              Not sure which class is the right fit? Our instructors will help place your dancer in the right level.
             </p>
-            <a
-              href={JACKRABBIT_ENROLL_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/contact"
               className={buttonVariants({ variant: 'primary', surface: 'inverse', size: 'wide' })}
             >
-              Book a Free Trial
-            </a>
+              Contact Us
+            </Link>
           </div>
         </section>
       </main>

@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { buttonVariants } from '@/components/ui/button-styles'
-import { JACKRABBIT_ENROLL_URL } from '@/lib/jackrabbit'
 
 const stats = [
   { number: '10+',  label: 'Dance Styles' },
@@ -164,18 +163,9 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.65 }}
           className="flex gap-5 items-center"
         >
-          <a
-            href={JACKRABBIT_ENROLL_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={buttonVariants({ variant: 'primary', size: 'wide' })}
-          >
-            Book a Free Trial
-          </a>
-
           <Link
             href="/schedule"
-            className={buttonVariants({ variant: 'secondary', size: 'wide' })}
+            className={buttonVariants({ variant: 'primary', size: 'wide' })}
           >
             View Schedule
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">

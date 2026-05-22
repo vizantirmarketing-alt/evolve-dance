@@ -5,7 +5,7 @@ import Footer from '@/components/layout/Footer'
 import Navbar from '@/components/layout/Navbar'
 import { ScheduleFilters } from '@/components/sections/ScheduleFilters'
 import { siteConfig } from '@/data/site'
-import { getJackrabbitClasses, getPublicClasses, JACKRABBIT_ENROLL_URL } from '@/lib/jackrabbit'
+import { getJackrabbitClasses, getPublicClasses } from '@/lib/jackrabbit'
 
 export const metadata: Metadata = {
   title: 'Weekly Class Schedule',
@@ -47,7 +47,7 @@ export default async function SchedulePage() {
               </span>
             </h1>
             <p className="mt-6 text-[15px] font-light leading-[1.8] md:text-[16px] text-[#6D6C67]">
-              Live schedule updates from our registration system. Book a free trial to join any open class.
+              Live schedule updates from our registration system. Contact us if you need help finding the right class.
             </p>
           </div>
 
@@ -58,16 +58,14 @@ export default async function SchedulePage() {
                 <a href={`tel:${siteConfig.phoneTel}`} className="text-[#0ABAB5] underline-offset-2 hover:underline">
                   {siteConfig.phone}
                 </a>{' '}
-                or book a free trial.
+                or reach out and we&apos;ll help you find the right class.
               </p>
-              <a
-                href={JACKRABBIT_ENROLL_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/contact"
                 className={buttonVariants({ variant: 'primary', size: 'wide', className: 'mt-8' })}
               >
-                Book a Free Trial
-              </a>
+                Contact Us for Class Info
+              </Link>
             </div>
           ) : (
             <ScheduleFilters classes={classes} categories={categories} surface="cream" />
