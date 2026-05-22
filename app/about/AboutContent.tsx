@@ -332,7 +332,7 @@ export default function AboutContent() {
                 </svg>
               </Link>
               <Link
-                href="/contact"
+                href="/free-trial"
                 className={buttonVariants({
                   variant: 'secondary',
                   surface: 'dark',
@@ -340,7 +340,7 @@ export default function AboutContent() {
                   className: 'w-full whitespace-nowrap md:w-auto',
                 })}
               >
-                Contact Us
+                Book a Free Trial
               </Link>
             </div>
           </RevealOnScroll>

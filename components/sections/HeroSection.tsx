@@ -172,6 +172,9 @@ export default function HeroSection() {
               <path d="M1 7h12M8 2l5 5-5 5" />
             </svg>
           </Link>
+          <Link href="/free-trial" className={buttonVariants({ variant: 'secondary', size: 'wide' })}>
+            Book a Free Trial
+          </Link>
         </motion.div>
       </div>
 

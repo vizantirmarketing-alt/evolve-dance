@@ -161,6 +161,16 @@ export default function VideoHeroSection({
                   Explore Classes
                   <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" aria-hidden />
                 </Link>
+                <Link
+                  href="/free-trial"
+                  className={buttonVariants({
+                    variant: 'secondary',
+                    surface: 'dark',
+                    className: 'pointer-events-auto self-start w-full sm:w-auto',
+                  })}
+                >
+                  Book a Free Trial
+                </Link>
                 <button
                   type="button"
                   onClick={() => setLightbox(true)}
@@ -186,6 +196,16 @@ export default function VideoHeroSection({
                 >
                   Explore Classes
                   <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" aria-hidden />
+                </Link>
+                <Link
+                  href="/free-trial"
+                  className={buttonVariants({
+                    variant: 'secondary',
+                    surface: 'dark',
+                    className: 'pointer-events-auto md:w-auto md:justify-start',
+                  })}
+                >
+                  Book a Free Trial
                 </Link>
 
                 <button

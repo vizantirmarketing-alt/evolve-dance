@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { buttonVariants } from '@/components/ui/button-styles'
+import { JACKRABBIT_ENROLL_URL } from '@/lib/jackrabbit'
 import ClassFinder from '@/components/ClassFinder'
 import StyleCard from '@/components/StyleCard'
 import ComboCallout from '@/components/ComboCallout'
@@ -43,17 +44,16 @@ export default function ClassesPage() {
               Ages 18 months to 18 years. All levels. First class is on us.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row">
-              <Link
-                href="/contact"
+              <a
+                href={JACKRABBIT_ENROLL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={buttonVariants({ variant: 'primary', size: 'wide' })}
               >
-                Contact Us
-              </Link>
-              <Link
-                href="/schedule"
-                className={buttonVariants({ variant: 'secondary', size: 'wide' })}
-              >
-                View Schedule
+                Enroll Now
+              </a>
+              <Link href="/free-trial" className={buttonVariants({ variant: 'secondary', size: 'wide' })}>
+                Book a Free Trial
               </Link>
             </div>
           </div>
@@ -106,10 +106,10 @@ export default function ClassesPage() {
               Not sure which class is the right fit? Our instructors will help place your dancer in the right level.
             </p>
             <Link
-              href="/contact"
+              href="/free-trial"
               className={buttonVariants({ variant: 'primary', surface: 'inverse', size: 'wide' })}
             >
-              Contact Us
+              Book a Free Trial
             </Link>
           </div>
         </section>
