@@ -29,6 +29,20 @@ const studioStats = [
   { num: '2017', lbl: 'Established' },
 ] as const
 
+const meghanHooverBio = [
+  'Meghan Hoover is a graduate from the University of South Florida with a BFA degree in Dance Performance & Choreography. She was awarded "Graduate with Distinction" from the college of fine arts for her excellence in dance and academics. Meghan has received master instruction under industry greats such as Mia Michaels, Frank Hatchett, Gus Giordano, and Luigi. Growing up, Meghan trained at the Terri Gordon Dance Center, Hartford Ballet School, Boston Ballet School, Broadway Dance Center, and Steps.',
+  'She received full scholarships to The Edge Dance Center in LA and the Gus Giordano Dance Center in Chicago. She toured the world while dancing for Holland America Cruise Lines as a dance captain & assistant choreographer. Meghan was a dancer & dance captain in the long-running Las Vegas classic "Jubilee" for 5 yrs, here on the Las Vegas Strip. She has worked for talent agencies such as Stiletto Entertainment, Best Agency, Missy Cochran Entertainment, & Dick Foster Productions. She has performed in numerous industrials, and commercial jobs here in Las Vegas.',
+  "Meghan has had 6 years of experience as the artistic director at Studio One's Southwest Dance Academy, and she looks forward to continuing on this path at Evolve Dance Center. Meghan has taught all techniques to dancers of all ages for the last 16 years, and has even taught at the University level at UNLV.",
+  'She has choreographed many numbers that have received overall level awards, recognition for exceptional choreography, and multiple "Top Studio" awards for the well-rounded program that she has developed. Meghan has a strong passion for instructing dance, as well as choreography. She has had years of experience judging at both regional and national competitions. She loves to inspire young artists and demands excellence from her students in a positive and encouraging studio environment.',
+] as const
+
+const cherylSnowBio = [
+  'As a dancer, teacher, and choreographer coming from a competitive gymnastics background, Cheryl has been teaching and choreographing many different techniques and styles for 15 years. She studied dance and entrepreneurship at UNLV and has a Bachelor of Fine Arts degree in dance performance and choreography. Cheryl graduated with honors and was awarded outstanding senior with distinction as best choreographer, performer, and student.',
+  "She has received master instruction and trained with some of the best in the industry including Complexions Contemporary Ballet, Cleo Parker Robinson, Jump Rhythm Jazz, and Erick Hawkins Dance Company. While training she received numerous scholarships and invitations to dance with company's such as Inaside Chicago Dance Company and Trinity Laban Conservatoire in London. She has performed in a wide variety of industrials and theatrical productions throughout Las Vegas and has also had the opportunity to travel and perform internationally.",
+  'Most currently Cheryl has been dancing in a Las Vegas based contemporary company, Sample Dance. She has received recognition for her choreography that lead to many of her works being shown internationally in South Korea, Turks and Caicos, Germany, and Russia. Cheryl has entered works and won choreography competitions as well as being a finalist in the McCallum Theatres, "Dance Under the Stars" choreography festival. She has had the honor to co-choreograph for Cirque Du Soleil\'s Choreographers Showcase and for workshops and studios throughout the nation.',
+  'Cheryl continues to receive top score, judges recognition, and choreography awards every year. She has also had the opportunity to judge national competitions throughout the country. She had the opportunity to help run the dance program and head up the competition team for Kingman Dance Factory along side the director, Judy Reese. Following that she became the assistant director alongside Meghan Hoover for Studio One\'s Southwest Dance Academy. Cheryl is so thrilled to continue her journey with Evolve Dance Center while striving to connect with her students and inspire them through an energetic yet disciplined atmosphere. Her passion and drive to continue to educate, inspire and train grows each day.',
+] as const
+
 export default function AboutContent() {
   return (
     <>
@@ -130,58 +144,62 @@ export default function AboutContent() {
             <h2 className="max-w-3xl font-display font-bold leading-[1.05] text-[#1F1F1C] text-[26px] md:text-[clamp(28px,3.5vw,42px)]">
               Meghan Hoover &amp; Cheryl Snow
             </h2>
-            <p className="mt-4 max-w-2xl text-[15px] font-light leading-[1.8] text-[#6D6C67] md:mt-5 md:text-[16px]">
-              BFA-trained dance professionals leading Evolve Dance Center since 2017.
+            <p className="mt-4 max-w-3xl text-[15px] font-light leading-[1.8] text-[#6D6C67] md:mt-5 md:text-[16px]">
+              Two BFA-trained dance professionals with decades of combined teaching, performing, and choreography
+              experience — leading Evolve Dance Center since 2017.
             </p>
           </RevealOnScroll>
 
-          <div className="mt-10 grid grid-cols-1 gap-8 md:mt-14 md:grid-cols-2 md:gap-12">
+          <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2 md:mt-14">
             <RevealOnScroll delay={180}>
-              <article className="relative border border-[#D6DFDA] bg-[#FCFBF8] p-6 md:p-8">
-                <div
-                  className="absolute left-0 top-0 h-px w-full bg-gradient-to-r from-[#0ABAB5] via-[#0ABAB5]/40 to-transparent"
-                  aria-hidden
-                />
-                <h3 className="font-display text-[clamp(22px,2.5vw,28px)] font-bold leading-[1.1] text-[#1F1F1C]">
-                  <Link href="/faculty" className="text-inherit no-underline transition-colors hover:text-[#0ABAB5]">
-                    Meghan Hoover
-                  </Link>
-                </h3>
-                <p className="mt-2 text-[12px] font-medium uppercase tracking-[0.18em] text-[#0ABAB5] md:text-[13px]">
-                  BFA in Dance · Co-Founder
-                </p>
-                <p className="mt-4 text-[15px] font-light leading-[1.8] text-[#6D6C67] md:text-[16px]">
-                  Meghan co-founded Evolve Dance Center with a vision for outstanding dance education in a
-                  family-friendly environment. With a Bachelor of Fine Arts in Dance and extensive professional
-                  performance experience worldwide, she brings deep technical training and award-winning choreography to
-                  every program at the studio.
-                </p>
+              <article className="flex h-full flex-col overflow-hidden border border-[#D6DFDA] bg-white shadow-sm">
+                <div className="h-[2px] w-full shrink-0 bg-[#0ABAB5]" aria-hidden />
+                <div className="relative aspect-[4/5] w-full overflow-hidden">
+                  <Image
+                    src="/founders/meghan-hoover.jpg"
+                    alt="Meghan Hoover, co-founder of Evolve Dance Center"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col p-6 md:p-8">
+                  <h3 className="font-display text-3xl font-bold text-[#1F1F1C] md:text-4xl">Meghan Hoover</h3>
+                  <p className="mt-2 text-sm font-medium uppercase tracking-wide text-teal-500">
+                    BFA in Dance · Co-Founder
+                  </p>
+                  <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-neutral-700 md:text-base">
+                    {meghanHooverBio.map((paragraph) => (
+                      <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+                    ))}
+                  </div>
+                </div>
               </article>
             </RevealOnScroll>
 
             <RevealOnScroll delay={260}>
-              <article className="relative border border-[#D6DFDA] bg-[#FCFBF8] p-6 md:p-8">
-                <div
-                  className="absolute left-0 top-0 h-px w-full bg-gradient-to-r from-[#0ABAB5] via-[#0ABAB5]/40 to-transparent"
-                  aria-hidden
-                />
-                <h3 className="font-display text-[clamp(22px,2.5vw,28px)] font-bold leading-[1.1] text-[#1F1F1C]">
-                  <Link href="/faculty" className="text-inherit no-underline transition-colors hover:text-[#0ABAB5]">
-                    Cheryl Snow
-                  </Link>
-                </h3>
-                <p className="mt-2 text-[12px] font-medium uppercase tracking-[0.18em] text-[#0ABAB5] md:text-[13px]">
-                  BFA in Dance · Co-Founder · Ballet, Contemporary
-                </p>
-                <p className="mt-4 text-[15px] font-light leading-[1.8] text-[#6D6C67] md:text-[16px]">
-                  Cheryl co-founded Evolve Dance Center alongside Meghan with the goal of building a studio that delivers
-                  exceptional training across every genre. She holds a Bachelor of Fine Arts in Dance, has performed
-                  professionally around the world, and leads{' '}
-                  <Link href="/the-project" className="text-[#0ABAB5] underline-offset-2 hover:underline">
-                    The Project
-                  </Link>{' '}
-                  — Evolve&apos;s pre-professional competition team.
-                </p>
+              <article className="flex h-full flex-col overflow-hidden border border-[#D6DFDA] bg-white shadow-sm">
+                <div className="h-[2px] w-full shrink-0 bg-[#0ABAB5]" aria-hidden />
+                <div className="relative aspect-[4/5] w-full overflow-hidden">
+                  <Image
+                    src="/founders/cheryl-snow.jpg"
+                    alt="Cheryl Snow, co-founder of Evolve Dance Center"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col p-6 md:p-8">
+                  <h3 className="font-display text-3xl font-bold text-[#1F1F1C] md:text-4xl">Cheryl Snow</h3>
+                  <p className="mt-2 text-sm font-medium uppercase tracking-wide text-teal-500">
+                    BFA in Dance · Co-Founder · Ballet, Contemporary
+                  </p>
+                  <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-neutral-700 md:text-base">
+                    {cherylSnowBio.map((paragraph) => (
+                      <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+                    ))}
+                  </div>
+                </div>
               </article>
             </RevealOnScroll>
           </div>

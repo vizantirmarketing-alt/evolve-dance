@@ -56,8 +56,24 @@ export function buildDanceSchoolJsonLd(studioHours: StudioHours | null) {
     name: siteConfig.name,
     foundingDate: '2017',
     founder: [
-      { '@type': 'Person', name: 'Meghan Hoover' },
-      { '@type': 'Person', name: 'Cheryl Snow' },
+      {
+        '@type': 'Person',
+        name: 'Meghan Hoover',
+        jobTitle: 'Co-Founder',
+        alumniOf: {
+          '@type': 'CollegeOrUniversity',
+          name: 'University of South Florida',
+        },
+      },
+      {
+        '@type': 'Person',
+        name: 'Cheryl Snow',
+        jobTitle: 'Co-Founder',
+        alumniOf: {
+          '@type': 'CollegeOrUniversity',
+          name: 'University of Nevada, Las Vegas',
+        },
+      },
     ],
     address: {
       '@type': 'PostalAddress',
