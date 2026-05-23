@@ -1,10 +1,8 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 
 import Footer from '@/components/layout/Footer'
 import Navbar from '@/components/layout/Navbar'
-import { urlFor } from '@/sanity/lib/image'
 import { getPublishedPosts, type BlogPost } from '@/sanity/lib/queries'
 
 export const revalidate = 300
@@ -36,36 +34,14 @@ function PostCard({ post }: { post: BlogPost }) {
   if (!slug) return null
 
   const category = post.categories?.[0]?.title
-  const hasCover = Boolean(post.coverImage?.asset?._id)
-  const coverSrc =
-    hasCover && post.coverImage
-      ? urlFor(post.coverImage).width(800).height(600).fit('crop').quality(85).auto('format').url()
-      : null
-  const coverAlt = post.coverImage?.alt?.trim() || post.title
 
   return (
     <li>
       <Link
         href={`/blog/${slug}`}
-        className="group flex h-full flex-col overflow-hidden border border-border bg-background-warm transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:shadow-md"
+        className="group flex h-full flex-col border border-border bg-background-warm p-6 transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:shadow-md md:p-7"
       >
-        <div className="relative aspect-[4/3] w-full overflow-hidden bg-background-warm">
-          {coverSrc ? (
-            <Image
-              src={coverSrc}
-              alt={coverAlt}
-              fill
-              className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-              sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
-            />
-          ) : (
-            <div className="flex h-full w-full items-center justify-center bg-background-warm">
-              <span className="text-[11px] uppercase tracking-[0.18em] text-foreground-muted">Journal</span>
-            </div>
-          )}
-        </div>
-
-        <div className="flex flex-1 flex-col p-6 md:p-7">
+        <div className="flex flex-1 flex-col">
           {category ? (
             <span className="mb-3 inline-flex w-fit rounded-sm border border-teal/35 bg-background px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-teal">
               {category}

@@ -10,7 +10,6 @@ import { urlFor } from '@/sanity/lib/image'
 import {
   getAllPostSlugs,
   getPostBySlug,
-  type BlogPost,
   type PortableTextBlock,
   type SanityImage,
 } from '@/sanity/lib/queries'
@@ -29,11 +28,6 @@ function formatPublishedDate(iso: string): string {
     day: 'numeric',
     year: 'numeric',
   }).format(date)
-}
-
-function coverImageUrl(post: BlogPost): string | undefined {
-  if (!post.coverImage?.asset?._id) return undefined
-  return urlFor(post.coverImage).width(1600).height(900).fit('crop').quality(90).auto('format').url()
 }
 
 function portableImageUrl(image: SanityImage): string {
@@ -146,16 +140,12 @@ export default async function BlogPostPage({ params }: PageProps) {
     notFound()
   }
 
-  const heroSrc = coverImageUrl(post)
-  const heroAlt = post.coverImage?.alt?.trim() || post.title
-  const imageUrl = heroSrc
   const body = (post.body ?? []) as PortableTextBlock[]
 
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: post.title,
-    ...(imageUrl ? { image: imageUrl } : {}),
     datePublished: post.publishedAt,
     author: {
       '@type': 'Organization',
@@ -181,23 +171,6 @@ export default async function BlogPostPage({ params }: PageProps) {
               >
                 Journal
               </Link>
-            </div>
-
-            <div className="relative mb-10 aspect-[16/9] w-full overflow-hidden border border-border bg-background-warm">
-              {heroSrc ? (
-                <Image
-                  src={heroSrc}
-                  alt={heroAlt}
-                  fill
-                  priority
-                  className="object-cover"
-                  sizes="(max-width: 1280px) 100vw, 1280px"
-                />
-              ) : (
-                <div className="flex h-full w-full items-center justify-center">
-                  <span className="text-[12px] uppercase tracking-[0.15em] text-foreground-muted">Journal</span>
-                </div>
-              )}
             </div>
           </div>
 

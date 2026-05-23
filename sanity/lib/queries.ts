@@ -225,7 +225,6 @@ export type BlogPost = {
   publishedAt: string
   excerpt?: string | null
   seoDescription?: string | null
-  coverImage: SanityImage | null
   body?: PortableTextBlock[] | null
   categories?: BlogCategory[] | null
   tags?: string[] | null
@@ -250,9 +249,6 @@ const blogPostProjection = `
   publishedAt,
   excerpt,
   seoDescription,
-  coverImage {
-    ${sanityImageProjection}
-  },
   body[]{
     ...,
     _type == "image" => {

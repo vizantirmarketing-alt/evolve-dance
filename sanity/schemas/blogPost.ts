@@ -112,26 +112,6 @@ export const blogPost = defineType({
       validation: (Rule) => Rule.max(155),
     }),
     defineField({
-      name: 'coverImage',
-      title: 'Cover image',
-      type: 'image',
-      description: 'Hero image for the post listing and article header.',
-      options: {
-        hotspot: true,
-      },
-      fields: [
-        defineField({
-          name: 'alt',
-          title: 'Alternative text',
-          type: 'string',
-          description:
-            'Describe the image for screen readers and SEO.',
-          validation: (Rule) => Rule.required(),
-        }),
-      ],
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
       name: 'body',
       title: 'Body',
       type: 'array',
@@ -198,11 +178,10 @@ export const blogPost = defineType({
     select: {
       title: 'title',
       subtitle: 'publishedAt',
-      media: 'coverImage',
       published: 'published',
       featured: 'featured',
     },
-    prepare({ title, subtitle, media, published, featured }) {
+    prepare({ title, subtitle, published, featured }) {
       const dateStr = formatPreviewDate(subtitle as string | undefined)
       const hiddenPrefix = published === false ? '[Draft] ' : ''
       const featuredSuffix = featured === true ? ' ★' : ''
@@ -210,7 +189,6 @@ export const blogPost = defineType({
       return {
         title: `${hiddenPrefix}${title ?? ''}${featuredSuffix}`,
         subtitle: dateStr ?? 'No publish date',
-        media,
       }
     },
   },
