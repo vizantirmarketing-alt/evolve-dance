@@ -10,7 +10,9 @@
     "migrate:blog": "tsx scripts/migrate-blog-posts.ts",
     "migrate:blog:dry": "tsx scripts/migrate-blog-posts.ts --dry-run",
     "delete:blog-old": "tsx scripts/delete-old-blog-posts.ts",
-    "delete:blog-old:dry": "tsx scripts/delete-old-blog-posts.ts --dry-run"
+    "delete:blog-old:dry": "tsx scripts/delete-old-blog-posts.ts --dry-run",
+    "optimize:blog": "tsx scripts/optimize-blog-seo.ts",
+    "optimize:blog:dry": "tsx scripts/optimize-blog-seo.ts --dry-run"
   },
   "dependencies": {
     "@marsidev/react-turnstile": "^1.5.2",
