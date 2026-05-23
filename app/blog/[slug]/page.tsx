@@ -6,6 +6,7 @@ import { PortableText, type PortableTextComponents } from '@portabletext/react'
 
 import Footer from '@/components/layout/Footer'
 import Navbar from '@/components/layout/Navbar'
+import { buildFaqItemsFromBody, buildFaqPageJsonLd } from '@/lib/blog-faq-schema'
 import { urlFor } from '@/sanity/lib/image'
 import {
   getAllPostSlugs,
@@ -142,6 +143,9 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   const body = (post.body ?? []) as PortableTextBlock[]
 
+  const faqItems = buildFaqItemsFromBody(slug, body)
+  const faqJsonLd = buildFaqPageJsonLd(faqItems)
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -160,6 +164,12 @@ export default async function BlogPostPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      {faqJsonLd ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      ) : null}
       <main className="min-h-screen bg-background pb-24 pt-24 md:pb-28 md:pt-28">
         <article>
           <div className="mx-auto max-w-7xl px-6">
