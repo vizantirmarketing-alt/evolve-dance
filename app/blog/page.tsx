@@ -107,7 +107,7 @@ export default async function BlogPage() {
                 </p>
               </div>
             ) : (
-              <ul className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-10 lg:grid-cols-3">
+              <ul className="grid gap-8 md:gap-10 [grid-template-columns:repeat(auto-fit,minmax(320px,1fr))]">
                 {posts
                   .filter((post) => Boolean(post.slug?.current))
                   .map((post) => (
