@@ -39,10 +39,10 @@ export default function Nav({ links }: NavProps) {
   return (
     <>
       <nav
-        className={`fixed inset-x-0 top-0 z-50 flex items-center justify-between transition-all duration-300 ${
+        className={`fixed inset-x-0 top-0 z-50 flex items-center justify-between transition-all duration-300 px-5 py-2 md:py-1.5 lg:py-2 ${
           isScrolled
-            ? 'py-2 px-5 bg-background/95 backdrop-blur-md'
-            : 'py-2 px-5 bg-background'
+            ? 'bg-background/95 backdrop-blur-md'
+            : 'bg-background'
         }`}
       >
         {/* Logo */}
@@ -56,7 +56,7 @@ export default function Nav({ links }: NavProps) {
             alt="Evolve Dance Center"
             width={240}
             height={160}
-            className="h-12 md:h-16 w-auto object-contain transition-opacity duration-200 ease-out group-hover:opacity-85"
+            className="h-12 md:h-14 lg:h-14 w-auto object-contain transition-opacity duration-200 ease-out group-hover:opacity-85"
           />
         </SmartLink>
 
