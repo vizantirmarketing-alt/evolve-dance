@@ -94,7 +94,7 @@ export default function Nav({ links }: NavProps) {
             href={JACKRABBIT_ENROLL_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className={buttonVariants({ variant: 'primary', size: 'nav', className: 'nav-desktop group relative shrink-0 whitespace-nowrap md:text-[12px]' })}
+            className={buttonVariants({ variant: 'primary', size: 'nav', className: 'nav-desktop group relative shrink-0 whitespace-nowrap' })}
           >
             <span className="whitespace-nowrap">{siteConfig.enrollCtaLabel}</span>
             <ArrowRight className="h-3.5 w-3.5 shrink-0 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />

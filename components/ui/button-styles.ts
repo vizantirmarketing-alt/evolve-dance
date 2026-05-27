@@ -14,7 +14,7 @@ export interface ButtonStyleOptions {
 
 const sizeClasses: Record<ButtonSize, string> = {
   default: 'px-6 py-3.5 md:py-4',
-  nav: 'px-5 py-3.5 md:px-4 md:py-3 lg:px-5',
+  nav: 'px-5 py-3 md:px-4 md:py-2.5 md:text-[12px] lg:px-5 lg:py-3 lg:text-[13px]',
   card: 'w-full py-3 px-4',
   wide: 'px-8 py-3.5 md:py-4',
 }
