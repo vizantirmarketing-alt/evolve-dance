@@ -56,7 +56,7 @@ export default function Nav({ links }: NavProps) {
             alt="Evolve Dance Center"
             width={240}
             height={160}
-            className="h-12 md:h-14 lg:h-14 w-auto object-contain transition-opacity duration-200 ease-out group-hover:opacity-85"
+            className="h-12 w-auto object-contain transition-opacity duration-200 ease-out group-hover:opacity-85 xl:h-14"
           />
         </SmartLink>
 
@@ -75,7 +75,7 @@ export default function Nav({ links }: NavProps) {
           }
         `}</style>
 
-        <ul className="nav-desktop m-0 flex list-none items-center gap-4 p-0 lg:gap-8">
+        <ul className="nav-desktop m-0 flex list-none items-center gap-4 p-0 lg:gap-6 xl:gap-8">
           {links.map(link => (
             <li key={link.href} className="shrink-0">
               <SmartLink
