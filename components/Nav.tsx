@@ -75,17 +75,12 @@ export default function Nav({ links }: NavProps) {
           }
         `}</style>
 
-        <ul className="nav-desktop" style={{
-          gap: '32px',
-          listStyle: 'none',
-          margin: 0, padding: 0,
-          alignItems: 'center',
-        }}>
+        <ul className="nav-desktop m-0 flex list-none items-center gap-4 p-0 lg:gap-8">
           {links.map(link => (
-            <li key={link.href}>
+            <li key={link.href} className="shrink-0">
               <SmartLink
                 href={link.href}
-                className="text-[12px] font-medium uppercase tracking-[0.15em] text-[#1F1F1C] no-underline [text-shadow:_0_1px_1px_rgb(0_0_0_/_0.08)] transition-colors duration-200 hover:text-[#81D8D0] md:text-[13px]"
+                className="whitespace-nowrap text-[12px] font-medium uppercase tracking-[0.15em] text-[#1F1F1C] no-underline [text-shadow:_0_1px_1px_rgb(0_0_0_/_0.08)] transition-colors duration-200 hover:text-[#81D8D0] md:text-[12px] lg:text-[13px]"
               >
                 {link.label}
               </SmartLink>
@@ -99,9 +94,9 @@ export default function Nav({ links }: NavProps) {
             href={JACKRABBIT_ENROLL_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className={buttonVariants({ variant: 'primary', size: 'nav', className: 'nav-desktop group relative' })}
+            className={buttonVariants({ variant: 'primary', size: 'nav', className: 'nav-desktop group relative shrink-0 whitespace-nowrap md:text-[12px]' })}
           >
-            <span>{siteConfig.enrollCtaLabel}</span>
+            <span className="whitespace-nowrap">{siteConfig.enrollCtaLabel}</span>
             <ArrowRight className="h-3.5 w-3.5 shrink-0 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
           </a>
 
