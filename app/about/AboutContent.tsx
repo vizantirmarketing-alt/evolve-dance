@@ -69,7 +69,6 @@ function FounderCard({
               alt={imageAlt}
               fill
               sizes={founderPortraitSizes}
-              quality={85}
               className="object-cover"
             />
           </div>
