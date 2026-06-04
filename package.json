@@ -7,19 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "migrate:blog": "tsx scripts/migrate-blog-posts.ts",
-    "migrate:blog:dry": "tsx scripts/migrate-blog-posts.ts --dry-run",
-    "delete:blog-old": "tsx scripts/delete-old-blog-posts.ts",
-    "delete:blog-old:dry": "tsx scripts/delete-old-blog-posts.ts --dry-run",
-    "optimize:blog": "tsx scripts/optimize-blog-seo.ts",
-    "optimize:blog:dry": "tsx scripts/optimize-blog-seo.ts --dry-run",
-    "diagnose:blog": "tsx scripts/diagnose-blog-state.ts",
-    "dump:blog": "tsx scripts/dump-blog-content.ts",
-    "cleanup:drafts": "tsx scripts/delete-stale-drafts.ts",
-    "cleanup:drafts:dry": "tsx scripts/delete-stale-drafts.ts --dry-run",
-    "audit:keywords": "tsx scripts/audit-keyword-density.ts",
-    "patch:blog": "tsx scripts/patch-blog-facts.ts",
-    "patch:blog:dry": "tsx scripts/patch-blog-facts.ts --dry-run"
+    "delete:unpublished-blog": "tsx scripts/delete-unpublished-blog-posts.ts",
+    "delete:unpublished-blog:dry": "tsx scripts/delete-unpublished-blog-posts.ts --dry-run"
   },
   "dependencies": {
     "@marsidev/react-turnstile": "^1.5.2",
