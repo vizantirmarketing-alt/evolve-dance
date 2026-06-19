@@ -60,16 +60,16 @@ export default function Nav({ links }: NavProps) {
           />
         </SmartLink>
 
-        {/* Desktop nav — hidden below 768px */}
+        {/* Desktop nav — hidden below 1280px (xl breakpoint) */}
         <style>{`
-          @media (max-width: 767px) {
+          @media (max-width: 1279px) {
             .nav-desktop {
               display: none !important;
               pointer-events: none !important;
             }
             .nav-hamburger { display: flex !important; }
           }
-          @media (min-width: 768px) {
+          @media (min-width: 1280px) {
             .nav-desktop { display: flex !important; }
             .nav-hamburger { display: none !important; }
           }
