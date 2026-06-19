@@ -263,8 +263,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="flex flex-wrap items-center gap-4">
-          <div className="flex flex-wrap items-center">
+        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+          <div className="flex flex-wrap items-center min-w-0">
             <SmartLink
               href="/privacy"
               className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
@@ -290,17 +290,20 @@ export default function Footer() {
               {' · '}
             </span>
             <span className="text-[12px] text-[rgba(247,245,241,0.45)] leading-[1.55]">
-              © 2026 {siteConfig.name}. All rights reserved. · Site by{' '}
-              <a
-                href="https://vizantir.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#81D8D0] no-underline hover:underline"
-              >
-                Vizantir
-              </a>
+              © 2026 Evolve Dance Center · All photos and video are property of Evolve Dance Center · All rights reserved.
             </span>
           </div>
+          <span className="text-[12px] text-[rgba(247,245,241,0.45)] leading-[1.55] shrink-0">
+            Site by{' '}
+            <a
+              href="https://vizantir.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#81D8D0] no-underline hover:underline"
+            >
+              Vizantir
+            </a>
+          </span>
         </div>
       </div>
     </footer>
