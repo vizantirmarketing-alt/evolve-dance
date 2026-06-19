@@ -43,7 +43,7 @@ function creditFromSpecialties(specialties: string[] | null): string {
   return specialties.join(' · ')
 }
 
-function Portrait({ member, big = false }: { member: FacultyForPage; big?: boolean }) {
+function Portrait({ member, big = false, isDesktop }: { member: FacultyForPage; big?: boolean; isDesktop: boolean }) {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -65,7 +65,7 @@ function Portrait({ member, big = false }: { member: FacultyForPage; big?: boole
     <div
       ref={ref}
       style={{
-        position: 'relative', width: '100%', aspectRatio: '480 / 900', overflow: 'hidden',
+        position: 'relative', width: '100%', aspectRatio: isDesktop ? '480 / 900' : '4 / 5', overflow: 'hidden',
         background: member.photo ? T.bgPanel : `radial-gradient(120% 80% at 50% 0%, hsl(${hue} 30% 92% / 0.85), transparent 70%), radial-gradient(60% 50% at 50% 0%, ${T.accentSoft}40, transparent 75%), linear-gradient(180deg, ${T.bgPanel}, ${T.bgMint})`,
       }}
     >
@@ -117,11 +117,13 @@ function Card({
   onOpen,
   index = 0,
   isDirector: isDirectorCard = false,
+  isDesktop,
 }: {
   member: FacultyForPage
   onOpen: (id: string) => void
   index?: number
   isDirector?: boolean
+  isDesktop: boolean
 }) {
   const [hovered, setHovered] = useState(false)
   const { first, last } = splitName(member.name)
@@ -176,7 +178,7 @@ function Card({
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           style={{ width: '100%', willChange: 'transform' }}
         >
-          <Portrait member={member} />
+          <Portrait member={member} isDesktop={isDesktop} />
         </motion.div>
       </div>
       <div style={{ paddingTop: 16 }}>
@@ -329,7 +331,7 @@ function Modal({ member, onClose, isDesktop }: {
             background: T.bgPanel,
           }}
         >
-          <Portrait member={member} big />
+          <Portrait member={member} big isDesktop={isDesktop} />
         </motion.div>
 
         <motion.div
@@ -523,13 +525,21 @@ function Marquee() {
 export function FacultyStage({ faculty }: { faculty: FacultyForPage[] }) {
   const [activeId, setActiveId] = useState<string | null>(null)
   const [isDesktop, setIsDesktop] = useState(true)
+  const [isCompact, setIsCompact] = useState(false)
 
   useEffect(() => {
-    const mq = window.matchMedia('(min-width: 900px)')
-    const onChange = () => setIsDesktop(mq.matches)
-    onChange()
-    mq.addEventListener('change', onChange)
-    return () => mq.removeEventListener('change', onChange)
+    const mqDesktop = window.matchMedia('(min-width: 900px)')
+    const mqCompact = window.matchMedia('(min-width: 600px) and (max-width: 899.98px)')
+    const onDesktopChange = () => setIsDesktop(mqDesktop.matches)
+    const onCompactChange = () => setIsCompact(mqCompact.matches)
+    onDesktopChange()
+    onCompactChange()
+    mqDesktop.addEventListener('change', onDesktopChange)
+    mqCompact.addEventListener('change', onCompactChange)
+    return () => {
+      mqDesktop.removeEventListener('change', onDesktopChange)
+      mqCompact.removeEventListener('change', onCompactChange)
+    }
   }, [])
 
   const directors = faculty.filter(isDirector)
@@ -606,12 +616,13 @@ export function FacultyStage({ faculty }: { faculty: FacultyForPage[] }) {
             <SectionLabel count={directors.length}>Directors</SectionLabel>
             <div style={{
               display: 'grid',
-              gridTemplateColumns: isDesktop ? 'repeat(2, minmax(0, 1fr))' : 'repeat(auto-fill, minmax(220px, 1fr))',
-              gap: isDesktop ? 40 : 20,
-              maxWidth: isDesktop ? '52%' : '100%',
+              gridTemplateColumns: isDesktop || isCompact ? 'repeat(2, minmax(0, 1fr))' : '1fr',
+              gap: isDesktop ? 40 : isCompact ? 20 : 24,
+              maxWidth: isDesktop ? '52%' : isCompact ? '720px' : '320px',
+              margin: isDesktop ? undefined : '0 auto',
             }}>
               {directors.map((d, idx) => (
-                <Card key={d._id} member={d} onOpen={setActiveId} index={idx} isDirector />
+                <Card key={d._id} member={d} onOpen={setActiveId} index={idx} isDirector isDesktop={isDesktop} />
               ))}
             </div>
           </section>
@@ -633,7 +644,7 @@ export function FacultyStage({ faculty }: { faculty: FacultyForPage[] }) {
             gap: isDesktop ? 24 : 16,
           }}>
             {regular.map((m, idx) => (
-              <Card key={m._id} member={m} onOpen={setActiveId} index={idx} />
+              <Card key={m._id} member={m} onOpen={setActiveId} index={idx} isDesktop={isDesktop} />
             ))}
           </div>
         </section>
