@@ -101,7 +101,7 @@ export function ScheduleDayRows({
             return (
               <ClassRowLink key={key} c={c}>
                 <div className="min-w-0 flex-1">
-                  <div className="font-serif text-lg leading-tight text-teal">{c.startTimeDisplay}</div>
+                  <div className="font-display text-lg leading-tight text-teal">{c.startTimeDisplay}</div>
                   <div className="mt-0 text-[14px] font-medium leading-snug text-[#f1f5f9] md:mt-0.5 md:text-[15px]">{c.name}</div>
                   {sub ? <div className="mt-0 text-[12px] leading-snug text-[#cbd5e1] md:mt-0.5 md:text-[13px]">{sub}</div> : null}
                 </div>
@@ -116,7 +116,7 @@ export function ScheduleDayRows({
           return (
             <div key={key} className="flex items-start justify-between gap-2 py-3 md:py-4">
               <div>
-                <div className="font-serif text-lg leading-tight text-teal">{c.startTimeDisplay}</div>
+                <div className="font-display text-lg leading-tight text-teal">{c.startTimeDisplay}</div>
                 <div className="mt-0 text-[14px] font-medium leading-snug text-[#f1f5f9] md:mt-0.5 md:text-[15px]">{c.name}</div>
                 {sub ? <div className="mt-0 text-[12px] leading-snug text-[#cbd5e1] md:mt-0.5 md:text-[13px]">{sub}</div> : null}
               </div>

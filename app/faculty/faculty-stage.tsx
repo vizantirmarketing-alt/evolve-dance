@@ -480,63 +480,6 @@ function SectionLabel({ children, count }: { children: React.ReactNode; count: n
   )
 }
 
-function AnimatedHeadline({ isDesktop }: { isDesktop: boolean }) {
-  const letters1 = 'The'.split('')
-  const letters2 = 'Faculty'.split('')
-
-  return (
-    <motion.h1
-      className="font-display"
-      suppressHydrationWarning
-      initial="hidden"
-      animate="visible"
-      variants={{
-        visible: { transition: { staggerChildren: 0.045, delayChildren: 0.2 } },
-      }}
-      style={{
-        fontSize: isDesktop ? 88 : 56,
-        lineHeight: 1.1,
-        letterSpacing: '-0.02em',
-        margin: 0,
-        paddingBottom: '0.15em',
-        fontWeight: 400,
-        color: T.ink,
-        overflow: 'hidden',
-        position: 'relative',
-        zIndex: 1,
-      }}
-    >
-      {letters1.map((c, i) => (
-        <motion.span
-          key={`a-${i}`}
-          variants={{
-            hidden: { opacity: 0, y: '60%' },
-            visible: { opacity: 1, y: '0%' },
-          }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          style={{ display: 'inline-block', fontWeight: 700 }}
-        >
-          {c}
-        </motion.span>
-      ))}
-      <span style={{ display: 'inline-block', width: '0.3em' }}>&nbsp;</span>
-      {letters2.map((c, i) => (
-        <motion.span
-          key={`b-${i}`}
-          variants={{
-            hidden: { opacity: 0, y: '60%' },
-            visible: { opacity: 1, y: '0%' },
-          }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          style={{ display: 'inline-block', fontStyle: 'italic', fontWeight: 400 }}
-        >
-          {c}
-        </motion.span>
-      ))}
-    </motion.h1>
-  )
-}
-
 const DANCE_STYLES = 'Ballet · Jazz · Hip Hop · Contemporary · Lyrical · Acrobatics · Tap · Tumbling · Ballroom · Stretch & Pilates · Pom · Combo'
 
 function Marquee() {
@@ -634,7 +577,12 @@ export function FacultyStage({ faculty }: { faculty: FacultyForPage[] }) {
               Evolve Dance Center
             </span>
           </motion.div>
-          <AnimatedHeadline isDesktop={isDesktop} />
+          <h1
+            className="font-display font-bold leading-none text-foreground"
+            style={{ fontSize: 'clamp(40px, 5vw, 64px)', margin: 0, position: 'relative', zIndex: 1 }}
+          >
+            The <span className="font-normal italic">Faculty</span>
+          </h1>
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
