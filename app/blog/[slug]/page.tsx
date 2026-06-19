@@ -170,7 +170,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
       ) : null}
-      <main className="min-h-screen bg-background pb-24 pt-24 md:pb-28 md:pt-28">
+      <main className="flex-1 bg-background pb-24 pt-24 md:pb-28 md:pt-28">
         <article>
           <div className="mx-auto max-w-7xl px-6">
             <div className="mb-6 flex items-center gap-3">

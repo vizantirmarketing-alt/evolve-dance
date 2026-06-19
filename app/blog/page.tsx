@@ -78,7 +78,7 @@ export default async function BlogPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-background">
+      <main className="flex-1 bg-background">
         <div className="mx-auto max-w-7xl px-6 py-24">
           <div className="mb-4 flex items-center gap-3">
             <div className="h-px w-7 bg-teal" />

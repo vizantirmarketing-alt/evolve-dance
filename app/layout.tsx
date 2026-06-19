@@ -80,7 +80,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${playfair.variable} ${dmSans.variable}`} data-scroll-behavior="smooth">
-      <body>
+      <body className="min-h-screen flex flex-col">
         {children}
       </body>
     </html>

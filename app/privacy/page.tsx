@@ -24,7 +24,7 @@ export default function PrivacyPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-background px-4 pb-32 pt-24 md:px-12 md:pt-28">
+      <main className="flex-1 bg-background px-4 pb-32 pt-24 md:px-12 md:pt-28">
         <div className="mx-auto max-w-3xl">
           <div className="mb-6 flex items-center gap-3">
             <div className="h-px w-7 bg-teal opacity-100" />

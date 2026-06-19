@@ -27,7 +27,7 @@ export default function ClassesPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-[#F7F5F1]">
+      <main className="flex-1 bg-[#F7F5F1]">
         {/* 1. Hero */}
         <section className="w-full border-b border-[#D6DFDA] bg-[#F7F5F1] px-6 pb-20 pt-28 md:px-12 md:pb-28 md:pt-32">
           <div className="mx-auto max-w-4xl">

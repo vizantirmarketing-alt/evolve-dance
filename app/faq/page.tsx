@@ -27,7 +27,7 @@ export default async function FaqPage() {
           }),
         }}
       />
-      <main className="min-h-screen bg-background pb-24 pt-24 md:pb-28 md:pt-28">
+      <main className="flex-1 bg-background pb-24 pt-24 md:pb-28 md:pt-28">
         <section className="px-6 md:px-16 lg:px-20">
           <div className="mx-auto max-w-7xl">
             <div className="mb-4 flex items-center gap-3">

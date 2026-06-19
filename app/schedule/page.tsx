@@ -30,7 +30,7 @@ export default async function SchedulePage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-[#F7F5F1] px-4 pb-32 pt-24 md:px-12 md:pt-28">
+      <main className="flex-1 bg-[#F7F5F1] px-4 pb-32 pt-24 md:px-12 md:pt-28">
         <div className="mx-auto max-w-6xl">
           <div className="mb-6 flex items-center gap-3">
             <div className="h-px w-7 bg-[#0ABAB5] opacity-100" />

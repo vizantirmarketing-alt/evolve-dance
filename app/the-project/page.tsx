@@ -144,7 +144,7 @@ export default async function TheProjectPage() {
     return (
       <>
         <Navbar />
-        <main className="min-h-screen bg-background pb-24 pt-24 md:pb-28 md:pt-28">
+        <main className="flex-1 bg-background pb-24 pt-24 md:pb-28 md:pt-28">
           <section className="px-6 md:px-16 lg:px-20">
             <div className="mx-auto max-w-md rounded-lg border border-border bg-background-warm px-8 py-12 text-center">
               <p className="text-[13px] leading-relaxed text-foreground-muted md:text-[14px]">Content coming soon.</p>
@@ -170,7 +170,7 @@ function TheProjectPageContent({ page }: { page: ProjectPage }) {
   return (
     <>
       <Navbar />
-      <main className="bg-background">
+      <main className="flex-1 bg-background">
         {/* Hero */}
         <section className="px-6 pb-16 pt-16 md:px-16 md:pb-20 md:pt-24 lg:px-20">
           <div className="mx-auto max-w-7xl">
@@ -541,22 +541,22 @@ function TheProjectPageContent({ page }: { page: ProjectPage }) {
         </section>
 
         {/* Audition CTA */}
-        <section id="audition" className="bg-foreground px-6 py-20 md:px-16 md:py-28 lg:px-20">
+        <section id="audition" className="bg-background-warm px-6 py-16 md:px-16 md:py-24 lg:px-20">
           <div className="mx-auto max-w-3xl text-center">
             <div className="mb-5 flex items-center justify-center gap-3">
-              <div className="h-px w-7 bg-white/40" />
-              <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-white/60 md:text-[12px]">
+              <div className="h-px w-7 bg-teal" />
+              <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-teal md:text-[12px]">
                 Auditions
               </span>
-              <div className="h-px w-7 bg-white/40" />
+              <div className="h-px w-7 bg-teal" />
             </div>
             <h2
-              className="mb-5 font-display font-bold text-background"
+              className="mb-5 font-display font-bold text-foreground"
               style={{ fontSize: 'clamp(28px, 3.5vw, 42px)', lineHeight: '1' }}
             >
               Ready to join The Project?
             </h2>
-            <p className="mx-auto mb-8 max-w-xl text-[15px] leading-[1.7] text-white/70">
+            <p className="mx-auto mb-8 max-w-xl text-[15px] leading-[1.7] text-foreground-muted">
               {audition?.ageRange ? (
                 <>
                   Open to {audition.ageRange}.{' '}
@@ -578,13 +578,13 @@ function TheProjectPageContent({ page }: { page: ProjectPage }) {
             <div className="flex flex-wrap justify-center gap-3">
               <CtaLink
                 href={audition?.ctaLink?.trim() || '/contact'}
-                className={buttonVariants({ variant: 'primary', surface: 'dark', size: 'wide' })}
+                className={buttonVariants({ variant: 'primary', surface: 'light', size: 'wide' })}
               >
                 {audition?.ctaText?.trim() || 'Sign up for auditions →'}
               </CtaLink>
               <Link
                 href="mailto:info@evolvedancecenter.com"
-                className={buttonVariants({ variant: 'secondary', surface: 'dark', size: 'wide' })}
+                className={buttonVariants({ variant: 'secondary', surface: 'light', size: 'wide' })}
               >
                 Email us
               </Link>
