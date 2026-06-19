@@ -13,6 +13,7 @@ import {
   type ProjectPage,
   type ProjectTeamLevel,
 } from '@/sanity/lib/queries'
+import { getTheProjectImage } from '@/lib/the-project-images'
 
 const DEFAULT_DESCRIPTION =
   "The Project is Evolve Dance Center's competition team — serious training for serious dancers. Auditions held annually in May. Located in southwest Las Vegas."
@@ -211,10 +212,17 @@ function TheProjectPageContent({ page }: { page: ProjectPage }) {
                   </Link>
                 </div>
               </div>
-              <div className="flex aspect-[4/5] items-center justify-center rounded border border-border bg-background-warm">
-                <span className="text-[12px] uppercase tracking-[0.15em] text-foreground-muted md:text-[13px]">
-                  [Hero photo of the team]
-                </span>
+              <div className="relative aspect-[4/5] overflow-hidden rounded border border-border bg-background-warm">
+                <Image
+                  src={getTheProjectImage('studio-portrait-solo').src}
+                  alt="Evolve Dance Project dancer in studio portrait"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                  placeholder="blur"
+                  blurDataURL={getTheProjectImage('studio-portrait-solo').placeholder}
+                  className="object-cover object-center"
+                  priority
+                />
               </div>
             </div>
           </div>
@@ -481,29 +489,52 @@ function TheProjectPageContent({ page }: { page: ProjectPage }) {
               className="mb-10 font-display font-bold text-foreground"
               style={{ fontSize: 'clamp(28px, 3.5vw, 30px)', lineHeight: '1.1' }}
             >
-              On stage.
+              From the studio to the stage.
             </h2>
             <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
-              <div className="flex aspect-[8/4] items-center justify-center border border-border bg-background-warm md:col-span-2">
-                <span className="text-[12px] uppercase tracking-[0.15em] text-foreground-muted md:text-[13px]">
-                  [Performance photo]
-                </span>
+              <div className="relative aspect-[16/9] overflow-hidden border border-border bg-background-warm md:col-span-3">
+                <Image
+                  src={getTheProjectImage('project-rehearsal-action').src}
+                  alt="Evolve Dance Project dancers mid-rehearsal at the studio"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 100vw"
+                  placeholder="blur"
+                  blurDataURL={getTheProjectImage('project-rehearsal-action').placeholder}
+                  className="object-cover object-top"
+                />
               </div>
-              <div className="flex aspect-[3/4] items-center justify-center border border-border bg-background-warm">
-                <span className="text-[12px] uppercase tracking-[0.15em] text-foreground-muted md:text-[13px]">[Group shot]</span>
+              <div className="relative aspect-[3/4] overflow-hidden border border-border bg-background-warm">
+                <Image
+                  src={getTheProjectImage('studio-portrait-duo').src}
+                  alt="Evolve Dance Project dancer in a studio portrait"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  placeholder="blur"
+                  blurDataURL={getTheProjectImage('studio-portrait-duo').placeholder}
+                  className="object-cover object-center"
+                />
               </div>
-              <div className="flex aspect-[3/4] items-center justify-center border border-border bg-background-warm">
-                <span className="text-[12px] uppercase tracking-[0.15em] text-foreground-muted md:text-[13px]">
-                  [Solo competition]
-                </span>
+              <div className="relative aspect-[3/2] overflow-hidden border border-border bg-background-warm md:col-span-2">
+                <Image
+                  src={getTheProjectImage('award-driven-group').src}
+                  alt="Evolve Dance Project team celebrating a first-place win at Driven Talent Competition"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 66vw"
+                  placeholder="blur"
+                  blurDataURL={getTheProjectImage('award-driven-group').placeholder}
+                  className="object-cover object-center"
+                />
               </div>
-              <div className="flex aspect-[3/4] items-center justify-center border border-border bg-background-warm">
-                <span className="text-[12px] uppercase tracking-[0.15em] text-foreground-muted md:text-[13px]">[Backstage]</span>
-              </div>
-              <div className="flex aspect-[8/4] items-center justify-center border border-border bg-background-warm md:col-span-2">
-                <span className="text-[12px] uppercase tracking-[0.15em] text-foreground-muted md:text-[13px]">
-                  [Awards ceremony]
-                </span>
+              <div className="relative aspect-[16/9] overflow-hidden border border-border bg-background-warm md:col-span-3">
+                <Image
+                  src={getTheProjectImage('team-hall-of-fame').src}
+                  alt="Evolve Dance Project team at the Hall of Fame Dance Challenge with awards"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 100vw"
+                  placeholder="blur"
+                  blurDataURL={getTheProjectImage('team-hall-of-fame').placeholder}
+                  className="object-cover object-center"
+                />
               </div>
             </div>
           </div>

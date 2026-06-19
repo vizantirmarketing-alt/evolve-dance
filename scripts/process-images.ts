@@ -1,10 +1,12 @@
 /**
- * Image processing pipeline for About page assets.
+ * Image processing pipeline for page-specific photo assets.
  *
- * Reads source JPGs from public/images/about/
+ * Reads source JPGs from each configured folder under public/images/
  * Outputs AVIF + WebP at 4 widths (1920/1280/768/480)
  * Generates base64 LQIP placeholders for blur-up
- * Writes manifest.json with dimensions + placeholders
+ * Writes one manifest.json per folder
+ *
+ * To add a new folder: append a new entry to FOLDERS below.
  *
  * Usage: pnpm tsx scripts/process-images.ts
  */
@@ -14,24 +16,49 @@ import { writeFile, mkdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 
-const SOURCE_DIR = path.join(process.cwd(), 'public/images/about');
-const OUTPUT_DIR = path.join(process.cwd(), 'public/images/about');
-const MANIFEST_PATH = path.join(process.cwd(), 'public/images/about/manifest.json');
+type FolderConfig = {
+  /** Folder slug relative to public/images/, e.g. "about", "the-project", "home" */
+  slug: string;
+  /** Source JPG filenames within the folder (without path) */
+  files: readonly string[];
+};
+
+const FOLDERS: readonly FolderConfig[] = [
+  {
+    slug: 'about',
+    files: [
+      'hero-storefront.jpg',
+      'lobby-wide.jpg',
+      'studio-tumbling.jpg',
+      'studio-ballet.jpg',
+      'trophy-hall.jpg',
+      'hallway-benches.jpg',
+      'reception-detail.jpg',
+    ],
+  },
+  {
+    slug: 'the-project',
+    files: [
+      'project-class-wall.jpg',
+      'project-auditions.jpg',
+      'project-auditions-wide.jpg',
+      'project-rehearsal-action.jpg',
+      'studio-portrait-duo.jpg',
+      'studio-portrait-solo.jpg',
+      'award-driven-group.jpg',
+      'team-hall-of-fame.jpg',
+    ],
+  },
+  {
+    slug: 'home',
+    files: ['founders-groove-award.jpg'],
+  },
+];
 
 const WIDTHS = [1920, 1280, 768, 480] as const;
 const AVIF_QUALITY = 62;
 const WEBP_QUALITY = 78;
 const LQIP_WIDTH = 16;
-
-const SOURCE_FILES = [
-  'hero-storefront.jpg',
-  'lobby-wide.jpg',
-  'studio-tumbling.jpg',
-  'studio-ballet.jpg',
-  'trophy-hall.jpg',
-  'hallway-benches.jpg',
-  'reception-detail.jpg',
-] as const;
 
 type ManifestEntry = {
   src: string;
@@ -47,9 +74,13 @@ type ManifestEntry = {
 
 type Manifest = Record<string, ManifestEntry>;
 
-async function processImage(filename: string): Promise<[string, ManifestEntry]> {
+async function processImage(
+  filename: string,
+  folderSlug: string
+): Promise<[string, ManifestEntry]> {
   const slug = path.basename(filename, '.jpg');
-  const sourcePath = path.join(SOURCE_DIR, filename);
+  const folderDir = path.join(process.cwd(), 'public/images', folderSlug);
+  const sourcePath = path.join(folderDir, filename);
 
   if (!existsSync(sourcePath)) {
     throw new Error(`Source file not found: ${sourcePath}`);
@@ -82,16 +113,16 @@ async function processImage(filename: string): Promise<[string, ManifestEntry]> 
       .clone()
       .resize(width, null, { fit: 'inside', withoutEnlargement: true })
       .avif({ quality: AVIF_QUALITY, effort: 6 })
-      .toFile(path.join(OUTPUT_DIR, avifName));
+      .toFile(path.join(folderDir, avifName));
 
     await image
       .clone()
       .resize(width, null, { fit: 'inside', withoutEnlargement: true })
       .webp({ quality: WEBP_QUALITY, effort: 6 })
-      .toFile(path.join(OUTPUT_DIR, webpName));
+      .toFile(path.join(folderDir, webpName));
 
-    variants.avif[width] = `/images/about/${avifName}`;
-    variants.webp[width] = `/images/about/${webpName}`;
+    variants.avif[width] = `/images/${folderSlug}/${avifName}`;
+    variants.webp[width] = `/images/${folderSlug}/${webpName}`;
 
     console.log(`  ✓ ${avifName} + ${webpName}`);
   }
@@ -99,7 +130,7 @@ async function processImage(filename: string): Promise<[string, ManifestEntry]> 
   return [
     slug,
     {
-      src: `/images/about/${filename}`,
+      src: `/images/${folderSlug}/${filename}`,
       width: srcW,
       height: srcH,
       aspectRatio: srcW / srcH,
@@ -109,26 +140,40 @@ async function processImage(filename: string): Promise<[string, ManifestEntry]> 
   ];
 }
 
-async function main() {
-  console.log('Processing About page images...\n');
+async function processFolder(config: FolderConfig): Promise<void> {
+  const folderDir = path.join(process.cwd(), 'public/images', config.slug);
+  const manifestPath = path.join(folderDir, 'manifest.json');
 
-  if (!existsSync(OUTPUT_DIR)) {
-    await mkdir(OUTPUT_DIR, { recursive: true });
+  console.log(`\n━━━ Folder: ${config.slug} ━━━\n`);
+
+  if (!existsSync(folderDir)) {
+    await mkdir(folderDir, { recursive: true });
   }
 
   const manifest: Manifest = {};
 
-  for (const filename of SOURCE_FILES) {
+  for (const filename of config.files) {
     console.log(`→ ${filename}`);
-    const [slug, entry] = await processImage(filename);
+    const [slug, entry] = await processImage(filename, config.slug);
     manifest[slug] = entry;
     console.log('');
   }
 
-  await writeFile(MANIFEST_PATH, JSON.stringify(manifest, null, 2));
+  await writeFile(manifestPath, JSON.stringify(manifest, null, 2));
 
-  console.log(`✓ Manifest written: ${MANIFEST_PATH}`);
-  console.log(`✓ ${SOURCE_FILES.length} images processed\n`);
+  console.log(`✓ ${config.slug}/manifest.json written`);
+  console.log(`✓ ${config.files.length} images processed in ${config.slug}/`);
+}
+
+async function main() {
+  console.log('Processing image folders...');
+
+  for (const config of FOLDERS) {
+    await processFolder(config);
+  }
+
+  console.log(`\n━━━ Complete ━━━`);
+  console.log(`Processed ${FOLDERS.length} folders.`);
 }
 
 main().catch((err) => {

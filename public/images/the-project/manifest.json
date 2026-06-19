@@ -1,0 +1,162 @@
+{
+  "project-class-wall": {
+    "src": "/images/the-project/project-class-wall.jpg",
+    "width": 4032,
+    "height": 3024,
+    "aspectRatio": 1.3333333333333333,
+    "placeholder": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAADQAQCdASoQAAwAAsBMJbACdADhRAPz4AD+5glSRsnNhzo0lXaazOW2/H3Z6uP7AQblDYOr6dcYa4GAqd8hc6bFZdqs28N4VcmhFy3Q4zUkmw9hFmbpFMmOECO2kPqsoP7yRZ8taJjz96AA",
+    "variants": {
+      "avif": {
+        "480": "/images/the-project/project-class-wall-480.avif",
+        "768": "/images/the-project/project-class-wall-768.avif",
+        "1280": "/images/the-project/project-class-wall-1280.avif",
+        "1920": "/images/the-project/project-class-wall-1920.avif"
+      },
+      "webp": {
+        "480": "/images/the-project/project-class-wall-480.webp",
+        "768": "/images/the-project/project-class-wall-768.webp",
+        "1280": "/images/the-project/project-class-wall-1280.webp",
+        "1920": "/images/the-project/project-class-wall-1920.webp"
+      }
+    }
+  },
+  "project-auditions": {
+    "src": "/images/the-project/project-auditions.jpg",
+    "width": 5367,
+    "height": 8468,
+    "aspectRatio": 0.6337978271138404,
+    "placeholder": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAAAwBACdASoQABkAPtFUo0uoJKMhsAgBABoJYwAD5UIOGwWCScLhIyWV/QgA/vaOM5PK+4xcDs78kdrqMHJOtqamyUur1PanCq3HlvHEfH7Q0+1fdAJvqNL2LOUQdsIycd6jrN5Mf2O+zR4iL7wNpvKtssK8uKVBAB06ScuMo7fQkAI3Dwjzce7+IwQAgQ/m9R17QzAVTXmkRaAA",
+    "variants": {
+      "avif": {
+        "480": "/images/the-project/project-auditions-480.avif",
+        "768": "/images/the-project/project-auditions-768.avif",
+        "1280": "/images/the-project/project-auditions-1280.avif",
+        "1920": "/images/the-project/project-auditions-1920.avif"
+      },
+      "webp": {
+        "480": "/images/the-project/project-auditions-480.webp",
+        "768": "/images/the-project/project-auditions-768.webp",
+        "1280": "/images/the-project/project-auditions-1280.webp",
+        "1920": "/images/the-project/project-auditions-1920.webp"
+      }
+    }
+  },
+  "project-auditions-wide": {
+    "src": "/images/the-project/project-auditions-wide.jpg",
+    "width": 5013,
+    "height": 4593,
+    "aspectRatio": 1.0914435009797518,
+    "placeholder": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAQAgCdASoQAA8AAsBMJZwAD49uzfXuYXrAAP73nVRIr+3ir9OQ6XN525Zk8plDOAHVkrctfSvq3YMTDL3bLO8lSbGnCO8Jfefh44ehmWvvxWq1ZZfr7DKa/e5L0YuaqB+npWe2WeQAAA==",
+    "variants": {
+      "avif": {
+        "480": "/images/the-project/project-auditions-wide-480.avif",
+        "768": "/images/the-project/project-auditions-wide-768.avif",
+        "1280": "/images/the-project/project-auditions-wide-1280.avif",
+        "1920": "/images/the-project/project-auditions-wide-1920.avif"
+      },
+      "webp": {
+        "480": "/images/the-project/project-auditions-wide-480.webp",
+        "768": "/images/the-project/project-auditions-wide-768.webp",
+        "1280": "/images/the-project/project-auditions-wide-1280.webp",
+        "1920": "/images/the-project/project-auditions-wide-1920.webp"
+      }
+    }
+  },
+  "project-rehearsal-action": {
+    "src": "/images/the-project/project-rehearsal-action.jpg",
+    "width": 4865,
+    "height": 4490,
+    "aspectRatio": 1.0835189309576838,
+    "placeholder": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAAAwAgCdASoQAA8AAsBMJZQCdAEPhEXuInB+kAD+5Tvi584vx6rqJv0Vg/4X/fGx4KsatXBuvwsmf61ZD7TT4gKqIGIsKfytAAt6bALSnkOLK2aax7vdrg1+AGWfGChCF2LMR1r3Skix33jcs2ApsvheQ4AAAA==",
+    "variants": {
+      "avif": {
+        "480": "/images/the-project/project-rehearsal-action-480.avif",
+        "768": "/images/the-project/project-rehearsal-action-768.avif",
+        "1280": "/images/the-project/project-rehearsal-action-1280.avif",
+        "1920": "/images/the-project/project-rehearsal-action-1920.avif"
+      },
+      "webp": {
+        "480": "/images/the-project/project-rehearsal-action-480.webp",
+        "768": "/images/the-project/project-rehearsal-action-768.webp",
+        "1280": "/images/the-project/project-rehearsal-action-1280.webp",
+        "1920": "/images/the-project/project-rehearsal-action-1920.webp"
+      }
+    }
+  },
+  "studio-portrait-duo": {
+    "src": "/images/the-project/studio-portrait-duo.jpg",
+    "width": 1024,
+    "height": 1536,
+    "aspectRatio": 0.6666666666666666,
+    "placeholder": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAwBACdASoQABgAPtFUo0uoJKMhsAgBABoJQBOmUABp1ecTGTCMNfjqAQAA/vFh42iHrWRLalwJRMCUVE3mWcDwarcaXRYInnRUMMf5NacDVe4pUqJI8lNgw8d5AP07xT2LLfANaJGQFghzJkmySnhf8wszZOAA",
+    "variants": {
+      "avif": {
+        "480": "/images/the-project/studio-portrait-duo-480.avif",
+        "768": "/images/the-project/studio-portrait-duo-768.avif"
+      },
+      "webp": {
+        "480": "/images/the-project/studio-portrait-duo-480.webp",
+        "768": "/images/the-project/studio-portrait-duo-768.webp"
+      }
+    }
+  },
+  "studio-portrait-solo": {
+    "src": "/images/the-project/studio-portrait-solo.jpg",
+    "width": 1024,
+    "height": 1536,
+    "aspectRatio": 0.6666666666666666,
+    "placeholder": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAADQAwCdASoQABgAPtFWo0uoJKMhsAgBABoJQBOmUABp28kTeoMUIMgA/vQqbjoDm/tW3gGSP/cX+sdWFAl/g9wkHCDyEv8qDW+bVPA7nWFEszGxfSTnkLWQYm4LqpJQ0m8W2ZTlDUp55jolkVBqAAAA",
+    "variants": {
+      "avif": {
+        "480": "/images/the-project/studio-portrait-solo-480.avif",
+        "768": "/images/the-project/studio-portrait-solo-768.avif"
+      },
+      "webp": {
+        "480": "/images/the-project/studio-portrait-solo-480.webp",
+        "768": "/images/the-project/studio-portrait-solo-768.webp"
+      }
+    }
+  },
+  "award-driven-group": {
+    "src": "/images/the-project/award-driven-group.jpg",
+    "width": 3022,
+    "height": 2533,
+    "aspectRatio": 1.1930517173312278,
+    "placeholder": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAABQAgCdASoQAA0AAsBMJbACdAYtzuwfT0jbcAAA/ulSlPUp+5EYibm2O0nAj7sxslFL2DoawklNWQ9OxNPhavqxBjxalZfnl11vtNzji1pwRyTPsRzZL2hpLJl+CN164+e5yHBijqDa719nKeuCOEvVs5/MhmZnqRFHcyDYZEWlAAAA",
+    "variants": {
+      "avif": {
+        "480": "/images/the-project/award-driven-group-480.avif",
+        "768": "/images/the-project/award-driven-group-768.avif",
+        "1280": "/images/the-project/award-driven-group-1280.avif",
+        "1920": "/images/the-project/award-driven-group-1920.avif"
+      },
+      "webp": {
+        "480": "/images/the-project/award-driven-group-480.webp",
+        "768": "/images/the-project/award-driven-group-768.webp",
+        "1280": "/images/the-project/award-driven-group-1280.webp",
+        "1920": "/images/the-project/award-driven-group-1920.webp"
+      }
+    }
+  },
+  "team-hall-of-fame": {
+    "src": "/images/the-project/team-hall-of-fame.jpg",
+    "width": 5712,
+    "height": 4284,
+    "aspectRatio": 1.3333333333333333,
+    "placeholder": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAQAgCdASoQAAwAAsBMJagCdAEO+aLdbCEAAP7qK/AI8ghU4hUQwGdSdQ1K30lwB90I5uasPy3Ig7d4D5B+2nOgfqexfozSX7sff7AbQZ5iXtFWIuw9hiJAWC3sIAAA",
+    "variants": {
+      "avif": {
+        "480": "/images/the-project/team-hall-of-fame-480.avif",
+        "768": "/images/the-project/team-hall-of-fame-768.avif",
+        "1280": "/images/the-project/team-hall-of-fame-1280.avif",
+        "1920": "/images/the-project/team-hall-of-fame-1920.avif"
+      },
+      "webp": {
+        "480": "/images/the-project/team-hall-of-fame-480.webp",
+        "768": "/images/the-project/team-hall-of-fame-768.webp",
+        "1280": "/images/the-project/team-hall-of-fame-1280.webp",
+        "1920": "/images/the-project/team-hall-of-fame-1920.webp"
+      }
+    }
+  }
+}
