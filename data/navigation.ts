@@ -19,6 +19,7 @@ export const footerLinks: {
     { label: 'The Project', href: '/the-project' },
     { label: 'Blog', href: '/blog' },
     { label: 'FAQ', href: '/faq' },
+    { label: 'Policies', href: '/policies' },
   ],
   classes: [
     { label: 'Ballet', href: '/classes?style=ballet' },
