@@ -3,7 +3,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { ParallaxHeroImage } from '@/components/about/ParallaxHeroImage'
 import { RevealOnScroll } from '@/components/sections/RevealOnScroll'
+import { getAboutImage } from '@/lib/about-images'
 import { buttonVariants } from '@/components/ui/button-styles'
 import { siteConfig } from '@/data/site'
 
@@ -121,17 +123,13 @@ export default function AboutContent() {
             </div>
 
             <RevealOnScroll delay={150}>
-              <div className="relative aspect-[4/3] overflow-hidden bg-[#D4F1EF] md:aspect-[5/4]">
-                <Image
-                  src="/images/about-studio.jpg"
-                  alt="Evolve Dance Center studio in Southwest Las Vegas — ballet class in session"
-                  fill
-                  className="object-cover object-center"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  priority
-                />
-                <div className="absolute inset-0 bg-[#1F1F1C]/5" aria-hidden />
-              </div>
+              <ParallaxHeroImage
+                image={getAboutImage('hero-storefront')}
+                alt="Evolve Dance Center storefront in Southwest Las Vegas"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority
+                className="relative aspect-[4/3] bg-[#D4F1EF] md:aspect-[5/4]"
+              />
             </RevealOnScroll>
           </div>
         </div>
@@ -140,7 +138,20 @@ export default function AboutContent() {
       {/* Section 2 — Founding Story */}
       <section className="bg-[#F7F5F1] py-14 md:py-20">
         <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-[1fr_1.4fr] md:gap-16">
+          <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-2 md:gap-16">
+            <RevealOnScroll delay={120}>
+              <div className="relative aspect-[4/5] overflow-hidden bg-[#D4F1EF]">
+                <Image
+                  src={getAboutImage('lobby-wide').src}
+                  alt="Evolve Dance Center lobby — reclaimed wood accent wall, neon teal E logo, and reception desk"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  placeholder="blur"
+                  blurDataURL={getAboutImage('lobby-wide').placeholder}
+                  className="object-cover object-left"
+                />
+              </div>
+            </RevealOnScroll>
             <div>
               <RevealOnScroll>
                 <SectionEyebrow label="How Evolve Started" />
@@ -150,8 +161,6 @@ export default function AboutContent() {
                   A dance studio built on real training
                 </h2>
               </RevealOnScroll>
-            </div>
-            <div>
               <RevealOnScroll delay={150}>
                 <p className="mb-4 text-[15px] font-light leading-[1.8] text-[#6D6C67] md:text-[16px]">
                   In September 2017, Meghan Hoover and Cheryl Snow opened Evolve Dance Center in Southwest Las Vegas with
@@ -282,6 +291,43 @@ export default function AboutContent() {
               </RevealOnScroll>
             </div>
           </div>
+
+          <RevealOnScroll delay={300}>
+            <div className="mt-12 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-2 md:gap-8">
+              <figure className="relative">
+                <div className="relative aspect-[4/3] overflow-hidden bg-[#D4F1EF]">
+                  <Image
+                    src={getAboutImage('studio-tumbling').src}
+                    alt="Tumbling and acro studio at Evolve Dance Center with sprung floor and air track"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    placeholder="blur"
+                    blurDataURL={getAboutImage('studio-tumbling').placeholder}
+                    className="object-cover object-center"
+                  />
+                </div>
+                <figcaption className="mt-3 text-[11px] uppercase tracking-[0.18em] text-[#6D6C67] md:text-[12px]">
+                  Tumbling &amp; Acro Studio
+                </figcaption>
+              </figure>
+              <figure className="relative">
+                <div className="relative aspect-[4/3] overflow-hidden bg-[#D4F1EF]">
+                  <Image
+                    src={getAboutImage('studio-ballet').src}
+                    alt="Ballet studio at Evolve Dance Center with full mirror wall and barres"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    placeholder="blur"
+                    blurDataURL={getAboutImage('studio-ballet').placeholder}
+                    className="object-cover object-center"
+                  />
+                </div>
+                <figcaption className="mt-3 text-[11px] uppercase tracking-[0.18em] text-[#6D6C67] md:text-[12px]">
+                  Ballet &amp; Technique Studio
+                </figcaption>
+              </figure>
+            </div>
+          </RevealOnScroll>
         </div>
       </section>
 
@@ -309,7 +355,22 @@ export default function AboutContent() {
             </p>
           </RevealOnScroll>
 
-          <RevealOnScroll delay={300}>
+          <RevealOnScroll delay={280}>
+            <div className="relative mb-10 aspect-[21/9] overflow-hidden md:mb-12">
+              <Image
+                src={getAboutImage('trophy-hall').src}
+                alt="Awards and championship trophies on display at Evolve Dance Center"
+                fill
+                sizes="(max-width: 1280px) 100vw, 1280px"
+                placeholder="blur"
+                blurDataURL={getAboutImage('trophy-hall').placeholder}
+                className="object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0f2318]/40 to-transparent" aria-hidden />
+            </div>
+          </RevealOnScroll>
+
+          <RevealOnScroll delay={360}>
             <div className="grid grid-cols-2 gap-6 border border-[rgba(10,186,181,0.12)] bg-[#132a1f] p-8 md:grid-cols-4 md:gap-8 md:p-10">
               {studioStats.map((stat) => (
                 <div key={stat.lbl} className="text-center md:text-left">
@@ -326,6 +387,61 @@ export default function AboutContent() {
               ))}
             </div>
           </RevealOnScroll>
+        </div>
+      </section>
+
+      {/* Section 5.5 — Community & Space */}
+      <section className="bg-[#FCFBF8] py-14 md:py-20">
+        <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-[1fr_1.4fr] md:gap-16">
+            <div>
+              <RevealOnScroll>
+                <SectionEyebrow label="The Space" />
+              </RevealOnScroll>
+              <RevealOnScroll delay={100}>
+                <h2 className="font-display font-bold leading-[1.08] text-[#1F1F1C] text-[26px] md:text-[clamp(28px,3.5vw,42px)]">
+                  Built for dancers and the families behind them
+                </h2>
+              </RevealOnScroll>
+            </div>
+            <div>
+              <RevealOnScroll delay={180}>
+                <p className="text-[15px] font-light leading-[1.8] text-[#6D6C67] md:text-[16px]">
+                  From the lobby to the studio doors, every detail at Evolve was designed with one idea in mind — make
+                  this feel like home for the dancers who train here and the families who support them.
+                </p>
+              </RevealOnScroll>
+            </div>
+          </div>
+
+          <div className="mt-10 grid grid-cols-1 gap-6 md:mt-14 md:grid-cols-2 md:gap-8">
+            <RevealOnScroll delay={240}>
+              <div className="relative aspect-[4/3] overflow-hidden bg-[#D4F1EF]">
+                <Image
+                  src={getAboutImage('hallway-benches').src}
+                  alt="Hallway and waiting area at Evolve Dance Center with reclaimed wood benches"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  placeholder="blur"
+                  blurDataURL={getAboutImage('hallway-benches').placeholder}
+                  className="object-cover object-center"
+                />
+              </div>
+            </RevealOnScroll>
+            <RevealOnScroll delay={320}>
+              <div className="relative aspect-[4/3] overflow-hidden bg-[#D4F1EF]">
+                <Image
+                  src={getAboutImage('reception-detail').src}
+                  alt="Reception detail at Evolve Dance Center showing the neon Evolve E and trophy display"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  placeholder="blur"
+                  blurDataURL={getAboutImage('reception-detail').placeholder}
+                  className="object-cover object-center"
+                />
+              </div>
+            </RevealOnScroll>
+          </div>
         </div>
       </section>
 
