@@ -39,7 +39,7 @@ export default function Nav({ links }: NavProps) {
   return (
     <>
       <nav
-        className={`fixed inset-x-0 top-0 z-50 flex items-center justify-between transition-all duration-300 px-5 py-2 md:py-1.5 lg:py-2 ${
+        className={`fixed inset-x-0 top-0 z-50 flex items-center justify-between transition-all duration-300 px-4 md:px-12 py-2 md:py-1.5 lg:py-2 ${
           isScrolled
             ? 'bg-background/95 backdrop-blur-md'
             : 'bg-background'

@@ -199,23 +199,27 @@ export default function AboutContent() {
 
           <div className="mt-10 grid grid-cols-1 gap-8 md:mt-14 md:gap-10 lg:grid-cols-2">
             <RevealOnScroll delay={180}>
-              <FounderCard
-                imageSrc="/founders/meghan-hoover.jpg"
-                imageAlt="Meghan Hoover, co-founder of Evolve Dance Center"
-                name="Meghan Hoover"
-                role="BFA in Dance · Co-Founder"
-                bio={meghanHooverBio}
-              />
+              <div id="meghan-hoover" className="scroll-mt-24">
+                <FounderCard
+                  imageSrc="/founders/meghan-hoover.jpg"
+                  imageAlt="Meghan Hoover, co-founder of Evolve Dance Center"
+                  name="Meghan Hoover"
+                  role="BFA in Dance · Co-Founder"
+                  bio={meghanHooverBio}
+                />
+              </div>
             </RevealOnScroll>
 
             <RevealOnScroll delay={260}>
-              <FounderCard
-                imageSrc="/founders/cheryl-snow.jpg"
-                imageAlt="Cheryl Snow, co-founder of Evolve Dance Center"
-                name="Cheryl Snow"
-                role="BFA in Dance · Co-Founder · Ballet, Contemporary"
-                bio={cherylSnowBio}
-              />
+              <div id="cheryl-snow" className="scroll-mt-24">
+                <FounderCard
+                  imageSrc="/founders/cheryl-snow.jpg"
+                  imageAlt="Cheryl Snow, co-founder of Evolve Dance Center"
+                  name="Cheryl Snow"
+                  role="BFA in Dance · Co-Founder · Ballet, Contemporary"
+                  bio={cherylSnowBio}
+                />
+              </div>
             </RevealOnScroll>
           </div>
 

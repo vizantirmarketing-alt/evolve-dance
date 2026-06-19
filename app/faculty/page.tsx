@@ -1,62 +1,61 @@
 import type { Metadata } from 'next'
-
-import FacultyCard from '@/components/faculty/FacultyCard'
+import Link from 'next/link'
+import { buttonVariants } from '@/components/ui/button-styles'
 import Footer from '@/components/layout/Footer'
 import Navbar from '@/components/layout/Navbar'
-import { getPublishedFaculty } from '@/sanity/lib/queries'
+import { getFacultyForPage } from '@/sanity/lib/queries'
+import { FacultyStage } from './faculty-stage'
+
+export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Our Dance Faculty',
+  title: 'Faculty | Evolve Dance Center',
   description:
-    'Meet the Las Vegas dance teachers at Evolve Dance Center — working professionals training the next generation with care, technique, and high standards.',
+    'Working Strip professionals, conservatory-trained company members, and competitive choreographers — teaching the next generation in Las Vegas.',
   alternates: { canonical: '/faculty' },
+  openGraph: {
+    title: 'Faculty | Evolve Dance Center',
+    description:
+      'Meet the directors and faculty at Evolve Dance Center in Las Vegas.',
+    type: 'website',
+    url: '/faculty',
+  },
 }
 
-export const revalidate = 300
-
 export default async function FacultyPage() {
-  const faculty = await getPublishedFaculty()
+  const faculty = await getFacultyForPage()
 
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-background px-4 pb-32 pt-24 md:px-12 md:pt-28">
-        <div className="mx-auto max-w-6xl">
-          <div className="mb-6 flex items-center gap-3">
-            <div className="h-px w-7 bg-teal opacity-100" />
-            <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-teal opacity-100">Faculty</span>
-          </div>
+      <main className="bg-background">
+        <FacultyStage faculty={faculty} />
 
-          <div className="mb-12 max-w-3xl">
-            <h1
-              className="font-display font-bold leading-none text-foreground"
-              style={{ fontSize: 'clamp(40px, 5vw, 64px)' }}
-            >
-              The Faculty
-            </h1>
-            <p className="mt-6 text-[15px] font-light leading-[1.8] md:text-[16px] text-foreground-muted">
-              The team at Evolve brings together working dancers, choreographers, and longtime educators. Many of them
-              have performed professionally, taught at competition studios across the country, or trained the dancers
-              you&apos;ve seen on tour.
+        {/* Bottom CTA — matches /classes pattern */}
+        <section className="w-full border-t border-[#D6DFDA] bg-[#0ABAB5] px-6 py-20 md:px-12 md:py-24">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="font-display mb-6 text-[clamp(28px,3.5vw,42px)] font-bold leading-tight text-[#070a09]">
+              Train with our faculty
+            </h2>
+            <p className="mb-10 text-[15px] leading-[1.75] text-[#070a09]/85">
+              Find a class taught by the instructor you want to learn from. First class is on us.
             </p>
-          </div>
-
-          {faculty.length === 0 ? (
-            <div className="mx-auto max-w-md py-16 text-center md:py-20">
-              <p className="text-[15px] font-light leading-[1.8] md:text-[16px] text-foreground-muted">
-                Faculty profiles are being added — check back soon.
-              </p>
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
+              <Link
+                href="/classes"
+                className={buttonVariants({ variant: 'primary', surface: 'inverse', size: 'wide' })}
+              >
+                Browse Classes
+              </Link>
+              <Link
+                href="/free-trial"
+                className={buttonVariants({ variant: 'secondary', surface: 'inverse', size: 'wide' })}
+              >
+                Book a Free Trial
+              </Link>
             </div>
-          ) : (
-            <ul className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
-              {faculty.map((member) => (
-                <li key={member._id}>
-                  <FacultyCard faculty={member} />
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
+          </div>
+        </section>
       </main>
       <Footer />
     </>

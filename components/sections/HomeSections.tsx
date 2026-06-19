@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 import { siteConfig } from '@/data/site'
 import { JACKRABBIT_ENROLL_URL } from '@/lib/jackrabbit'
+import type { FacultyPreview } from '@/sanity/lib/queries'
 // ─────────────────────────────────────────
 // SHARED COMPONENTS
 // ─────────────────────────────────────────
@@ -403,16 +404,15 @@ function ClassCard({ num, name, letter, ages, desc }: typeof classes[0]) {
 // INSTRUCTORS PREVIEW
 // ─────────────────────────────────────────
 
-const instructors = [
-  { name: 'Cheryl Snow',      role: 'Director · Ballet · Contemporary' },
-  { name: 'Meghan Hoover',    role: 'Jazz · Hip Hop' },
-  { name: 'Alannah Newcomer', role: 'Lyrical · Contemporary' },
-  { name: 'Brooke DeSoto',    role: 'Acro · Tumbling' },
-  { name: 'Eric Lehn',        role: 'Hip Hop · Jazz' },
-  { name: '+ 17 More',        role: 'View All Faculty →' },
-]
+function previewRole(member: FacultyPreview): string {
+  const isDirector = /director/i.test(member.role ?? '')
+  const specialties = (member.specialties ?? []).join(' · ')
+  if (isDirector && specialties) return `Director · ${specialties}`
+  if (isDirector) return 'Director'
+  return specialties || member.role || ''
+}
 
-export function InstructorsSection() {
+export function InstructorsSection({ faculty }: { faculty: FacultyPreview[] }) {
   return (
     <section className="bg-[#F7F5F1] px-4 py-10 md:px-12 md:py-24 overflow-hidden">
       <Reveal>
@@ -440,56 +440,124 @@ export function InstructorsSection() {
       <Reveal>
         <>
           <div className="hidden md:flex gap-0.5 bg-[#D6DFDA]">
-            {instructors.map(inst => (
-              <div
-                key={inst.name}
-                className="group relative flex min-h-[190px] min-w-0 flex-1 cursor-pointer overflow-hidden bg-[#FCFBF8] transition-colors duration-300 hover:bg-[#D4F1EF]"
-              >
-                {/* Top teal bar on hover */}
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-teal scale-x-0 origin-left transition-transform duration-400 group-hover:scale-x-100" />
+            {faculty.map((member) => {
+              const hotspot = member.photo?.hotspot
+              const objectPosition = hotspot
+                ? `${hotspot.x * 100}% ${hotspot.y * 100}%`
+                : '50% 25%'
 
-                <div className="absolute bottom-0 left-0 right-0 z-[1] px-4 py-5">
-                  <div className="font-display text-[15px] font-bold leading-[1.1] mb-1.5 text-[#1F1F1C] whitespace-nowrap tracking-tight">
-                    {inst.name}
+              return (
+                <Link
+                  key={member._id}
+                  href={`/faculty#${member.slug.current}`}
+                  className="group relative flex aspect-[480/600] min-w-0 flex-1 cursor-pointer overflow-hidden bg-[#FCFBF8] no-underline text-inherit"
+                >
+                  {member.photo ? (
+                    <Image
+                      src={member.photo.url}
+                      alt={member.photo.alt}
+                      fill
+                      placeholder="blur"
+                      blurDataURL={member.photo.lqip}
+                      sizes="(min-width: 768px) 20vw, 50vw"
+                      style={{ objectFit: 'cover', objectPosition }}
+                      className="transition-transform duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#FCFBF8] to-[#D4F1EF]" />
+                  )}
+
+                  {/* Bottom gradient overlay so text is readable */}
+                  <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+
+                  {/* Hover teal accent bar */}
+                  <div className="absolute top-0 left-0 right-0 h-0.5 bg-[#0ABAB5] scale-x-0 origin-left transition-transform duration-400 group-hover:scale-x-100 z-10" />
+
+                  <div className="absolute bottom-0 left-0 right-0 z-[1] px-4 py-5">
+                    <div className="font-display text-[15px] font-bold leading-[1.1] mb-1.5 text-white whitespace-nowrap tracking-tight">
+                      {member.name}
+                    </div>
+                    <div className="text-[11px] font-medium tracking-[0.12em] uppercase text-[#81D8D0] md:text-[12px]">
+                      {previewRole(member)}
+                    </div>
                   </div>
-                  <div className="text-[11px] font-medium tracking-[0.12em] uppercase text-[#0ABAB5] md:text-[12px]">
-                    {inst.role}
-                  </div>
+                </Link>
+              )
+            })}
+
+            {/* + More card */}
+            <Link
+              href="/faculty"
+              className="group relative flex aspect-[480/600] min-w-0 flex-1 cursor-pointer overflow-hidden bg-[#0ABAB5] no-underline text-inherit"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-[#0ABAB5] to-[#087876]" />
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-white scale-x-0 origin-left transition-transform duration-400 group-hover:scale-x-100 z-10" />
+              <div className="absolute bottom-0 left-0 right-0 z-[1] px-4 py-5">
+                <div className="font-display text-[15px] font-bold leading-[1.1] mb-1.5 text-white whitespace-nowrap tracking-tight">
+                  + More
+                </div>
+                <div className="text-[11px] font-medium tracking-[0.12em] uppercase text-white/90 md:text-[12px]">
+                  View All Faculty →
                 </div>
               </div>
-            ))}
+            </Link>
           </div>
 
           <div className="md:hidden -mx-4">
             <div className="scrollbar-hide flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-0">
-              {instructors.map(inst => {
-                const body = (
-                  <>
-                    <div className="mt-auto">
-                      <div className="font-display text-[clamp(17px,2.2vw,22px)] font-bold leading-[1.1] text-[#1F1F1C]">{inst.name}</div>
-                      <div className="mt-1.5 text-[12px] font-medium text-[#0ABAB5] md:text-[13px]">{inst.role}</div>
-                    </div>
-                  </>
-                )
+              {faculty.map((member) => {
+                const hotspot = member.photo?.hotspot
+                const objectPosition = hotspot
+                  ? `${hotspot.x * 100}% ${hotspot.y * 100}%`
+                  : '50% 25%'
+
                 return (
-                  <article
-                    key={inst.name}
-                    className="relative flex aspect-[5/4] w-[58vw] shrink-0 snap-start flex-col overflow-hidden rounded-sm border border-[#D6DFDA] bg-[#FCFBF8] px-5 py-4"
+                  <Link
+                    key={member._id}
+                    href={`/faculty#${member.slug.current}`}
+                    className="relative flex aspect-[5/6] w-[58vw] shrink-0 snap-start flex-col overflow-hidden rounded-sm border border-[#D6DFDA] bg-[#FCFBF8] no-underline text-inherit"
                   >
-                    {inst.name === '+ 17 More' ? (
-                      <Link href="/faculty" className="flex h-full flex-col text-left no-underline text-inherit">
-                        {body}
-                      </Link>
-                    ) : (
-                      body
+                    {member.photo && (
+                      <Image
+                        src={member.photo.url}
+                        alt={member.photo.alt}
+                        fill
+                        placeholder="blur"
+                        blurDataURL={member.photo.lqip}
+                        sizes="58vw"
+                        style={{ objectFit: 'cover', objectPosition }}
+                      />
                     )}
-                  </article>
+                    <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 z-[1] px-5 py-4">
+                      <div className="font-display text-[clamp(17px,2.2vw,22px)] font-bold leading-[1.1] text-white">
+                        {member.name}
+                      </div>
+                      <div className="mt-1.5 text-[12px] font-medium text-[#81D8D0] md:text-[13px]">
+                        {previewRole(member)}
+                      </div>
+                    </div>
+                  </Link>
                 )
               })}
+
+              <Link
+                href="/faculty"
+                className="relative flex aspect-[5/6] w-[58vw] shrink-0 snap-start flex-col overflow-hidden rounded-sm bg-gradient-to-br from-[#0ABAB5] to-[#087876] px-5 py-4 no-underline text-inherit"
+              >
+                <div className="mt-auto relative z-[1]">
+                  <div className="font-display text-[clamp(17px,2.2vw,22px)] font-bold leading-[1.1] text-white">
+                    + More
+                  </div>
+                  <div className="mt-1.5 text-[12px] font-medium text-white/90 md:text-[13px]">
+                    View All Faculty →
+                  </div>
+                </div>
+              </Link>
             </div>
           </div>
           <div className="mt-1 flex justify-center gap-1.5 md:hidden">
-            {instructors.map((_, i) => (
+            {Array.from({ length: faculty.length + 1 }).map((_, i) => (
               <span key={i} className="h-1.5 w-1.5 rounded-full bg-[#1F1F1C]/20" aria-hidden />
             ))}
           </div>

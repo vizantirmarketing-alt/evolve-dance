@@ -166,6 +166,86 @@ export async function getPublishedFaculty(): Promise<Faculty[]> {
   return client.fetch<Faculty[]>(publishedFacultyQuery)
 }
 
+export type FacultyForPage = {
+  _id: string
+  name: string
+  slug: { current: string }
+  role: string
+  specialties: string[] | null
+  bio: PortableTextBlock[] | null
+  photo: {
+    url: string
+    alt: string
+    lqip: string
+    aspectRatio: number
+    hotspot: { x: number; y: number } | null
+    crop: { top: number; bottom: number; left: number; right: number } | null
+  } | null
+  order: number
+}
+
+export const facultyForPageQuery = `*[_type == "faculty" && published == true] | order(order asc, name asc) {
+  _id,
+  name,
+  "slug": slug,
+  role,
+  specialties,
+  bio,
+  "photo": photo{
+    "url": asset->url,
+    "alt": coalesce(alt, name),
+    "lqip": asset->metadata.lqip,
+    "aspectRatio": asset->metadata.dimensions.aspectRatio,
+    hotspot,
+    crop
+  },
+  order
+}`
+
+export async function getFacultyForPage(): Promise<FacultyForPage[]> {
+  return client.fetch<FacultyForPage[]>(
+    facultyForPageQuery,
+    {},
+    { next: { tags: ['faculty'] } }
+  )
+}
+
+export type FacultyPreview = {
+  _id: string
+  name: string
+  slug: { current: string }
+  role: string
+  specialties: string[] | null
+  photo: {
+    url: string
+    alt: string
+    lqip: string
+    hotspot: { x: number; y: number } | null
+  } | null
+}
+
+export const facultyPreviewQuery = `*[_type == "faculty" && published == true] | order(order asc, name asc) [0...5] {
+  _id,
+  name,
+  "slug": slug,
+  role,
+  specialties,
+  "photo": photo{
+    "url": asset->url,
+    "alt": coalesce(alt, name),
+    "lqip": asset->metadata.lqip,
+    hotspot
+  }
+}`
+
+export async function getFacultyPreview(): Promise<FacultyPreview[]> {
+  return client.fetch<FacultyPreview[]>(
+    facultyPreviewQuery,
+    {},
+    { next: { tags: ['faculty'] } }
+  )
+}
+
 export async function getPublishedFaqs(): Promise<FaqDoc[]> {
   return client.fetch<FaqDoc[]>(publishedFaqsQuery)
 }

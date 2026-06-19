@@ -15,7 +15,7 @@ import {
 import ScheduleSection from '@/components/sections/ScheduleSection'
 import TestimonialsSection from '@/components/sections/TestimonialsSection'
 import { buildDanceSchoolJsonLd } from '@/lib/dance-school-jsonld'
-import { getStudioHours } from '@/sanity/lib/queries'
+import { getStudioHours, getFacultyPreview } from '@/sanity/lib/queries'
 
 export const revalidate = 300
 
@@ -24,7 +24,10 @@ export const metadata: Metadata = {
 }
 
 export default async function HomePage() {
-  const studioHours = await getStudioHours()
+  const [studioHours, facultyPreview] = await Promise.all([
+    getStudioHours(),
+    getFacultyPreview(),
+  ])
   const jsonLd = buildDanceSchoolJsonLd(studioHours)
 
   return (
@@ -49,7 +52,7 @@ export default async function HomePage() {
         <WhyFamiliesChooseSection />
         <ClassesSection />
         <ScheduleSection />
-        <InstructorsSection />
+        <InstructorsSection faculty={facultyPreview} />
         <TestimonialsSection />
         <EnrollSection />
       </main>
