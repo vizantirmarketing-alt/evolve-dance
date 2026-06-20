@@ -326,7 +326,9 @@ function Modal({ member, onClose, isDesktop }: {
           exit={{ x: '-30%', opacity: 0 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           style={{
-            width: isDesktop ? '34%' : '100%',
+            width: isDesktop ? '34%' : '60%',
+            maxWidth: isDesktop ? undefined : 220,
+            margin: isDesktop ? undefined : '24px auto 0',
             flexShrink: 0,
             background: T.bgPanel,
           }}
@@ -341,7 +343,7 @@ function Modal({ member, onClose, isDesktop }: {
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
           style={{
             flex: 1,
-            padding: isDesktop ? '56px 56px 48px 56px' : '32px 28px',
+            padding: isDesktop ? '56px 56px 48px 56px' : '20px 24px 32px 24px',
             overflowY: 'auto',
           }}
         >
