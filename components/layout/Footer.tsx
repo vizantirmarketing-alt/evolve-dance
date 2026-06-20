@@ -117,8 +117,11 @@ export default function Footer() {
 
         <div className="pt-6 flex flex-wrap items-center justify-between gap-3 text-[11px] text-white/60 font-sans">
           <span>
-            © 2026 Evolve Dance Center · All photos and video are property of Evolve Dance Center · All rights
-            reserved.
+            © 2026 Evolve Dance Center ·{' '}
+            <SmartLink href="/media-usage" className="hover:underline underline-offset-2">
+              All photos and video are property of Evolve Dance Center
+            </SmartLink>{' '}
+            · All rights reserved.
           </span>
           <div className="flex items-center gap-3">
             <SmartLink href="/privacy" className="hover:text-white/90 transition-colors">
@@ -127,6 +130,10 @@ export default function Footer() {
             <span aria-hidden="true">·</span>
             <SmartLink href="/policies" className="hover:text-white/90 transition-colors">
               Policies
+            </SmartLink>
+            <span aria-hidden="true">·</span>
+            <SmartLink href="/media-usage" className="hover:text-white/90 transition-colors">
+              Media Usage
             </SmartLink>
             <span aria-hidden="true">·</span>
             <span>
