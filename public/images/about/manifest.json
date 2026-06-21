@@ -4,146 +4,48 @@
     "width": 7697,
     "height": 3611,
     "aspectRatio": 2.131542509000277,
-    "placeholder": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAABQAgCdASoQAAgAAsBMJZgCdGuAt/8D6KgBirAAy09zvJB9f3vi/mvIF+65evGvlR9nKr+v/nmnwx3fgu5rHSLtV6TUFR2HTz0NyDAA",
-    "variants": {
-      "avif": {
-        "480": "/images/about/hero-storefront-480.avif",
-        "768": "/images/about/hero-storefront-768.avif",
-        "1280": "/images/about/hero-storefront-1280.avif",
-        "1920": "/images/about/hero-storefront-1920.avif"
-      },
-      "webp": {
-        "480": "/images/about/hero-storefront-480.webp",
-        "768": "/images/about/hero-storefront-768.webp",
-        "1280": "/images/about/hero-storefront-1280.webp",
-        "1920": "/images/about/hero-storefront-1920.webp"
-      }
-    }
+    "placeholder": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAABQAgCdASoQAAgAAsBMJZgCdGuAt/8D6KgBirAAy09zvJB9f3vi/mvIF+65evGvlR9nKr+v/nmnwx3fgu5rHSLtV6TUFR2HTz0NyDAA"
   },
   "lobby-wide": {
     "src": "/images/about/lobby-wide.jpg",
     "width": 8631,
     "height": 5754,
     "aspectRatio": 1.5,
-    "placeholder": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAADQAQCdASoQAAsAAsBMJQBOgMWMXFK4mADNyuEBGxxMsP9aMrlAUYcBHCfnGmJdszRV+bf2lhnI/54M+qop2kSeIprrH1UFETjWFV9L+bdJ5/mh+0yAfNIXICjveB/L0PVKBPdUscAAAA==",
-    "variants": {
-      "avif": {
-        "480": "/images/about/lobby-wide-480.avif",
-        "768": "/images/about/lobby-wide-768.avif",
-        "1280": "/images/about/lobby-wide-1280.avif",
-        "1920": "/images/about/lobby-wide-1920.avif"
-      },
-      "webp": {
-        "480": "/images/about/lobby-wide-480.webp",
-        "768": "/images/about/lobby-wide-768.webp",
-        "1280": "/images/about/lobby-wide-1280.webp",
-        "1920": "/images/about/lobby-wide-1920.webp"
-      }
-    }
+    "placeholder": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAADQAQCdASoQAAsAAsBMJQBOgMWMXFK4mADNyuEBGxxMsP9aMrlAUYcBHCfnGmJdszRV+bf2lhnI/54M+qop2kSeIprrH1UFETjWFV9L+bdJ5/mh+0yAfNIXICjveB/L0PVKBPdUscAAAA=="
   },
   "studio-tumbling": {
     "src": "/images/about/studio-tumbling.jpg",
     "width": 8631,
     "height": 5754,
     "aspectRatio": 1.5,
-    "placeholder": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAAAQAgCdASoQAAsAAsBMJZQCw7DRZdXuwTUAAP6qGKFeBZKtFdxCT1jkiNpTfi7kqFr/c5F83c2RYZ6EmnQrfhZojp/bYD5kyXlCPK2DUXCaDf3xhZLEzasBl+RGtvwpwQwAAA==",
-    "variants": {
-      "avif": {
-        "480": "/images/about/studio-tumbling-480.avif",
-        "768": "/images/about/studio-tumbling-768.avif",
-        "1280": "/images/about/studio-tumbling-1280.avif",
-        "1920": "/images/about/studio-tumbling-1920.avif"
-      },
-      "webp": {
-        "480": "/images/about/studio-tumbling-480.webp",
-        "768": "/images/about/studio-tumbling-768.webp",
-        "1280": "/images/about/studio-tumbling-1280.webp",
-        "1920": "/images/about/studio-tumbling-1920.webp"
-      }
-    }
+    "placeholder": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAAAQAgCdASoQAAsAAsBMJZQCw7DRZdXuwTUAAP6qGKFeBZKtFdxCT1jkiNpTfi7kqFr/c5F83c2RYZ6EmnQrfhZojp/bYD5kyXlCPK2DUXCaDf3xhZLEzasBl+RGtvwpwQwAAA=="
   },
   "studio-ballet": {
     "src": "/images/about/studio-ballet.jpg",
     "width": 8631,
     "height": 5754,
     "aspectRatio": 1.5,
-    "placeholder": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADQAQCdASoQAAsAAsBMJZwC/ODDFdMP4AD2f6mHX1zojNBOiRR2oKbvljgKVGAzDZIwSIBL73jyN+Bt0gEjchyh9b6CTiHpWRqP322vTt8AAA==",
-    "variants": {
-      "avif": {
-        "480": "/images/about/studio-ballet-480.avif",
-        "768": "/images/about/studio-ballet-768.avif",
-        "1280": "/images/about/studio-ballet-1280.avif",
-        "1920": "/images/about/studio-ballet-1920.avif"
-      },
-      "webp": {
-        "480": "/images/about/studio-ballet-480.webp",
-        "768": "/images/about/studio-ballet-768.webp",
-        "1280": "/images/about/studio-ballet-1280.webp",
-        "1920": "/images/about/studio-ballet-1920.webp"
-      }
-    }
+    "placeholder": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADQAQCdASoQAAsAAsBMJZwC/ODDFdMP4AD2f6mHX1zojNBOiRR2oKbvljgKVGAzDZIwSIBL73jyN+Bt0gEjchyh9b6CTiHpWRqP322vTt8AAA=="
   },
   "trophy-hall": {
     "src": "/images/about/trophy-hall.jpg",
     "width": 8631,
     "height": 5754,
     "aspectRatio": 1.5,
-    "placeholder": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAABwAgCdASoQAAsAAsBMJZACdH8AgqiTtin15awAAM4/qBvaZeU/geuAGP/SFtpfAjVGW/Y8oLojUdA4pkFTLuUeCKTRgbOyMaJ0l14/a6umEtiKOLeJy+cpHTPKUcPsCB3ant6YfNfpDj+TLswgAAAA",
-    "variants": {
-      "avif": {
-        "480": "/images/about/trophy-hall-480.avif",
-        "768": "/images/about/trophy-hall-768.avif",
-        "1280": "/images/about/trophy-hall-1280.avif",
-        "1920": "/images/about/trophy-hall-1920.avif"
-      },
-      "webp": {
-        "480": "/images/about/trophy-hall-480.webp",
-        "768": "/images/about/trophy-hall-768.webp",
-        "1280": "/images/about/trophy-hall-1280.webp",
-        "1920": "/images/about/trophy-hall-1920.webp"
-      }
-    }
+    "placeholder": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAABwAgCdASoQAAsAAsBMJZACdH8AgqiTtin15awAAM4/qBvaZeU/geuAGP/SFtpfAjVGW/Y8oLojUdA4pkFTLuUeCKTRgbOyMaJ0l14/a6umEtiKOLeJy+cpHTPKUcPsCB3ant6YfNfpDj+TLswgAAAA"
   },
   "hallway-benches": {
     "src": "/images/about/hallway-benches.jpg",
     "width": 8628,
     "height": 5752,
     "aspectRatio": 1.5,
-    "placeholder": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwAQCdASoQAAsAAsBMJYgCdAYwSx4oEAAA/IdIRO6VlEM3s8CAFeEBR1Tr6/q5wHZ/p9/yx8F1ewbuZIzhfTr1v0cQYDLn9UTHy9H740iD6UWdhyHF9YCX3zmRxmut9myAAA==",
-    "variants": {
-      "avif": {
-        "480": "/images/about/hallway-benches-480.avif",
-        "768": "/images/about/hallway-benches-768.avif",
-        "1280": "/images/about/hallway-benches-1280.avif",
-        "1920": "/images/about/hallway-benches-1920.avif"
-      },
-      "webp": {
-        "480": "/images/about/hallway-benches-480.webp",
-        "768": "/images/about/hallway-benches-768.webp",
-        "1280": "/images/about/hallway-benches-1280.webp",
-        "1920": "/images/about/hallway-benches-1920.webp"
-      }
-    }
+    "placeholder": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwAQCdASoQAAsAAsBMJYgCdAYwSx4oEAAA/IdIRO6VlEM3s8CAFeEBR1Tr6/q5wHZ/p9/yx8F1ewbuZIzhfTr1v0cQYDLn9UTHy9H740iD6UWdhyHF9YCX3zmRxmut9myAAA=="
   },
   "reception-detail": {
     "src": "/images/about/reception-detail.jpg",
     "width": 8631,
     "height": 5754,
     "aspectRatio": 1.5,
-    "placeholder": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAwAgCdASoQAAsAAsBMJZACdAYrdF7D/c06AADiGI9ks82hyChogAF7byrbf7eGWj+5txcDiMhoJ+WwyjZcoaezmXRBTDa71jmtpdr7LTW/EMPfIbitidPkep101VytKuvPWsc1cgAAAA==",
-    "variants": {
-      "avif": {
-        "480": "/images/about/reception-detail-480.avif",
-        "768": "/images/about/reception-detail-768.avif",
-        "1280": "/images/about/reception-detail-1280.avif",
-        "1920": "/images/about/reception-detail-1920.avif"
-      },
-      "webp": {
-        "480": "/images/about/reception-detail-480.webp",
-        "768": "/images/about/reception-detail-768.webp",
-        "1280": "/images/about/reception-detail-1280.webp",
-        "1920": "/images/about/reception-detail-1920.webp"
-      }
-    }
+    "placeholder": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAwAgCdASoQAAsAAsBMJZACdAYrdF7D/c06AADiGI9ks82hyChogAF7byrbf7eGWj+5txcDiMhoJ+WwyjZcoaezmXRBTDa71jmtpdr7LTW/EMPfIbitidPkep101VytKuvPWsc1cgAAAA=="
   }
 }

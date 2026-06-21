@@ -1,15 +1,6 @@
-/**
- * Image processing pipeline for page-specific photo assets.
- *
- * Reads source JPGs from each configured folder under public/images/
- * Outputs AVIF + WebP at 4 widths (1920/1280/768/480)
- * Generates base64 LQIP placeholders for blur-up
- * Writes one manifest.json per folder
- *
- * To add a new folder: append a new entry to FOLDERS below.
- *
- * Usage: pnpm tsx scripts/process-images.ts
- */
+// Generates manifest.json for each image folder. Source JPGs are NOT modified.
+// Responsive delivery + format negotiation handled by next/image at runtime
+// via Vercel image optimization. No pre-generated AVIF/WebP variants needed.
 
 import sharp from 'sharp';
 import { writeFile, mkdir } from 'node:fs/promises';
@@ -55,9 +46,6 @@ const FOLDERS: readonly FolderConfig[] = [
   },
 ];
 
-const WIDTHS = [1920, 1280, 768, 480] as const;
-const AVIF_QUALITY = 62;
-const WEBP_QUALITY = 78;
 const LQIP_WIDTH = 16;
 
 type ManifestEntry = {
@@ -66,10 +54,6 @@ type ManifestEntry = {
   height: number;
   aspectRatio: number;
   placeholder: string;
-  variants: {
-    avif: Record<number, string>;
-    webp: Record<number, string>;
-  };
 };
 
 type Manifest = Record<string, ManifestEntry>;
@@ -101,32 +85,6 @@ async function processImage(
     .toBuffer();
   const placeholder = `data:image/webp;base64,${lqipBuffer.toString('base64')}`;
 
-  const variants: ManifestEntry['variants'] = { avif: {}, webp: {} };
-
-  for (const width of WIDTHS) {
-    if (width > srcW) continue;
-
-    const avifName = `${slug}-${width}.avif`;
-    const webpName = `${slug}-${width}.webp`;
-
-    await image
-      .clone()
-      .resize(width, null, { fit: 'inside', withoutEnlargement: true })
-      .avif({ quality: AVIF_QUALITY, effort: 6 })
-      .toFile(path.join(folderDir, avifName));
-
-    await image
-      .clone()
-      .resize(width, null, { fit: 'inside', withoutEnlargement: true })
-      .webp({ quality: WEBP_QUALITY, effort: 6 })
-      .toFile(path.join(folderDir, webpName));
-
-    variants.avif[width] = `/images/${folderSlug}/${avifName}`;
-    variants.webp[width] = `/images/${folderSlug}/${webpName}`;
-
-    console.log(`  ✓ ${avifName} + ${webpName}`);
-  }
-
   return [
     slug,
     {
@@ -135,7 +93,6 @@ async function processImage(
       height: srcH,
       aspectRatio: srcW / srcH,
       placeholder,
-      variants,
     },
   ];
 }
@@ -156,6 +113,7 @@ async function processFolder(config: FolderConfig): Promise<void> {
     console.log(`→ ${filename}`);
     const [slug, entry] = await processImage(filename, config.slug);
     manifest[slug] = entry;
+    console.log(`  ✓ manifest entry for ${slug}`);
     console.log('');
   }
 
