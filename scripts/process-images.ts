@@ -38,6 +38,8 @@ const FOLDERS: readonly FolderConfig[] = [
       'studio-portrait-solo.jpg',
       'award-driven-group.jpg',
       'team-hall-of-fame.jpg',
+      'what-it-is-masterclass.jpg',
+      'what-it-takes-leap.jpg',
     ],
   },
   {

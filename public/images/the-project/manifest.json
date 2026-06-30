@@ -22,10 +22,10 @@
   },
   "project-rehearsal-action": {
     "src": "/images/the-project/project-rehearsal-action.jpg",
-    "width": 4865,
-    "height": 4490,
-    "aspectRatio": 1.0835189309576838,
-    "placeholder": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAAAwAgCdASoQAA8AAsBMJZQCdAEPhEXuInB+kAD+5Tvi584vx6rqJv0Vg/4X/fGx4KsatXBuvwsmf61ZD7TT4gKqIGIsKfytAAt6bALSnkOLK2aax7vdrg1+AGWfGChCF2LMR1r3Skix33jcs2ApsvheQ4AAAA=="
+    "width": 1132,
+    "height": 2048,
+    "aspectRatio": 0.552734375,
+    "placeholder": "data:image/webp;base64,UklGRtAAAABXRUJQVlA4IMQAAABwBACdASoQAB0APtFWpEuoJKOhsAgBABoJagCdAYvYtW3TYCT6SYdqV8sM+AD+/DfRPBD3Q8ycIr3iB7vfsCHyHqfS9n/nJc4z7rXkhAZqPso46q8rZ/MenYyLQuviAfJ+Ptmy2xsYpNks7+5WfEbMqXCvz5jRpXJQtfOwTO+yEPgk+L0p3wYy2Nn6SrvvvKwnc4JQejRD0TTa0lhQUP/bUnANH8cURvRMg0Bf74alWCNDfFZw3EO9LGjX0TzIbe9RAAAA"
   },
   "studio-portrait-duo": {
     "src": "/images/the-project/studio-portrait-duo.jpg",
@@ -54,5 +54,19 @@
     "height": 4284,
     "aspectRatio": 1.3333333333333333,
     "placeholder": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAQAgCdASoQAAwAAsBMJagCdAEO+aLdbCEAAP7qK/AI8ghU4hUQwGdSdQ1K30lwB90I5uasPy3Ig7d4D5B+2nOgfqexfozSX7sff7AbQZ5iXtFWIuw9hiJAWC3sIAAA"
+  },
+  "what-it-is-masterclass": {
+    "src": "/images/the-project/what-it-is-masterclass.jpg",
+    "width": 1159,
+    "height": 2048,
+    "aspectRatio": 0.56591796875,
+    "placeholder": "data:image/webp;base64,UklGRswAAABXRUJQVlA4IMAAAADQBACdASoQABwAPtFUo0uoJKMhsAgBABoJYgCdIP8gvhW/MQlCLGVX6g3bUwEowAD+6h0eCf3Iswa1wI07V/b1ETyvr+0tnhq++Ar4X3nAZlkjnAklDN2mAWXvPGq84dW2H/hDO05Cdgp56SucJpTuHZGC1PVNtN87Gxtr6vE+PV5RsfpPFynfxy468uia1YPSPwg6j4xstdoThb5yprbTHmLd0tJ4VlxFJVk9+aGOWi82lWSSZjD9VPOdYjJgAAA="
+  },
+  "what-it-takes-leap": {
+    "src": "/images/the-project/what-it-takes-leap.jpg",
+    "width": 1142,
+    "height": 2048,
+    "aspectRatio": 0.5576171875,
+    "placeholder": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAACwBACdASoQAB0APtFUpEuoJKOhsAgBABoJQBOgtQJAEYkOh6EJoaUceBDn+fkAAMxTHnKapPRWu+YxKBzAi5rpNqgnu/Yx8L6XhyT3MgIX7XI50M5nwd5udzLZclPuLXlxhoJvGaaIaJpsQjobwbUV7osvSSuayhd1akGi2705BXENwUCsAiJIfJSqX8qjBvLUTPXSIAA="
   }
 }

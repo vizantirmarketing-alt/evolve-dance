@@ -6,17 +6,39 @@ import { PortableText, type PortableTextComponents } from '@portabletext/react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import { buttonVariants } from '@/components/ui/button-styles'
-import { urlFor } from '@/sanity/lib/image'
 import {
   getProjectPage,
   type PortableTextBlock,
   type ProjectPage,
-  type ProjectTeamLevel,
 } from '@/sanity/lib/queries'
 import { getTheProjectImage } from '@/lib/the-project-images'
 
 const DEFAULT_DESCRIPTION =
   "The Project is Evolve Dance Center's competition team — serious training for serious dancers. Auditions held annually in May. Located in southwest Las Vegas."
+
+const TEAM_LEVELS = [
+  {
+    levelNumber: '01',
+    levelName: 'Mini',
+    levelDescription:
+      'Ages 5–8. Foundational training in ballet, jazz, and tumbling. First exposure to choreography, team rehearsals, and local competitions.',
+    levelTags: ['Ages 5–8', 'Local competitions', 'Foundational training'],
+  },
+  {
+    levelNumber: '02',
+    levelName: 'Junior',
+    levelDescription:
+      'Ages 9–12. Expanded technique across ballet, jazz, lyrical, and hip hop. Regional competition schedule, choreography camps, and at least one convention per season.',
+    levelTags: ['Ages 9–12', 'Regional competitions', 'Conventions'],
+  },
+  {
+    levelNumber: '03',
+    levelName: 'Senior',
+    levelDescription:
+      'Ages 13–18. Pre-professional training across all genres including contemporary and acro. National competitions, advanced conventions, and college audition preparation.',
+    levelTags: ['Ages 13–18', 'Nationals', 'College prep'],
+  },
+] as const
 
 const heroIntroComponents: PortableTextComponents = {
   block: {
@@ -83,23 +105,6 @@ function splitPageIntro(pageIntro: PortableTextBlock[] | null | undefined) {
   }
 }
 
-function TeamLevelPhoto({ level }: { level: ProjectTeamLevel }) {
-  const hasImage = Boolean(level.photo?.asset?._id)
-
-  if (hasImage && level.photo) {
-    const src = urlFor(level.photo).width(640).height(480).fit('crop').quality(85).auto('format').url()
-    const alt = level.photo.alt?.trim() || `Photo of ${level.name} team level`
-
-    return (
-      <div className="mb-5 aspect-[4/3] w-full overflow-hidden rounded bg-background-warm">
-        <Image src={src} alt={alt} width={640} height={480} className="h-full w-full object-cover" />
-      </div>
-    )
-  }
-
-  return <div className="mb-5 aspect-[4/3] w-full rounded bg-background-warm" aria-hidden />
-}
-
 function CtaLink({
   href,
   className,
@@ -161,11 +166,10 @@ export default async function TheProjectPage() {
 
 function TheProjectPageContent({ page }: { page: ProjectPage }) {
   const { hero: heroIntro, body: bodyIntro } = splitPageIntro(page.pageIntro)
-  const teamLevels = page.teamLevels ?? []
   const awards = page.awards ?? []
   const audition = page.auditionInfo
   const auditionDateLabel = formatAuditionDate(audition?.date)
-  const teamLevelCount = teamLevels.length > 0 ? teamLevels.length : 3
+  const teamLevelCount = TEAM_LEVELS.length
 
   return (
     <>
@@ -174,8 +178,8 @@ function TheProjectPageContent({ page }: { page: ProjectPage }) {
         {/* Hero */}
         <section className="px-6 pb-16 pt-16 md:px-16 md:pb-20 md:pt-24 lg:px-20">
           <div className="mx-auto max-w-7xl">
-            <div className="grid grid-cols-1 items-end gap-10 md:grid-cols-[1.3fr_1fr] md:gap-16">
-              <div>
+            <div className="grid grid-cols-1 gap-10 md:grid-cols-[1.3fr_1fr] md:gap-16">
+              <div className="flex flex-col justify-center">
                 <div className="mb-4 flex items-center gap-3">
                   <div className="h-px w-7 bg-teal" />
                   <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-teal md:text-[12px]">
@@ -231,11 +235,24 @@ function TheProjectPageContent({ page }: { page: ProjectPage }) {
         {/* What it is */}
         <section className="bg-background-warm px-6 py-16 md:px-16 md:py-24 lg:px-20">
           <div className="mx-auto max-w-7xl">
-            <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-[1fr_1.5fr] md:gap-16">
-              <div className="pt-2 text-[11px] uppercase tracking-[0.22em] text-foreground-muted md:text-[12px]">
-                01 — What it is
+            <div className="grid grid-cols-1 gap-10 md:grid-cols-[1fr_1.5fr] md:gap-16">
+              <div className="space-y-8">
+                <span className="text-[11px] uppercase tracking-[0.22em] text-foreground-muted md:text-[12px]">
+                  01 — What it is
+                </span>
+                <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
+                  <Image
+                    src={getTheProjectImage('what-it-is-masterclass').src}
+                    alt="Choreographer leading Project dancers in masterclass"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    placeholder="blur"
+                    blurDataURL={getTheProjectImage('what-it-is-masterclass').placeholder}
+                    className="object-cover object-center"
+                  />
+                </div>
               </div>
-              <div>
+              <div className="flex flex-col justify-center">
                 <h2
                   className="mb-6 font-display font-bold text-foreground"
                   style={{ fontSize: 'clamp(28px, 3.5vw, 42px)', lineHeight: '1.1' }}
@@ -324,25 +341,29 @@ function TheProjectPageContent({ page }: { page: ProjectPage }) {
               </p>
             </div>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-              {teamLevels.map((level, index) => (
+              {TEAM_LEVELS.map((level) => (
                 <div
-                  key={`${level.name}-${level.order ?? index}`}
-                  className="rounded-lg border border-white/10 bg-white/[0.04] p-8"
+                  key={level.levelName}
+                  className="group relative flex flex-col gap-6 rounded-sm border border-white/10 bg-white/[0.02] p-8 transition-colors hover:border-white/20 hover:bg-white/[0.04] md:p-10"
                 >
-                  <TeamLevelPhoto level={level} />
-                  {level.ageRange ? (
-                    <div className="mb-3 text-[11px] uppercase tracking-[0.2em] text-teal md:text-[12px]">
-                      {level.ageRange}
-                    </div>
-                  ) : null}
-                  <div className="mb-4 font-display font-bold text-background" style={{ fontSize: '26px', lineHeight: '1.1' }}>
-                    {level.name}
+                  <div className="flex items-center gap-3">
+                    <span className="text-[11px] uppercase tracking-[0.18em] text-teal md:text-[12px]">
+                      {level.levelNumber}
+                    </span>
+                    <div className="h-px w-7 bg-teal/40" />
                   </div>
-                  {level.description ? (
-                    <div className="mb-5 text-[14px] leading-[1.6] text-white/65 md:text-[15px]">
-                      {level.description}
-                    </div>
-                  ) : null}
+                  <h3 className="font-display text-3xl text-cream md:text-4xl">{level.levelName}</h3>
+                  <p className="text-base leading-relaxed text-cream/70">{level.levelDescription}</p>
+                  <div className="mt-auto flex flex-wrap gap-2 pt-4">
+                    {level.levelTags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full border border-white/15 px-3 py-1 text-[11px] uppercase tracking-[0.12em] text-cream/60"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
@@ -352,25 +373,40 @@ function TheProjectPageContent({ page }: { page: ProjectPage }) {
         {/* Commitment */}
         <section className="px-6 py-16 md:px-16 md:py-24 lg:px-20">
           <div className="mx-auto max-w-7xl">
-            <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-[1fr_1.4fr] md:gap-16">
-              <div>
-                <div className="mb-5 flex items-center gap-3">
-                  <div className="h-px w-7 bg-teal" />
-                  <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-teal md:text-[12px]">
-                    The Commitment
-                  </span>
+            <div className="grid grid-cols-1 gap-10 md:grid-cols-[1fr_1.4fr] md:gap-16">
+              <div className="flex flex-col space-y-8">
+                <div>
+                  <div className="mb-5 flex items-center gap-3">
+                    <div className="h-px w-7 bg-teal" />
+                    <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-teal md:text-[12px]">
+                      The Commitment
+                    </span>
+                  </div>
+                  <h2
+                    className="mb-5 font-display font-bold text-foreground"
+                    style={{ fontSize: 'clamp(28px, 3.5vw, 42px)', lineHeight: '1.1' }}
+                  >
+                    What it takes.
+                  </h2>
+                  <p className="text-[14px] leading-[1.75] text-foreground-muted md:text-[15px]">
+                    Project is a year-round commitment. Here&apos;s what families should expect.
+                  </p>
                 </div>
-                <h2
-                  className="mb-5 font-display font-bold text-foreground"
-                  style={{ fontSize: 'clamp(28px, 3.5vw, 42px)', lineHeight: '1.1' }}
-                >
-                  What it takes.
-                </h2>
-                <p className="text-[14px] leading-[1.75] text-foreground-muted md:text-[15px]">
-                  Project is a year-round commitment. Here&apos;s what families should expect.
-                </p>
+                <div className="flex flex-col justify-center md:flex-1">
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
+                    <Image
+                      src={getTheProjectImage('what-it-takes-leap').src}
+                      alt="Project dancer mid-leap during audition"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      placeholder="blur"
+                      blurDataURL={getTheProjectImage('what-it-takes-leap').placeholder}
+                      className="object-cover object-center"
+                    />
+                  </div>
+                </div>
               </div>
-              <div className="flex flex-col">
+              <div className="flex flex-col justify-center">
                 <div className="flex gap-4 border-b border-border py-5 last:border-b-0">
                   <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-teal/[0.08] text-[14px] text-teal">
                     ◆
@@ -495,12 +531,12 @@ function TheProjectPageContent({ page }: { page: ProjectPage }) {
               <div className="relative aspect-[16/9] overflow-hidden border border-border bg-background-warm md:col-span-3">
                 <Image
                   src={getTheProjectImage('project-rehearsal-action').src}
-                  alt="Evolve Dance Project dancers mid-rehearsal at the studio"
+                  alt="Project dancer in blue audition attire performing technique during auditions"
                   fill
                   sizes="(max-width: 768px) 100vw, 100vw"
                   placeholder="blur"
                   blurDataURL={getTheProjectImage('project-rehearsal-action').placeholder}
-                  className="object-cover object-top"
+                  className="object-cover object-center"
                 />
               </div>
               <div className="relative aspect-[3/4] overflow-hidden border border-border bg-background-warm">

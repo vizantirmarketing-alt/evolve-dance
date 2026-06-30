@@ -9,6 +9,8 @@ export type TheProjectImageSlug =
   | 'studio-portrait-solo'
   | 'award-driven-group'
   | 'team-hall-of-fame'
+  | 'what-it-is-masterclass'
+  | 'what-it-takes-leap'
 
 export type TheProjectImage = {
   src: string
