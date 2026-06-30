@@ -515,7 +515,7 @@ export function InstructorsSection({ faculty }: { faculty: FacultyPreview[] }) {
                   <Link
                     key={member._id}
                     href={`/faculty#${member.slug.current}`}
-                    className="relative flex aspect-[5/6] w-[58vw] shrink-0 snap-start flex-col overflow-hidden rounded-sm border border-[#D6DFDA] bg-[#FCFBF8] no-underline text-inherit"
+                    className="relative flex aspect-[5/6] w-[88vw] shrink-0 snap-start flex-col overflow-hidden rounded-sm border border-[#D6DFDA] bg-[#FCFBF8] no-underline text-inherit"
                   >
                     {member.photo && (
                       <Image
@@ -543,7 +543,7 @@ export function InstructorsSection({ faculty }: { faculty: FacultyPreview[] }) {
 
               <Link
                 href="/faculty"
-                className="relative flex aspect-[5/6] w-[58vw] shrink-0 snap-start flex-col overflow-hidden rounded-sm bg-gradient-to-br from-[#0ABAB5] to-[#087876] px-5 py-4 no-underline text-inherit"
+                className="relative flex aspect-[5/6] w-[88vw] shrink-0 snap-start flex-col overflow-hidden rounded-sm bg-gradient-to-br from-[#0ABAB5] to-[#087876] px-5 py-4 no-underline text-inherit"
               >
                 <div className="mt-auto relative z-[1]">
                   <div className="font-display text-[clamp(17px,2.2vw,22px)] font-bold leading-[1.1] text-white">
