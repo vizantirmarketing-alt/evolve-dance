@@ -537,6 +537,14 @@ function TheProjectPageContent({ page }: { page: ProjectPage }) {
                 />
               </div>
             </div>
+            <div className="mt-10 flex justify-center">
+              <Link
+                href="/the-project/gallery"
+                className="border-b border-[rgba(10,186,181,0.3)] pb-0.5 text-[11px] uppercase tracking-[0.18em] text-teal no-underline transition-colors hover:border-teal md:text-[12px]"
+              >
+                View full gallery →
+              </Link>
+            </div>
           </div>
         </section>
 

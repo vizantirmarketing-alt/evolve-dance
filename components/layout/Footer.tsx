@@ -1,9 +1,11 @@
 'use client'
 
+import { useState, type ReactNode } from 'react'
 import Image from 'next/image'
 import SmartLink from '@/components/SmartLink'
+import { ChevronDown } from 'lucide-react'
 import { siteConfig } from '@/data/site'
-import { navLinks } from '@/data/navigation'
+import { footerLinks } from '@/data/navigation'
 
 const TikTokIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden>
@@ -32,10 +34,10 @@ const YoutubeIcon = ({ className }: { className?: string }) => (
 function SocialIconsRow() {
   const linkClass =
     'inline-flex text-[rgba(247,245,241,0.45)] hover:text-[#81D8D0] transition-colors duration-200'
-  const iconClass = 'h-[18px] w-[18px] shrink-0'
+  const iconClass = 'h-5 w-5 shrink-0'
 
   return (
-    <div className="flex flex-wrap items-center gap-5">
+    <div className="flex flex-wrap items-center gap-4 md:gap-5">
       {siteConfig.socialLinks.map((s) => (
         <a
           key={s.href}
@@ -60,94 +62,264 @@ function SocialIconsRow() {
   )
 }
 
-export default function Footer() {
+function MobileFooterAccordion({
+  title,
+  open,
+  onToggle,
+  children,
+}: {
+  title: string
+  open: boolean
+  onToggle: () => void
+  children: ReactNode
+}) {
   return (
-    <footer className="bg-[#1F1F1C] pt-8 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="flex justify-center">
-          <Image
-            src="/logo/evolve-footer.png"
-            alt="Evolve Dance Center"
-            width={360}
-            height={240}
-            className="h-12 md:h-20 w-auto"
-            priority={false}
-          />
-        </div>
+    <div className="border-b border-white/10">
+      <button
+        type="button"
+        onClick={onToggle}
+        className="w-full flex items-center justify-between py-4 text-left"
+      >
+        <span className="text-[11px] font-medium tracking-wide uppercase text-[#0ABAB5] md:text-[12px]">{title}</span>
+        <ChevronDown
+          className={`w-4 h-4 text-white/60 transition-transform shrink-0 ${open ? 'rotate-180' : ''}`}
+          aria-hidden
+        />
+      </button>
+      {open && <div className="pb-4 flex flex-col gap-3">{children}</div>}
+    </div>
+  )
+}
 
-        <nav
-          className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 md:gap-x-8"
-          aria-label="Footer navigation"
-        >
-          {navLinks.map((link) => (
-            <SmartLink
-              key={link.href}
-              href={link.href}
-              className="text-sm text-white/80 transition-colors hover:text-[#81D8D0] font-sans"
+const footerLinkClass =
+  'text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]'
+
+export default function Footer() {
+  const [openSection, setOpenSection] = useState<'studio' | 'contact' | null>(null)
+
+  const toggle = (id: 'studio' | 'contact') => {
+    setOpenSection((current) => (current === id ? null : id))
+  }
+
+  return (
+    <footer className="bg-[#1F1F1C] pb-[calc(2.5rem+env(safe-area-inset-bottom,0px))] pt-28 md:pb-10">
+      <div className="mx-auto px-4 md:px-12">
+        <div className="pb-14 md:border-b md:border-[rgba(255,255,255,0.08)] mb-8">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr_1fr] gap-12 lg:gap-20 lg:items-start">
+            {/* Brand */}
+            <div className="flex min-h-0 flex-col gap-8">
+              <div>
+                <div className="mb-4">
+                  <SmartLink
+                    href="/"
+                    aria-label="Evolve Dance Center home"
+                    className="flex items-start no-underline"
+                  >
+                    <Image
+                      src="/logo/evolve-footer.png"
+                      alt="Evolve Dance Center"
+                      width={360}
+                      height={240}
+                      className="h-16 md:h-[6.5rem] w-auto object-contain"
+                    />
+                  </SmartLink>
+                </div>
+                <p className="text-[13px] text-[rgba(247,245,241,0.45)] leading-[1.7] max-w-[260px] md:text-[14px]">
+                  {siteConfig.tagline}
+                </p>
+              </div>
+              <div className="shrink-0">
+                <SocialIconsRow />
+              </div>
+            </div>
+
+          {/* Mobile — accordions */}
+          <div className="md:hidden -mt-2">
+            <MobileFooterAccordion
+              title="Studio"
+              open={openSection === 'studio'}
+              onToggle={() => toggle('studio')}
             >
-              {link.label}
-            </SmartLink>
-          ))}
-        </nav>
-
-        <div className="mt-5 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-xs text-white/60 font-sans text-center">
-          <a
-            href={siteConfig.mapsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-white/90 transition-colors"
-          >
-            {siteConfig.addressLine1}, {siteConfig.addressLine2}
-          </a>
-          <span aria-hidden="true">·</span>
-          <a href={`tel:${siteConfig.phoneTel}`} className="hover:text-white/90 transition-colors">
-            {siteConfig.phone}
-          </a>
-          <span aria-hidden="true">·</span>
-          <a href={`mailto:${siteConfig.email}`} className="hover:text-white/90 transition-colors">
-            {siteConfig.email}
-          </a>
-        </div>
-
-        <div className="mt-6 flex justify-center">
-          <SocialIconsRow />
-        </div>
-
-        <div className="mt-8 border-t border-white/[0.08]" />
-
-        <div className="pt-6 flex flex-wrap items-center justify-between gap-3 text-[11px] text-white/60 font-sans">
-          <span>
-            © 2026 Evolve Dance Center ·{' '}
-            <SmartLink href="/media-usage" className="hover:underline underline-offset-2">
-              All photos and video are property of Evolve Dance Center
-            </SmartLink>{' '}
-            · All rights reserved.
-          </span>
-          <div className="flex items-center gap-3">
-            <SmartLink href="/privacy" className="hover:text-white/90 transition-colors">
-              Privacy
-            </SmartLink>
-            <span aria-hidden="true">·</span>
-            <SmartLink href="/policies" className="hover:text-white/90 transition-colors">
-              Policies
-            </SmartLink>
-            <span aria-hidden="true">·</span>
-            <SmartLink href="/media-usage" className="hover:text-white/90 transition-colors">
-              Media Usage
-            </SmartLink>
-            <span aria-hidden="true">·</span>
-            <span>
-              Site by{' '}
+              <SmartLink href="/classes" className={footerLinkClass}>
+                View Classes
+              </SmartLink>
+              {footerLinks.studio.map((item) => (
+                <SmartLink key={item.href} href={item.href} className={footerLinkClass}>
+                  {item.label}
+                </SmartLink>
+              ))}
+            </MobileFooterAccordion>
+            <MobileFooterAccordion
+              title="Contact"
+              open={openSection === 'contact'}
+              onToggle={() => toggle('contact')}
+            >
               <a
-                href="https://vizantir.com"
+                href={siteConfig.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#81D8D0] hover:opacity-80 transition-opacity"
+                className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
               >
-                Vizantir
+                {siteConfig.addressLine1}
               </a>
+              <a
+                href={siteConfig.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
+              >
+                {siteConfig.addressLine2}
+              </a>
+              <a
+                href={`tel:${siteConfig.phoneTel}`}
+                className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
+              >
+                {siteConfig.phone}
+              </a>
+              <a
+                href={`mailto:${siteConfig.email}`}
+                className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
+              >
+                {siteConfig.email}
+              </a>
+              <SmartLink
+                href="/contact"
+                className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
+              >
+                Schedule a Visit
+              </SmartLink>
+            </MobileFooterAccordion>
+          </div>
+
+          {/* Desktop — link columns */}
+          <div className="hidden md:block">
+            <div className="text-[11px] font-semibold tracking-[0.18em] uppercase text-[#81D8D0] mb-5 md:text-[12px]">Studio</div>
+            <ul className="flex flex-col gap-2.5 list-none">
+              <li>
+                <SmartLink href="/classes" className={footerLinkClass}>
+                  View Classes
+                </SmartLink>
+              </li>
+              {footerLinks.studio.map((item) => (
+                <li key={item.href}>
+                  <SmartLink href={item.href} className={footerLinkClass}>
+                    {item.label}
+                  </SmartLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="hidden md:block">
+            <div className="text-[11px] font-semibold tracking-[0.18em] uppercase text-[#81D8D0] mb-5 md:text-[12px]">Contact</div>
+            <ul className="flex flex-col gap-2.5 list-none">
+              <li>
+                <a
+                  href={siteConfig.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
+                >
+                  {siteConfig.addressLine1}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={siteConfig.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
+                >
+                  {siteConfig.addressLine2}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`tel:${siteConfig.phoneTel}`}
+                  className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
+                >
+                  {siteConfig.phone}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`mailto:${siteConfig.email}`}
+                  className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
+                >
+                  {siteConfig.email}
+                </a>
+              </li>
+              <li>
+                <SmartLink
+                  href="/contact"
+                  className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
+                >
+                  Schedule a Visit
+                </SmartLink>
+              </li>
+            </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+          <div className="flex flex-wrap items-center min-w-0">
+            <SmartLink
+              href="/privacy"
+              className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
+            >
+              Privacy
+            </SmartLink>
+            <span
+              className="text-[12px] text-[rgba(247,245,241,0.45)] mx-2 shrink-0 leading-[1.55]"
+              aria-hidden
+            >
+              {' · '}
+            </span>
+            <SmartLink
+              href="/policies"
+              className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
+            >
+              Policies
+            </SmartLink>
+            <span
+              className="text-[12px] text-[rgba(247,245,241,0.45)] mx-2 shrink-0 leading-[1.55]"
+              aria-hidden
+            >
+              {' · '}
+            </span>
+            <SmartLink
+              href="/media-usage"
+              className="text-[13px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200 md:text-[14px]"
+            >
+              Media Usage
+            </SmartLink>
+            <span
+              className="text-[12px] text-[rgba(247,245,241,0.45)] mx-2 shrink-0 leading-[1.55]"
+              aria-hidden
+            >
+              {' · '}
+            </span>
+            <span className="text-[12px] text-[rgba(247,245,241,0.45)] leading-[1.55]">
+              © 2026 Evolve Dance Center ·{' '}
+              <SmartLink href="/media-usage" className="hover:underline underline-offset-2">
+                All photos and video are property of Evolve Dance Center
+              </SmartLink>{' '}
+              · All rights reserved.
             </span>
           </div>
+          <span className="text-[12px] text-[rgba(247,245,241,0.45)] leading-[1.55] shrink-0">
+            Site by{' '}
+            <a
+              href="https://vizantir.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#81D8D0] no-underline hover:underline"
+            >
+              Vizantir
+            </a>
+          </span>
         </div>
       </div>
     </footer>
