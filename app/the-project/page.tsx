@@ -528,14 +528,14 @@ function TheProjectPageContent({ page }: { page: ProjectPage }) {
               From the studio to the stage.
             </h2>
             <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
-              <div className="relative aspect-[16/9] overflow-hidden border border-border bg-background-warm md:col-span-3">
+              <div className="relative aspect-[4/3] overflow-hidden border border-border bg-background-warm md:col-span-3">
                 <Image
-                  src={getTheProjectImage('project-rehearsal-action').src}
-                  alt="Project dancer in blue audition attire performing technique during auditions"
+                  src={getTheProjectImage('project-class-wall').src}
+                  alt="Project dancers in a class against the studio wall"
                   fill
                   sizes="(max-width: 768px) 100vw, 100vw"
                   placeholder="blur"
-                  blurDataURL={getTheProjectImage('project-rehearsal-action').placeholder}
+                  blurDataURL={getTheProjectImage('project-class-wall').placeholder}
                   className="object-cover object-center"
                 />
               </div>
@@ -561,7 +561,7 @@ function TheProjectPageContent({ page }: { page: ProjectPage }) {
                   className="object-cover object-center"
                 />
               </div>
-              <div className="relative aspect-[16/9] overflow-hidden border border-border bg-background-warm md:col-span-3">
+              <div className="relative aspect-[4/3] overflow-hidden border border-border bg-background-warm md:col-span-3">
                 <Image
                   src={getTheProjectImage('team-hall-of-fame').src}
                   alt="Evolve Dance Project team at the Hall of Fame Dance Challenge with awards"

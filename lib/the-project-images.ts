@@ -4,7 +4,6 @@ export type TheProjectImageSlug =
   | 'project-class-wall'
   | 'project-auditions'
   | 'project-auditions-wide'
-  | 'project-rehearsal-action'
   | 'studio-portrait-duo'
   | 'studio-portrait-solo'
   | 'award-driven-group'

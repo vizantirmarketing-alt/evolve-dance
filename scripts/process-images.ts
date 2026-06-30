@@ -33,7 +33,6 @@ const FOLDERS: readonly FolderConfig[] = [
       'project-class-wall.jpg',
       'project-auditions.jpg',
       'project-auditions-wide.jpg',
-      'project-rehearsal-action.jpg',
       'studio-portrait-duo.jpg',
       'studio-portrait-solo.jpg',
       'award-driven-group.jpg',
