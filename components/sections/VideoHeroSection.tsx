@@ -45,12 +45,22 @@ export default function VideoHeroSection({
   const [muted, setMuted]   = useState(true)
   const [playing, setPlaying] = useState(true)
   const [lightbox, setLightbox] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(false)
 
   useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)')
+    const update = () => setIsDesktop(mq.matches)
+    update()
+    mq.addEventListener('change', update)
+    return () => mq.removeEventListener('change', update)
+  }, [])
+
+  useEffect(() => {
+    if (!isDesktop) return
     const v = videoRef.current
     if (!v) return
     v.play().catch(() => {})
-  }, [])
+  }, [isDesktop])
 
   const toggleMute  = () => {
     if (!videoRef.current) return
@@ -82,20 +92,23 @@ export default function VideoHeroSection({
           </div>
 
           {/* Desktop — video plays */}
-          <div className="hidden md:block absolute inset-0 z-0">
-            <video
-              ref={videoRef}
-              autoPlay
-              muted
-              loop
-              playsInline
-              poster={posterSrc}
-              className="h-full w-full object-cover object-center"
-              style={{ pointerEvents: 'none' }}
-            >
-              <source src={videoSrc} type="video/mp4" />
-            </video>
-          </div>
+          {isDesktop ? (
+            <div className="absolute inset-0 z-0">
+              <video
+                ref={videoRef}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                poster={posterSrc}
+                className="h-full w-full object-cover object-center"
+                style={{ pointerEvents: 'none' }}
+              >
+                <source src={videoSrc} type="video/mp4" />
+              </video>
+            </div>
+          ) : null}
 
           <div className="absolute inset-0 z-[1] bg-gradient-to-b from-black/20 via-black/40 to-black/60 md:bg-gradient-to-r md:from-black/60 md:via-black/30 md:to-transparent pointer-events-none" />
         </div>
