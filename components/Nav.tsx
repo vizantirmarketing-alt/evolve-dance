@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
+import Image from 'next/image'
 import SmartLink from '@/components/SmartLink'
 import { buttonVariants } from '@/components/ui/button-styles'
 import { ArrowRight } from 'lucide-react'
@@ -51,11 +52,12 @@ export default function Nav({ links }: NavProps) {
           aria-label="Evolve Dance Center home"
           className="group flex items-center no-underline transition-transform duration-200 ease-out hover:scale-[1.03]"
         >
-          <img
-            src="/logo/evolve-navbar.svg"
+          <Image
+            src="/logo/evolve-navbar.png"
             alt="Evolve Dance Center"
-            width={240}
-            height={160}
+            width={200}
+            height={133}
+            priority
             className="h-12 w-auto object-contain transition-opacity duration-200 ease-out group-hover:opacity-85 xl:h-14"
           />
         </SmartLink>
