@@ -158,7 +158,7 @@ export function AboutSection() {
           src={aboutStudio.src}
           alt="Young dancers in ballet class at Evolve Dance Center"
           fill
-          sizes="(max-width: 768px) 100vw, 50vw"
+          sizes="(max-width: 768px) 50vw, 33vw"
           placeholder="blur"
           blurDataURL={aboutStudio.placeholder}
           className="object-cover object-center"
