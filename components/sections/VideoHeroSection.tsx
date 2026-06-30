@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, Play } from 'lucide-react'
@@ -68,12 +69,15 @@ export default function VideoHeroSection({
       <section className="relative min-h-[640px] bg-[var(--background)] md:min-h-[calc(100vh-80px)]">
 
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {/* Mobile — static image, no video */}
+          {/* Mobile — static image, no video (LCP on mobile) */}
           <div className="md:hidden absolute inset-0 z-0">
-            <img
+            <Image
               src={posterSrc}
               alt=""
-              className="w-full h-full object-cover object-center"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-center"
             />
           </div>
 

@@ -25,6 +25,7 @@ const FOLDERS: readonly FolderConfig[] = [
       'trophy-hall.jpg',
       'hallway-benches.jpg',
       'reception-detail.jpg',
+      'about-studio.jpg',
     ],
   },
   {

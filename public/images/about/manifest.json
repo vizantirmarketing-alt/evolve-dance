@@ -47,5 +47,12 @@
     "height": 5754,
     "aspectRatio": 1.5,
     "placeholder": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAwAgCdASoQAAsAAsBMJZACdAYrdF7D/c06AADiGI9ks82hyChogAF7byrbf7eGWj+5txcDiMhoJ+WwyjZcoaezmXRBTDa71jmtpdr7LTW/EMPfIbitidPkep101VytKuvPWsc1cgAAAA=="
+  },
+  "about-studio": {
+    "src": "/images/about/about-studio.jpg",
+    "width": 3500,
+    "height": 2333,
+    "aspectRatio": 1.5002143163309045,
+    "placeholder": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADQAQCdASoQAAsAAsBMJYwCdACi7YESgAD+l5b/6aJoMrIeiAvx1X/88VHsd6hkTd0XvfdoSrE/A1yElT3GA7S1QCiIlXbR1ewAAA=="
   }
 }

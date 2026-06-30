@@ -6,6 +6,7 @@ import { buttonVariants } from '@/components/ui/button-styles'
 import { ArrowRight } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
+import { getAboutImage } from '@/lib/about-images'
 import { siteConfig } from '@/data/site'
 import { JACKRABBIT_ENROLL_URL } from '@/lib/jackrabbit'
 import type { FacultyPreview } from '@/sanity/lib/queries'
@@ -89,6 +90,8 @@ export function TickerSection() {
 // ─────────────────────────────────────────
 
 export function AboutSection() {
+  const aboutStudio = getAboutImage('about-studio')
+
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 min-h-[80vh]">
       {/* Left */}
@@ -151,10 +154,14 @@ export function AboutSection() {
 
       {/* Right — studio image */}
       <div className="relative overflow-hidden h-[280px] md:h-auto bg-[#D4F1EF]">
-        <img
-          src="/images/about-studio.jpg"
+        <Image
+          src={aboutStudio.src}
           alt="Young dancers in ballet class at Evolve Dance Center"
-          className="w-full h-full object-cover object-center"
+          fill
+          sizes="(max-width: 768px) 100vw, 50vw"
+          placeholder="blur"
+          blurDataURL={aboutStudio.placeholder}
+          className="object-cover object-center"
         />
         <div className="absolute inset-0 bg-[#1F1F1C]/5" />
       </div>
