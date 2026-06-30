@@ -17,6 +17,7 @@ export const footerLinks: {
   studio: [
     { label: 'The Faculty', href: '/faculty' },
     { label: 'The Project', href: '/the-project' },
+    { label: 'Gallery', href: '/the-project/gallery' },
     { label: 'Blog', href: '/blog' },
     { label: 'FAQ', href: '/faq' },
   ],
