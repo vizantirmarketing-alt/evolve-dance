@@ -8,7 +8,7 @@ export type AboutImageSlug =
   | 'trophy-hall'
   | 'hallway-benches'
   | 'reception-detail'
-  | 'about-studio'
+  | 'mini-class-tap-formation'
 
 export type AboutImage = {
   src: string

@@ -90,7 +90,7 @@ export function TickerSection() {
 // ─────────────────────────────────────────
 
 export function AboutSection() {
-  const aboutStudio = getAboutImage('about-studio')
+  const aboutStudio = getAboutImage('mini-class-tap-formation')
 
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 min-h-[80vh]">
@@ -156,7 +156,7 @@ export function AboutSection() {
       <div className="relative overflow-hidden h-[280px] md:h-auto bg-[#D4F1EF]">
         <Image
           src={aboutStudio.src}
-          alt="Young dancers in ballet class at Evolve Dance Center"
+          alt="Mini program students in tap formation with two faculty members at Evolve Dance Center"
           fill
           sizes="(max-width: 768px) 50vw, 33vw"
           placeholder="blur"
