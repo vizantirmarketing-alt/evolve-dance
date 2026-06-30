@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "delete:unpublished-blog": "tsx scripts/delete-unpublished-blog-posts.ts",
-    "delete:unpublished-blog:dry": "tsx scripts/delete-unpublished-blog-posts.ts --dry-run"
+    "delete:unpublished-blog:dry": "tsx scripts/delete-unpublished-blog-posts.ts --dry-run",
+    "upload:gallery": "tsx scripts/upload-project-gallery.ts"
   },
   "dependencies": {
     "@marsidev/react-turnstile": "^1.5.2",
@@ -22,10 +23,12 @@
     "next-sanity": "^12.4.5",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
+    "react-photo-album": "^3.6.0",
     "resend": "^6.12.3",
     "sanity": "^5.25.0",
     "styled-components": "^6.4.1",
-    "tailwind-merge": "^2.5.4"
+    "tailwind-merge": "^2.5.4",
+    "yet-another-react-lightbox": "^3.32.0"
   },
   "devDependencies": {
     "@sanity/client": "^7.22.1",
