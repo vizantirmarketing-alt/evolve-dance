@@ -467,3 +467,52 @@ export const featuredTestimonialsQuery = `*[_type == "testimonial" && published 
 export async function getFeaturedTestimonials(): Promise<Testimonial[]> {
   return client.fetch<Testimonial[]>(featuredTestimonialsQuery)
 }
+
+export type ProjectGalleryPhoto = {
+  id: string
+  alt: string
+  caption?: string
+  category: 'audition' | 'class' | 'studio' | 'masterclass' | 'team'
+  season?: string
+  featured?: boolean
+  image: {
+    asset: {
+      url: string
+      metadata: {
+        dimensions: { width: number; height: number; aspectRatio: number }
+        lqip: string
+      }
+    }
+    hotspot?: { x: number; y: number; height: number; width: number }
+    crop?: { top: number; bottom: number; left: number; right: number }
+  }
+}
+
+export type ProjectGallery = {
+  photos: ProjectGalleryPhoto[]
+}
+
+export const projectGalleryQuery = `*[_type == "projectGallery"][0]{
+  photos[]{
+    "id": _key,
+    alt,
+    caption,
+    category,
+    season,
+    featured,
+    image{
+      ...,
+      asset->{
+        url,
+        metadata{
+          dimensions,
+          lqip
+        }
+      }
+    }
+  }
+}`
+
+export async function getProjectGallery(): Promise<ProjectGallery | null> {
+  return client.fetch<ProjectGallery | null>(projectGalleryQuery)
+}
