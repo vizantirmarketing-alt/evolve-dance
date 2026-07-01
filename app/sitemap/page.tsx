@@ -35,6 +35,8 @@ const sections: SitemapSection[] = [
       { label: 'Schedule', href: '/schedule', description: "This week's live class schedule" },
       { label: 'Faculty', href: '/faculty', description: 'Meet the teachers behind the training' },
       { label: 'The Project', href: '/the-project', description: 'Our competition team program' },
+      { label: 'Gallery', href: '/the-project/gallery', description: 'Photos from inside the studio' },
+      { label: 'Watch', href: '/watch', description: 'Studio videos from classes and rehearsals' },
       { label: 'Events', href: '/events', description: 'Recitals, showcases, and studio events' },
       { label: 'About', href: '/about', description: 'Our story, mission, and studio' },
       { label: 'Contact', href: '/contact', description: 'Visit us or send a message' },
