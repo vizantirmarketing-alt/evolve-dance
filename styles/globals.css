@@ -14,7 +14,8 @@
   --bg-warm:     #FCFBF8;
   --bg-mint:     #D4F1EF;
   --foreground:  #1F1F1C;
-  --muted:       #6D6C67;
+  --muted:       #5F5E59;
+  --subtle:      #6D6C67;
   --border:      #D6DFDA;
   --project:     #173432;
 }
@@ -38,7 +39,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-dm-sans), 
     system-ui, sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

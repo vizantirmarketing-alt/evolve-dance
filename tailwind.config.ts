@@ -15,7 +15,8 @@ const config: Config = {
         'background-warm': '#FCFBF8',
         'background-mint': '#D4F1EF',
         foreground: '#1F1F1C',
-        'foreground-muted': '#6D6C67',
+        'foreground-muted': '#5F5E59',
+        'foreground-subtle': '#6D6C67',
         border: '#D6DFDA',
 
         teal: {
@@ -107,10 +108,10 @@ const config: Config = {
         DEFAULT: {
           css: {
             maxWidth: 'none',
-            '--tw-prose-body': '#6D6C67',
+            '--tw-prose-body': '#5F5E59',
             '--tw-prose-headings': '#1F1F1C',
             '--tw-prose-links': '#0ABAB5',
-            color: '#6D6C67',
+            color: '#5F5E59',
             fontFamily: 'var(--font-dm-sans), system-ui, sans-serif',
             'h1, h2, h3, h4': {
               fontFamily: 'var(--font-playfair), Georgia, serif',
