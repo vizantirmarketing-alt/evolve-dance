@@ -216,16 +216,25 @@ function TheProjectPageContent({ page }: { page: ProjectPage }) {
                   </Link>
                 </div>
               </div>
-              <div className="relative aspect-[4/5] overflow-hidden rounded border border-border bg-background-warm">
+              <div className="group relative aspect-[4/5] overflow-hidden rounded border border-border bg-background-warm">
                 <Image
-                  src={getTheProjectImage('studio-portrait-solo').src}
-                  alt="Evolve Dance Project dancer in studio portrait"
+                  src={getTheProjectImage('studio-portrait-bridge-pose').src}
+                  alt="Evolve dancer in red posing on a bridge"
                   fill
                   sizes="(max-width: 768px) 100vw, 40vw"
                   placeholder="blur"
-                  blurDataURL={getTheProjectImage('studio-portrait-solo').placeholder}
-                  className="object-cover object-center"
+                  blurDataURL={getTheProjectImage('studio-portrait-bridge-pose').placeholder}
+                  className="absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-500 group-hover:opacity-0"
                   priority
+                />
+                <Image
+                  src={getTheProjectImage('studio-portrait-bridge-leap').src}
+                  alt="Evolve dancer mid-air leap on a bridge"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                  placeholder="blur"
+                  blurDataURL={getTheProjectImage('studio-portrait-bridge-leap').placeholder}
+                  className="absolute inset-0 h-full w-full object-cover object-center opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                 />
               </div>
             </div>

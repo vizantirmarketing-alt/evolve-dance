@@ -20,12 +20,19 @@
     "aspectRatio": 1.0914435009797518,
     "placeholder": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAQAgCdASoQAA8AAsBMJZwAD49uzfXuYXrAAP73nVRIr+3ir9OQ6XN525Zk8plDOAHVkrctfSvq3YMTDL3bLO8lSbGnCO8Jfefh44ehmWvvxWq1ZZfr7DKa/e5L0YuaqB+npWe2WeQAAA=="
   },
-  "studio-portrait-solo": {
-    "src": "/images/the-project/studio-portrait-solo.jpg",
-    "width": 1024,
-    "height": 1536,
-    "aspectRatio": 0.6666666666666666,
-    "placeholder": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAADQAwCdASoQABgAPtFWo0uoJKMhsAgBABoJQBOmUABp28kTeoMUIMgA/vQqbjoDm/tW3gGSP/cX+sdWFAl/g9wkHCDyEv8qDW+bVPA7nWFEszGxfSTnkLWQYm4LqpJQ0m8W2ZTlDUp55jolkVBqAAAA"
+  "studio-portrait-bridge-pose": {
+    "src": "/images/the-project/studio-portrait-bridge-pose.jpg",
+    "width": 1543,
+    "height": 2048,
+    "aspectRatio": 0.75341796875,
+    "placeholder": "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAABQBACdASoQABUAPtFUo0uoJKMhsAgBABoJQBWAMXwVAZqM6OHUMIi9ABJAAP35uXvRpotrGIAR6WBFViNz318hPK0b1rNMggAoJGUSxbnNJOK3ICiksPPFlOZlEwow0gv111bGuFFuQXq8FAB2P2dhlcxESp/EAy9QqcwQpCR4AA=="
+  },
+  "studio-portrait-bridge-leap": {
+    "src": "/images/the-project/studio-portrait-bridge-leap.jpg",
+    "width": 1544,
+    "height": 2048,
+    "aspectRatio": 0.75390625,
+    "placeholder": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAACQAwCdASoQABUAPtFUo0uoJKMhsAgBABoJZQDA3CKTZvahtvoAAP3jlYGCz5b8WTaBcZMchEGzIfZE/P8lW7LipmWOkwq90fcPD4Z1ptmkEtoR51t4XlBi3HvDRC0yz0OjhlwKT02gb+WPiAAAAA=="
   },
   "award-driven-group": {
     "src": "/images/the-project/award-driven-group.jpg",
