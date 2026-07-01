@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import Link from 'next/link'
 import { buttonVariants } from '@/components/ui/button-styles'
 import Footer from '@/components/layout/Footer'
@@ -68,7 +69,9 @@ export default async function SchedulePage() {
               </Link>
             </div>
           ) : (
-            <ScheduleFilters classes={classes} categories={categories} surface="cream" />
+            <Suspense fallback={null}>
+              <ScheduleFilters classes={classes} categories={categories} surface="cream" />
+            </Suspense>
           )}
         </div>
       </main>
