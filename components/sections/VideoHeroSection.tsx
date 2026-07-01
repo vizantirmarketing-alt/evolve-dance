@@ -3,14 +3,13 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { ArrowRight, Play } from 'lucide-react'
 import { buttonVariants } from '@/components/ui/button-styles'
 
 // ── Types ────────────────────────────────────────────
 interface VideoHeroProps {
   videoSrc?: string        // local path: '/videos/hero.mp4'
-  videoFallback?: string   // webm: '/videos/hero.webm'
   posterSrc?: string       // first-frame image while video loads
 }
 
@@ -38,13 +37,11 @@ const item = {
 // ════════════════════════════════════════════════════
 export default function VideoHeroSection({
   videoSrc     = '/videos/hero.mp4',
-  videoFallback = '/videos/hero.webm',
   posterSrc    = '/images/hero-poster.jpg',
 }: VideoHeroProps) {
   const videoRef      = useRef<HTMLVideoElement>(null)
   const [muted, setMuted]   = useState(true)
   const [playing, setPlaying] = useState(true)
-  const [lightbox, setLightbox] = useState(false)
   const [isDesktop, setIsDesktop] = useState(false)
 
   useEffect(() => {
@@ -194,9 +191,8 @@ export default function VideoHeroSection({
                     First class on us
                   </span>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => setLightbox(true)}
+                <Link
+                  href="/watch"
                   className={buttonVariants({
                     variant: 'tertiary',
                     surface: 'dark',
@@ -205,7 +201,7 @@ export default function VideoHeroSection({
                 >
                   <Play className="h-3.5 w-3.5 shrink-0 fill-current opacity-80 transition-opacity group-hover:opacity-100" aria-hidden />
                   Watch the Studio
-                </button>
+                </Link>
               </div>
 
               <div className="hidden md:flex md:flex-row md:flex-wrap md:items-start md:gap-4">
@@ -236,9 +232,8 @@ export default function VideoHeroSection({
                   </span>
                 </div>
 
-                <button
-                  type="button"
-                  onClick={() => setLightbox(true)}
+                <Link
+                  href="/watch"
                   className={buttonVariants({
                     variant: 'tertiary',
                     surface: 'dark',
@@ -247,7 +242,7 @@ export default function VideoHeroSection({
                 >
                   <Play className="h-3.5 w-3.5 shrink-0 fill-current opacity-80 transition-opacity group-hover:opacity-100" aria-hidden />
                   Watch the Studio
-                </button>
+                </Link>
               </div>
             </motion.div>
           </motion.div>
@@ -326,60 +321,6 @@ export default function VideoHeroSection({
           ))}
         </div>
       </motion.div>
-
-      {/* ── Lightbox ─────────────────────────────── */}
-      <AnimatePresence>
-        {lightbox && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[200] flex items-center justify-center bg-[rgba(7,10,9,0.96)] backdrop-blur-sm"
-            onClick={() => setLightbox(false)}
-          >
-            <motion.div
-              initial={{ scale: 0.92, opacity: 0 }}
-              animate={{ scale: 1,    opacity: 1 }}
-              exit={{ scale: 0.95,    opacity: 0 }}
-              transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="relative w-full max-w-[900px] mx-6 border border-[rgba(10,186,181,0.2)]"
-              onClick={e => e.stopPropagation()}
-            >
-              {/* Lightbox video */}
-              <div className="relative aspect-video bg-black">
-                <video
-                  src={videoSrc}
-                  controls
-                  autoPlay
-                  className="w-full h-full object-cover"
-                >
-                  <source src={videoFallback} type="video/webm" />
-                  <source src={videoSrc}      type="video/mp4" />
-                </video>
-              </div>
-
-              {/* Close button */}
-              <button
-                onClick={() => setLightbox(false)}
-                className="absolute -top-4 -right-4 w-9 h-9 flex items-center justify-center bg-teal text-black font-bold text-lg transition-transform hover:scale-110"
-              >
-                ×
-              </button>
-
-              {/* Caption */}
-              <div className="bg-[#111916] px-6 py-4 border-t border-[rgba(10,186,181,0.12)]">
-                <p className="text-[11px] tracking-[0.15em] uppercase text-teal font-medium">
-                  Evolve Dance Center — Las Vegas
-                </p>
-                <p className="text-[12px] text-[#e2e8f0] mt-1">
-                  Classes, recitals, and performances from Season 9
-                </p>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </>
   )
 }

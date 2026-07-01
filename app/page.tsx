@@ -44,7 +44,6 @@ export default async function HomePage() {
       <main>
         <VideoHeroSection
           videoSrc="/videos/hero.mp4"
-          videoFallback="/videos/hero.webm"
           posterSrc="/images/hero-poster.jpg"
         />
         <TickerSection />
