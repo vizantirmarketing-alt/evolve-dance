@@ -75,11 +75,11 @@ const footerSecondaryLinkClass =
   'text-[13px] md:text-[14px] text-[rgba(247,245,241,0.45)] no-underline hover:text-[#81D8D0] transition-colors duration-200'
 
 const footerDotSeparatorClass =
-  'text-[12px] text-[rgba(247,245,241,0.25)] mx-2 shrink-0 leading-[1.55]'
+  'text-[12px] text-[rgba(247,245,241,0.25)] mx-1.5 shrink-0 leading-[1.55]'
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1F1F1C] pb-[calc(2.5rem+env(safe-area-inset-bottom,0px))] pt-24 md:pb-12 md:pt-28">
+    <footer className="bg-[#1F1F1C] pb-[calc(1.5rem+env(safe-area-inset-bottom,0px))] pt-14 lg:pb-8 lg:pt-16">
       <div className="mx-auto max-w-3xl px-4 md:px-8">
         {/* Brand block */}
         <div className="text-center">
@@ -96,16 +96,14 @@ export default function Footer() {
         </div>
 
         {/* Social icons */}
-        <div className="mt-8 flex justify-center">
+        <div className="mt-6 flex justify-center">
           <SocialIconsRow />
         </div>
-
-        <div className="mx-auto mt-12 h-px w-16 bg-white/10" aria-hidden />
 
         {/* Primary navigation */}
         <nav
           aria-label="Footer"
-          className="mt-10 flex flex-wrap items-center justify-center gap-y-2 text-center max-w-2xl mx-auto"
+          className="mt-8 lg:mt-10 flex flex-wrap items-center justify-center gap-y-2 text-center max-w-2xl mx-auto"
         >
           {footerNavLinks.map((link, index) => (
             <span key={link.href} className="inline-flex items-center">
@@ -121,10 +119,8 @@ export default function Footer() {
           ))}
         </nav>
 
-        <div className="mx-auto mt-12 h-px w-16 bg-white/10" aria-hidden />
-
         {/* Contact block */}
-        <div className="mt-10 flex flex-col items-center gap-2 text-center">
+        <div className="mt-6 lg:mt-8 flex flex-col items-center gap-1.5 text-center">
           <a
             href={siteConfig.mapsUrl}
             target="_blank"
@@ -147,7 +143,7 @@ export default function Footer() {
         </div>
 
         {/* Legal block */}
-        <div className="mt-12 flex flex-col items-center gap-2 text-center text-[12px] text-[rgba(247,245,241,0.45)] leading-[1.55]">
+        <div className="mt-8 lg:mt-10 flex flex-col items-center gap-1 text-center text-[12px] text-[rgba(247,245,241,0.45)] leading-[1.55]">
           <p>
             <SmartLink href="/privacy" className={footerSecondaryLinkClass}>
               Privacy
