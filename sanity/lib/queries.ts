@@ -516,3 +516,66 @@ export const projectGalleryQuery = `*[_type == "projectGallery"][0]{
 export async function getProjectGallery(): Promise<ProjectGallery | null> {
   return client.fetch<ProjectGallery | null>(projectGalleryQuery)
 }
+
+export type StudioVideo = {
+  id: string
+  title: string
+  caption?: string
+  category?: 'class' | 'rehearsal' | 'performance' | 'behind-the-scenes'
+  hasAudioRights?: boolean
+  video: {
+    asset: {
+      _id: string
+      url: string
+      originalFilename: string
+      size: number
+    }
+  }
+  poster: {
+    asset: {
+      url: string
+      metadata: {
+        dimensions: { width: number; height: number; aspectRatio: number }
+        lqip: string
+      }
+    }
+    hotspot?: { x: number; y: number; height: number; width: number }
+    crop?: { top: number; bottom: number; left: number; right: number }
+  }
+}
+
+export type StudioVideos = {
+  videos: StudioVideo[]
+}
+
+export const studioVideosQuery = `*[_type == "studioVideos"][0]{
+  videos[]{
+    "id": _key,
+    title,
+    caption,
+    category,
+    hasAudioRights,
+    video{
+      asset->{
+        _id,
+        url,
+        originalFilename,
+        size
+      }
+    },
+    poster{
+      ...,
+      asset->{
+        url,
+        metadata{
+          dimensions,
+          lqip
+        }
+      }
+    }
+  }
+}`
+
+export async function getStudioVideos(): Promise<StudioVideos | null> {
+  return client.fetch<StudioVideos | null>(studioVideosQuery)
+}
