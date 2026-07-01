@@ -5,16 +5,15 @@ import Link from 'next/link'
 import { useMemo, useRef, useState, type FormEvent } from 'react'
 import { ArrowRight, Check, ChevronDown, Clock, Loader2, MapPin, Phone } from 'lucide-react'
 
+import {
+  formErrorBoxClass,
+  formErrorTextClass,
+  formFieldClass,
+  formLabelClass,
+} from '@/components/forms/form-styles'
 import Button from '@/components/ui/Button'
 import { buttonVariants } from '@/components/ui/button-styles'
 import { siteConfig } from '@/data/site'
-
-const fieldClassName =
-  'w-full bg-transparent border border-border rounded-none px-0 py-3 text-foreground placeholder:text-foreground-muted/60 focus:outline-none focus:border-teal transition-colors border-t-0 border-l-0 border-r-0 text-[14px] md:text-[15px]'
-
-const labelClassName = 'block text-[11px] uppercase tracking-[0.15em] text-foreground-muted mb-2 md:text-[12px]'
-
-const errorClassName = 'mt-1.5 text-[12px] text-red-600 md:text-[13px]'
 
 const AGE_OPTIONS = ['Under 3', '3-5', '6-8', '9-12', '13-15', '16-18'] as const
 
@@ -282,7 +281,7 @@ export function FreeTrialContent() {
 
               <form onSubmit={handleSubmit} noValidate>
                 <div className="mb-6">
-                  <label htmlFor="trial-parent-name" className={labelClassName}>
+                  <label htmlFor="trial-parent-name" className={formLabelClass}>
                     Your Name
                   </label>
                   <input
@@ -294,16 +293,16 @@ export function FreeTrialContent() {
                     value={formData.parentName}
                     onChange={(e) => setFormData((d) => ({ ...d, parentName: e.target.value }))}
                     onBlur={() => handleBlur('parentName')}
-                    className={fieldClassName}
+                    className={formFieldClass}
                     placeholder="Parent or guardian name"
                   />
                   {touched.parentName && fieldErrors.parentName ? (
-                    <p className={errorClassName}>{fieldErrors.parentName}</p>
+                    <p className={`mt-1.5 ${formErrorTextClass}`}>{fieldErrors.parentName}</p>
                   ) : null}
                 </div>
 
                 <div className="mb-6">
-                  <label htmlFor="trial-email" className={labelClassName}>
+                  <label htmlFor="trial-email" className={formLabelClass}>
                     Email
                   </label>
                   <input
@@ -315,16 +314,16 @@ export function FreeTrialContent() {
                     value={formData.email}
                     onChange={(e) => setFormData((d) => ({ ...d, email: e.target.value }))}
                     onBlur={() => handleBlur('email')}
-                    className={fieldClassName}
+                    className={formFieldClass}
                     placeholder="you@example.com"
                   />
                   {touched.email && fieldErrors.email ? (
-                    <p className={errorClassName}>{fieldErrors.email}</p>
+                    <p className={`mt-1.5 ${formErrorTextClass}`}>{fieldErrors.email}</p>
                   ) : null}
                 </div>
 
                 <div className="mb-6">
-                  <label htmlFor="trial-phone" className={labelClassName}>
+                  <label htmlFor="trial-phone" className={formLabelClass}>
                     Phone
                   </label>
                   <input
@@ -336,16 +335,16 @@ export function FreeTrialContent() {
                     value={formData.phone}
                     onChange={(e) => setFormData((d) => ({ ...d, phone: e.target.value }))}
                     onBlur={() => handleBlur('phone')}
-                    className={fieldClassName}
+                    className={formFieldClass}
                     placeholder="(702) 555-0123"
                   />
                   {touched.phone && fieldErrors.phone ? (
-                    <p className={errorClassName}>{fieldErrors.phone}</p>
+                    <p className={`mt-1.5 ${formErrorTextClass}`}>{fieldErrors.phone}</p>
                   ) : null}
                 </div>
 
                 <div className="mb-6">
-                  <label htmlFor="trial-child-name" className={labelClassName}>
+                  <label htmlFor="trial-child-name" className={formLabelClass}>
                     Dancer&apos;s Name
                   </label>
                   <input
@@ -356,16 +355,16 @@ export function FreeTrialContent() {
                     value={formData.childName}
                     onChange={(e) => setFormData((d) => ({ ...d, childName: e.target.value }))}
                     onBlur={() => handleBlur('childName')}
-                    className={fieldClassName}
+                    className={formFieldClass}
                     placeholder="Your child's name"
                   />
                   {touched.childName && fieldErrors.childName ? (
-                    <p className={errorClassName}>{fieldErrors.childName}</p>
+                    <p className={`mt-1.5 ${formErrorTextClass}`}>{fieldErrors.childName}</p>
                   ) : null}
                 </div>
 
                 <div className="mb-6">
-                  <label htmlFor="trial-child-age" className={labelClassName}>
+                  <label htmlFor="trial-child-age" className={formLabelClass}>
                     Dancer&apos;s Age
                   </label>
                   <div className="relative">
@@ -376,7 +375,7 @@ export function FreeTrialContent() {
                       value={formData.childAge}
                       onChange={(e) => setFormData((d) => ({ ...d, childAge: e.target.value }))}
                       onBlur={() => handleBlur('childAge')}
-                      className={`${fieldClassName} appearance-none pr-8`}
+                      className={`${formFieldClass} appearance-none pr-8`}
                     >
                       <option value="">Select age range</option>
                       {AGE_OPTIONS.map((option) => (
@@ -391,12 +390,12 @@ export function FreeTrialContent() {
                     />
                   </div>
                   {touched.childAge && fieldErrors.childAge ? (
-                    <p className={errorClassName}>{fieldErrors.childAge}</p>
+                    <p className={`mt-1.5 ${formErrorTextClass}`}>{fieldErrors.childAge}</p>
                   ) : null}
                 </div>
 
                 <div className="mb-6">
-                  <label htmlFor="trial-experience" className={labelClassName}>
+                  <label htmlFor="trial-experience" className={formLabelClass}>
                     Experience Level
                   </label>
                   <div className="relative">
@@ -407,7 +406,7 @@ export function FreeTrialContent() {
                       value={formData.experience}
                       onChange={(e) => setFormData((d) => ({ ...d, experience: e.target.value }))}
                       onBlur={() => handleBlur('experience')}
-                      className={`${fieldClassName} appearance-none pr-8`}
+                      className={`${formFieldClass} appearance-none pr-8`}
                     >
                       <option value="">Select experience level</option>
                       {EXPERIENCE_OPTIONS.map((option) => (
@@ -422,12 +421,12 @@ export function FreeTrialContent() {
                     />
                   </div>
                   {touched.experience && fieldErrors.experience ? (
-                    <p className={errorClassName}>{fieldErrors.experience}</p>
+                    <p className={`mt-1.5 ${formErrorTextClass}`}>{fieldErrors.experience}</p>
                   ) : null}
                 </div>
 
                 <fieldset className="mb-6">
-                  <legend className={labelClassName}>Which classes are you interested in?</legend>
+                  <legend className={formLabelClass}>Which classes are you interested in?</legend>
                   <div className="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
                     {CLASS_INTEREST_OPTIONS.map((option) => {
                       const checked = formData.classInterests.includes(option)
@@ -453,12 +452,12 @@ export function FreeTrialContent() {
                     })}
                   </div>
                   {touched.classInterests && fieldErrors.classInterests ? (
-                    <p className={errorClassName}>{fieldErrors.classInterests}</p>
+                    <p className={`mt-1.5 ${formErrorTextClass}`}>{fieldErrors.classInterests}</p>
                   ) : null}
                 </fieldset>
 
                 <div className="mb-6">
-                  <label htmlFor="trial-preferred-times" className={labelClassName}>
+                  <label htmlFor="trial-preferred-times" className={formLabelClass}>
                     Preferred Days or Times (Optional)
                   </label>
                   <textarea
@@ -467,13 +466,13 @@ export function FreeTrialContent() {
                     rows={2}
                     value={formData.preferredTimes}
                     onChange={(e) => setFormData((d) => ({ ...d, preferredTimes: e.target.value }))}
-                    className={fieldClassName}
+                    className={formFieldClass}
                     placeholder="e.g., Tuesdays after 4pm, or weekends"
                   />
                 </div>
 
                 <div className="mb-6">
-                  <label htmlFor="trial-notes" className={labelClassName}>
+                  <label htmlFor="trial-notes" className={formLabelClass}>
                     Anything else we should know?
                   </label>
                   <textarea
@@ -482,7 +481,7 @@ export function FreeTrialContent() {
                     rows={3}
                     value={formData.additionalNotes}
                     onChange={(e) => setFormData((d) => ({ ...d, additionalNotes: e.target.value }))}
-                    className={fieldClassName}
+                    className={formFieldClass}
                     placeholder="Goals, concerns, special needs, or questions"
                   />
                 </div>
@@ -504,7 +503,7 @@ export function FreeTrialContent() {
                 ) : null}
 
                 {status === 'error' && errorMessage ? (
-                  <div className="mb-4 rounded border border-red-300 bg-red-50 p-3 text-[13px] text-red-700 md:text-[14px]">
+                  <div className={formErrorBoxClass}>
                     {errorMessage}
                   </div>
                 ) : null}
@@ -561,7 +560,7 @@ export function FreeTrialContent() {
                   <MapPin className="h-4 w-4 text-teal" aria-hidden />
                 </div>
                 <div>
-                  <div className="text-[11px] uppercase tracking-[0.15em] text-foreground-muted md:text-[12px]">
+                  <div className="text-[11px] uppercase tracking-[0.15em] text-foreground-subtle md:text-[12px]">
                     Studio
                   </div>
                   <div className="mt-1 text-[14px] font-medium text-foreground md:text-[15px]">
@@ -575,7 +574,7 @@ export function FreeTrialContent() {
                   <Phone className="h-4 w-4 text-teal" aria-hidden />
                 </div>
                 <div>
-                  <div className="text-[11px] uppercase tracking-[0.15em] text-foreground-muted md:text-[12px]">
+                  <div className="text-[11px] uppercase tracking-[0.15em] text-foreground-subtle md:text-[12px]">
                     Phone
                   </div>
                   <a
@@ -592,7 +591,7 @@ export function FreeTrialContent() {
                   <Clock className="h-4 w-4 text-teal" aria-hidden />
                 </div>
                 <div>
-                  <div className="text-[11px] uppercase tracking-[0.15em] text-foreground-muted md:text-[12px]">
+                  <div className="text-[11px] uppercase tracking-[0.15em] text-foreground-subtle md:text-[12px]">
                     Hours
                   </div>
                   <Link

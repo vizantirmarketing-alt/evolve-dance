@@ -3,12 +3,12 @@
 import { Turnstile, type TurnstileInstance } from '@marsidev/react-turnstile'
 import { useState, useRef, type FormEvent } from 'react'
 import { ChevronDown, ArrowRight, Check } from 'lucide-react'
+import {
+  formErrorBoxClass,
+  formFieldClass,
+  formLabelClass,
+} from '@/components/forms/form-styles'
 import Button from '@/components/ui/Button'
-
-const fieldClassName =
-  'w-full bg-transparent border border-border rounded-none px-0 py-3 text-foreground placeholder:text-foreground-muted/60 focus:outline-none focus:border-teal transition-colors border-t-0 border-l-0 border-r-0 text-[14px] md:text-[15px]'
-
-const labelClassName = 'block text-[11px] uppercase tracking-[0.15em] text-foreground-muted mb-2 md:text-[12px]'
 
 const emptyForm = {
   name: '',
@@ -125,7 +125,7 @@ export default function ContactForm() {
 
           <form onSubmit={handleSubmit} noValidate>
             <div className="mb-6">
-              <label htmlFor="contact-name" className={labelClassName}>
+              <label htmlFor="contact-name" className={formLabelClass}>
                 Name
               </label>
               <input
@@ -136,13 +136,13 @@ export default function ContactForm() {
                 required
                 value={formData.name}
                 onChange={(e) => setFormData((d) => ({ ...d, name: e.target.value }))}
-                className={fieldClassName}
+                className={formFieldClass}
                 placeholder="Your name"
               />
             </div>
 
             <div className="mb-6">
-              <label htmlFor="contact-email" className={labelClassName}>
+              <label htmlFor="contact-email" className={formLabelClass}>
                 Email
               </label>
               <input
@@ -153,13 +153,13 @@ export default function ContactForm() {
                 required
                 value={formData.email}
                 onChange={(e) => setFormData((d) => ({ ...d, email: e.target.value }))}
-                className={fieldClassName}
+                className={formFieldClass}
                 placeholder="you@example.com"
               />
             </div>
 
             <div className="mb-6">
-              <label htmlFor="contact-phone" className={labelClassName}>
+              <label htmlFor="contact-phone" className={formLabelClass}>
                 Phone
               </label>
               <input
@@ -169,13 +169,13 @@ export default function ContactForm() {
                 autoComplete="tel"
                 value={formData.phone}
                 onChange={(e) => setFormData((d) => ({ ...d, phone: e.target.value }))}
-                className={fieldClassName}
+                className={formFieldClass}
                 placeholder="(702) 555-0100"
               />
             </div>
 
             <div className="mb-6">
-              <label htmlFor="contact-interest" className={labelClassName}>
+              <label htmlFor="contact-interest" className={formLabelClass}>
                 Interest
               </label>
               <div className="relative">
@@ -184,7 +184,7 @@ export default function ContactForm() {
                   name="interest"
                   value={formData.interest}
                   onChange={(e) => setFormData((d) => ({ ...d, interest: e.target.value }))}
-                  className={`${fieldClassName} appearance-none pr-8`}
+                  className={`${formFieldClass} appearance-none pr-8`}
                 >
                   <option value="">What can we help with?</option>
                   <option value="Trial class">Trial class</option>
@@ -201,7 +201,7 @@ export default function ContactForm() {
             </div>
 
             <div className="mb-6">
-              <label htmlFor="contact-message" className={labelClassName}>
+              <label htmlFor="contact-message" className={formLabelClass}>
                 Message
               </label>
               <textarea
@@ -211,7 +211,7 @@ export default function ContactForm() {
                 rows={4}
                 value={formData.message}
                 onChange={(e) => setFormData((d) => ({ ...d, message: e.target.value }))}
-                className={fieldClassName}
+                className={formFieldClass}
                 placeholder="How can we help?"
               />
             </div>
@@ -233,7 +233,7 @@ export default function ContactForm() {
             ) : null}
 
             {status === 'error' && errorMessage ? (
-              <div className="mb-4 rounded border border-red-300 bg-red-50 p-3 text-[13px] text-red-700 md:text-[14px]">
+              <div className={formErrorBoxClass}>
                 {errorMessage}
               </div>
             ) : null}
