@@ -10,6 +10,7 @@
     "delete:unpublished-blog": "tsx scripts/delete-unpublished-blog-posts.ts",
     "delete:unpublished-blog:dry": "tsx scripts/delete-unpublished-blog-posts.ts --dry-run",
     "upload:gallery": "tsx scripts/upload-project-gallery.ts",
+    "upload:videos": "tsx scripts/upload-studio-videos.ts",
     "seed:events": "tsx scripts/seed-events.ts"
   },
   "dependencies": {
