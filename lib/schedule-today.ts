@@ -83,16 +83,5 @@ export function getCurrentWeekDates(now: Date = new Date()): Record<string, Week
     result[days[i]] = { dateISO, displayDate, isToday }
   }
 
-  console.log('[schedule-today debug]', {
-    now: new Date().toString(),
-    todayY,
-    todayM,
-    todayD,
-    todayWeekday,
-    offsetFromMonday,
-    todayUTC: todayUTC.toISOString(),
-    mondayUTC: mondayUTC.toISOString(),
-    result,
-  })
   return result
 }
