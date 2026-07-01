@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Playfair_Display, DM_Sans } from 'next/font/google'
 import '../styles/globals.css'
+import { isProductionDomain } from '@/lib/seo'
 import { siteUrl } from '@/lib/site-url'
 
 const playfair = Playfair_Display({
@@ -61,10 +62,9 @@ export const metadata: Metadata = {
       'Serious training, positive environment, and real results for dancers ages 18 months to 18 years.',
     images: ['/opengraph-image'],
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: isProductionDomain()
+    ? { index: true, follow: true }
+    : { index: false, follow: false },
 }
 
 export const viewport: Viewport = {
