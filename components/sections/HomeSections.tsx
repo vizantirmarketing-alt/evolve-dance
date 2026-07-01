@@ -142,7 +142,7 @@ export function AboutSection() {
               { num: '2017', lbl: 'Est. Las Vegas' },
             ].map(s => (
               <div key={s.lbl} className="text-center md:text-left">
-                <div className="font-display text-[40px] font-bold leading-none text-[#0ABAB5]" style={{ textShadow: '0 0 30px rgba(10,186,181,0.2)' }}>
+                <div className="font-display text-[32px] md:text-[40px] font-bold leading-none text-[#0ABAB5]" style={{ textShadow: '0 0 30px rgba(10,186,181,0.2)' }}>
                   {s.num}
                 </div>
                 <div className="mt-1 text-[11px] uppercase tracking-[0.14em] text-[#6D6C67] md:text-[12px]">{s.lbl}</div>
