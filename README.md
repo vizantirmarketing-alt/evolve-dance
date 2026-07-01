@@ -160,7 +160,7 @@ Set `NEXT_PUBLIC_PRODUCTION_HOST=evolvedancecenter.com` in Vercel production onl
 - Commit per file: `git add <file>` then commit. Never `git add .` for shared work.
 - Never chain git commands with `&&`.
 - Section components live in `components/sections/`; layout in `components/layout/`.
-  - See `docs/EVOLVE_DEVELOPMENT_GUIDELINES.md` for design system, animation rules, and component conventions.
+- See `docs/EVOLVE_DEVELOPMENT_GUIDELINES.md` for design system, animation rules, and component conventions.
 
 ---
 
