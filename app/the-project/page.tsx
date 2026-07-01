@@ -573,12 +573,18 @@ function TheProjectPageContent({ page }: { page: ProjectPage }) {
                 />
               </div>
             </div>
-            <div className="mt-10 flex justify-center">
+            <div className="mt-10 flex flex-col items-center gap-4 md:flex-row md:justify-center md:gap-12">
               <Link
                 href="/the-project/gallery"
                 className="border-b border-[rgba(10,186,181,0.3)] pb-0.5 text-[11px] uppercase tracking-[0.18em] text-teal-hover no-underline transition-colors hover:border-teal md:text-[12px]"
               >
                 View full gallery →
+              </Link>
+              <Link
+                href="/watch"
+                className="border-b border-[rgba(10,186,181,0.3)] pb-0.5 text-[11px] uppercase tracking-[0.18em] text-teal-hover no-underline transition-colors hover:border-teal md:text-[12px]"
+              >
+                Watch the studio →
               </Link>
             </div>
           </div>
