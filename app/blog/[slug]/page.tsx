@@ -177,7 +177,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               <div className="h-px w-7 bg-teal" />
               <Link
                 href="/blog"
-                className="cursor-pointer text-[11px] font-medium uppercase tracking-[0.22em] text-teal transition-opacity transition-colors hover:opacity-60 hover:text-teal-hover md:text-[12px]"
+                className="cursor-pointer text-[11px] font-medium uppercase tracking-[0.22em] text-teal-hover transition-colors hover:text-foreground md:text-[12px]"
               >
                 Journal
               </Link>
@@ -208,7 +208,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                     {post.categories.map((category) => (
                       <span
                         key={category._id}
-                        className="inline-flex rounded-sm border border-teal/35 bg-background px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-teal"
+                        className="inline-flex rounded-sm border border-teal/35 bg-background px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-teal-hover"
                       >
                         {category.title}
                       </span>
@@ -240,7 +240,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             <div className="mt-16 border-t border-stone-200 pt-8">
               <Link
                 href="/blog"
-                className="inline-flex items-center gap-2 text-sm uppercase tracking-wider text-teal transition-opacity hover:opacity-70"
+                className="inline-flex items-center gap-2 text-sm uppercase tracking-wider text-teal-hover transition-colors hover:text-foreground"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M19 12H5M12 19l-7-7 7-7" />
