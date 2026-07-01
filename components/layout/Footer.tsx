@@ -63,6 +63,7 @@ const footerNavLinks = [
   { href: '/faculty', label: 'Faculty' },
   { href: '/the-project', label: 'The Project' },
   { href: '/the-project/gallery', label: 'Gallery' },
+  { href: '/watch', label: 'Watch' },
   { href: '/events', label: 'Events' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },

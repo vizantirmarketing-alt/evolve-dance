@@ -16,6 +16,7 @@ const staticRoutes: StaticRoute[] = [
   { path: '/events', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/faculty', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/the-project', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/watch', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/contact', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/free-trial', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/faq', priority: 0.8, changeFrequency: 'monthly' },
