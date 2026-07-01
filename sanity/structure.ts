@@ -1,6 +1,6 @@
 import { StructureBuilder } from 'sanity/structure'
 
-const singletonTypes = new Set(['projectGallery'])
+const singletonTypes = new Set(['projectGallery', 'studioVideos'])
 
 export const structure = (S: StructureBuilder) =>
   S.list()
@@ -13,6 +13,14 @@ export const structure = (S: StructureBuilder) =>
           S.document()
             .schemaType('projectGallery')
             .documentId('projectGallery'),
+        ),
+      S.listItem()
+        .title('Studio Videos')
+        .id('studioVideos')
+        .child(
+          S.document()
+            .schemaType('studioVideos')
+            .documentId('studioVideos'),
         ),
       ...S.documentTypeListItems().filter(
         (listItem) => !singletonTypes.has(listItem.getId() as string),

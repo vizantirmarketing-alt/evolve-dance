@@ -9,6 +9,7 @@ import { studioHours } from './studioHours'
 import { testimonial } from './testimonial'
 import { theProject } from './theProject'
 import { projectGallery } from './projectGallery'
+import { studioVideos } from './studioVideos'
 
 export const schemaTypes: SchemaTypeDefinition[] = [
   faq,
@@ -20,4 +21,5 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   category,
   testimonial,
   projectGallery,
+  studioVideos,
 ]
