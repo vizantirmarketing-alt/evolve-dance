@@ -1,89 +1,72 @@
-# 🩰 Evolve Dance Center — Development Guidelines
+# Evolve Dance Center — Development Guidelines
 
-## 🗓️ Last Updated: March 2026
+Last updated: July 2026
 
-Welcome to the Evolve Dance Center codebase. This document defines how the project is structured, how new features should be added, and how both developers and AI tools (like Cursor or Claude) should interact with the repository.
-
-The goal: build a cinematic, dark, editorial dance studio website with a teal/black aesthetic that outperforms every competitor in the Las Vegas market. This site should feel like a premium performance arts brand — not a generic dance school template.
+Technical reference for the Evolve Dance Center website codebase. Defines project structure, conventions, and implementation rules for new features.
 
 ---
 
-## ⚙️ 1. Core Rules
+## 1. Core Rules
 
-### System Instruction for AI and Developers:
-
-- Always follow the Evolve Dance Center folder structure.
-- **Each section has its own component file** inside `components/sections/`.
-- **Shared components (Navbar, Footer) have their own files** inside `components/layout/` and `components/ui/`.
-- Never bundle unrelated code into one file.
-- Preserve naming consistency (e.g., `VideoHeroSection.tsx`, `ClassFinder.tsx`, `InstructorsSection.tsx`).
-- Ensure all imports remain clean, modular, and use the `@/` alias for absolute imports.
-- **This is a Next.js 15 App Router project** — use `app/` directory for routes.
-- **Framer Motion is required** for all entrance animations and transitions.
-- **Intersection Observer (via custom `useReveal` hook)** is used for scroll-triggered reveals — no GSAP required.
-- **Sanity CMS** is the data source for all dynamic content (schedule, instructors, classes, news).
-- All data types and interfaces live in `lib/classData.ts` or dedicated type files — never inline in components.
-
-### ⚠️ AI Safety Block (Pin this in Cursor):
-
-```
-Do not create, edit, move, or delete any folders or files other than the one explicitly mentioned in this prompt.
-Only modify the exact file specified. Do not generate new components, pages, layouts, or assets unless directly instructed.
-Preserve the current folder structure, imports, and exports exactly as they are.
-Your task is limited strictly to updating the existing code inside the specified file while keeping all other parts of the project untouched.
-```
-
-Pin or reference this block inside Cursor or any AI-assisted IDE session before making automated edits.
+- Follow the folder structure in section 3.
+- Put page sections in `components/sections/`. One section per file.
+- Put shared layout in `components/layout/` and reusable UI in `components/ui/`.
+- Do not combine unrelated code in a single file.
+- Keep naming consistent (e.g. `VideoHeroSection.tsx`, `ClassFinder.tsx`, `ScheduleSection.tsx`).
+- Use the `@/` alias for all absolute imports.
+- This is a **Next.js 16 App Router** project. Routes live under `app/`.
+- Use **Framer Motion** for entrance animations and filter transitions.
+- Use **Intersection Observer** for scroll-triggered reveals via `RevealOnScroll` (`components/sections/RevealOnScroll.tsx`) or the local `useReveal` pattern in `HomeSections.tsx`. Do not add GSAP.
+- **Sanity CMS** is the source for dynamic content (faculty, FAQs, events, blog, testimonials, studio hours, gallery).
+- Static marketing copy and class/style definitions live in `data/`.
+- Live class schedule data comes from the **Jackrabbit Class Openings API** (`lib/jackrabbit.ts`).
+- Define shared types in `types/` or dedicated type files. Do not inline interfaces in components.
 
 ---
 
-## 🎨 2. Design System
+## 2. Design System
 
-### Design Direction:
+### Overview
 
-- **Dark, cinematic, editorial — performance arts brand**
-- **Teal neon accent on black** — the studio's real neon light color
-- **Playfair Display for headlines** — elegant, high-contrast, italic drama
-- **DM Sans for body** — clean, modern, readable at all weights
-- Photography and motion forward — this site sells dance through movement
-- Zero generic dance school aesthetics — no clipart, no stock-photo layouts, no cookie-cutter templates
+- Light cream background with teal accent (`#0ABAB5`).
+- **Playfair Display** for headings. **DM Sans** for body text, labels, and navigation.
+- Angled clip-path buttons, teal underline hovers, and CSS-based scroll reveals.
+- Framer Motion for hero entrance and filter transitions only. Scroll reveals use CSS + Intersection Observer.
 
-### Color Palette (CSS Variables in `styles/globals.css`):
+### Color palette
+
+CSS variables in `styles/globals.css`:
 
 ```css
 :root {
-  /* Base */
-  --black:       #070a09;
-  --black-soft:  #0d1210;
-  --charcoal:    #111916;
-
-  /* Teal (brand accent — pulled from studio neon lights) */
-  --teal:        #2dd4bf;
-  --teal-dim:    #1aaf9c;
-  --teal-light:  #3ef0d8;
-  --teal-glow:   rgba(45, 212, 191, 0.18);
-  --teal-faint:  rgba(45, 212, 191, 0.06);
-
-  /* Text */
-  --off-white:   #f0faf8;
-  --off-mid:     #c8e0db;
-  --mid:         #5c7a74;
-
-  /* Borders */
-  --border:      rgba(45, 212, 191, 0.12);
-  --border-soft: rgba(45, 212, 191, 0.06);
+  --teal:        #0ABAB5;
+  --teal-hover:  #087876;
+  --teal-soft:   #81D8D0;
+  --teal-light:  #D4F1EF;
+  --teal-glow:   rgba(10, 186, 181, 0.18);
+  --teal-faint:  rgba(10, 186, 181, 0.06);
+  --background:  #F7F5F1;
+  --bg-warm:     #FCFBF8;
+  --bg-mint:     #D4F1EF;
+  --foreground:  #1F1F1C;
+  --muted:       #5F5E59;
+  --subtle:      #6D6C67;
+  --border:      #D6DFDA;
+  --project:     #173432;
 }
 ```
 
-### Typography:
+Tailwind extends these in `tailwind.config.ts` under `theme.extend.colors`.
 
-| Type    | Font             | Weights            | Usage                              |
-|---------|------------------|--------------------|------------------------------------|
-| Display | Playfair Display | 400, 700, 900      | All headings, hero titles          |
-| Display | Playfair Display | italic 400, 700    | Italic accent words in headlines   |
-| Body    | DM Sans          | 300, 400, 500, 600 | Body text, labels, nav, buttons    |
+### Typography
 
-### Font Import (Next.js `app/layout.tsx` — use `next/font/google`):
+| Role    | Font             | Weights            | Usage                         |
+|---------|------------------|--------------------|-------------------------------|
+| Display | Playfair Display | 400, 700, 900      | Headings, hero titles         |
+| Display | Playfair Display | italic 400, 700    | Italic accent words in titles |
+| Body    | DM Sans          | 300, 400, 500, 600 | Body, labels, nav, buttons    |
+
+Load fonts in `app/layout.tsx` via `next/font/google`. Do not use `@import` in CSS.
 
 ```tsx
 import { Playfair_Display, DM_Sans } from 'next/font/google'
@@ -104,148 +87,144 @@ const dmSans = DM_Sans({
 })
 ```
 
-### Typography Scale:
+### Typography scale
 
-| Element       | Size                        | Weight | Letter Spacing |
+| Element       | Size                        | Weight | Letter spacing |
 |---------------|-----------------------------|--------|----------------|
-| Hero Title    | clamp(52px, 8.5vw, 116px)  | 900    | -0.025em       |
-| Section H2    | clamp(40px, 5vw, 68px)     | 700    | tight          |
-| Eyebrow Label | 10px                        | 500    | 0.22em         |
-| Body Text     | 15px                        | 300    | —              |
-| Nav Links     | 11px                        | 400    | 0.14em         |
-| Button Text   | 11px                        | 500    | 0.15em         |
-| Stat Numbers  | 24–28px                     | 700    | —              |
-| Table Text    | 13–13.5px                   | 400    | —              |
+| Hero title    | clamp(40px, 5vw, 64px)     | 700    | tight          |
+| Section H2    | clamp(28px, 3.5vw, 42px)   | 700    | tight          |
+| Eyebrow label | 11–12px                     | 500    | 0.22em         |
+| Body text     | 15–16px                     | 300    | —              |
+| Nav links     | 11–12px                     | 400    | 0.14–0.18em    |
+| Button text   | 11–12px                     | 500    | 0.15em         |
 
-### Signature Visual Elements:
+### Visual elements
 
-- **Clip-path buttons:** `polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%)` — the angled cut on all primary CTAs
-- **Teal glow on italic headlines:** `text-shadow: 0 0 60px rgba(45,212,191,0.35), 0 0 140px rgba(45,212,191,0.12)`
-- **Scan lines texture:** `repeating-linear-gradient` on dark panels — subtle, adds depth
-- **Animated teal dot in logo:** pulses with `box-shadow` animation
-- **Pulsing teal dot nav logo:** always present, always animating
+- **Clip-path buttons:** `polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%)` — class `.clip-btn` in `globals.css`
+- **Teal text glow:** class `.teal-glow-text` in `globals.css`
+- **Teal underline on hover:** class `.teal-underline` in `globals.css`
+- **Scan lines texture:** class `.scan-lines` — `repeating-linear-gradient` overlay
+- **Animated grid background:** class `.animated-grid` — 60px grid with `gridSlide` keyframe
+- **The Project pages:** use `--project` (`#173432`) as the dark surface color
 
 ---
 
-## 🧭 3. Folder Structure
+## 3. Folder Structure
 
 ```
 evolve-dance/
 ├─ app/
 │   ├─ layout.tsx                    # Root layout — fonts, metadata, SEO
-│   ├─ page.tsx                      # Homepage — assembles all sections
-│   ├─ classes/
-│   │   └─ page.tsx                  # Classes + class finder page
-│   ├─ faculty/
-│   │   └─ page.tsx                  # Instructors page
-│   ├─ the-project/
-│   │   └─ page.tsx                  # Competitive team page
-│   ├─ enroll/
-│   │   └─ page.tsx                  # Registration + free trial page
+│   ├─ page.tsx                      # Homepage
 │   ├─ about/
-│   │   └─ page.tsx                  # About + policies + dress code
-│   ├─ gallery/
-│   │   └─ page.tsx                  # Recitals + gallery page
-│   └─ contact/
-│       └─ page.tsx                  # Contact page
+│   ├─ classes/
+│   ├─ schedule/                     # Live Jackrabbit schedule
+│   ├─ faculty/
+│   ├─ the-project/
+│   │   └─ gallery/
+│   ├─ free-trial/
+│   ├─ contact/
+│   ├─ events/
+│   ├─ blog/
+│   │   └─ [slug]/
+│   ├─ faq/
+│   ├─ policies/
+│   ├─ privacy/
+│   ├─ media-usage/
+│   ├─ sitemap/
+│   ├─ studio/[[...tool]]/           # Sanity Studio
+│   └─ api/
+│       ├─ contact/
+│       └─ free-trial/
 │
 ├─ components/
 │   ├─ layout/
-│   │   ├─ Navbar.tsx                # ✅ Fixed nav, scroll-aware, mobile menu
-│   │   └─ Footer.tsx                # ✅ Full footer with links + socials
-│   │
+│   │   ├─ Navbar.tsx                # Wrapper around Nav
+│   │   └─ Footer.tsx
 │   ├─ ui/
-│   │
-│   └─ sections/
-│       ├─ VideoHeroSection.tsx      # ✅ Full video hero with overlays + lightbox
-│       ├─ HeroSection.tsx           # ✅ Fallback animated hero (no video)
-│       ├─ HomeSections.tsx          # ✅ All non-hero homepage sections
-│       ├─ ClassFinder.tsx           # ✅ Interactive class finder component
-│       ├─ InstructorSection.tsx     # 🔲 Faculty grid with bios
-│       ├─ ProjectSection.tsx        # 🔲 The Project competitive team page
-│       ├─ EnrollSection.tsx         # 🔲 Enrollment + free trial form
-│       ├─ GallerySection.tsx        # 🔲 Recitals + video archive
-│       └─ ContactSection.tsx        # 🔲 Contact form + map
+│   │   └── Button.tsx
+│   ├─ sections/
+│   │   ├─ VideoHeroSection.tsx
+│   │   ├─ HeroSection.tsx
+│   │   ├─ HomeSections.tsx          # Homepage sections (except schedule, testimonials)
+│   │   ├─ ScheduleSection.tsx
+│   │   ├─ ScheduleFilters.tsx
+│   │   ├─ ScheduleTabs.tsx
+│   │   ├─ TestimonialsSection.tsx
+│   │   ├─ TestimonialsHero.tsx
+│   │   └─ RevealOnScroll.tsx
+│   ├─ ClassFinder.tsx
+│   ├─ ClassFinderFilters.tsx
+│   ├─ ClassCard.tsx
+│   ├─ StyleCard.tsx
+│   ├─ Nav.tsx
+│   └─ ...
+│
+├─ data/
+│   ├─ site.ts                       # Site config, contact info, social links
+│   ├─ classes.ts                    # Static class finder data
+│   ├─ styles.ts                     # Dance style definitions
+│   └─ navigation.ts                 # Nav link definitions
 │
 ├─ lib/
-│   ├─ classData.ts                  # ✅ All class styles, schedule data, filter fn
-│   ├─ sanity.ts                     # 🔲 Sanity client config
-│   ├─ queries.ts                    # 🔲 GROQ queries for all content types
-│   └─ utils.ts                      # ✅ cn() Tailwind merge utility
+│   ├─ jackrabbit.ts                 # Jackrabbit Openings API client
+│   ├─ seo.ts                        # Production indexing gate
+│   ├─ dance-school-jsonld.ts        # JSON-LD builder
+│   └─ utils.ts                      # cn() Tailwind merge utility
 │
 ├─ sanity/
-│   ├─ schemas/
-│   │   ├─ classStyle.ts             # 🔲 Class style schema (ballet, jazz, etc.)
-│   │   ├─ scheduleEntry.ts          # 🔲 Schedule entry schema
-│   │   ├─ instructor.ts             # 🔲 Instructor schema
-│   │   └─ index.ts                  # 🔲 Schema registry
-│   └─ sanity.config.ts              # 🔲 Sanity Studio config
+│   ├─ schemas/                      # Sanity document types
+│   ├─ lib/
+│   │   ├─ client.ts
+│   │   ├── queries.ts
+│   │   └── image.ts
+│   └── env.ts
 │
+├─ types/                            # Shared TypeScript types
 ├─ styles/
-│   └─ globals.css                   # ✅ CSS variables, reveal animations, utilities
-│
-├─ public/
-│   ├─ videos/
-│   │   ├─ hero.mp4                  # 🔲 Adobe Stock dance footage (compressed)
-│   │   └─ hero.webm                 # 🔲 WebM fallback
-│   └─ images/
-│       ├─ hero-poster.jpg           # 🔲 First frame of hero video
-│       ├─ instructors/              # 🔲 Faculty headshots
-│       └─ gallery/                  # 🔲 Recital + performance photos
-│
-├─ tailwind.config.ts                # ✅ Brand colors, fonts, keyframes
-├─ next.config.ts                    # ✅ Image domains + 13 Wix 301 redirects
-├─ postcss.config.js                 # ✅ PostCSS config
-├─ tsconfig.json                     # ✅ TypeScript config with @/ alias
-└─ package.json                      # ✅ Dependencies
-
-Legend: ✅ Built  🔲 Not yet built
+│   └── globals.css                  # CSS variables, reveal animations, utilities
+├─ public/                           # Static assets
+├─ scripts/                          # Operational and seed scripts
+├─ tailwind.config.ts
+├─ next.config.ts                    # Image domains + Wix 301 redirects
+└─ package.json
 ```
 
 ---
 
-## 🌊 4. Signature Interactions (CRITICAL)
+## 4. Signature Interactions
 
-These interactions define the premium feel. They must be implemented exactly as specified.
+### 1. Video hero (`components/sections/VideoHeroSection.tsx`)
 
-### 1. Video Hero (`components/sections/VideoHeroSection.tsx`)
+- Full-width video background on desktop (`min-h-[calc(100vh-80px)]`). Poster/static layout on mobile.
+- Video: `autoPlay`, `muted`, `loop`, `playsInline`, `object-cover`.
+- Mute/unmute and play/pause controls on desktop.
+- Lightbox for full video playback on "Watch the Studio" click.
+- Framer Motion stagger for hero content entrance.
+- Stats strip at bottom of hero section.
 
-```tsx
-// Requirements:
-// - Full-screen looping video background (muted, autoplay, playsInline)
-// - 4-layer gradient overlay system for text legibility
-// - Teal radial glow overlay at 7% opacity (brand color grade)
-// - Noise grain texture overlay at 2.5% opacity
-// - Animated teal scan line at bottom
-// - Mute/unmute + play/pause controls (top right)
-// - Lightbox opens full video with controls on "Watch the Studio" click
-// - Fallback: animated silhouette + orbs when no video file present
-// - Stats strip at bottom — frosted glass effect
-```
+### 2. Scroll reveal (`styles/globals.css` + `RevealOnScroll`)
 
-**Overlay stack (bottom to top):**
-1. Video element (z-index: 0)
-2. Main gradient — `to bottom` dark vignette (z-index: 1)
-3. Teal radial glow — `ellipse at 50% 30%` (z-index: 1)
-4. Left edge fade — `to right` for text breathing room (z-index: 1)
-5. Noise grain texture (z-index: 1, opacity: 0.025)
-6. Teal scan line — animated (z-index: 2)
-7. Content (z-index: 3)
-8. Stats strip — `backdrop-filter: blur(16px)` (z-index: 4)
-
-### 2. Scroll Reveal (`styles/globals.css` + `useReveal` hook)
+Use `RevealOnScroll` for section content. Pattern:
 
 ```tsx
-// Pattern used across ALL sections:
+// components/sections/RevealOnScroll.tsx
 function useReveal() {
   const ref = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
   useEffect(() => {
+    const el = ref.current
+    if (!el) return
     const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect() } },
-      { threshold: 0.12 }
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0 }
     )
-    observer.observe(ref.current!)
+    observer.observe(el)
     return () => observer.disconnect()
   }, [])
   return { ref, visible }
@@ -253,64 +232,46 @@ function useReveal() {
 ```
 
 ```css
-/* globals.css */
+/* styles/globals.css */
 .reveal {
   opacity: 0;
   transform: translateY(32px);
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-delay-1 { transition-delay: 100ms; }
-.reveal-delay-2 { transition-delay: 200ms; }
-.reveal-delay-3 { transition-delay: 300ms; }
-.reveal-delay-4 { transition-delay: 400ms; }
 ```
 
-### 3. Class Finder Filtering (`components/sections/ClassFinder.tsx`)
+On viewports below 768px, reveals are disabled (content shows immediately).
 
-```tsx
-// Requirements:
-// - All 41 schedule entries live in lib/classData.ts
-// - filterSchedule() runs client-side — no API calls
-// - Filters: age group, day, style category, invite-only toggle
-// - All filters are combinable simultaneously
-// - Two views: Schedule (grouped by day) and Styles Grid (15 cards)
-// - Clicking a style card expands a detail panel (description, shoes, attire)
-// - AnimatePresence wraps results for smooth filter transitions
-// - Empty state with clear filters CTA
-// - Status badges: Open (teal), Few Spots (amber), Full (red)
-// - Hover on schedule row reveals Enroll → link
-// FUTURE: Replace classData.ts array with Sanity GROQ query
-```
+### 3. Class finder (`components/ClassFinder.tsx`)
 
-### 4. Instructor Cards (`components/sections/InstructorSection.tsx`)
+- Static class list from `data/classes.ts`.
+- Client-side filtering by style, day, level, and age. No API calls.
+- Filters are combinable.
+- Wrap filtered results in `AnimatePresence` for transitions.
+- Empty state with reset action when no matches.
+- Live schedule with openings is on `/schedule` via Jackrabbit, not this component.
 
-```tsx
-// Requirements:
-// - Horizontal flex strip — cards expand on hover
-// - flex: 1 at rest, flex: 2.5 on hover (CSS transition 0.5s cubic-bezier)
-// - Top teal bar scales in on hover (scaleX 0 → 1)
-// - Instructor initial as large watermark background
-// - Role text slides up with opacity transition on hover
-// - Last card = "+ 17 More → View All Faculty"
-```
+### 4. Faculty preview (`components/sections/HomeSections.tsx` → `InstructorsSection`)
 
-### 5. Teal Ticker Strip (`components/sections/HomeSections.tsx` → `TickerSection`)
+- Faculty data fetched from Sanity at page build time.
+- Desktop: horizontal flex strip of photo cards with equal width.
+- Hover: image scale, top teal bar scales in (`scale-x-0` → `scale-x-100`).
+- Mobile: stacked layout.
+- Final card links to `/faculty`.
 
-```tsx
-// Requirements:
-// - Continuous left scroll, no gap
-// - 3x repeated content for seamless loop
-// - 25s animation duration (adjustable)
-// - Black separator dots between items
-// - Teal background, black text
-```
+### 5. Style ticker (`components/sections/HomeSections.tsx` → `TickerSection`)
+
+- Continuous horizontal scroll, seamless loop.
+- Content repeated 3× for loop continuity.
+- 25s animation duration (`ticker` keyframe in `tailwind.config.ts`).
+- Teal background, white uppercase text.
 
 ---
 
-## 📄 5. Page Structure
+## 5. Page Structure
 
-### `app/page.tsx` (Homepage)
+### `app/page.tsx` (homepage)
 
 ```tsx
 import Navbar from '@/components/layout/Navbar'
@@ -319,15 +280,16 @@ import VideoHeroSection from '@/components/sections/VideoHeroSection'
 import {
   TickerSection,
   AboutSection,
+  WhyFamiliesChooseSection,
   ClassesSection,
-  ScheduleSection,
   InstructorsSection,
-  TestimonialsSection,
-  ProjectSection,
   EnrollSection,
 } from '@/components/sections/HomeSections'
+import ScheduleSection from '@/components/sections/ScheduleSection'
+import TestimonialsSection from '@/components/sections/TestimonialsSection'
 
-export default function HomePage() {
+export default async function HomePage() {
+  // Fetches studioHours and facultyPreview from Sanity
   return (
     <>
       <Navbar />
@@ -339,11 +301,11 @@ export default function HomePage() {
         />
         <TickerSection />
         <AboutSection />
+        <WhyFamiliesChooseSection />
         <ClassesSection />
         <ScheduleSection />
-        <InstructorsSection />
+        <InstructorsSection faculty={facultyPreview} />
         <TestimonialsSection />
-        <ProjectSection />
         <EnrollSection />
       </main>
       <Footer />
@@ -354,166 +316,143 @@ export default function HomePage() {
 
 ### `app/classes/page.tsx`
 
-```tsx
-import ClassFinder from '@/components/sections/ClassFinder'
-// ClassFinder is a full-page component — no additional wrapper needed
-```
+Renders `ClassFinder`, style grid from `data/styles.ts`, and combo callout. No additional wrapper component.
+
+### `app/schedule/page.tsx`
+
+Server component. Fetches live classes from `getJackrabbitClasses()` in `lib/jackrabbit.ts`. Revalidates every 300 seconds.
 
 ### `app/layout.tsx`
 
-```tsx
-import { Playfair_Display, DM_Sans } from 'next/font/google'
-import '../styles/globals.css'
-
-// Fonts loaded via next/font — never via @import in CSS
-// GTM script via next/script with strategy="afterInteractive"
-// JSON-LD LocalBusiness schema injected here
-```
+- Load fonts via `next/font/google`.
+- Import `styles/globals.css`.
+- Inject JSON-LD via `buildDanceSchoolJsonLd()` where applicable.
+- Gate indexing with `isProductionDomain()` from `lib/seo.ts`.
 
 ---
 
-## 🧱 6. Component Specifications
+## 6. Component Specifications
 
-### Navbar (`components/layout/Navbar.tsx`)
+### Navigation (`components/Nav.tsx` via `components/layout/Navbar.tsx`)
 
-| Property    | Value                                              |
-|-------------|----------------------------------------------------|
-| Position    | Fixed, top: 0, z-index: 100                        |
-| Height      | 72px                                               |
-| Background  | Gradient → solid + blur when scrolled             |
-| Logo        | DM Sans 600, 13px, tracking 0.22em, uppercase      |
-| Logo dot    | 6px teal circle, pulsing animation                 |
-| Links       | DM Sans 11px, tracking 0.14em, uppercase           |
-| Link hover  | Color → teal + scaleX underline from left          |
-| CTA         | Teal background, clip-path angled button           |
-| Scrolled    | `bg-[rgba(7,10,9,0.96)] backdrop-blur-xl border-b` |
-| Mobile      | Hamburger → full overlay menu                      |
+| Property   | Value                                              |
+|------------|----------------------------------------------------|
+| Position   | Fixed, top: 0, z-index: 50                         |
+| Background | `bg-background`, blur on scroll                    |
+| Logo       | Image from `/logo/evolve-navbar.png`               |
+| Links      | From `data/navigation.ts`, uppercase, tracked    |
+| CTA        | Enroll link to Jackrabbit URL                      |
+| Mobile     | Hamburger → full-screen overlay menu             |
 
-### VideoHeroSection (`components/sections/VideoHeroSection.tsx`)
+### VideoHeroSection
 
-| Property       | Value                                                   |
-|----------------|---------------------------------------------------------|
-| Height         | 100vh min                                               |
-| Video          | autoPlay muted loop playsInline, object-cover           |
-| Poster         | `/images/hero-poster.jpg`                               |
-| Headline       | "Where dancers become extraordinary."                   |
-| Teal line      | "extraordinary." — italic, teal glow text-shadow        |
-| Primary CTA    | "Book a Free Trial" — links to `/enroll#free-trial`     |
-| Secondary CTA  | "Watch the Studio" — opens lightbox                     |
-| Tertiary CTA   | "View Schedule" — ghost link, links to `/classes`       |
-| Controls       | Mute + Play/Pause — top right, frosted glass            |
-| Stats strip    | 10+ styles, 22 faculty, 8 seasons, ★ 5.0                |
-| Scroll hint    | Teal gradient line + "Scroll" vertical text             |
+| Property      | Value                                              |
+|---------------|----------------------------------------------------|
+| Height        | `min-h-[640px]` mobile; `min-h-[calc(100vh-80px)]` desktop |
+| Video         | autoPlay, muted, loop, playsInline on desktop only |
+| Primary CTA   | Links to `/free-trial`                             |
+| Secondary CTA | Opens video lightbox                               |
+| Stats strip   | Three stat items at bottom                         |
 
-### ClassFinder (`components/sections/ClassFinder.tsx`)
+### ClassFinder
 
-| Property       | Value                                                    |
-|----------------|----------------------------------------------------------|
-| Data source    | `lib/classData.ts` (later: Sanity GROQ)                  |
-| Filter: Age    | All, Tiny Dancers (18mo–5), Kids (5–10), Tweens, Teens   |
-| Filter: Day    | Any Day, Mon, Tue, Wed, Thu, Fri, Sat                    |
-| Filter: Style  | All Styles, Classical, Commercial, Street, Modern, Acro… |
-| Filter: Toggle | Invite Only (amber chip)                                 |
-| Views          | Schedule (table) / All Styles (grid cards)               |
-| Empty state    | Icon + message + Clear Filters + Contact Us              |
-| Bottom CTA     | Book Free Trial + Ask a Question                         |
+| Property      | Value                                              |
+|---------------|----------------------------------------------------|
+| Data source   | `data/classes.ts`                                  |
+| Filters       | Style, day, level, age                             |
+| Transitions   | Framer Motion `AnimatePresence`                    |
+| Surface prop  | `'light'` or `'dark'` for text color variants      |
 
 ### Footer (`components/layout/Footer.tsx`)
 
-| Property  | Value                                                    |
-|-----------|----------------------------------------------------------|
-| Bg        | `#040605`                                                |
-| Cols      | Brand + tagline / Classes / Studio / Contact             |
-| Logo dot  | Small teal dot with box-shadow glow                      |
-| Credit    | Socials (Instagram, Facebook, YouTube)                   |
-| Copyright | © {year} Evolve Dance Center. All rights reserved.       |
+| Property | Value                                              |
+|----------|----------------------------------------------------|
+| Data     | Contact and social links from `data/site.ts`       |
+| Columns  | Brand, classes, studio, contact                    |
+| Social   | Instagram, Facebook, TikTok, YouTube               |
 
 ---
 
-## 🔗 7. Routing & Redirects
+## 7. Routing and Redirects
 
-All old Wix URLs are permanently redirected in `next.config.ts`. Never remove these.
+Old Wix URLs redirect in `next.config.ts`. Do not remove these.
 
-| Old Wix URL                        | New URL                  |
-|------------------------------------|--------------------------|
-| `/the-center-1`                    | `/about`                 |
-| `/copy-of-news`                    | `/about#calendar`        |
-| `/copy-of-2024-summer-schedule`    | `/classes#schedule`      |
-| `/copy-of-register`                | `/enroll`                |
-| `/copy-of-policies`                | `/about#dress-code`      |
-| `/services-4`                      | `/classes`               |
-| `/tuition`                         | `/enroll#pricing`        |
-| `/the-faculty`                     | `/faculty`               |
-| `/newsletter`                      | `/about#news`            |
-| `/about-3`                         | `/the-project`           |
-| `/about-us`                        | `/about`                 |
-| `/register`                        | `/enroll`                |
+| Old Wix URL                     | New destination                          |
+|---------------------------------|------------------------------------------|
+| `/the-center-1`                 | `/about`                                 |
+| `/copy-of-news`                 | `/about#calendar`                        |
+| `/copy-of-2024-summer-schedule` | `/schedule`                              |
+| `/copy-of-register`             | Jackrabbit enroll URL                    |
+| `/copy-of-policies`             | `/about#dress-code`                      |
+| `/services-4`                   | `/classes`                               |
+| `/tuition`                      | Jackrabbit enroll URL                    |
+| `/the-faculty`                  | `/faculty`                               |
+| `/newsletter`                   | `/about#news`                            |
+| `/about-3`                      | `/the-project`                           |
+| `/about-us`                     | `/about`                                 |
+| `/register`                     | Jackrabbit enroll URL                    |
+
+Enrollment redirects use `NEXT_PUBLIC_JACKRABBIT_ENROLL_URL`.
 
 ---
 
-## 📦 8. Sanity CMS Setup
+## 8. Sanity CMS
 
-### Installation:
+### Client
 
-```bash
-npm install @sanity/client @sanity/image-url next-sanity
-npx sanity init
-```
-
-### Environment Variables (`.env.local`):
-
-```bash
-NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
-NEXT_PUBLIC_SANITY_DATASET=production
-SANITY_API_TOKEN=your_read_token
-SANITY_WEBHOOK_SECRET=your_webhook_secret
-```
-
-### Sanity Client (`lib/sanity.ts`):
+Sanity client lives in `sanity/lib/client.ts` using `next-sanity`:
 
 ```ts
-import { createClient } from '@sanity/client'
+import { createClient } from 'next-sanity'
+import { apiVersion, dataset, projectId } from '@/sanity/env'
 
-export const sanityClient = createClient({
-  projectId:  process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-  dataset:    process.env.NEXT_PUBLIC_SANITY_DATASET!,
-  apiVersion: '2026-03-01',
-  useCdn:     true,
+export const client = createClient({
+  projectId,
+  dataset,
+  apiVersion,
+  useCdn: true,
 })
 ```
 
-### Schemas (in `sanity/schemas/`):
+### Environment variables
 
-| Schema           | Fields                                                         |
-|------------------|----------------------------------------------------------------|
-| `classStyle`     | id, name, category, description, longDesc, ageRange, shoes, attire, prereq |
-| `scheduleEntry`  | style (ref), day, startTime, endTime, level, ageLabel, ageMin, ageMax, instructor (ref), status, inviteOnly |
-| `instructor`     | name, role, styles[], bio, headshotUrl, inviteOnly             |
-| `news`           | title, body, publishedAt                                       |
-
-### ISR Revalidation (`app/api/revalidate/route.ts`):
-
-```ts
-// Sanity fires a webhook to this endpoint on every publish
-// next.js revalidates /classes and /faculty pages automatically
-// No developer action needed when client updates content
+```bash
+NEXT_PUBLIC_SANITY_PROJECT_ID=
+NEXT_PUBLIC_SANITY_DATASET=production
+NEXT_PUBLIC_SANITY_API_VERSION=2024-01-01
 ```
 
-### Who updates what in Sanity Studio:
+Write-capable scripts require `SANITY_API_WRITE_TOKEN` in `.env.local`.
 
-| Content           | Who updates       | How often        |
-|-------------------|-------------------|------------------|
-| Class schedule    | Studio manager    | Start of season  |
-| Class status      | Studio manager    | As classes fill  |
-| Instructor bios   | Studio manager    | When staff changes |
-| News/announcements | Studio manager   | As needed        |
-| Pricing           | Owner             | Annually         |
+### Schemas (`sanity/schemas/`)
+
+| Schema          | Purpose                                      |
+|-----------------|----------------------------------------------|
+| `faculty`       | Instructor profiles                          |
+| `faq`           | FAQ entries                                  |
+| `event`         | Studio events                                |
+| `blogPost`      | Blog posts                                   |
+| `testimonial`   | Parent/dancer testimonials                   |
+| `studioHours`   | Regular and special hours                    |
+| `theProject`    | Competitive team page content                |
+| `projectGallery`| Project gallery images                       |
+| `category`      | Blog categories                              |
+
+### Content sources
+
+| Content type        | Source   | Updated via              |
+|---------------------|----------|--------------------------|
+| Faculty, FAQs, blog | Sanity   | Studio at `/studio`      |
+| Site copy, styles   | `data/`  | Edit files, commit, deploy |
+| Live schedule       | Jackrabbit | Studio manager in Jackrabbit |
+
+Pages use time-based ISR (`export const revalidate = …`). On-demand revalidation via Sanity webhook is documented here but not yet implemented.
 
 ---
 
-## 🎬 9. Animation Specifications
+## 9. Animation Specifications
 
-### Framer Motion — Page entrance (hero only):
+### Framer Motion — hero entrance only
 
 ```tsx
 const container = {
@@ -526,12 +465,11 @@ const item = {
 }
 ```
 
-### Scroll reveals — all other sections:
+### Scroll reveals — all other sections
 
-Use the `useReveal()` hook + `.reveal` / `.reveal.visible` CSS classes.
-Never use Framer Motion for scroll reveals outside the hero — keeps bundle size small.
+Use `RevealOnScroll` or the local `Reveal` wrapper in `HomeSections.tsx`. Do not use Framer Motion for scroll reveals outside the hero.
 
-### Filter transitions — ClassFinder:
+### Filter transitions — ClassFinder
 
 ```tsx
 <AnimatePresence mode="wait">
@@ -547,253 +485,226 @@ Never use Framer Motion for scroll reveals outside the hero — keeps bundle siz
 </AnimatePresence>
 ```
 
-### Row stagger — schedule entries:
+### Keyframes (`tailwind.config.ts`)
 
-```tsx
-<motion.tr
-  initial={{ opacity: 0, y: 12 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.3, delay: index * 0.04 }}
-/>
-```
-
-### Keyframes (in `tailwind.config.ts`):
-
-| Name          | Used for                            |
-|---------------|-------------------------------------|
-| `pulseDot`    | Teal nav logo dot                   |
-| `ticker`      | Infinite class style ticker strip   |
-| `scrollLine`  | Scroll indicator pulse              |
-| `gridSlide`   | Animated grid background in panels  |
-| `orbFloat`    | Floating teal orbs in hero fallback |
-| `ringPulse`   | Dancer silhouette ring animation    |
+| Name        | Used for                          |
+|-------------|-----------------------------------|
+| `pulseDot`  | Animated dots                     |
+| `ticker`    | Style ticker strip                |
+| `gridSlide` | Animated grid backgrounds         |
+| `orbFloat`  | Hero fallback orbs                |
+| `ringPulse` | Ring animation on hero fallback   |
 
 ---
 
-## 🖼️ 10. Asset Requirements
+## 10. Asset Requirements
 
-### Hero Video (`/public/videos/hero.mp4`)
+### Hero video (`/public/videos/hero.mp4`)
 
-| Property   | Value                                            |
-|------------|--------------------------------------------------|
-| Source     | Adobe Stock — dance studio / performance footage |
-| Resolution | 1920×1080 minimum                                |
-| Duration   | 15–30 seconds, loops cleanly                     |
-| Format     | MP4 (H.264) + WebM fallback                      |
-| File size  | Target 8–15MB after compression                  |
-| Audio      | Remove (muted)                                   |
+| Property   | Value                              |
+|------------|------------------------------------|
+| Resolution | 1920×1080 minimum                |
+| Duration   | 15–30 seconds, loops cleanly       |
+| Format     | MP4 (H.264) + WebM fallback        |
+| File size  | Target 8–15 MB after compression   |
+| Audio      | Remove (muted playback)            |
 
-**Compression command:**
+Compression:
+
 ```bash
 ffmpeg -i input.mp4 \
   -vcodec libx264 -crf 23 -preset slow \
-  -acodec aac -b:a 128k \
+  -an \
   -vf "scale=1920:-1" \
   -movflags +faststart \
   public/videos/hero.mp4
 ```
 
-**The `-movflags +faststart` flag is mandatory** — enables video to play before fully downloaded.
+The `-movflags +faststart` flag is required for progressive playback.
 
-### Instructor Headshots (`/public/images/instructors/`)
+### Instructor headshots
 
-| Property   | Value                               |
-|------------|-------------------------------------|
-| Format     | JPG or WebP                         |
-| Size       | 800×1000px minimum (portrait ratio) |
-| Style      | Clean background, professional      |
-| Naming     | `firstname-lastname.jpg`            |
+| Property | Value                               |
+|----------|-------------------------------------|
+| Source   | Sanity (`faculty` documents) or `/public/images/instructors/` |
+| Format   | JPG or WebP                         |
+| Size     | 800×1000px minimum (portrait)       |
+| Naming   | `firstname-lastname.jpg`            |
 
-### Gallery Images (`/public/images/gallery/`)
+### Gallery images
 
-- Recital and performance photos organized by season
+- Managed in Sanity (`projectGallery` schema) or `/public/images/gallery/`
 - Minimum 1200px wide
 - Naming: `season-9-recital-01.jpg`
 
 ---
 
-## 📱 11. Responsive Breakpoints
+## 11. Responsive Breakpoints
 
-| Breakpoint | Changes                                          |
-|------------|--------------------------------------------------|
-| `lg` 1024px | Nav: desktop links hidden, hamburger shown       |
-| `md` 768px  | Grid layouts → single column                    |
-| `sm` 640px  | Typography scales, tables scroll horizontally   |
-| `xs` 375px  | Hero title clamps to 52px minimum               |
+| Breakpoint  | Changes                                        |
+|-------------|------------------------------------------------|
+| `lg` 1024px | Nav: desktop links hidden, hamburger shown     |
+| `md` 768px  | Grid layouts → single column; scroll reveals disabled |
+| `sm` 640px  | Typography scales; tables scroll horizontally  |
 
-### Key mobile rules:
+### Mobile rules
 
 ```css
-/* Never let the horizontal ticker break layout */
-.ticker { overflow: hidden; }
+/* Ticker must not break layout */
+overflow: hidden;
 
-/* Table min-width forces horizontal scroll on mobile */
-.sched-table { min-width: 580px; }
+/* Schedule table scrolls horizontally on small screens */
+min-width on table wrapper as needed;
 
-/* Instructor strip: collapse to vertical on mobile */
+/* Faculty strip stacks vertically below 768px */
 @media (max-width: 768px) {
-  .instructor-strip { flex-direction: column; }
-  .instructor-card  { flex: none !important; min-height: 160px; }
+  flex-direction: column;
 }
 ```
 
 ---
 
-## 🧰 12. Debugging Reference
+## 12. Debugging Reference
 
-| Problem                         | Check File                              |
-|---------------------------------|-----------------------------------------|
-| Video not playing               | Check `/public/videos/hero.mp4` path, `-movflags +faststart` flag |
-| Scroll reveals not firing       | Check `threshold: 0.12` in `useReveal` — element may be too short |
-| Filters not updating            | `lib/classData.ts` — check `filterSchedule()` conditions |
-| Schedule showing wrong classes  | Check `ageMin`/`ageMax` overlap logic in `filterSchedule` |
-| Framer Motion layout shift      | Wrap `AnimatePresence` with `mode="wait"` |
-| Teal color wrong shade          | Check CSS var `--teal: #2dd4bf` in `globals.css` |
-| Fonts not loading               | Check `--font-playfair` / `--font-dm-sans` variables on `<html>` |
-| Redirects not working           | `next.config.ts` redirects array — check `permanent: true` |
-| Sanity data stale               | Check webhook URL in Sanity project settings points to `/api/revalidate` |
-| Tailwind classes not applying   | Check `content` array in `tailwind.config.ts` includes all component paths |
-| @/ alias broken                 | `tsconfig.json` paths: `"@/*": ["./*"]` |
+| Problem                      | Check                                           |
+|------------------------------|-------------------------------------------------|
+| Video not playing            | `/public/videos/hero.mp4`, `-movflags +faststart` |
+| Scroll reveals not firing    | `RevealOnScroll` threshold; element height      |
+| Class finder filters wrong   | `data/classes.ts`, `matchesFilters()` logic     |
+| Schedule empty or stale      | `lib/jackrabbit.ts`, `JACKRABBIT_ORG_ID` env    |
+| Framer Motion layout shift   | Wrap `AnimatePresence` with `mode="wait"`       |
+| Teal color mismatch          | `--teal` in `globals.css`, `tailwind.config.ts` |
+| Fonts not loading            | `--font-playfair` / `--font-dm-sans` on `<html>` |
+| Redirects not working        | `next.config.ts` redirects array                |
+| Sanity data missing          | Env vars, `sanity/lib/queries.ts`               |
+| Tailwind classes missing     | `content` array in `tailwind.config.ts`           |
+| `@/` alias broken            | `tsconfig.json` paths: `"@/*": ["./*"]`          |
+| Forms failing                | `RESEND_API_KEY`, Turnstile keys in `.env.local` |
+| Site indexed on preview      | `NEXT_PUBLIC_PRODUCTION_HOST`, `lib/seo.ts`     |
 
 ---
 
-## ✅ 13. Quality Checklist
+## 13. Quality Checklist
 
-Before considering any page complete:
+Before considering a page complete:
 
 ### Global
-- [ ] Nav logo dot pulses correctly
-- [ ] Nav transitions to frosted glass on scroll
-- [ ] All `next/link` hrefs are correct routes
-- [ ] All 13 Wix redirect URLs resolve correctly
-- [ ] Mobile hamburger menu opens/closes cleanly
-- [ ] Footer "Site by Vizantir" credit present
+
+- [ ] Nav scroll state and mobile menu work
+- [ ] All `Link`/`SmartLink` hrefs resolve to valid routes
+- [ ] All Wix redirect URLs resolve correctly
+- [ ] Footer contact info matches `data/site.ts`
+- [ ] Social links open correct profiles
 
 ### Homepage
-- [ ] Hero video plays immediately on load (with fallback active before load)
-- [ ] Mute/unmute + play/pause controls work
-- [ ] "Watch the Studio" lightbox opens and plays video
-- [ ] Headline teal glow text-shadow renders on "extraordinary."
-- [ ] Stats strip frosted glass at bottom of hero
-- [ ] Teal ticker scrolls continuously without gap
-- [ ] All 8 homepage sections reveal on scroll
-- [ ] Instructor strip expands correctly on hover
-- [ ] Enroll section teal background renders with dark button
 
-### Classes Page
-- [ ] Age group filter narrows schedule correctly
-- [ ] Day filter shows only that day's classes
-- [ ] Style category filter works
+- [ ] Hero video plays on desktop (poster/static layout on mobile)
+- [ ] Mute/unmute and play/pause controls work
+- [ ] Video lightbox opens and plays
+- [ ] Stats strip renders
+- [ ] Ticker scrolls continuously without gap
+- [ ] Homepage sections reveal on scroll (desktop)
+- [ ] Faculty preview cards link to `/faculty`
+
+### Classes page
+
+- [ ] Style, day, level, and age filters work individually
 - [ ] Combined filters work simultaneously
-- [ ] Invite Only toggle shows/hides invite-only entries
 - [ ] Empty state renders when no results
-- [ ] Style card detail panel opens and closes
-- [ ] Schedule grouped by day when "Any Day" selected
-- [ ] Flat table when specific day selected
-- [ ] Status badges (Open/Few Spots/Full) display correct colors
-- [ ] Enroll → link appears on row hover
+- [ ] Style grid cards render from `data/styles.ts`
+
+### Schedule page
+
+- [ ] Jackrabbit classes load and display
+- [ ] Category and day filters work
+- [ ] Empty/error state handled when API unavailable
 
 ### All pages
-- [ ] Page metadata (title, description) is unique per page
+
+- [ ] Page metadata (title, description) is unique per route
 - [ ] No layout shift on load
 - [ ] No console errors
-- [ ] Images use `next/image` with proper `alt` text
-- [ ] All GROQ queries have error handling
+- [ ] Images use `next/image` with `alt` text
+- [ ] Sanity queries handle null/empty results
 
 ---
 
-## 🚀 14. Deployment
+## 14. Deployment
 
-### Vercel Settings:
+Deployed to Vercel on push to `main`. `.env.local` is not deployed — configure variables in the Vercel project settings.
 
-| Setting         | Value                      |
-|-----------------|----------------------------|
-| Framework       | Next.js                    |
-| Node version    | 20.x                       |
-| Build command   | `next build`               |
-| Output dir      | `.next`                    |
-| Install command | `npm install`              |
+| Setting         | Value           |
+|-----------------|-----------------|
+| Framework       | Next.js         |
+| Node version    | 20.x            |
+| Build command   | `pnpm build`    |
+| Install command | `pnpm install`  |
 
-### Environment Variables (set in Vercel dashboard):
+### Required environment variables
 
 ```
+NEXT_PUBLIC_PRODUCTION_HOST
+NEXT_PUBLIC_SITE_URL
 NEXT_PUBLIC_SANITY_PROJECT_ID
 NEXT_PUBLIC_SANITY_DATASET
-SANITY_API_TOKEN
-SANITY_WEBHOOK_SECRET
+NEXT_PUBLIC_SANITY_API_VERSION
+NEXT_PUBLIC_JACKRABBIT_ENROLL_URL
+JACKRABBIT_ORG_ID
+RESEND_API_KEY
+RESEND_FROM_EMAIL
+EVOLVE_INBOX_EMAIL
+NEXT_PUBLIC_TURNSTILE_SITE_KEY
+TURNSTILE_SECRET_KEY
 ```
 
-### Domain:
+Set `NEXT_PUBLIC_PRODUCTION_HOST=evolvedancecenter.com` in Vercel production only when DNS points at the live domain. Preview deployments stay `noindex` until then.
+
+### Domain
 
 - Primary: `evolvedancecenter.com`
-- Redirect: `www.evolvedancecenter.com` → `evolvedancecenter.com`
+- `www.evolvedancecenter.com` redirects to apex
 
-### GTM Installation (`app/layout.tsx`):
+### Google Tag Manager (optional)
+
+GTM is not installed by default. To add it, inject scripts in `app/layout.tsx` via `next/script` with `strategy="afterInteractive"`:
 
 ```tsx
 import Script from 'next/script'
 
-// Replace GTM-XXXXXXX with client's actual container ID
 <Script src="https://www.googletagmanager.com/gtag/js?id=GTM-XXXXXXX" strategy="afterInteractive" />
 <Script id="gtm-init" strategy="afterInteractive">{`
   (function(w,d,s,l,i){...})(window,document,'script','dataLayer','GTM-XXXXXXX');
 `}</Script>
 ```
 
----
-
-## 🗺️ 15. Build Progress
-
-| Page / Feature         | Status      | Notes                              |
-|------------------------|-------------|------------------------------------|
-| Homepage               | ✅ Built    | All 8 sections complete            |
-| Video Hero             | ✅ Built    | Awaiting Adobe Stock video file    |
-| Ticker                 | ✅ Built    | —                                  |
-| Class Finder           | ✅ Built    | Hardcoded data — Sanity pending    |
-| Navbar                 | ✅ Built    | —                                  |
-| Footer                 | ✅ Built    | —                                  |
-| Sanity Setup           | 🔲 Pending  | Next step                          |
-| Faculty Page           | 🔲 Pending  | —                                  |
-| The Project Page       | 🔲 Pending  | —                                  |
-| Enroll Page            | 🔲 Pending  | Jackrabbit embed + free trial form |
-| About + Policies       | 🔲 Pending  | FAQ section included               |
-| Gallery / Recitals     | 🔲 Pending  | —                                  |
-| Contact Page           | 🔲 Pending  | Call + text numbers, Google Maps   |
-| Sanity Schemas         | 🔲 Pending  | schedule, instructor, news         |
-| ISR Revalidation       | 🔲 Pending  | `/api/revalidate` webhook route    |
-| 301 Redirects          | ✅ Built    | All 13 Wix URLs covered            |
-| GTM Integration        | 🔲 Pending  | Needs client's container ID        |
-| JSON-LD Schema         | 🔲 Pending  | LocalBusiness + Course schema      |
-| Hero Video             | 🔲 Pending  | Client purchasing Adobe Stock      |
-| Instructor Headshots   | 🔲 Pending  | Client to provide                  |
+Replace `GTM-XXXXXXX` with the container ID from the client's GTM account.
 
 ---
 
-## 📝 16. Content Reference
+## 15. Content Reference
 
-### Studio Info:
+### Studio info
+
+Source of truth: `data/site.ts` and Sanity (`studioHours` document for hours).
+
 - **Address:** 6070 S Rainbow Blvd, Las Vegas, NV 89118
 - **Phone:** (702) 897-5095
 - **Email:** info@evolvedancecenter.com
-- **Hours:** Mon–Fri 2:30pm–9pm, Wed from 9:30am, Sat 9am–1pm, Sun closed
-- **Season 9:** August 11, 2025 – June 13, 2026
+- **Hours:** Edited in Sanity Studio (`studioHours` schema)
 
-### Social:
-- **Instagram:** @evolvedancelv
-- **Facebook:** /LasVegasDanceStudio
-- **YouTube:** @evolvedancecenter8992
+### Social
 
-### Key Copy:
-- **Hero headline:** "Where dancers become extraordinary."
-- **Free trial:** "First class is always free."
-- **Tagline:** "Serious training. Positive environment. Real results."
-- **The Project:** "For dancers with the drive to go further."
+Source of truth: `data/site.ts` → `socialLinks`
 
-### Classes Offered (Season 9):
-Ballet, Jazz, Hip Hop, Contemporary, Lyrical, Tap, Acrobatics, Tumble Tots, Pointe, Jumps & Turns, Ballroom, Stretch & Pilates, Pom, Combo Classes, Mommy & Me
+- **Instagram:** [@evolvedancelv](https://www.instagram.com/evolvedancelv/)
+- **Facebook:** [/LasVegasDanceStudio](https://www.facebook.com/LasVegasDanceStudio/)
+- **TikTok:** [@evolvedancelv](https://www.tiktok.com/@evolvedancelv)
+- **YouTube:** [@evolvedancecenter8992](https://www.youtube.com/@evolvedancecenter8992)
 
----
+### Class styles
 
-*Evolve Dance Center — Las Vegas*
+Source of truth: `data/styles.ts`. Current taxonomy:
 
-*Site by [Vizantir](https://vizantir.com)*
+Ballet, Jazz, Hip Hop, Contemporary, Lyrical, Acro, Tap, Ballroom, Jumps & Turns, Stretch & Pilates, Combo Classes
+
+Additional styles referenced in the homepage ticker: Tumbling, Pom.
