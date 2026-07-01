@@ -131,7 +131,7 @@ export default function ClassFinderFilters({
         <button
           type="button"
           onClick={onReset}
-          className="self-start text-[11px] font-medium uppercase tracking-wider text-[#0ABAB5] border-b border-[rgba(10,186,181,0.35)] pb-0.5 hover:border-[#0ABAB5] transition-colors md:text-[12px]"
+          className="self-start text-[11px] font-medium uppercase tracking-wider text-teal-hover border-b border-[rgba(10,186,181,0.35)] pb-0.5 hover:border-[#0ABAB5] transition-colors md:text-[12px]"
         >
           Clear filters
         </button>

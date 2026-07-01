@@ -95,7 +95,7 @@ export default function EventCard({ event, variant = 'default' }: EventCardProps
       <div
         className={cn(
           'flex shrink-0 flex-col',
-          isClosure ? 'text-foreground-muted' : 'text-teal',
+          isClosure ? 'text-foreground-muted' : 'text-teal-hover',
           'range' in dateBlock ? 'md:w-32' : 'w-full md:w-24',
         )}
       >
@@ -112,7 +112,7 @@ export default function EventCard({ event, variant = 'default' }: EventCardProps
             <span
               className={cn(
                 'font-sans text-[11px] font-medium uppercase tracking-[0.22em] md:text-[12px]',
-                isClosure ? 'text-foreground-muted' : 'text-teal',
+                isClosure ? 'text-foreground-muted' : 'text-teal-hover',
               )}
             >
               {dateBlock.month}
@@ -128,7 +128,7 @@ export default function EventCard({ event, variant = 'default' }: EventCardProps
         <p
           className={cn(
             'text-[11px] font-medium uppercase tracking-[0.22em] md:text-[12px]',
-            isClosure ? 'text-foreground-muted' : 'text-teal',
+            isClosure ? 'text-foreground-muted' : 'text-teal-hover',
           )}
         >
           {EVENT_TYPE_LABELS[event.type]}
@@ -155,7 +155,7 @@ export default function EventCard({ event, variant = 'default' }: EventCardProps
               href={registrationUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-1 text-[14px] font-medium text-teal underline-offset-4 transition-colors hover:text-teal/90 hover:underline md:text-[15px]"
+              className="group inline-flex items-center gap-1 text-[14px] font-medium text-teal-hover underline-offset-4 transition-colors hover:text-teal-hover/90 hover:underline md:text-[15px]"
             >
               <span className="transition-transform duration-200 ease-out group-hover:translate-x-0.5">
                 {registrationCtaLabel(event.type)}

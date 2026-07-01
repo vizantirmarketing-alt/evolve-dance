@@ -46,7 +46,7 @@ export default function FacultyCard({ faculty }: { faculty: Faculty }) {
 
       <div className="flex flex-1 flex-col p-5">
         <h2 className="font-display text-lg font-bold leading-snug text-foreground md:text-xl">{name}</h2>
-        <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.14em] text-teal">{role}</p>
+        <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.14em] text-teal-hover">{role}</p>
 
         {tags.length > 0 ? (
           <ul className="mt-4 flex flex-wrap gap-2" aria-label="Specialties">

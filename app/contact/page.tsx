@@ -51,7 +51,7 @@ const YoutubeIcon = ({ className }: { className?: string }) => (
 
 function ContactSocialRow() {
   const linkClass =
-    'inline-flex text-foreground-muted hover:text-teal-soft transition-colors duration-200'
+    'inline-flex text-foreground-muted hover:text-teal-hover transition-colors duration-200'
   const iconClass = 'h-5 w-5 shrink-0'
 
   return (
@@ -147,7 +147,7 @@ function StudioHoursBlock({ studioHours }: { studioHours: StudioHours | null }) 
 
       {specialHours.length > 0 ? (
         <div className="space-y-2 pt-1">
-          <p className="text-[11px] uppercase tracking-[0.15em] text-foreground-muted md:text-[12px]">
+          <p className="text-[11px] uppercase tracking-[0.15em] text-foreground-subtle md:text-[12px]">
             Upcoming schedule changes
           </p>
           <ul className="space-y-2">
@@ -182,7 +182,7 @@ export default async function ContactPage() {
           <div className="mb-10 md:mb-12">
             <div className="mb-4 flex items-center gap-3">
               <div className="h-px w-7 bg-teal" />
-              <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-teal">
+              <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-teal-hover">
                 Contact
               </span>
             </div>
@@ -203,7 +203,7 @@ export default async function ContactPage() {
             <div>
               <div className="mb-6 flex items-center gap-3">
                 <div className="h-px w-7 bg-teal" />
-                <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-teal">VISIT US</span>
+                <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-teal-hover">VISIT US</span>
               </div>
 
               <h3
@@ -237,7 +237,7 @@ export default async function ContactPage() {
                   <div className="text-[11px] uppercase tracking-[0.15em] text-foreground-muted md:text-[12px]">Phone</div>
                   <a
                     href={`tel:${siteConfig.phoneTel}`}
-                    className="mt-1 block text-[14px] font-medium text-foreground transition-colors hover:text-teal md:text-[15px]"
+                    className="mt-1 block text-[14px] font-medium text-foreground transition-colors hover:text-teal-hover md:text-[15px]"
                   >
                     (702) 897-5095
                   </a>
@@ -252,7 +252,7 @@ export default async function ContactPage() {
                   <div className="text-[11px] uppercase tracking-[0.15em] text-foreground-muted md:text-[12px]">Email</div>
                   <a
                     href={`mailto:${siteConfig.email}`}
-                    className="mt-1 block text-[14px] font-medium text-foreground transition-colors hover:text-teal md:text-[15px]"
+                    className="mt-1 block text-[14px] font-medium text-foreground transition-colors hover:text-teal-hover md:text-[15px]"
                   >
                     info@evolvedancecenter.com
                   </a>

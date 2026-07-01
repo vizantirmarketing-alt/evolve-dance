@@ -55,7 +55,7 @@ export function ScheduleTabs({
               <span className="leading-snug md:hidden">{shortTabLabel(row.dateISO)}</span>
               <span className="hidden leading-snug md:inline">{row.displayLabel}</span>
               {row.isToday ? (
-                <span className="text-[9px] font-semibold uppercase tracking-[0.12em] text-teal/75 md:text-[11px] md:tracking-[0.14em]">
+                <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-teal/75 md:text-[11px] md:tracking-[0.14em]">
                   Today
                 </span>
               ) : null}

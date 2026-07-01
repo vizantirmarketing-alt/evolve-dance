@@ -34,7 +34,7 @@ export default async function SchedulePage() {
         <div className="mx-auto max-w-6xl">
           <div className="mb-6 flex items-center gap-3">
             <div className="h-px w-7 bg-[#0ABAB5] opacity-100" />
-            <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-[#0ABAB5] opacity-100">
+            <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-teal-hover opacity-100">
               Class schedule
             </span>
           </div>
@@ -42,7 +42,7 @@ export default async function SchedulePage() {
           <div className="mb-12 max-w-3xl">
             <h1 className="font-display font-bold text-[#1F1F1C]">
               <span style={{ fontSize: 'clamp(40px, 5vw, 64px)', lineHeight: '0.95' }}>Browse this week&apos;s </span>
-              <span className="italic text-[#0ABAB5]" style={{ fontSize: 'clamp(40px, 5vw, 64px)', lineHeight: '0.95' }}>
+              <span className="italic text-teal-hover" style={{ fontSize: 'clamp(40px, 5vw, 64px)', lineHeight: '0.95' }}>
                 classes
               </span>
             </h1>
@@ -55,7 +55,7 @@ export default async function SchedulePage() {
             <div className="mx-auto max-w-lg pb-16 text-center">
               <p className="text-[15px] font-light leading-[1.8] md:text-[16px] text-[#1F1F1C]">
                 Live schedule temporarily unavailable. Call{' '}
-                <a href={`tel:${siteConfig.phoneTel}`} className="text-[#0ABAB5] underline-offset-2 hover:underline">
+                <a href={`tel:${siteConfig.phoneTel}`} className="text-teal-hover underline-offset-2 hover:underline">
                   {siteConfig.phone}
                 </a>{' '}
                 or reach out and we&apos;ll help you find the right class.

@@ -182,7 +182,7 @@ function TheProjectPageContent({ page }: { page: ProjectPage }) {
               <div className="flex flex-col justify-center">
                 <div className="mb-4 flex items-center gap-3">
                   <div className="h-px w-7 bg-teal" />
-                  <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-teal md:text-[12px]">
+                  <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-teal-hover md:text-[12px]">
                     The Competition Team
                   </span>
                 </div>
@@ -378,7 +378,7 @@ function TheProjectPageContent({ page }: { page: ProjectPage }) {
                 <div>
                   <div className="mb-5 flex items-center gap-3">
                     <div className="h-px w-7 bg-teal" />
-                    <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-teal md:text-[12px]">
+                    <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-teal-hover md:text-[12px]">
                       The Commitment
                     </span>
                   </div>
@@ -484,7 +484,7 @@ function TheProjectPageContent({ page }: { page: ProjectPage }) {
             <div className="mb-12 text-center">
               <div className="mb-5 flex items-center justify-center gap-3">
                 <div className="h-px w-7 bg-teal" />
-                <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-teal md:text-[12px]">
+                <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-teal-hover md:text-[12px]">
                   Recent Achievements
                 </span>
                 <div className="h-px w-7 bg-teal" />
@@ -499,7 +499,7 @@ function TheProjectPageContent({ page }: { page: ProjectPage }) {
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
               {awards.map((award, index) => (
                 <div key={`${award.title}-${award.year}-${index}`} className="rounded-lg border border-border bg-background p-7">
-                  <div className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-teal md:text-[12px]">
+                  <div className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-teal-hover md:text-[12px]">
                     {award.year} Season
                   </div>
                   <div className="mb-2 font-display font-bold text-foreground" style={{ fontSize: '20px', lineHeight: '1.2' }}>
@@ -519,7 +519,7 @@ function TheProjectPageContent({ page }: { page: ProjectPage }) {
           <div className="mx-auto max-w-7xl">
             <div className="mb-4 flex items-center gap-3">
               <div className="h-px w-7 bg-teal" />
-              <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-teal md:text-[12px]">Gallery</span>
+              <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-teal-hover md:text-[12px]">Gallery</span>
             </div>
             <h2
               className="mb-10 font-display font-bold text-foreground"
@@ -576,7 +576,7 @@ function TheProjectPageContent({ page }: { page: ProjectPage }) {
             <div className="mt-10 flex justify-center">
               <Link
                 href="/the-project/gallery"
-                className="border-b border-[rgba(10,186,181,0.3)] pb-0.5 text-[11px] uppercase tracking-[0.18em] text-teal no-underline transition-colors hover:border-teal md:text-[12px]"
+                className="border-b border-[rgba(10,186,181,0.3)] pb-0.5 text-[11px] uppercase tracking-[0.18em] text-teal-hover no-underline transition-colors hover:border-teal md:text-[12px]"
               >
                 View full gallery →
               </Link>
@@ -589,7 +589,7 @@ function TheProjectPageContent({ page }: { page: ProjectPage }) {
           <div className="mx-auto max-w-3xl text-center">
             <div className="mb-5 flex items-center justify-center gap-3">
               <div className="h-px w-7 bg-teal" />
-              <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-teal md:text-[12px]">
+              <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-teal-hover md:text-[12px]">
                 Auditions
               </span>
               <div className="h-px w-7 bg-teal" />
@@ -615,7 +615,7 @@ function TheProjectPageContent({ page }: { page: ProjectPage }) {
               both welcome to audition.
             </p>
             {auditionDateLabel ? (
-              <div className="mb-8 inline-block rounded border border-teal/30 bg-teal/[0.12] px-4 py-2 text-[12px] uppercase tracking-[0.15em] text-teal">
+              <div className="mb-8 inline-block rounded border border-teal/30 bg-teal/[0.12] px-4 py-2 text-[12px] uppercase tracking-[0.15em] text-teal-hover">
                 Next Audition: {auditionDateLabel}
               </div>
             ) : null}

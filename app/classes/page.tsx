@@ -33,7 +33,7 @@ export default function ClassesPage() {
           <div className="mx-auto max-w-4xl">
             <div className="mb-6 flex items-center gap-3">
               <div className="h-px w-7 bg-[#0ABAB5]" />
-              <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-[#0ABAB5]">
+              <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-teal-hover">
                 Season 9 — Now Enrolling
               </span>
             </div>
@@ -67,7 +67,7 @@ export default function ClassesPage() {
           <div className="mx-auto max-w-7xl px-6 pb-4 pt-16 md:px-12">
             <div className="mb-6 flex items-center gap-3">
               <div className="h-px w-7 bg-[#0ABAB5]" />
-              <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-[#0ABAB5]">Class finder</span>
+              <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-teal-hover">Class finder</span>
             </div>
             <h2 className="font-display mb-2 text-[clamp(28px,3.5vw,42px)] font-bold leading-tight text-[#1F1F1C]">
               Search Classes
@@ -81,7 +81,7 @@ export default function ClassesPage() {
           <div className="mx-auto max-w-7xl">
             <div className="mb-6 flex items-center gap-3">
               <div className="h-px w-7 bg-[#0ABAB5]" />
-              <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-[#0ABAB5]">What We Teach</span>
+              <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.22em] text-teal-hover">What We Teach</span>
             </div>
             <h2 className="font-display mb-12 text-[clamp(28px,3.5vw,42px)] font-bold leading-tight text-[#1F1F1C] md:mb-16">
               Every style we offer

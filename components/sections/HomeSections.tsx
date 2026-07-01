@@ -344,7 +344,7 @@ export function ClassesSection() {
                   {program.desc}
                 </p>
                 <div className="flex items-center justify-between border-t border-[#1F1F1C]/10 pt-3">
-                  <span className="text-[12px] tracking-wider text-[#0ABAB5] md:text-[13px]">{program.ages}</span>
+                  <span className="text-[12px] tracking-wider text-teal-hover md:text-[13px]">{program.ages}</span>
                   <Link
                     href={program.href}
                     className="flex h-9 w-9 items-center justify-center rounded-sm border border-[#0ABAB5] text-[#0ABAB5] transition-colors hover:bg-[#0ABAB5] hover:text-white"

@@ -82,7 +82,7 @@ export default function Nav({ links }: NavProps) {
             <li key={link.href} className="shrink-0">
               <SmartLink
                 href={link.href}
-                className="whitespace-nowrap text-[12px] font-medium uppercase tracking-[0.15em] text-[#1F1F1C] no-underline [text-shadow:_0_1px_1px_rgb(0_0_0_/_0.08)] transition-colors duration-200 hover:text-[#81D8D0] md:text-[12px] lg:text-[13px]"
+                className="whitespace-nowrap text-[12px] font-medium uppercase tracking-[0.15em] text-[#1F1F1C] no-underline [text-shadow:_0_1px_1px_rgb(0_0_0_/_0.08)] transition-colors duration-200 hover:text-teal-hover md:text-[12px] lg:text-[13px]"
               >
                 {link.label}
               </SmartLink>
