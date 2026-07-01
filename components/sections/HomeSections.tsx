@@ -135,14 +135,14 @@ export function AboutSection() {
           </p>
         </Reveal>
         <Reveal delay={300}>
-          <div className="mx-auto grid w-full max-w-md grid-cols-3 gap-4 text-center md:mx-0 md:flex md:max-w-none md:gap-10 md:text-left">
+          <div className="mx-auto grid w-full max-w-md grid-cols-3 gap-2 text-center md:mx-0 md:flex md:max-w-none md:gap-10 md:text-left">
             {[
               { num: '6',    lbl: 'Dance Rooms' },
               { num: '18mo', lbl: 'Youngest Dancer' },
               { num: '2017', lbl: 'Est. Las Vegas' },
             ].map(s => (
               <div key={s.lbl} className="text-center md:text-left">
-                <div className="font-display text-[32px] md:text-[40px] font-bold leading-none text-[#0ABAB5]" style={{ textShadow: '0 0 30px rgba(10,186,181,0.2)' }}>
+                <div className="font-display text-[28px] md:text-[40px] font-bold leading-none text-[#0ABAB5] whitespace-nowrap" style={{ textShadow: '0 0 30px rgba(10,186,181,0.2)' }}>
                   {s.num}
                 </div>
                 <div className="mt-1 text-[11px] uppercase tracking-[0.14em] text-[#6D6C67] md:text-[12px]">{s.lbl}</div>

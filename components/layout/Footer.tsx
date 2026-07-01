@@ -73,7 +73,6 @@ const footerResourcesLinks = [
   { href: '/blog', label: 'Blog' },
   { href: '/faq', label: 'FAQ' },
   { href: '/free-trial', label: 'Book a Free Trial' },
-  { href: '/sitemap', label: 'Site Map' },
 ]
 
 const footerNavLinkClass =
