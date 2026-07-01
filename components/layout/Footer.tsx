@@ -160,6 +160,12 @@ export default function Footer() {
             <SmartLink href="/media-usage" className={footerSecondaryLinkClass}>
               Media Usage
             </SmartLink>
+            <span className="text-[12px] text-[rgba(247,245,241,0.45)] mx-2 shrink-0 leading-[1.55]" aria-hidden>
+              ·
+            </span>
+            <SmartLink href="/sitemap" className={footerSecondaryLinkClass}>
+              Site map
+            </SmartLink>
           </p>
           <p>
             © 2026 Evolve Dance Center ·{' '}
