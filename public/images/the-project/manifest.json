@@ -20,13 +20,6 @@
     "aspectRatio": 1.0914435009797518,
     "placeholder": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAQAgCdASoQAA8AAsBMJZwAD49uzfXuYXrAAP73nVRIr+3ir9OQ6XN525Zk8plDOAHVkrctfSvq3YMTDL3bLO8lSbGnCO8Jfefh44ehmWvvxWq1ZZfr7DKa/e5L0YuaqB+npWe2WeQAAA=="
   },
-  "studio-portrait-duo": {
-    "src": "/images/the-project/studio-portrait-duo.jpg",
-    "width": 1024,
-    "height": 1536,
-    "aspectRatio": 0.6666666666666666,
-    "placeholder": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAwBACdASoQABgAPtFUo0uoJKMhsAgBABoJQBOmUABp1ecTGTCMNfjqAQAA/vFh42iHrWRLalwJRMCUVE3mWcDwarcaXRYInnRUMMf5NacDVe4pUqJI8lNgw8d5AP07xT2LLfANaJGQFghzJkmySnhf8wszZOAA"
-  },
   "studio-portrait-solo": {
     "src": "/images/the-project/studio-portrait-solo.jpg",
     "width": 1024,
@@ -40,6 +33,13 @@
     "height": 2533,
     "aspectRatio": 1.1930517173312278,
     "placeholder": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAABQAgCdASoQAA0AAsBMJbACdAYtzuwfT0jbcAAA/ulSlPUp+5EYibm2O0nAj7sxslFL2DoawklNWQ9OxNPhavqxBjxalZfnl11vtNzji1pwRyTPsRzZL2hpLJl+CN164+e5yHBijqDa719nKeuCOEvVs5/MhmZnqRFHcyDYZEWlAAAA"
+  },
+  "team-groove-winner": {
+    "src": "/images/the-project/team-groove-winner.jpg",
+    "width": 1736,
+    "height": 1450,
+    "aspectRatio": 1.197241379310345,
+    "placeholder": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADQAQCdASoQAA0AAsBMJZwAAvrZ9G9OAAD++2n12sGuIOM/V5Zmpaz4gVSnlKi4fZHvsERkd78QkLkrx2lj/1QSfAAAAA=="
   },
   "team-hall-of-fame": {
     "src": "/images/the-project/team-hall-of-fame.jpg",

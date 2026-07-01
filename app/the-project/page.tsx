@@ -541,12 +541,12 @@ function TheProjectPageContent({ page }: { page: ProjectPage }) {
               </div>
               <div className="relative aspect-[3/4] overflow-hidden border border-border bg-background-warm">
                 <Image
-                  src={getTheProjectImage('studio-portrait-duo').src}
+                  src={getTheProjectImage('team-groove-winner').src}
                   alt="Evolve Dance Project dancer in a studio portrait"
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
                   placeholder="blur"
-                  blurDataURL={getTheProjectImage('studio-portrait-duo').placeholder}
+                  blurDataURL={getTheProjectImage('team-groove-winner').placeholder}
                   className="object-cover object-center"
                 />
               </div>
