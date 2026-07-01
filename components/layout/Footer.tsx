@@ -68,6 +68,13 @@ const footerNavLinks = [
   { href: '/contact', label: 'Contact' },
 ]
 
+const footerResourcesLinks = [
+  { href: '/blog', label: 'Blog' },
+  { href: '/faq', label: 'FAQ' },
+  { href: '/free-trial', label: 'Book a Free Trial' },
+  { href: '/sitemap', label: 'Site Map' },
+]
+
 const footerNavLinkClass =
   'text-[13px] md:text-[14px] text-[rgba(247,245,241,0.65)] no-underline hover:text-[#81D8D0] transition-colors duration-200'
 
@@ -106,6 +113,25 @@ export default function Footer() {
           className="mt-8 lg:mt-10 flex flex-wrap items-center justify-center gap-y-2 text-center max-w-2xl mx-auto"
         >
           {footerNavLinks.map((link, index) => (
+            <span key={link.href} className="inline-flex items-center">
+              {index > 0 && (
+                <span className={footerDotSeparatorClass} aria-hidden>
+                  ·
+                </span>
+              )}
+              <SmartLink href={link.href} className={footerNavLinkClass}>
+                {link.label}
+              </SmartLink>
+            </span>
+          ))}
+        </nav>
+
+        {/* Resources */}
+        <nav
+          aria-label="Resources"
+          className="mt-6 lg:mt-8 flex flex-wrap items-center justify-center gap-y-2 text-center max-w-2xl mx-auto"
+        >
+          {footerResourcesLinks.map((link, index) => (
             <span key={link.href} className="inline-flex items-center">
               {index > 0 && (
                 <span className={footerDotSeparatorClass} aria-hidden>
@@ -164,7 +190,7 @@ export default function Footer() {
               ·
             </span>
             <SmartLink href="/sitemap" className={footerSecondaryLinkClass}>
-              Site map
+              Site Map
             </SmartLink>
           </p>
           <p>

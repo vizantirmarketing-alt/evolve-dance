@@ -6,7 +6,7 @@ import Navbar from '@/components/layout/Navbar'
 import { JACKRABBIT_ENROLL_URL } from '@/lib/jackrabbit'
 
 export const metadata: Metadata = {
-  title: 'Site map',
+  title: 'Site Map',
   description:
     'A directory of every page at Evolve Dance Center in Las Vegas — classes, schedule, faculty, and more.',
   alternates: { canonical: '/sitemap' },
@@ -57,7 +57,7 @@ const sections: SitemapSection[] = [
     eyebrow: 'Resources',
     heading: 'Learn more',
     links: [
-      { label: 'Journal', href: '/blog', description: 'Studio updates and articles' },
+      { label: 'Blog', href: '/blog', description: 'Studio updates and articles' },
       { label: 'FAQ', href: '/faq', description: 'Answers to common questions' },
       { label: 'Studio Policies', href: '/policies', description: 'Rules, dress code, and expectations' },
     ],
@@ -85,7 +85,7 @@ export default function SitemapPage() {
             className="font-display font-bold leading-none text-foreground"
             style={{ fontSize: 'clamp(40px, 5vw, 64px)' }}
           >
-            Everywhere on this site
+            Site Map
           </h1>
           <p className="mt-6 text-[15px] font-light leading-[1.75] text-foreground-muted md:text-[16px]">
             A directory of every page at Evolve Dance Center.
