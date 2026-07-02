@@ -153,15 +153,15 @@ export function AboutSection() {
       </div>
 
       {/* Right — studio image */}
-      <div className="relative overflow-hidden h-[280px] md:h-auto bg-[#D4F1EF]">
+      <div className="relative overflow-hidden h-[380px] md:h-auto bg-[#D4F1EF]">
         <Image
           src={aboutStudio.src}
           alt="Mini program students in tap formation with two faculty members at Evolve Dance Center"
           fill
-          sizes="(max-width: 768px) 50vw, 33vw"
+          sizes="(max-width: 768px) 100vw, 50vw"
           placeholder="blur"
           blurDataURL={aboutStudio.placeholder}
-          className="object-cover object-center"
+          className="object-cover object-top md:object-center"
         />
         <div className="absolute inset-0 bg-[#1F1F1C]/5" />
       </div>
