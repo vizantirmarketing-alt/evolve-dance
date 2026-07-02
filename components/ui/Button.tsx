@@ -2,7 +2,7 @@ import { forwardRef, type ButtonHTMLAttributes } from 'react'
 import { buttonVariants, type ButtonSize, type ButtonSurface, type ButtonVariant } from './button-styles'
 import { cn } from '@/lib/utils'
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant
   size?: ButtonSize
   surface?: ButtonSurface

@@ -6,7 +6,7 @@ import { ChevronRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { JACKRABBIT_ENROLL_URL, type JackrabbitClass } from '@/lib/jackrabbit'
 
-export function instructorLine(c: JackrabbitClass): string {
+function instructorLine(c: JackrabbitClass): string {
   const ins = c.instructors.filter(Boolean)
   if (ins.length >= 2) return ins.join(' · ')
   return ins[0] ?? ''

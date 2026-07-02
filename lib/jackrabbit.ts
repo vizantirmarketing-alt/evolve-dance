@@ -24,9 +24,9 @@ const DAY_LABEL: Record<DayKey, string> = {
 const DAY_SORT_ORDER = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] as const
 
 /** Weekdays shown on schedule surfaces (Sunday excluded; matches full-page schedule). */
-export const DAY_ORDER_MON_SAT = DAY_SORT_ORDER.slice(0, -1)
+const DAY_ORDER_MON_SAT = DAY_SORT_ORDER.slice(0, -1)
 
-export interface JackrabbitMeetingDays {
+interface JackrabbitMeetingDays {
   mon: boolean
   tue: boolean
   wed: boolean
@@ -37,7 +37,7 @@ export interface JackrabbitMeetingDays {
 }
 
 /** Raw row from OpeningsJson `rows` array (subset we read). */
-export interface JackrabbitOpeningsRow {
+interface JackrabbitOpeningsRow {
   id: number
   name: string
   category2: string
@@ -56,7 +56,7 @@ export interface JackrabbitOpeningsRow {
   waitlist?: boolean
 }
 
-export interface JackrabbitOpeningsResponse {
+interface JackrabbitOpeningsResponse {
   rows: JackrabbitOpeningsRow[]
 }
 
@@ -87,7 +87,7 @@ export interface DayGroup {
 }
 
 /** Parse ISO-8601 duration (e.g. `P05Y00M`) to fractional years, or null if empty / invalid. */
-export function parseIso8601DurationToYears(iso: string): number | null {
+function parseIso8601DurationToYears(iso: string): number | null {
   const parts = parseIso8601DurationParts(iso)
   if (!parts) return null
   return parts.years + parts.months / 12
@@ -105,7 +105,7 @@ function parseIso8601DurationParts(iso: string): { years: number; months: number
 }
 
 /** Convert `HH:mm` (24h) to `h:mm AM/PM`. */
-export function formatTime24hrTo12h(time24: string): string {
+function formatTime24hrTo12h(time24: string): string {
   if (!time24 || typeof time24 !== 'string') return ''
   const [hStr, mStr = '00'] = time24.split(':')
   let h = parseInt(hStr, 10)

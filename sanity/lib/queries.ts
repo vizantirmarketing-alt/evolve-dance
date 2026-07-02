@@ -9,9 +9,9 @@ export type PortableTextBlock = {
 }
 
 /** Alias for call sites that still import `FacultyBioBlock`. */
-export type FacultyBioBlock = PortableTextBlock
+type FacultyBioBlock = PortableTextBlock
 
-export type FacultySlug = {
+type FacultySlug = {
   _type?: string
   current?: string
 }
@@ -39,27 +39,14 @@ export type SanityImage = {
 }
 
 /** Same as `SanityImage`; kept where imports still say FacultyPhoto. */
-export type FacultyPhoto = SanityImage
+type FacultyPhoto = SanityImage
 
-export type FacultySocial = {
+type FacultySocial = {
   instagram?: string | null
   website?: string | null
 } | null
 
-export type Faculty = {
-  _id: string
-  name: string
-  slug: FacultySlug | null
-  role: string
-  photo: SanityImage | null
-  bio?: PortableTextBlock[] | null
-  specialties?: string[] | null
-  yearsTeaching?: number | null
-  social?: FacultySocial
-  order?: number | null
-}
-
-export type EventRecitalDetails = {
+type EventRecitalDetails = {
   dressRehearsalDate?: string | null
   photoDayDate?: string | null
   ticketSaleStart?: string | null
@@ -124,47 +111,21 @@ const eventProjection = `
   featured
 `
 
-export const upcomingEventsQuery = `*[_type == "event" && published == true && (endDate >= now() || (endDate == null && startDate >= now()))] | order(startDate asc) {
+const upcomingEventsQuery = `*[_type == "event" && published == true && (endDate >= now() || (endDate == null && startDate >= now()))] | order(startDate asc) {
   ${eventProjection}
 }`
 
-export const pastEventsQuery = `*[_type == "event" && published == true && (endDate < now() || (endDate == null && startDate < now()))] | order(startDate desc) [0...10] {
+const pastEventsQuery = `*[_type == "event" && published == true && (endDate < now() || (endDate == null && startDate < now()))] | order(startDate desc) [0...10] {
   ${eventProjection}
 }`
 
-export const publishedFaqsQuery = `*[_type == "faq" && published == true] | order(order asc, question asc) {
+const publishedFaqsQuery = `*[_type == "faq" && published == true] | order(order asc, question asc) {
   _id,
   question,
   answer,
   category,
   order
 }`
-
-export const publishedFacultyQuery = `*[_type == "faculty" && published == true] | order(order asc, name asc) {
-  _id,
-  name,
-  slug,
-  role,
-  photo {
-    _type,
-    alt,
-    hotspot,
-    crop,
-    asset->{
-      _id,
-      _type
-    }
-  },
-  bio,
-  specialties,
-  yearsTeaching,
-  social,
-  order
-}`
-
-export async function getPublishedFaculty(): Promise<Faculty[]> {
-  return client.fetch<Faculty[]>(publishedFacultyQuery)
-}
 
 export type FacultyForPage = {
   _id: string
@@ -184,7 +145,7 @@ export type FacultyForPage = {
   order: number
 }
 
-export const facultyForPageQuery = `*[_type == "faculty" && published == true] | order(order asc, name asc) {
+const facultyForPageQuery = `*[_type == "faculty" && published == true] | order(order asc, name asc) {
   _id,
   name,
   "slug": slug,
@@ -224,7 +185,7 @@ export type FacultyPreview = {
   } | null
 }
 
-export const facultyPreviewQuery = `*[_type == "faculty" && published == true] | order(order asc, name asc) [0...5] {
+const facultyPreviewQuery = `*[_type == "faculty" && published == true] | order(order asc, name asc) [0...5] {
   _id,
   name,
   "slug": slug,
@@ -258,7 +219,7 @@ export async function getPastEvents(): Promise<EventDoc[]> {
   return client.fetch<EventDoc[]>(pastEventsQuery)
 }
 
-export type ProjectAuditionInfo = {
+type ProjectAuditionInfo = {
   date?: string | null
   location?: string | null
   ageRange?: string | null
@@ -266,7 +227,7 @@ export type ProjectAuditionInfo = {
   ctaLink?: string | null
 } | null
 
-export type ProjectTeamLevel = {
+type ProjectTeamLevel = {
   name: string
   ageRange?: string | null
   description?: string | null
@@ -275,7 +236,7 @@ export type ProjectTeamLevel = {
   order?: number | null
 }
 
-export type ProjectAward = {
+type ProjectAward = {
   title: string
   year: number
   competition: string
@@ -291,7 +252,7 @@ export type ProjectPage = {
   seoDescription?: string | null
 }
 
-export type BlogCategory = {
+type BlogCategory = {
   _id: string
   title: string
   slug: FacultySlug | null
@@ -345,7 +306,7 @@ const blogPostProjection = `
   featured
 `
 
-export const projectPageQuery = `*[_type == "theProject"][0] {
+const projectPageQuery = `*[_type == "theProject"][0] {
   _id,
   pageIntro,
   auditionInfo {
@@ -374,15 +335,15 @@ export const projectPageQuery = `*[_type == "theProject"][0] {
   seoDescription
 }`
 
-export const publishedPostsQuery = `*[_type == "blogPost" && published == true] | order(publishedAt desc) {
+const publishedPostsQuery = `*[_type == "blogPost" && published == true] | order(publishedAt desc) {
   ${blogPostProjection}
 }`
 
-export const postBySlugQuery = `*[_type == "blogPost" && published == true && slug.current == $slug][0] {
+const postBySlugQuery = `*[_type == "blogPost" && published == true && slug.current == $slug][0] {
   ${blogPostProjection}
 }`
 
-export const allPostSlugsQuery = `*[_type == "blogPost" && published == true].slug.current`
+const allPostSlugsQuery = `*[_type == "blogPost" && published == true].slug.current`
 
 export async function getProjectPage(): Promise<ProjectPage | null> {
   return client.fetch<ProjectPage | null>(projectPageQuery)
@@ -431,7 +392,7 @@ export type StudioHours = {
   holidayMessage?: string | null
 }
 
-export const studioHoursQuery = `*[_type == "studioHours"][0] {
+const studioHoursQuery = `*[_type == "studioHours"][0] {
   _id,
   regularHours,
   "specialHours": specialHours[date >= string(dateTime(now()) - 60*60*24)[0...10]] | order(date asc),
@@ -453,7 +414,7 @@ export type Testimonial = {
   order?: number | null
 }
 
-export const featuredTestimonialsQuery = `*[_type == "testimonial" && published == true && featured == true] | order(order asc) {
+const featuredTestimonialsQuery = `*[_type == "testimonial" && published == true && featured == true] | order(order asc) {
   _id,
   reviewerName,
   rating,
@@ -492,7 +453,7 @@ export type ProjectGallery = {
   photos: ProjectGalleryPhoto[]
 }
 
-export const projectGalleryQuery = `*[_type == "projectGallery"][0]{
+const projectGalleryQuery = `*[_type == "projectGallery"][0]{
   photos[]{
     "id": _key,
     alt,
@@ -548,7 +509,7 @@ export type StudioVideos = {
   videos: StudioVideo[]
 }
 
-export const studioVideosQuery = `*[_type == "studioVideos"][0]{
+const studioVideosQuery = `*[_type == "studioVideos"][0]{
   videos[]{
     "id": _key,
     title,

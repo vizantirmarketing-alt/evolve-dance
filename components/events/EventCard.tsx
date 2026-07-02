@@ -2,7 +2,7 @@ import { cn } from '@/lib/utils'
 import { formatEventDateBlock, formatEventTime } from '@/lib/dates'
 import type { EventDoc, PortableTextBlock } from '@/sanity/lib/queries'
 
-export const EVENT_TYPE_LABELS: Record<EventDoc['type'], string> = {
+const EVENT_TYPE_LABELS: Record<EventDoc['type'], string> = {
   recital: 'Recital',
   audition: 'Auditions',
   summer: 'Summer Program',
